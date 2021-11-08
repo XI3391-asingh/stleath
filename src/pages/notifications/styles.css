@@ -1,0 +1,22 @@
+.notifications-page-layout {
+	display: flow-root;
+	flex-grow: 1;
+}
+
+.notifications-page-card {
+	margin: 1rem;
+}
+
+.notifications-page-card-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+/* .notifications-page-card-heading {
+	text-align: left;
+}
+
+.notifications-page-card-subheading {
+	align-self: center;
+} */

@@ -1,0 +1,25 @@
+/* Analysis-Cards */
+.container {
+	display: flex;
+}
+
+/* Chart-cards */
+.chartCardContainer {
+	display: flex;
+	margin: 1rem 0;
+}
+
+.detctionChart {
+	display: flex;
+	margin: 1rem 0;
+}
+
+.ruleCompliance {
+	width: 100%;
+	margin: 2rem 0;
+}
+
+/* Dropdown in cards */
+.dropdownSelections {
+	display: flex;
+}

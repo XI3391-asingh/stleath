@@ -1,0 +1,57 @@
+.chart-position {
+	padding: 1rem;
+}
+
+/* Mixed Cards */
+.chart-cardLayout {
+	margin: 0 1rem;
+	width: 33.3%;
+}
+
+.chart-card {
+	height: 288px;
+}
+
+.chart-cardHeader {
+	font-weight: bold;
+	text-align: left;
+	font-size: 10px;
+}
+
+.sentiment-space {
+	margin: 1.5rem;
+}
+
+.chart-compositionCardLayout {
+	margin: 2rem 1rem;
+}
+
+.chart-compositionCardHeader {
+	font-weight: bold;
+	text-align: left;
+	font-size: 10px;
+	padding-bottom: 0 !important;
+}
+
+.chart-cardDiv {
+	display: flex;
+	justify-content: space-between;
+}
+
+.chart-detectionCardLayout {
+	width: 50%;
+	margin: 1rem;
+}
+
+.chart-ruleComplianceCardLayout {
+	margin: 0 1rem;
+}
+
+.chart-ruleComplianceCard {
+	width: 100%;
+}
+
+.chart-callCompositionLayout {
+	margin: 1rem 1rem 0 1rem;
+	width: 60%;
+}

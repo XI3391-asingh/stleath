@@ -1,0 +1,71 @@
+.message-list-layout {
+	padding: 1rem 1rem 0 1rem;
+}
+
+.message-list-details {
+	display: flex;
+	justify-content: space-between;
+}
+
+.message-list-name {
+	font-weight: bold !important;
+	text-align: left;
+}
+
+.messages-list-unread-messages {
+	align-self: center;
+	color: white;
+	background-color: blue;
+	border-radius: 50%;
+	font-weight: bold !important;
+}
+
+.message-list-recent-message {
+	color: darkgrey;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.message-list-divider {
+	margin-top: 0.25rem !important;
+}
+
+/* From Message */
+
+.from-message-layout {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	padding: 1rem;
+}
+
+.from-message-paper-format {
+	border-radius: 5px;
+	margin: 1rem;
+	width: fit-content;
+	display: flex;
+}
+
+.from-message-text {
+	padding: 0.5rem;
+	text-align: left;
+}
+
+.from-message-time {
+	color: darkgrey;
+}
+
+/* To Message */
+
+.to-message-layout {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	padding: 1rem;
+}
+
+.to-message-text {
+	padding: 0.5rem;
+	text-align: right;
+}

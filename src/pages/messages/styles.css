@@ -1,0 +1,82 @@
+.messages-page-body-layout {
+	display: flow-root;
+}
+
+.messages-page-main-card-layout {
+	margin: 1rem;
+}
+
+.messages-page-heading {
+	text-align: left;
+	padding: 1rem;
+}
+
+.messages-page-card {
+	margin: 1rem;
+	display: flex;
+}
+
+.messages-page-chat-list {
+	width: 30%;
+}
+
+.messages-page-search-paper {
+	padding: 0.1rem 0.4rem;
+	display: flex;
+	align-items: center;
+}
+
+.messages-page-search-box {
+	margin-left: 1rem;
+	flex-grow: 1;
+	width: 100%;
+}
+
+.messages-page-search-box-divider {
+	height: 1.8rem !important;
+	margin: 0.5rem !important;
+}
+
+.messages-page-search-box-icon {
+	padding: 0.75rem;
+}
+
+.messages-page-chat-divider {
+	display: inline-block;
+	width: 1px;
+	background-color: whitesmoke;
+	margin: 0;
+	height: auto;
+}
+
+.messages-page-chat-message-pane-layout {
+	width: 70%;
+}
+
+.messages-page-chat-message-pane-header {
+	text-align: left;
+	padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.messages-page-chat-message-pane-header-layout {
+	display: flex;
+}
+
+.messages-page-chat-message-pane-header-date {
+	align-self: center;
+	padding-left: 5rem;
+}
+
+.messages-page-chat-reply-layout {
+	margin: 0.9rem;
+}
+
+.messages-page-chat-textfield {
+	width: 89%;
+}
+
+.message-list-divider {
+	margin: 0.5rem 0 !important;
+}

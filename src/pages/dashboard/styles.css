@@ -1,0 +1,26 @@
+.dashboard-page-layout {
+	display: flow-root;
+	flex-grow: 1;
+}
+
+.dashboard-page-card {
+	margin: 1rem;
+	padding: 1rem 0 1rem 1rem;
+}
+
+.dashboard-page-card-list {
+	display: flex;
+}
+
+.dashboard-page-call-details {
+	padding: 1rem;
+	text-align: left;
+}
+
+.dashboard-page-divider {
+	margin: 0.3rem 0;
+}
+
+.dashboard-page-components {
+	padding: 1rem 1rem 0 1rem;
+}

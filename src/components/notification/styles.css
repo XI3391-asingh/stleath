@@ -1,0 +1,44 @@
+.single-notification-layout {
+	text-align: -webkit-center;
+}
+
+.single-notification-format {
+	justify-content: space-evenly;
+	display: flex;
+	padding: 1rem;
+	width: 80%;
+}
+
+.single-notification-unread-container {
+	width: 10%;
+	align-self: center;
+}
+
+.single-notification-unread-icon {
+	font-size: small !important;
+	color: blue;
+}
+
+.single-notification-message-container {
+	width: 60%;
+}
+
+.single-notification-message {
+	margin: 1rem;
+	white-space: pre-wrap;
+	font-weight: bold !important;
+	text-align: left;
+}
+
+.single-notification-timestamp-container {
+	margin: 1rem;
+	width: 30%;
+}
+
+.single-notification-timestamp {
+	color: darkgrey;
+}
+
+.single-notification-divider {
+	color: whitesmoke;
+}

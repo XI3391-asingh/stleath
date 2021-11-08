@@ -1,0 +1,59 @@
+.calls-page-layout {
+	display: flow-root;
+}
+
+.calls-page-card-body-layout {
+	margin: 1rem;
+	padding: 1rem 0 1rem 1rem;
+}
+
+.calls-page-card-body-design {
+	display: flex;
+}
+
+.calls-page-card-main-body {
+	width: 100%;
+}
+
+.calls-page-call-details {
+	padding: 1rem;
+	text-align: left;
+}
+
+.calls-page-divider {
+	margin: 0.3rem 0;
+}
+
+.calls-page-table-layout {
+	padding: 1rem 1rem 0;
+}
+
+/* Calls Visualizer Styles */
+
+.calls-visualizer-details-card {
+	margin: 1rem;
+	height: 6rem;
+	padding: 1rem;
+}
+
+.calls-visualizer-card-list {
+	display: flex;
+}
+
+.calls-visualizer-moments-card {
+	width: 18%;
+	margin: 1rem;
+}
+
+.calls-visualizer-transcription-card {
+	width: 56%;
+	margin: 1rem;
+}
+
+.calls-visualizer-comments-card-layout {
+	width: 26%;
+	margin: 1rem;
+}
+/* .calls-visualizer-comments-card {
+	height: 100%;
+} */

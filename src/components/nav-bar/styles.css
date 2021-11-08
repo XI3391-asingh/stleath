@@ -1,0 +1,126 @@
+/* Navbar Styles */
+
+.appbar-layout {
+	background-color: purple !important;
+	width: auto;
+}
+
+.appbar-heading-bar {
+	padding-left: 0.5rem !important;
+}
+
+.appbar-menu-button {
+	width: 3rem;
+	height: 3rem;
+}
+
+.appbar-menu-icon {
+	color: white;
+	padding-right: 1rem;
+}
+
+.appbar-heading {
+	font-weight: bolder !important;
+	color: white;
+	margin-left: 0.5rem;
+}
+
+.appbar-box {
+	flex-grow: 1;
+	display: flex;
+	padding: 0 1rem;
+}
+
+.appbar-pages {
+	color: white;
+	margin: 0 1rem !important;
+}
+
+.appbar-icon-list {
+	display: flex;
+}
+
+.appbar-button {
+	padding: 0.8rem !important;
+}
+
+.appbar-icons {
+	flex-grow: 1;
+	color: white;
+}
+
+.appbar-avatar {
+	padding: 1.2rem !important;
+	color: white;
+}
+
+.appbar-avatar-menu {
+	display: flex;
+	top: 4rem;
+	width: 12rem;
+}
+
+.appbar-avatar-menuItem {
+	display: block;
+	padding: 1rem !important;
+}
+
+.appbar-notification-menu {
+	top: 3rem !important;
+	right: 20rem;
+	padding: 1rem;
+}
+
+.appbar-notification-menu-list {
+	/* width: 25rem;
+	overflow: auto; */
+}
+
+.appbar-notification-menu-item {
+	display: flex;
+	justify-content: space-between !important;
+	padding: '0.5rem';
+}
+
+.appbar-notification-menu-list-button {
+	text-align: end;
+}
+
+.appbar-notification-menu-list-notification-item {
+	display: block;
+	justify-content: space-between;
+	padding: 0.5rem;
+}
+
+.appbar-notification-menu-notification-container {
+	display: flex;
+}
+
+.appbar-notification-menu-notification-icon-container {
+	align-self: center;
+	width: 10%;
+}
+
+.appbar-notification-menu-notification-icon {
+	font-size: small !important;
+	color: blue;
+}
+
+.appbar-notification-menu-notification-message {
+	margin-left: '1rem';
+	white-space: pre-wrap;
+	font-weight: bold !important;
+}
+
+.appbar-notification-menu-notification-time-container {
+	margin-left: 2.7rem;
+	padding-bottom: 0.5rem;
+}
+
+.appbar-notification-menu-notification-time {
+	color: darkgrey;
+}
+
+.appbar-notification-menu-see-all-notifications {
+	text-align: center;
+}
