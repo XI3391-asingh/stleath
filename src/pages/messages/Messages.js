@@ -1,11 +1,7 @@
-import { Search } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
 import {
-	Badge,
 	Button,
 	Card,
-	CardContent,
-	CardHeader,
 	Divider,
 	IconButton,
 	InputBase,
@@ -16,7 +12,6 @@ import {
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Box } from '@mui/system';
 import React from 'react';
-import Comments from '../../components/calls/comments/Comments';
 import moment from 'moment';
 import MessageList from '../../components/messages/MessageList';
 import FromMessage from '../../components/messages/FromMessage';
@@ -36,13 +31,6 @@ function Messages() {
 					{/* Autocomplete in MUI */}
 					<Box className='messages-page-chat-list'>
 						<div className='messages-page-heading'>
-							{/* <SearchIcon className='messages-page-search-icon' />
-							<input
-								type='search'
-								name=''
-								id=''
-								className='messages-page-search-box'
-							/> */}
 							<Paper component='form' className='messages-page-search-paper'>
 								<InputBase
 									placeholder='Search...'

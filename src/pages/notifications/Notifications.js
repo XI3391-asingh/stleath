@@ -1,15 +1,6 @@
-import {
-	Button,
-	Card,
-	CardHeader,
-	Divider,
-	Pagination,
-	Stack,
-	Typography,
-} from '@mui/material';
+import { Button, Card, Pagination, Stack, Typography } from '@mui/material';
 import React from 'react';
 import SingleNotification from '../../components/notification/SingleNotification';
-import PageNumber from '../../components/shared-components/pagination/PageNumber';
 
 import './styles.css';
 
@@ -23,7 +14,6 @@ function Notifications() {
 						<Typography variant='button'>Mark All As Read</Typography>
 					</Button>
 				</div>
-				{/* <Divider /> */}
 				<div>
 					<SingleNotification />
 					<SingleNotification />

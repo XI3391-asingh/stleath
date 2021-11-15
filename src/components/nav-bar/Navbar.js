@@ -316,8 +316,8 @@ function Navbar() {
 	// 		onClose={handleNotificationMenuClose}
 	// 		className='appbar-notification-menu'
 	// 	>
-	{
-		/* <MenuItem style={{ justifyContent: 'space-between' }}>
+	// {
+	/* <MenuItem style={{ justifyContent: 'space-between' }}>
 				<Typography variant='h6'>Notifications</Typography>
 				<Typography variant='caption' style={{ color: 'blue' }}>
 					Mark All Read
@@ -325,7 +325,7 @@ function Navbar() {
 			</MenuItem>
 		</Menu>
 	); */
-	}
+	// }
 
 	return (
 		<div>

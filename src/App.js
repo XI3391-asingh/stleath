@@ -1,8 +1,7 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
-// import NavBar from './components/shared-components/nav-bar/NavBar';
 import Navbar from './components/nav-bar/Navbar';
 
 import Calls from './pages/calls/Calls';

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import ParentFilterPanel from './filters/filter-panel/ParentFilterPanel';
 import CompetitorAnalysisCard from './analysis-cards/CompetitorAnalysisCard';
 import ServiceIssueCard from './analysis-cards/ServiceIssueCard';
 

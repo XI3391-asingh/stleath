@@ -1,13 +1,6 @@
 import React from 'react';
 
-import {
-	List,
-	ListItem,
-	ListItemText,
-	Paper,
-	TextField,
-	Typography,
-} from '@mui/material';
+import { List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
 import moment from 'moment';
 
 function SingleComment() {

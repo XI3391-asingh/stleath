@@ -10,8 +10,6 @@ import '../styles.css';
 
 const options = ['Found', 'Not Found', 'All'];
 
-const ITEM_HEIGHT = 4;
-
 function Moments() {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);

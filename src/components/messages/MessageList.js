@@ -1,4 +1,4 @@
-import { Badge, Divider, Typography } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import React from 'react';
 
 import './styles.css';
