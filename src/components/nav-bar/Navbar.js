@@ -27,50 +27,6 @@ import moment from 'moment';
 
 import './styles.css';
 
-// const [anchorEl, setAnchorEl] = React.useState(null);
-// const isMenuOpen = Boolean(anchorEl);
-
-// const handleNotificationMenuOpen = (event) => {
-// 	setAnchorEl(event.currentTarget);
-// };
-
-// const handleNotificationMenuClose = () => {
-// 	setAnchorEl(null);
-// };
-
-// const menuId = 'primary-notifications';
-// const renderNotifications = (
-// 	<Menu
-// 		anchorEl={anchorEl}
-// 		anchorOrigin={{
-// 			vertical: 'bottom',
-// 			horizontal: 'left',
-// 		}}
-// 		id={menuId}
-// 		keepMounted
-// 		transformOrigin={{
-// 			vertical: 'top',
-// 			horizontal: 'left',
-// 		}}
-// 		open={isMenuOpen}
-// 		onClose={handleNotificationMenuClose}
-// 		className='appbar-avatar-menu'
-// 	>
-// 		<MenuItem onClick={handleNotificationMenuClose} className='appbar-avatar-menuItem'>
-// 			<ListItemIcon>
-// 				<Settings fontSize='small' />
-// 			</ListItemIcon>
-// 			<Typography variant='body1'>Settings</Typography>
-// 		</MenuItem>
-// 		<MenuItem onClick={handleNotificationMenuClose} className='appbar-avatar-menuItem'>
-// 			<ListItemIcon>
-// 				<Logout fontSize='small' />
-// 			</ListItemIcon>
-// 			<Typography variant='body1'>Logout</Typography>
-// 		</MenuItem>
-// 	</Menu>
-// );
-
 function Navbar() {
 	let dateTime = moment().format('lll');
 	const [anchorEl, setAnchorEl] = React.useState(null);
