@@ -2,7 +2,7 @@ import React from 'react';
 
 import { FormControl, MenuItem, Select } from '@mui/material';
 
-import './styles.css';
+import '../styles.css';
 
 function Dropdown() {
 	const [agent, setAgent] = React.useState('');

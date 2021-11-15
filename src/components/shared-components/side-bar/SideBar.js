@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SidebarDatePicker from '../date-picker/SidebarDatePicker';
-import Dropdown from '../Dropdown';
+import Dropdown from '../dropdown/Dropdown';
 
 import '../styles.css';
 

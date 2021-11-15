@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Bar } from 'react-chartjs-2';
 import { Card, CardHeader, Divider } from '@mui/material';
-import Dropdown from '../../shared-components/Dropdown';
+import Dropdown from '../../shared-components/dropdown/Dropdown';
 
 import '../styles.css';
 import ChartMetaIcons from '../../icons/chart-metaicons/ChartMetaIcons';

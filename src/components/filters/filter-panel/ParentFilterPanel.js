@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropdown from '../../shared-components/Dropdown';
+import Dropdown from '../../shared-components/dropdown/Dropdown';
 import './styles.css';
 
 function ParentFilterPanel() {

@@ -124,3 +124,7 @@
 .appbar-notification-menu-see-all-notifications {
 	text-align: center;
 }
+
+.appbar-notification-menu-see-all-notifications a {
+	text-decoration-line: none;
+}
