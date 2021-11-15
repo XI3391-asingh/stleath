@@ -1,6 +1,15 @@
-import { Button, Card, CardHeader, Divider, Typography } from '@mui/material';
+import {
+	Button,
+	Card,
+	CardHeader,
+	Divider,
+	Pagination,
+	Stack,
+	Typography,
+} from '@mui/material';
 import React from 'react';
 import SingleNotification from '../../components/notification/SingleNotification';
+import PageNumber from '../../components/shared-components/pagination/PageNumber';
 
 import './styles.css';
 
@@ -19,6 +28,11 @@ function Notifications() {
 					<SingleNotification />
 					<SingleNotification />
 					<SingleNotification />
+				</div>
+				<div>
+					<Stack spacing={2}>
+						<Pagination count={5} />
+					</Stack>
 				</div>
 			</Card>
 		</div>

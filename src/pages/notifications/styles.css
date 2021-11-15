@@ -13,6 +13,10 @@
 	padding: 1rem;
 }
 
+.notification-page-pagination {
+	align-content: center !important;
+	justify-content: center !important;
+}
 /* .notifications-page-card-heading {
 	text-align: left;
 }
