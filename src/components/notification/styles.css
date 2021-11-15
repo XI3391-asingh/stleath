@@ -10,7 +10,7 @@
 }
 
 .single-notification-unread-container {
-	width: 10%;
+	width: 6%;
 	align-self: center;
 }
 
@@ -19,8 +19,17 @@
 	color: blue;
 }
 
+.single-notification-message-source {
+	padding-right: 1rem;
+	align-self: center;
+	font-style: italic;
+	font-weight: 600;
+	width: 14%;
+}
+
 .single-notification-message-container {
 	width: 60%;
+	align-self: center;
 }
 
 .single-notification-message {
@@ -32,7 +41,7 @@
 
 .single-notification-timestamp-container {
 	margin: 1rem;
-	width: 30%;
+	width: 14%;
 }
 
 .single-notification-timestamp {
