@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import {
 	AppBar,
@@ -291,23 +291,23 @@ function Navbar() {
 						<IconButton className='appbar-menu-button'>
 							<MenuIcon className='appbar-menu-icon' />
 						</IconButton>
-						<Link to='/'>
+						<NavLink activeClassName='active' to='/' exact={true}>
 							<Typography variant='h5' className='appbar-heading'>
 								STLEATH
 							</Typography>
-						</Link>
+						</NavLink>
 						<Box className='appbar-box'>
 							<IconButton>
-								<Link to='/'>
+								<NavLink activeClassName='active' to='/' exact={true}>
 									<Typography variant='body1' className='appbar-pages'>
 										Dashboard
 									</Typography>
-								</Link>
-								<Link to='/calls'>
+								</NavLink>
+								<NavLink activeClassName='active' to='/calls'>
 									<Typography variant='body1' className='appbar-pages'>
 										Calls
 									</Typography>
-								</Link>
+								</NavLink>
 								<Typography variant='body1' className='appbar-pages'>
 									QA
 								</Typography>

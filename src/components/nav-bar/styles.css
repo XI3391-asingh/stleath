@@ -71,10 +71,10 @@
 	padding: 1rem;
 }
 
-.appbar-notification-menu-list {
-	/* width: 25rem;
-	overflow: auto; */
-}
+/* .appbar-notification-menu-list {
+	width: 25rem;
+	overflow: auto;
+} */
 
 .appbar-notification-menu-item {
 	display: flex;
@@ -123,4 +123,11 @@
 
 .appbar-notification-menu-see-all-notifications {
 	text-align: center;
+}
+
+.active {
+	/* font-style: italic; */
+	/* font-weight: bold; */
+	/* -webkit-text-stroke: thin; */
+	text-transform: uppercase;
 }
