@@ -299,19 +299,19 @@ function Navbar() {
 						<Box className='appbar-box'>
 							<IconButton>
 								<NavLink activeClassName='active' to='/' exact={true}>
-									<Typography variant='body1' className='appbar-pages'>
+									<Typography variant='h6' className='appbar-pages'>
 										Dashboard
 									</Typography>
 								</NavLink>
 								<NavLink activeClassName='active' to='/calls'>
-									<Typography variant='body1' className='appbar-pages'>
+									<Typography variant='h6' className='appbar-pages'>
 										Calls
 									</Typography>
 								</NavLink>
-								<Typography variant='body1' className='appbar-pages'>
+								<Typography variant='h6' className='appbar-pages'>
 									QA
 								</Typography>
-								<Typography variant='body1' className='appbar-pages'>
+								<Typography variant='h6' className='appbar-pages'>
 									Employee Management
 								</Typography>
 							</IconButton>

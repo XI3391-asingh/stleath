@@ -31,6 +31,11 @@
 	padding: 0 1rem;
 }
 
+.appbar-button-group {
+	padding: 0 1rem !important;
+	height: 4rem !important;
+}
+
 .appbar-pages {
 	color: white;
 	margin: 0 1rem !important;
@@ -128,6 +133,7 @@
 .active {
 	/* font-style: italic; */
 	/* font-weight: bold; */
-	/* -webkit-text-stroke: thin; */
-	text-transform: uppercase;
+	-webkit-text-stroke: thin;
+	/* text-transform: uppercase; */
+	/* background-color: darkmagenta; */
 }
