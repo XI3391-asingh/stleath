@@ -15,6 +15,9 @@ function SingleNotification() {
 				<div className='single-notification-unread-container'>
 					<FiberManualRecordIcon className='single-notification-unread-icon' />
 				</div>
+				<div className='single-notification-message-source'>
+					<Typography variant='body2'>Rajat Bansal</Typography>
+				</div>
 				<div className='single-notification-message-container'>
 					<Typography variant='body2' className='single-notification-message'>
 						Lorem Ipsum is simply dummy text of the printing and typesetting
