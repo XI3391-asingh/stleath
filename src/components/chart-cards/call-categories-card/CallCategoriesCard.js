@@ -13,7 +13,7 @@ function CallCategoriesCard() {
 				label: 'Data',
 				data: [650, 438, 0],
 				fill: true,
-				backgroundColor: 'rgba(0, 0, 203,1)',
+				backgroundColor: '#B5CDA3',
 			},
 		],
 	};

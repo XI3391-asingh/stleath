@@ -52,7 +52,7 @@ function CallCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'rectRounded',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(0, 200, 55,1)',
+									backgroundColor: '#FAEBE0',
 								},
 								{
 									label: 'TotalClosing',
@@ -60,7 +60,7 @@ function CallCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(50, 20, 55,1)',
+									backgroundColor: '#B5CDA3',
 								},
 								{
 									label: 'TotalEscalation',
@@ -68,7 +68,7 @@ function CallCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(250, 200, 55,1)',
+									backgroundColor: '#B5DEFF',
 								},
 								{
 									label: 'TotalPricing',
@@ -76,7 +76,7 @@ function CallCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(153, 0, 153,1)',
+									backgroundColor: '#C1AC95',
 								},
 								{
 									label: 'TotalCompliance',
@@ -84,7 +84,7 @@ function CallCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(153, 255, 153,1)',
+									backgroundColor: '#C9E4C5',
 								},
 								{
 									label: 'TotalCompetitor',
@@ -92,7 +92,7 @@ function CallCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(100, 200, 153,1)',
+									backgroundColor: '#CAB8FF',
 								},
 							],
 						}}

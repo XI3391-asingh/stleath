@@ -18,7 +18,7 @@ function AgentRankingCard() {
 				label: 'Data',
 				data: [600, 480, 450, 377, 100, 30, 0],
 				fill: true,
-				backgroundColor: 'rgba(0, 0, 153,1)',
+				backgroundColor: '#B5DEFF',
 			},
 		],
 	};

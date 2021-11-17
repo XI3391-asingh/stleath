@@ -21,7 +21,7 @@ function DispositionCodeMixCard() {
 				label: 'Data',
 				data: [650, 438, 578, 377, 100, 30, 0],
 				fill: true,
-				backgroundColor: 'rgba(0, 0, 183,1)',
+				backgroundColor: '#B5DEFF',
 			},
 		],
 	};
