@@ -62,7 +62,7 @@ function AgentDispositionCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'rectRounded',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(0, 200, 55,1)',
+									backgroundColor: '#C9E4C5',
 								},
 								{
 									label: 'AlreadyPurchased',
@@ -70,7 +70,7 @@ function AgentDispositionCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(50, 20, 55,1)',
+									backgroundColor: '#B5DEFF',
 								},
 								{
 									label: 'CustomerPickedUp',
@@ -78,7 +78,7 @@ function AgentDispositionCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(250, 200, 55,1)',
+									backgroundColor: '#FCFFA6',
 								},
 								{
 									label: 'AutoWrapUp',
@@ -86,7 +86,7 @@ function AgentDispositionCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(153, 0, 153,1)',
+									backgroundColor: '#CAB8FF',
 								},
 							],
 						}}

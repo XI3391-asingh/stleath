@@ -24,7 +24,7 @@ function AgentRuleComplianceCard() {
 				label: 'Data',
 				data: [600, 480, 300, 165, 476, 90, 0, 500, 377, 100, 150, 10],
 				fill: true,
-				backgroundColor: 'rgba(0, 0, 255,1)',
+				backgroundColor: '#CAB8FF',
 			},
 		],
 	};

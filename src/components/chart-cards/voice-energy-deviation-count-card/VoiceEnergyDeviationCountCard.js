@@ -11,7 +11,7 @@ function VoiceEnergyDeviationCountCard() {
 			{
 				label: 'Silence Detection',
 				data: dataLabels,
-				backgroundColor: 'rgba(153,0,153,0.8)',
+				backgroundColor: '#C1AC95',
 				barPercentage: 0.5,
 				categoryPercentage: 0.5,
 			},
