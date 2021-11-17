@@ -12,6 +12,7 @@ import {
 	Paper,
 	TextField,
 	Typography,
+	Avatar,
 } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Box } from '@mui/system';
@@ -21,6 +22,7 @@ import moment from 'moment';
 import MessageList from '../../components/messages/MessageList';
 import FromMessage from '../../components/messages/FromMessage';
 import ToMessage from '../../components/messages/ToMessage';
+import messagesData from '../../data/messages.json';
 
 import './styles.css';
 
@@ -67,28 +69,59 @@ function Messages() {
 						<Divider />
 						<div>
 							<MessageList />
-							<MessageList />
-							<MessageList />
 						</div>
 					</Box>
 					<span className='messages-page-chat-divider'></span>
 					<Box className='messages-page-chat-message-pane-layout'>
 						<div>
-							<div className='messages-page-chat-message-pane-header'>
-								<div className='messages-page-chat-message-pane-header-layout'>
-									<Typography variant='h6'>Rajat Bansal</Typography>
-									<Typography
-										variant='caption'
-										className='messages-page-chat-message-pane-header-date'
-									>
-										{dateTime}
-									</Typography>
-								</div>
-								<IconButton>
-									<MoreVertIcon />
-								</IconButton>
-							</div>
+							{messagesData.map((messages, index) => {
+								return (
+									<div className='messages-page-chat-message-pane-header'>
+										<div className='messages-page-chat-message-pane-header-layout'>
+											<Typography variant='h6'>{messages.name}</Typography>
+											<Typography
+												variant='caption'
+												className='messages-page-chat-message-pane-header-date'
+											>
+												{dateTime}
+											</Typography>
+										</div>
+										<IconButton>
+											<MoreVertIcon />
+										</IconButton>
+									</div>
+								);
+							})}
 							<Divider className='message-list-divider' />
+							{/* <div>
+								{messagesData.map((messages, index) => {
+									return (
+										<>
+											<Avatar
+												alt='Remy Sharp'
+												src='/static/images/avatar/1.jpg'
+											/>
+											<Paper
+												elevation={3}
+												className='from-message-paper-format'
+											>
+												<Typography
+													variant='subtitle2'
+													className='from-message-text'
+												>
+													{messages.fromMessage}
+												</Typography>
+											</Paper>
+											<Typography
+												variant='caption'
+												className='from-message-time'
+											>
+												{dateTime}
+											</Typography>
+										</>
+									);
+								})}
+							</div> */}
 							<FromMessage />
 							<ToMessage />
 							<FromMessage />
