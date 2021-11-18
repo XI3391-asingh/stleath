@@ -4,11 +4,13 @@
 }
 
 .card {
-	width: 10rem;
+	width: fit-content;
+	display: flex;
 }
 
 .card-display {
 	width: 10rem;
+	margin-right: 1.5rem;
 }
 
 .card-metaicons {

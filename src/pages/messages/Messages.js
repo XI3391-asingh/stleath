@@ -124,7 +124,7 @@ function Messages() {
 							</div> */}
 							<FromMessage />
 							<ToMessage />
-							<FromMessage />
+							{/* <FromMessage /> */}
 							<ToMessage />
 							<Box
 								component='form'
