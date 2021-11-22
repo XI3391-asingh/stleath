@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import {
 	AppBar,
@@ -355,9 +355,11 @@ function Navbar() {
 								<Typography variant='body1' className='appbar-pages'>
 									QA
 								</Typography>
-								<Typography variant='body1' className='appbar-pages'>
-									Employee Management
-								</Typography>
+								<NavLink to='/employee-management'>
+									<Typography variant='body1' className='appbar-pages'>
+										Employee Management
+									</Typography>
+								</NavLink>
 							</IconButton>
 						</Box>
 						<Box className='appbar-icon-list'>
