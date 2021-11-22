@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Bar } from 'react-chartjs-2';
 import { Card, CardHeader, Divider } from '@mui/material';
-import Dropdown from '../../filters/dropdowns/Dropdown';
 
 import ChartMetaIcons from '../../icons/chart-metaicons/ChartMetaIcons';
 
 import '../styles.css';
+import AgentDispositionDropdown from '../../dropdowns/AgentDispositionDropdown';
 
 const data = {
 	labels: [
@@ -50,7 +50,9 @@ function AgentDispositionCompositionCard() {
 					/>
 					<ChartMetaIcons />
 				</div>
-				<Dropdown />
+				<div style={{ margin: '1rem 0 0 1rem', textAlign: 'justify' }}>
+					<AgentDispositionDropdown />
+				</div>
 				<Divider />
 				<div className='chart-position'>
 					<Bar

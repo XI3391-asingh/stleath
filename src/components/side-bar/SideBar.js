@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SidebarDatePicker from '../date-picker/SidebarDatePicker';
-import Dropdown from '../filters/dropdowns/Dropdown';
+import Dropdown from '../dropdowns/Dropdown';
 
 import './styles.css';
 
@@ -11,15 +11,6 @@ function SideBar() {
 			<h4 className='sidebar-heading'>FILTERS</h4>
 			<h5>Date Filters</h5>
 			<SidebarDatePicker />
-			<Dropdown />
-			<Dropdown />
-			<Dropdown />
-			<Dropdown />
-			<Dropdown />
-			<Dropdown />
-			<Dropdown />
-			<Dropdown />
-			<Dropdown />
 			<Dropdown />
 		</div>
 	);

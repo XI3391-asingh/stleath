@@ -1,0 +1,97 @@
+[
+	{
+		"label": "Agent",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Recording Current Session",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Product Issues",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Service Issues",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Opening Note",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Customer Not Interested",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Agent Disposition",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Sub Disposition",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Closing Note",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Casual Tone",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Product Available",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Product PA",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Team/Line of Business",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Competitor Analysis",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Price Concerns",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "P.PA Cover Check",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Claim Type TP",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Arguging Utterance",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Agent",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	}
+]

@@ -1,7 +1,7 @@
 import { Card, CardHeader, Divider, Grid } from '@mui/material';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import ChartFilters from '../../filters/chart-filters/ChartFilters';
+import ChartFiltersDropdown from '../../dropdowns/ChartFiltersDropdown';
 
 function AgentRuleComplianceCard() {
 	const data = {
@@ -37,7 +37,7 @@ function AgentRuleComplianceCard() {
 				/>
 				<Grid item lg={12} md={12} xs={12}>
 					<div>
-						<ChartFilters />
+						<ChartFiltersDropdown />
 					</div>
 					<Divider />
 				</Grid>
