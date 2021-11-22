@@ -9,6 +9,7 @@ import DispositionCodeMixCard from './chart-cards/disposition-code-mix-card/Disp
 import SentimentCard from './chart-cards/sentiment-card/SentimentCard';
 import SilenceDetectionCountChartCard from './chart-cards/silence-detection-count-chart-card/SilenceDetectionCountChartCard';
 import VoiceEnergyDeviationCountCard from './chart-cards/voice-energy-deviation-count-card/VoiceEnergyDeviationCountCard';
+import DashboardTable from './shared-components/tables/dashboard-table/DashboardTable';
 
 import './style.css';
 
@@ -35,6 +36,7 @@ function ChartComponents() {
 			</div>
 			<div>
 				<CallCompositionCard />
+				<DashboardTable />
 			</div>
 		</div>
 	);

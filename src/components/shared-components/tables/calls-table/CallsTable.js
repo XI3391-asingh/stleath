@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button, Typography } from '@mui/material';
 
-import Calls from '../../../../data/calls.json';
+import Calls from '../../../../data/tables/calls.json';
 
 import '../../styles.css';
 
