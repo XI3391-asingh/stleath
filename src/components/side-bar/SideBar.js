@@ -1,9 +1,9 @@
 import React from 'react';
 
 import SidebarDatePicker from '../date-picker/SidebarDatePicker';
-import Dropdown from '../Dropdown';
+import Dropdown from '../filters/dropdowns/Dropdown';
 
-import '../styles.css';
+import './styles.css';
 
 function SideBar() {
 	return (

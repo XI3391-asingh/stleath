@@ -20,7 +20,7 @@ function Dropdown() {
 					value={agent}
 					onChange={handleChange}
 					label='agent'
-					style={{ height: 30 }}
+					style={{ height: 25 }}
 				>
 					<MenuItem value='All'>--Select--</MenuItem>
 					<MenuItem value={10}>Follow Up</MenuItem>

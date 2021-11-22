@@ -1,5 +1,6 @@
 import React from 'react';
-import Dropdown from '../../shared-components/Dropdown';
+
+import Dropdown from '../dropdowns/Dropdown';
 
 function ChartFilters() {
 	return (

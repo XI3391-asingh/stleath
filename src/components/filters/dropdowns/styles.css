@@ -1,0 +1,9 @@
+.dropdown-layout {
+	display: flex;
+	width: 154px;
+}
+
+.dropdown-form {
+	margin: 1rem !important;
+	width: 9.5rem;
+}
