@@ -34,9 +34,9 @@ function ChartComponents() {
 			<div className='ruleCompliance'>
 				<AgentRuleComplianceCard />
 			</div>
-			<div>
-				<CallCompositionCard />
+			<div style={{ display: 'flex' }}>
 				<DashboardTable />
+				<CallCompositionCard />
 			</div>
 		</div>
 	);

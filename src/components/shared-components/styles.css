@@ -1,18 +1,1 @@
 /* Table Styles */
-
-.calls-table-layout {
-	height: 41rem;
-	width: 100%;
-}
-
-.details-button {
-	color: #ffffff !important;
-	background-color: #0e86d4 !important;
-	border-radius: 10px !important;
-	padding: 5px !important;
-}
-
-.details-button:hover {
-	color: #0e86d4 !important;
-	background-color: #ffffff !important;
-}

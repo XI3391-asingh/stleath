@@ -1,0 +1,14 @@
+.dashboard-table-layout {
+	margin: 1rem;
+	width: 40%;
+}
+
+.dashboard-table-card {
+	padding: 1rem 1rem 4rem 1rem;
+	height: 20rem;
+}
+
+.dashboard-table-header {
+	padding-bottom: 1rem;
+	text-align: justify;
+}

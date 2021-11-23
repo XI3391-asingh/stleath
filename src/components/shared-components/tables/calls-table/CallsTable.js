@@ -6,7 +6,7 @@ import { Button, Typography } from '@mui/material';
 
 import Calls from '../../../../data/tables/calls.json';
 
-import '../../styles.css';
+import './styles.css';
 
 const columns = [
 	{

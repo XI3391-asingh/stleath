@@ -21,7 +21,7 @@ function SentimentCard() {
 	return (
 		<div className='chart-cardLayout'>
 			<Card className='chart-card'>
-				<CardHeader title='Disposition Code Mix' className='chart-cardHeader' />
+				<CardHeader title='Sentiments' className='chart-cardHeader' />
 				<Divider />
 				<div className='sentiment-space'>
 					<Doughnut
