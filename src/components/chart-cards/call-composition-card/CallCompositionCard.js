@@ -32,7 +32,7 @@ function CallCompositionCard() {
 	};
 	return (
 		<div className='chart-callCompositionLayout'>
-			<Card>
+			<Card className='chart-callComposition-card-layout'>
 				<CardHeader
 					title='Call Composition (beta)'
 					className='chart-cardHeader'

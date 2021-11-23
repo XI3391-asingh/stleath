@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Card } from '@mui/material';
 
-import SideBar from '../../components/shared-components/side-bar/SideBar';
+import SideBar from '../../components/side-bar/SideBar';
 import CallsTable from '../../components/shared-components/tables/calls-table/CallsTable';
 
 import './styles.css';

@@ -1,0 +1,32 @@
+[
+	{
+		"id": 1,
+		"title": "Competitor Analysis",
+		"Value": 300
+	},
+	{
+		"id": 2,
+		"title": "Service Issue",
+		"Value": 30
+	},
+	{
+		"id": 3,
+		"title": "Product Issue",
+		"Value": 133
+	},
+	{
+		"id": 4,
+		"title": "Warranty and Others",
+		"Value": 77
+	},
+	{
+		"id": 5,
+		"title": "Hold Time Violations",
+		"Value": 59
+	},
+	{
+		"id": 6,
+		"title": "Repeat Calls Volume",
+		"Value": 23
+	}
+]

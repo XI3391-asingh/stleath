@@ -5,7 +5,7 @@ import DatePicker from '@mui/lab/DatePicker';
 import { TextField } from '@mui/material';
 import AdapterMoment from '@mui/lab/AdapterMoment';
 
-import '../styles.css';
+import './styles.css';
 
 function SidebarDatePicker() {
 	const [value, setValue] = React.useState(new Date());
