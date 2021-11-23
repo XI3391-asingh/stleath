@@ -1,0 +1,31 @@
+.login-paper-styles {
+	padding: 1rem;
+	height: 55vh;
+	width: 20rem;
+	margin: 5rem auto;
+}
+
+.login-paper-header {
+	margin: 1rem;
+}
+
+.login-paper-fields {
+	margin-bottom: 2rem;
+}
+
+.login-paper-subtitle {
+	text-align: left;
+	font-weight: bold !important;
+}
+
+.login-paper-textfield {
+	margin-top: 1rem;
+}
+
+.login-paper-checkbox {
+	text-align: left;
+}
+
+.login-paper-button {
+	margin: 2rem 1rem 1rem 1rem !important;
+}
