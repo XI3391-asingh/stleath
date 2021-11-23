@@ -1,11 +1,11 @@
 [
 	{
-		"label": "Agent",
+		"label": "Agent Name",
 		"optionOne": "Type 1",
 		"OptionTwo": "Type 2"
 	},
 	{
-		"label": "Recording Current Session",
+		"label": "Recording Date and Time",
 		"optionOne": "Type 1",
 		"OptionTwo": "Type 2"
 	},
@@ -20,7 +20,7 @@
 		"OptionTwo": "Type 2"
 	},
 	{
-		"label": "Opening Note",
+		"label": "Opening Check",
 		"optionOne": "Type 1",
 		"OptionTwo": "Type 2"
 	},
@@ -40,57 +40,12 @@
 		"OptionTwo": "Type 2"
 	},
 	{
-		"label": "Closing Note",
+		"label": "Closing Check",
 		"optionOne": "Type 1",
 		"OptionTwo": "Type 2"
 	},
 	{
 		"label": "Casual Tone",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Product Available",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Product PA",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Team/Line of Business",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Competitor Analysis",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Price Concerns",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "P.PA Cover Check",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Claim Type TP",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Arguging Utterance",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Agent",
 		"optionOne": "Type 1",
 		"OptionTwo": "Type 2"
 	}
