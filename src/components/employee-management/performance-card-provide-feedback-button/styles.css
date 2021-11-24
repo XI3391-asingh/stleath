@@ -9,3 +9,8 @@
 	box-shadow: 24;
 	padding: 2rem;
 }
+
+.performance-card-modal-dropdown {
+	margin: 1rem;
+	min-width: 10rem !important;
+}
