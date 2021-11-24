@@ -1,22 +1,14 @@
 import React from 'react';
 
-import ParentFilterPanel from './filters/filter-panel/ParentFilterPanel';
-import CompetitorAnalysisCard from './analysis-cards/CompetitorAnalysisCard';
-import ServiceIssueCard from './analysis-cards/ServiceIssueCard';
+import AnalysisCard from './analysis-cards/AnalysisCard';
 
 import './style.css';
 
 function CardComponents() {
 	return (
 		<div>
-			<div>{/* <ParentFilterPanel /> */}</div>
 			<div className='container'>
-				<CompetitorAnalysisCard />
-				<ServiceIssueCard />
-				<CompetitorAnalysisCard />
-				<ServiceIssueCard />
-				<CompetitorAnalysisCard />
-				<ServiceIssueCard />
+				<AnalysisCard />
 			</div>
 		</div>
 	);
