@@ -25,6 +25,8 @@ import { Box } from '@mui/system';
 
 import moment from 'moment';
 
+import LogoutButton from '../logout/LogoutButton';
+
 import './styles.css';
 
 function Navbar() {
@@ -79,7 +81,8 @@ function Navbar() {
 				<ListItemIcon>
 					<Logout fontSize='small' />
 				</ListItemIcon>
-				<Typography variant='body1'>Logout</Typography>
+				{/* <Typography variant='body1'>Logout</Typography> */}
+				<LogoutButton />
 			</MenuItem>
 		</Menu>
 	);
@@ -274,9 +277,13 @@ function Navbar() {
 								<Typography variant='h6' className='appbar-pages'>
 									QA
 								</Typography>
-								<Typography variant='h6' className='appbar-pages'>
-									Employee Management
-								</Typography>
+								<NavLink
+									className='appbar-pages'
+									activeClassName='active'
+									to='/employee-management'
+								>
+									<Typography variant='body1'>Employee Management</Typography>
+								</NavLink>
 							</IconButton>
 						</Box>
 						<Box className='appbar-icon-list'>

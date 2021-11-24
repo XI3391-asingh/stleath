@@ -19,7 +19,7 @@ function SilenceDetectionCountChartCard() {
 			{
 				label: 'Silence Detection',
 				data: dataValues,
-				backgroundColor: 'rgba(153,0,153,0.8)',
+				backgroundColor: '#B5CDA3',
 				barPercentage: 0.5,
 				categoryPercentage: 0.5,
 			},

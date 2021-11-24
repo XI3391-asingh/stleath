@@ -25,6 +25,7 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+	text-align: left;
 }
 
 .message-list-divider {

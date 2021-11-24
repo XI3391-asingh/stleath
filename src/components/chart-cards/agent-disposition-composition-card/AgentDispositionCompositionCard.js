@@ -2,23 +2,24 @@ import React from 'react';
 
 import { Bar } from 'react-chartjs-2';
 import { Card, CardHeader, Divider } from '@mui/material';
-import Dropdown from '../../shared-components/Dropdown';
+
+import ChartMetaIcons from '../../icons/chart-metaicons/ChartMetaIcons';
 
 import '../styles.css';
-import ChartMetaIcons from '../../icons/chart-metaicons/ChartMetaIcons';
+import AgentDispositionDropdown from '../../dropdowns/AgentDispositionDropdown';
 
 const data = {
 	labels: [
-		'8:00 AM',
-		'9:00 AM',
-		'10:00 AM',
-		'11:00 AM',
-		'12:00 PM',
-		'1:00 PM',
-		'2:00 PM',
-		'3:00 PM',
-		'4:00 PM',
-		'5:00 PM',
+		'Aarthi Sen',
+		'Amit Kumar',
+		'Jayanth',
+		'Wasi',
+		'Rajat',
+		'Shankar',
+		'Mohit',
+		'Preeti',
+		'Majid Khan',
+		'Jyoti',
 	],
 	agentDisposition1: {
 		label: 'FollowUp',
@@ -49,7 +50,9 @@ function AgentDispositionCompositionCard() {
 					/>
 					<ChartMetaIcons />
 				</div>
-				<Dropdown />
+				<div style={{ margin: '1rem 0 0 1rem', textAlign: 'justify' }}>
+					<AgentDispositionDropdown />
+				</div>
 				<Divider />
 				<div className='chart-position'>
 					<Bar
@@ -62,7 +65,7 @@ function AgentDispositionCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'rectRounded',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(0, 200, 55,1)',
+									backgroundColor: '#C9E4C5',
 								},
 								{
 									label: 'AlreadyPurchased',
@@ -70,7 +73,7 @@ function AgentDispositionCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(50, 20, 55,1)',
+									backgroundColor: '#B5DEFF',
 								},
 								{
 									label: 'CustomerPickedUp',
@@ -78,7 +81,7 @@ function AgentDispositionCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(250, 200, 55,1)',
+									backgroundColor: '#FCFFA6',
 								},
 								{
 									label: 'AutoWrapUp',
@@ -86,7 +89,7 @@ function AgentDispositionCompositionCard() {
 									categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
-									backgroundColor: 'rgba(153, 0, 153,1)',
+									backgroundColor: '#CAB8FF',
 								},
 							],
 						}}

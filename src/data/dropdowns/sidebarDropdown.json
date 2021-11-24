@@ -1,0 +1,52 @@
+[
+	{
+		"label": "Agent Name",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Recording Date and Time",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Product Issues",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Service Issues",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Opening Check",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Customer Not Interested",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Agent Disposition",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Sub Disposition",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Closing Check",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Casual Tone",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	}
+]
