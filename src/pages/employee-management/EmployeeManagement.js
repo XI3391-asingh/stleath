@@ -6,6 +6,7 @@ import './styles.css';
 import MyTeamCard from '../../components/employee-management/my-team-card/MyTeamCard';
 import PerformanceCard from '../../components/employee-management/performance-card/PerformanceCard';
 import EmployeeFeedbackCard from '../../components/employee-management/employee-feedback-card/EmployeeFeedbackCard';
+import EmployeeManagementAchievementsCard from '../../components/employee-management/employee-management-achievements-card/EmployeeManagementAchievementsCard';
 
 function EmployeeManagement() {
 	return (
@@ -19,9 +20,7 @@ function EmployeeManagement() {
 					<PerformanceCard />
 					<div className='employee-management-main-bottom-cards'>
 						<EmployeeFeedbackCard className='employee-management-main-feedback-card-layout' />
-						<Card className='employee-management-suggestions-card-layout'>
-							<Typography variant='h6'>Suggestions</Typography>
-						</Card>
+						<EmployeeManagementAchievementsCard />
 					</div>
 				</Card>
 			</Card>

@@ -12,13 +12,13 @@ function EmployeeManagementFeedback() {
 					variant='subtitle1'
 					className='employee-management-feedback-card-call-details-key'
 				>
-					Call Details:
+					Given By:
 				</Typography>
 				<Typography
 					variant='body1'
 					className='employee-management-feedback-card-call-details-value'
 				>
-					Call One
+					A.I
 				</Typography>
 			</div>
 			<div style={{ display: 'flex' }}>
@@ -26,13 +26,13 @@ function EmployeeManagementFeedback() {
 					variant='subtitle1'
 					className='employee-management-feedback-card-call-details-key'
 				>
-					Customer Name:
+					Feedback Type:
 				</Typography>
 				<Typography
 					variant='body1'
 					className='employee-management-feedback-card-call-details-value'
 				>
-					Jayanth Valluru
+					Monthly
 				</Typography>
 			</div>
 			<div style={{ display: 'flex' }}>
@@ -49,7 +49,7 @@ function EmployeeManagementFeedback() {
 					11/19/2021 11:00 AM
 				</Typography>
 			</div>
-			<div style={{ display: 'flex' }}>
+			{/* <div style={{ display: 'flex' }}>
 				<Typography
 					variant='subtitle1'
 					className='employee-management-feedback-card-call-details-key'
@@ -62,7 +62,7 @@ function EmployeeManagementFeedback() {
 				>
 					87 Minutes
 				</Typography>
-			</div>
+			</div> */}
 			<div style={{ display: 'flex' }}>
 				<Typography
 					variant='subtitle1'
