@@ -25,6 +25,8 @@ import { Box } from '@mui/system';
 
 import moment from 'moment';
 
+import LogoutButton from '../logout/LogoutButton';
+
 import './styles.css';
 
 // const [anchorEl, setAnchorEl] = React.useState(null);
@@ -123,7 +125,8 @@ function Navbar() {
 				<ListItemIcon>
 					<Logout fontSize='small' />
 				</ListItemIcon>
-				<Typography variant='body1'>Logout</Typography>
+				{/* <Typography variant='body1'>Logout</Typography> */}
+				<LogoutButton />
 			</MenuItem>
 		</Menu>
 	);
