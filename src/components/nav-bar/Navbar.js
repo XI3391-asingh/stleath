@@ -243,46 +243,6 @@ function Navbar() {
 		</Menu>
 	);
 
-	// const [notificationAnchorEl, setNotificationAnchorEl] = React.useState(null);
-	// const isNotificationMenuOpen = Boolean(anchorEl);
-
-	// const handleNotificationMenuOpen = (event) => {
-	// 	setNotificationAnchorEl(event.currentTarget);
-	// };
-
-	// const handleNotificationMenuClose = () => {
-	// 	setNotificationAnchorEl(null);
-	// };
-
-	// const notificationMenuId = 'primary-notifications';
-	// const renderNotifications = (
-	// 	<Menu
-	// 		notificationAnchorEl={notificationAnchorEl}
-	// 		anchorOrigin={{
-	// 			vertical: 'bottom',
-	// 			horizontal: 'left',
-	// 		}}
-	// 		id={notificationMenuId}
-	// 		keepMounted
-	// 		transformOrigin={{
-	// 			vertical: 'top',
-	// 			horizontal: 'left',
-	// 		}}
-	// 		open={isNotificationMenuOpen}
-	// 		onClose={handleNotificationMenuClose}
-	// 		className='appbar-notification-menu'
-	// 	>
-	{
-		/* <MenuItem style={{ justifyContent: 'space-between' }}>
-				<Typography variant='h6'>Notifications</Typography>
-				<Typography variant='caption' style={{ color: 'blue' }}>
-					Mark All Read
-				</Typography>
-			</MenuItem>
-		</Menu>
-	); */
-	}
-
 	return (
 		<div>
 			<Box>
@@ -291,22 +251,25 @@ function Navbar() {
 						<IconButton className='appbar-menu-button'>
 							<MenuIcon className='appbar-menu-icon' />
 						</IconButton>
-						<NavLink activeClassName='active' to='/' exact={true}>
-							<Typography variant='h5' className='appbar-heading'>
-								STLEATH
-							</Typography>
-						</NavLink>
+						<Typography variant='h5' className='appbar-heading'>
+							STLEATH
+						</Typography>
 						<Box className='appbar-box'>
 							<IconButton>
-								<NavLink activeClassName='active' to='/' exact={true}>
-									<Typography variant='h6' className='appbar-pages'>
-										Dashboard
-									</Typography>
+								<NavLink
+									className='appbar-pages'
+									activeClassName='active'
+									to='/'
+									exact={true}
+								>
+									<Typography variant='h6'>Dashboard</Typography>
 								</NavLink>
-								<NavLink activeClassName='active' to='/calls'>
-									<Typography variant='h6' className='appbar-pages'>
-										Calls
-									</Typography>
+								<NavLink
+									className='appbar-pages'
+									activeClassName='active'
+									to='/calls'
+								>
+									<Typography variant='h6'>Calls</Typography>
 								</NavLink>
 								<Typography variant='h6' className='appbar-pages'>
 									QA
