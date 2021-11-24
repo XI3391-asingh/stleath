@@ -2,14 +2,14 @@ import React from 'react';
 
 import { Card, Divider, Typography } from '@mui/material';
 
-import PerformanceFilters from '../../filters/performance-filters/PerformanceFilters';
+import PerformanceCardFilters from '../../filters/performance-card-filters/PerformanceCardFilters';
 
 import './styles.css';
 import PerformanceCardRating from '../performance-card-rating/PerformanceCardRating';
 import PerformanceCardSentiment from '../performance-card-sentiment/PerformanceCardSentiment';
 import PerformanceCardImprove from '../performance-card-improve/PerformanceCardImprove';
 import PerformanceCardExcellence from '../performance-card-excellence/PerformanceCardExcellence';
-import EmployeeManagementFeedback from '../employee-management-feedback/EmployeeManagementFeedback';
+import PerformanceCardProvideFeedback from '../performance-card-provide-feedback-button/PerformanceCardProvideFeedback';
 
 function PerformanceCard() {
 	return (
@@ -18,7 +18,8 @@ function PerformanceCard() {
 				<Typography variant='h6'>
 					Viewing Rajat Bansal's Performance:
 				</Typography>
-				<PerformanceFilters />
+				<PerformanceCardProvideFeedback />
+				<PerformanceCardFilters />
 			</div>
 			{/* <Divider /> */}
 			{/* <div>
