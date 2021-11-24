@@ -1,25 +1,47 @@
 import { Card } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import LoginCard from '../../components/login/LoginCard';
+import LoginForm from '../../components/login/LoginForm';
+import Dashboard from '../dashboard/Dashboard';
 
 function Login() {
+	const adminUser = {
+		email: 'admin@admin.com',
+		password: 'admin123',
+	};
+
+	const [user, setUser] = useState({ name: '', email: '', password: '' });
+	const [error, setError] = useState('');
+
+	const Login = (details) => {
+		console.log(details);
+
+		if (
+			details.email == adminUser.email &&
+			details.password == adminUser.password
+		) {
+			console.log('logged In');
+			setUser({
+				email: details.email,
+			});
+		} else {
+			console.log('details donot match');
+		}
+	};
+
 	return (
 		<div
 			style={{
 				display: 'flow-root',
 				flexGrow: '1',
-				// textAlign: 'center'
 			}}
 		>
-			<LoginCard />
-			{/* <Card
-				style={{
-					margin: '4rem 25rem',
-					padding: '1rem 0 1rem 1rem',
-					width: '40%',
-					height: '25rem',
-				}}
-			></Card> */}
+			{user.email != '' ? (
+				<Dashboard />
+			) : (
+				<LoginForm Login={Login} error={error} />
+			)}
+			{/* <LoginCard /> */}
 		</div>
 	);
 }
