@@ -12,15 +12,16 @@ function EmployeeManagement() {
 	return (
 		<div className='employee-management-body-layout'>
 			<Card className='employee-management-card-layout'>
-				<Card className='employee-management-filters-card-layout'>
+				{/* <Card className='employee-management-filters-card-layout'>
 					<Typography variant='h6'>Filters</Typography>
-				</Card>
+				</Card> */}
+				<EmployeeManagementAchievementsCard />
 				<Card className='employee-management-main-card-layout'>
 					<MyTeamCard />
 					<PerformanceCard />
 					<div className='employee-management-main-bottom-cards'>
 						<EmployeeFeedbackCard className='employee-management-main-feedback-card-layout' />
-						<EmployeeManagementAchievementsCard />
+						{/* <EmployeeManagementAchievementsCard /> */}
 					</div>
 				</Card>
 			</Card>
