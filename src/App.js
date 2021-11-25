@@ -17,31 +17,31 @@ function App() {
 		// <ProvideAuth>
 		<Router>
 			<div className='App'>
-				<div>
-					<Navbar />
-				</div>
 				<Switch>
-					<Route path='/dashboard'>
-						<Dashboard />
-					</Route>
-					<Route path='/calls'>
-						<Calls />
-					</Route>
-					<Route path='/employee-management'>
-						<EmployeeManagement />
-					</Route>
-					<Route path='/call-visualizer'>
-						<CallVisualizer />
-					</Route>
-					<Route path='/messages'>
-						<Messages />
-					</Route>
-					<Route path='/notifications'>
-						<Notifications />
-					</Route>
 					<Route exact path='/'>
 						<Login />
 					</Route>
+					<div>
+						<Navbar />
+						<Route path='/dashboard'>
+							<Dashboard />
+						</Route>
+						<Route path='/calls'>
+							<Calls />
+						</Route>
+						<Route path='/employee-management'>
+							<EmployeeManagement />
+						</Route>
+						<Route path='/call-visualizer'>
+							<CallVisualizer />
+						</Route>
+						<Route path='/messages'>
+							<Messages />
+						</Route>
+						<Route path='/notifications'>
+							<Notifications />
+						</Route>
+					</div>
 				</Switch>
 			</div>
 		</Router>
