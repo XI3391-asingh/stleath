@@ -9,8 +9,12 @@ import Transcription from '../../components/calls/transcription/Transcription';
 import WavesurferAudioVisualizer from '../../components/calls/wavesurfer-visualizer/WavesurferAudioVisualizer';
 
 import './styles.css';
+import moment from 'moment';
 
 function CallVisualizer() {
+	let dateTime = moment().format('LLL');
+	// let dateTime2 = moment().format('LLL');
+	let duration = moment().set({ minute: 20, second: 33 });
 	const { data } = useDemoData({
 		dataSet: 'Commodity',
 		rowLength: 100,
@@ -20,7 +24,12 @@ function CallVisualizer() {
 		<div className='calls-page-layout'>
 			<div>
 				<Card className='calls-visualizer-details-card'>
-					<Typography variant='h5'>Call Details</Typography>
+					<Typography
+						variant='button'
+						className='calls-visualizer-details-text'
+					>
+						Rajat Bansal on {dateTime} for 30:37 minutes
+					</Typography>
 				</Card>
 			</div>
 			<div>
