@@ -5,7 +5,8 @@
 }
 
 .audio-visualizer-wave-card {
-	margin: 1rem;
+	margin: 0.5rem;
+	height: 8rem;
 }
 
 .audio-visualizer-card-button {

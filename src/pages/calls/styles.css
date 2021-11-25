@@ -32,8 +32,15 @@
 
 .calls-visualizer-details-card {
 	margin: 1rem;
-	height: 6rem;
-	padding: 1rem;
+	height: 2rem;
+	padding: 0.5rem;
+	text-align: justify;
+}
+
+.calls-visualizer-details-text {
+	text-transform: capitalize !important;
+	vertical-align: sub;
+	font-weight: bold !important;
 }
 
 .calls-visualizer-card-list {

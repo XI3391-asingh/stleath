@@ -85,8 +85,12 @@ function PerformanceCardProvideFeedback() {
 						</Box>
 					</div>
 					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-						<Button variant='contained'>Cancel</Button>
-						<Button variant='contained'>Submit</Button>
+						<Button variant='contained' onClick={handleClose}>
+							Cancel
+						</Button>
+						<Button variant='contained' onClick={handleClose}>
+							Submit
+						</Button>
 					</div>
 				</Box>
 			</Modal>
