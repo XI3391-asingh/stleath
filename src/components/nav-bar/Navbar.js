@@ -29,50 +29,6 @@ import LogoutButton from '../logout/LogoutButton';
 
 import './styles.css';
 
-// const [anchorEl, setAnchorEl] = React.useState(null);
-// const isMenuOpen = Boolean(anchorEl);
-
-// const handleNotificationMenuOpen = (event) => {
-// 	setAnchorEl(event.currentTarget);
-// };
-
-// const handleNotificationMenuClose = () => {
-// 	setAnchorEl(null);
-// };
-
-// const menuId = 'primary-notifications';
-// const renderNotifications = (
-// 	<Menu
-// 		anchorEl={anchorEl}
-// 		anchorOrigin={{
-// 			vertical: 'bottom',
-// 			horizontal: 'left',
-// 		}}
-// 		id={menuId}
-// 		keepMounted
-// 		transformOrigin={{
-// 			vertical: 'top',
-// 			horizontal: 'left',
-// 		}}
-// 		open={isMenuOpen}
-// 		onClose={handleNotificationMenuClose}
-// 		className='appbar-avatar-menu'
-// 	>
-// 		<MenuItem onClick={handleNotificationMenuClose} className='appbar-avatar-menuItem'>
-// 			<ListItemIcon>
-// 				<Settings fontSize='small' />
-// 			</ListItemIcon>
-// 			<Typography variant='body1'>Settings</Typography>
-// 		</MenuItem>
-// 		<MenuItem onClick={handleNotificationMenuClose} className='appbar-avatar-menuItem'>
-// 			<ListItemIcon>
-// 				<Logout fontSize='small' />
-// 			</ListItemIcon>
-// 			<Typography variant='body1'>Logout</Typography>
-// 		</MenuItem>
-// 	</Menu>
-// );
-
 function Navbar() {
 	let dateTime = moment().format('lll');
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -290,46 +246,6 @@ function Navbar() {
 		</Menu>
 	);
 
-	// const [notificationAnchorEl, setNotificationAnchorEl] = React.useState(null);
-	// const isNotificationMenuOpen = Boolean(anchorEl);
-
-	// const handleNotificationMenuOpen = (event) => {
-	// 	setNotificationAnchorEl(event.currentTarget);
-	// };
-
-	// const handleNotificationMenuClose = () => {
-	// 	setNotificationAnchorEl(null);
-	// };
-
-	// const notificationMenuId = 'primary-notifications';
-	// const renderNotifications = (
-	// 	<Menu
-	// 		notificationAnchorEl={notificationAnchorEl}
-	// 		anchorOrigin={{
-	// 			vertical: 'bottom',
-	// 			horizontal: 'left',
-	// 		}}
-	// 		id={notificationMenuId}
-	// 		keepMounted
-	// 		transformOrigin={{
-	// 			vertical: 'top',
-	// 			horizontal: 'left',
-	// 		}}
-	// 		open={isNotificationMenuOpen}
-	// 		onClose={handleNotificationMenuClose}
-	// 		className='appbar-notification-menu'
-	// 	>
-	{
-		/* <MenuItem style={{ justifyContent: 'space-between' }}>
-				<Typography variant='h6'>Notifications</Typography>
-				<Typography variant='caption' style={{ color: 'blue' }}>
-					Mark All Read
-				</Typography>
-			</MenuItem>
-		</Menu>
-	); */
-	}
-
 	return (
 		<div>
 			<Box>
@@ -338,30 +254,34 @@ function Navbar() {
 						<IconButton className='appbar-menu-button'>
 							<MenuIcon className='appbar-menu-icon' />
 						</IconButton>
-						<Link to='/'>
-							<Typography variant='h5' className='appbar-heading'>
-								STLEATH
-							</Typography>
-						</Link>
+						<Typography variant='h5' className='appbar-heading'>
+							STLEATH
+						</Typography>
 						<Box className='appbar-box'>
 							<IconButton>
-								<Link to='/'>
-									<Typography variant='body1' className='appbar-pages'>
-										Dashboard
-									</Typography>
-								</Link>
-								<Link to='/calls'>
-									<Typography variant='body1' className='appbar-pages'>
-										Calls
-									</Typography>
-								</Link>
-								<Typography variant='body1' className='appbar-pages'>
+								<NavLink
+									className='appbar-pages'
+									activeClassName='active'
+									to='/dashboard'
+								>
+									<Typography variant='h6'>Dashboard</Typography>
+								</NavLink>
+								<NavLink
+									className='appbar-pages'
+									activeClassName='active'
+									to='/calls'
+								>
+									<Typography variant='h6'>Calls</Typography>
+								</NavLink>
+								<Typography variant='h6' className='appbar-pages'>
 									QA
 								</Typography>
-								<NavLink to='/employee-management'>
-									<Typography variant='body1' className='appbar-pages'>
-										Employee Management
-									</Typography>
+								<NavLink
+									className='appbar-pages'
+									activeClassName='active'
+									to='/employee-management'
+								>
+									<Typography variant='h6'>Employee Management</Typography>
 								</NavLink>
 							</IconButton>
 						</Box>

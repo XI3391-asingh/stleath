@@ -1,5 +1,6 @@
 import { Card, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './styles.css';
 
@@ -46,7 +47,9 @@ function LoginForm({ Login, error }) {
 							/>
 						</div>
 						<div>
-							<input type='submit' value='Log In' />
+							<NavLink to='/dashboard'>
+								<input type='submit' value='Log In' />
+							</NavLink>
 						</div>
 					</div>
 				</form>
