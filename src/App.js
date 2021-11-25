@@ -21,7 +21,7 @@ function App() {
 					<Navbar />
 				</div>
 				<Switch>
-					<Route exact path='/'>
+					<Route path='/dashboard'>
 						<Dashboard />
 					</Route>
 					<Route path='/calls'>
@@ -39,7 +39,7 @@ function App() {
 					<Route path='/notifications'>
 						<Notifications />
 					</Route>
-					<Route path='/login'>
+					<Route exact path='/'>
 						<Login />
 					</Route>
 				</Switch>

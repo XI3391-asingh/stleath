@@ -1,7 +1,7 @@
 /* Navbar Styles */
 
 .appbar-layout {
-	background-color: purple !important;
+	background-color: #6c1d5f !important;
 	width: auto;
 }
 
@@ -133,6 +133,6 @@
 .active {
 	border-radius: 10px;
 	background-color: white;
-	color: purple !important;
+	color: #6c1d5f !important;
 	min-width: 8rem;
 }

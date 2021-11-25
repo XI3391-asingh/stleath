@@ -262,8 +262,7 @@ function Navbar() {
 								<NavLink
 									className='appbar-pages'
 									activeClassName='active'
-									to='/'
-									exact={true}
+									to='/dashboard'
 								>
 									<Typography variant='h6'>Dashboard</Typography>
 								</NavLink>
@@ -282,7 +281,7 @@ function Navbar() {
 									activeClassName='active'
 									to='/employee-management'
 								>
-									<Typography variant='body1'>Employee Management</Typography>
+									<Typography variant='h6'>Employee Management</Typography>
 								</NavLink>
 							</IconButton>
 						</Box>
