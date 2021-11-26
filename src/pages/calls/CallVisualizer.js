@@ -30,6 +30,12 @@ function CallVisualizer() {
 					>
 						Rajat Bansal on {dateTime} for 30:37 minutes
 					</Typography>
+					<Typography
+						variant='button'
+						className='calls-visualizer-call-id-text'
+					>
+						Call Id: 62db0626-229724556-baf7-6f623a5a3cdc
+					</Typography>
 				</Card>
 			</div>
 			<div>
