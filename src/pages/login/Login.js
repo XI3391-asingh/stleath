@@ -1,14 +1,19 @@
 import { Card } from '@mui/material';
 import React, { useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import LoginCard from '../../components/login/LoginCard';
 import LoginForm from '../../components/login/LoginForm';
 import Dashboard from '../dashboard/Dashboard';
 
 function Login() {
-	const adminUser = {
-		email: 'admin@admin.com',
-		password: 'admin123',
-	};
+	const adminUser = [
+		{
+			email: 'admin@admin.com',
+			password: 'admin123',
+		},
+		{ email: 'user@admin.com', password: 'user123' },
+		{ email: 'userTwo@admin.com', password: 'user1234' },
+	];
 
 	const [user, setUser] = useState({ name: '', email: '', password: '' });
 	const [error, setError] = useState('');
@@ -25,7 +30,7 @@ function Login() {
 				email: details.email,
 			});
 		} else {
-			console.log('details donot match');
+			setError('details donot match');
 		}
 	};
 
@@ -41,7 +46,6 @@ function Login() {
 			) : (
 				<LoginForm Login={Login} error={error} />
 			)}
-			{/* <LoginCard /> */}
 		</div>
 	);
 }
