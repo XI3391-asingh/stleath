@@ -1,0 +1,43 @@
+.dashboard-details-call-details-layout {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+/* .dashboard-details-call-details {
+} */
+
+.dashboard-details-call-details-modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 44%;
+	background-color: white !important;
+	border: 2px solid black !important;
+	box-shadow: 24;
+	padding: 2rem;
+}
+
+.dashboard-details-modal-header {
+	text-align: center;
+}
+
+.dashboard-details-dropdowns {
+	display: flex;
+}
+
+.dashboard-details-modal-dropdown {
+	width: 15rem;
+	margin-bottom: 1rem !important;
+}
+
+.dashboard-details-single-dropdown {
+	margin: 1rem;
+}
+
+.dashboard-details-add-more {
+	text-align: center;
+	margin: 1rem;
+}
