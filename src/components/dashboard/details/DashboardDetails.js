@@ -91,6 +91,7 @@ function DashboardDetails() {
 												<input
 													type='file'
 													name='file'
+													accept='audio/*'
 													onChange={changeHandler}
 													className='dashboard-details-upload-file-button'
 												/>
