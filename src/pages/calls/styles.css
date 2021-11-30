@@ -37,10 +37,15 @@
 	text-align: justify;
 }
 
-.calls-visualizer-details-text {
+.calls-visualizer-details-text,
+.calls-visualizer-call-id-text {
 	text-transform: capitalize !important;
 	vertical-align: sub;
 	font-weight: bold !important;
+}
+
+.calls-visualizer-call-id-text {
+	margin-left: 32rem !important;
 }
 
 .calls-visualizer-card-list {
