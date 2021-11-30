@@ -4,6 +4,8 @@ import { Card, CardHeader, Divider } from '@mui/material';
 import { Doughnut } from 'react-chartjs-2';
 
 import '../styles.css';
+// import { Link } from 'react-router-dom';
+// import Calls from '../../../pages/calls/Calls';
 
 const state = {
 	labels: ['Positive', 'Negative'],
@@ -27,6 +29,11 @@ function SentimentCard() {
 					<Doughnut
 						data={state}
 						options={{
+							// onClick: (e) => {
+							// 	// alert('one click');
+							// 	console.log('calls');
+							// 	<Link to='/calls'>Calls</Link>;
+							// },
 							circumference: 180,
 							rotation: 270,
 							radius: '100%',

@@ -25,13 +25,26 @@ function DispositionCodeMixCard() {
 			},
 		],
 	};
+
+	// const barClickHandler = (data) => {
+	// 	if (data[0] !== undefined) {
+	// 		let item = data[0];
+	// 		let type = item._model.label;
+	// 		console.log('type of the bar is: ', type);
+	// 	}
+	// };
+
 	return (
 		<div className='chart-cardLayout'>
 			<Card className='chart-card'>
 				<CardHeader title='Disposition Code Mix' className='chart-cardHeader' />
 				<Divider />
 				<div>
-					<Bar data={data} options={{ indexAxis: 'y' }} />
+					<Bar
+						data={data}
+						options={{ indexAxis: 'y' }}
+						// onElementsClick={barClickHandler}
+					/>
 				</div>
 			</Card>
 		</div>

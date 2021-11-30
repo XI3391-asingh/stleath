@@ -25,6 +25,15 @@ function SilenceDetectionCountChartCard() {
 			},
 		],
 	};
+
+	// const barClickHandler = (data) => {
+	// 	if (data[0] !== undefined) {
+	// 		let item = data[0];
+	// 		let type = item._model.label;
+	// 		console.log('type of the bar is: ', type);
+	// 	}
+	// };
+
 	return (
 		<div className='chart-detectionCardLayout'>
 			<Card>
@@ -33,22 +42,23 @@ function SilenceDetectionCountChartCard() {
 				<div className='chart-position'>
 					<Bar
 						data={data}
-						options={{
-							scales: {
-								xAxes: [
-									{
-										display: false,
-										type: 'linear',
-										offset: true,
-										grid: { offset: false },
-										ticks: { stepSize: 2, max: 3 },
-										title: { display: false, text: 'Hours' },
-									},
-									{ display: true, ticks: { autoSkip: false, max: 4 } },
-								],
-								yAxes: [{ display: false }],
-							},
-						}}
+						// onElementsClick={barClickHandler}
+						// options={{
+						// 	scales: {
+						// 		xAxes: [
+						// 			{
+						// 				display: false,
+						// 				type: 'linear',
+						// 				offset: true,
+						// 				grid: { offset: false },
+						// 				ticks: { stepSize: 2, max: 3 },
+						// 				title: { display: false, text: 'Hours' },
+						// 			},
+						// 			{ display: true, ticks: { autoSkip: false, max: 4 } },
+						// 		],
+						// 		yAxes: [{ display: false }],
+						// 	},
+						// }}
 					/>
 				</div>
 			</Card>
