@@ -20,13 +20,21 @@ function DashboardDetails() {
 	// const [reviewInput, setReviewInput] = useState([{ review: '' }]);
 	// const [reviewAgent, setReviewAgent] = useState([{ agent: '' }]);
 	const [review, setReview] = useState([{ input: '', agent: '' }]);
+	const [selectedFile, setSelectedFile] = useState();
+	// const [isFilePicked, setIsFilePicked] = useState(false);
+	const [isSelected, setIsSelected] = useState(false);
 
-	const handleChangeReviewInput = (event, index) => {
-		setReview([
-			...review.map((item, key) =>
-				key === index ? { review: event.target.value } : item
-			),
-		]);
+	// const handleChangeReviewInput = (event, index) => {
+	// 	setReview([
+	// 		...review.map((item, key) =>
+	// 			key === index ? { review: event.target.value } : item
+	// 		),
+	// 	]);
+	// };
+
+	const changeHandler = (event) => {
+		setSelectedFile(event.target.files[0]);
+		setIsSelected(true);
 	};
 
 	const handleChangeAgent = (event, index) => {
@@ -78,33 +86,15 @@ function DashboardDetails() {
 							<div className='dashboard-details-add-more'>
 								<div className='dashboard-details-dropdowns'>
 									<div className='dashboard-details-single-dropdown'>
-										{review.map((review, index) => (
-											<div key={index} style={{ display: 'flex' }}>
-												<FormControl className='dashboard-details-modal-dropdown'>
-													<InputLabel id='demo-simple-select-standard-label'>
-														review
-													</InputLabel>
-													<Select
-														labelId='demo-simple-select-standard-label'
-														id='demo-simple-select-standard'
-														value={review.review}
-														onChange={(e) => handleChangeReviewInput(e, index)}
-														label='Review'
-													>
-														<MenuItem value=''>
-															<em>Select File</em>
-														</MenuItem>
-														<MenuItem value={10}>Monthly</MenuItem>
-														<MenuItem value={20}>Quarterly</MenuItem>
-														<MenuItem value={30}>Yearly</MenuItem>
-													</Select>
-												</FormControl>
-											</div>
-										))}
-									</div>
-									<div className='dashboard-details-single-dropdown'>
 										{review.map((item, index) => (
 											<div style={{ display: 'flex' }}>
+												<input
+													type='file'
+													name='file'
+													accept='audio/*'
+													onChange={changeHandler}
+													className='dashboard-details-upload-file-button'
+												/>
 												<div key={index}>
 													<FormControl className='dashboard-details-modal-dropdown'>
 														<InputLabel id='demo-simple-select-standard-label'>
@@ -116,6 +106,7 @@ function DashboardDetails() {
 															value={item.review}
 															onChange={(e) => handleChangeAgent(e, index)}
 															label='Agent'
+															style={{ height: '3rem' }}
 														>
 															<MenuItem value=''>
 																<em>Select Agent</em>
@@ -129,6 +120,7 @@ function DashboardDetails() {
 												<IconButton>
 													<HighlightOffIcon
 														onClick={() => handleRemoveFields(index)}
+														className='dashboard-details-dropdown-delete-button'
 													/>
 												</IconButton>
 											</div>

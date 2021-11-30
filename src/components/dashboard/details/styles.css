@@ -35,9 +35,19 @@
 
 .dashboard-details-single-dropdown {
 	margin: 1rem;
+	align-self: center;
+}
+
+.dashboard-details-upload-file-button {
+	align-self: center;
 }
 
 .dashboard-details-add-more {
 	text-align: center;
 	margin: 1rem;
+}
+
+.dashboard-details-dropdown-delete-button {
+	padding-bottom: 0 !important;
+	align-items: baseline !important;
 }
