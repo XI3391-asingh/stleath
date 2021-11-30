@@ -1,6 +1,7 @@
 .login-form-card-layout {
 	display: flow-root;
 	flex-grow: 1;
+	height: 100vh;
 }
 
 .login-form-header {
@@ -10,7 +11,7 @@
 .login-form-card {
 	width: 20rem;
 	height: 25rem;
-	margin: 5rem auto;
+	margin: 7rem auto;
 }
 
 .login-form-elements {
