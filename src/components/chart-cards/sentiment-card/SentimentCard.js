@@ -30,9 +30,9 @@ function SentimentCard() {
 						data={state}
 						options={{
 							// onClick: (e) => {
-							// 	// alert('one click');
+							// 	alert('one click');
 							// 	console.log('calls');
-							// 	<Link to='/calls'>Calls</Link>;
+							// 	<Link to='/calls'>{state.data}</Link>;
 							// },
 							circumference: 180,
 							rotation: 270,
