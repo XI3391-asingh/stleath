@@ -7,6 +7,7 @@ import CardComponents from '../../components/CardComponents';
 import ChartComponents from '../../components/ChartComponents';
 
 import './styles.css';
+import DashboardDetails from '../../components/dashboard/details/DashboardDetails';
 
 function Dashboard() {
 	return (
@@ -17,7 +18,7 @@ function Dashboard() {
 						<SideBar />
 					</div>
 					<div>
-						<div className='dashboard-page-call-details'>40 of 100 Calls</div>
+						<DashboardDetails />
 						<hr className='dashboard-page-divider' />
 						<div className='dashboard-page-components'>
 							<CardComponents />
