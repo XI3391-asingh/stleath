@@ -14,9 +14,7 @@ function Visualizer() {
 		wavesurferRef.current = waveSurfer;
 		if (wavesurferRef.current) {
 			console.log('...2');
-			wavesurferRef.current.load(
-				'/audio/melodic-techno-03-extended-version-moogify-9867.mp3'
-			);
+			wavesurferRef.current.load('/audio/Simple Call.mov');
 			wavesurferRef.current.on('ready', () => {
 				console.log('WaveSurfer is ready');
 			});
@@ -34,9 +32,7 @@ function Visualizer() {
 		wavesurferRef2.current = waveSurfer;
 		if (wavesurferRef2.current) {
 			console.log('...2');
-			wavesurferRef2.current.load(
-				'/audio/melodic-techno-03-extended-version-moogify-9867.mp3'
-			);
+			wavesurferRef2.current.load('/audio/Simple Call.mov');
 			wavesurferRef2.current.on('ready', () => {
 				console.log('WaveSurfer is ready');
 			});
