@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Card, CardHeader, Divider } from '@mui/material';
 import { Bar } from 'react-chartjs-2';
@@ -6,6 +7,7 @@ import { Bar } from 'react-chartjs-2';
 import '../styles.css';
 
 function CallCategoriesCard() {
+	let history = useHistory();
 	const data = {
 		labels: ['Talk Greater Than', 'Talk Time 10 to 60 seconds', ''],
 		datasets: [
@@ -23,7 +25,17 @@ function CallCategoriesCard() {
 				<CardHeader title='Call Categories' className='chart-cardHeader' />
 				<Divider />
 				<div>
-					<Bar data={data} options={{ indexAxis: 'y' }} />
+					<Bar
+						data={data}
+						options={{
+							onClick: (e) => {
+								// alert('one click');
+								// console.log('calls');
+								history.push('/calls');
+							},
+							indexAxis: 'y',
+						}}
+					/>
 				</div>
 			</Card>
 		</div>

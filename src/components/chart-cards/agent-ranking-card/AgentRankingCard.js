@@ -1,8 +1,11 @@
-import { Card, CardHeader, Divider } from '@mui/material';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { Card, CardHeader, Divider } from '@mui/material';
 import { Bar } from 'react-chartjs-2';
 
 function AgentRankingCard() {
+	let history = useHistory();
 	const data = {
 		labels: [
 			'FollowUp',
@@ -30,7 +33,15 @@ function AgentRankingCard() {
 				<div>
 					<Bar
 						data={data}
-						options={{ responsive: true, maintainAspectRatio: false }}
+						options={{
+							onClick: (e) => {
+								// alert('one click');
+								// console.log('calls');
+								history.push('/calls');
+							},
+							responsive: true,
+							maintainAspectRatio: false,
+						}}
 					/>
 				</div>
 			</Card>

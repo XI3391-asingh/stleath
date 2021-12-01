@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Card, CardHeader, Divider } from '@mui/material';
 import { Bar } from 'react-chartjs-2';
@@ -6,6 +7,7 @@ import { Bar } from 'react-chartjs-2';
 import '../styles.css';
 
 function DispositionCodeMixCard() {
+	let history = useHistory();
 	const data = {
 		labels: [
 			'FollowUp',
@@ -42,7 +44,14 @@ function DispositionCodeMixCard() {
 				<div>
 					<Bar
 						data={data}
-						options={{ indexAxis: 'y' }}
+						options={{
+							onClick: (e) => {
+								// alert('one click');
+								// console.log('calls');
+								history.push('/calls');
+							},
+							indexAxis: 'y',
+						}}
 						// onElementsClick={barClickHandler}
 					/>
 				</div>
