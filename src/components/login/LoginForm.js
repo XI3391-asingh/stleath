@@ -1,6 +1,6 @@
-import { Card, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+
+import { Button, Card, Typography } from '@mui/material';
 
 import './styles.css';
 
@@ -20,9 +20,9 @@ function LoginForm({ Login, error }) {
 					<div>
 						<div className='login-form-header'>
 							<Typography variant='h5'>Log In</Typography>
-							{/* error */}
 						</div>
 						<div className='login-form-elements'>
+							{error !== '' ? <div>{error}</div> : ''}
 							<label>Email:</label>
 							<input
 								type='text'
@@ -47,9 +47,13 @@ function LoginForm({ Login, error }) {
 							/>
 						</div>
 						<div>
-							<NavLink to='/dashboard'>
-								<input type='submit' value='Log In' />
-							</NavLink>
+							<Button
+								type='submit'
+								variant='contained'
+								onSubmit={submitHandler}
+							>
+								Log In
+							</Button>
 						</div>
 					</div>
 				</form>

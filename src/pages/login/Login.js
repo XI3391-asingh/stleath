@@ -1,31 +1,33 @@
-import { Card } from '@mui/material';
 import React, { useState } from 'react';
-import LoginCard from '../../components/login/LoginCard';
+import { useHistory } from 'react-router-dom';
+
 import LoginForm from '../../components/login/LoginForm';
-import Dashboard from '../dashboard/Dashboard';
 
 function Login() {
-	const adminUser = {
-		email: 'admin@admin.com',
-		password: 'admin123',
-	};
+	let history = useHistory();
+	const adminUser = [
+		{
+			email: 'admin@admin.com',
+			password: 'admin123',
+		},
+		{ email: 'user@admin.com', password: 'user123' },
+		{ email: 'userTwo@admin.com', password: 'user1234' },
+	];
 
-	const [user, setUser] = useState({ name: '', email: '', password: '' });
 	const [error, setError] = useState('');
 
 	const Login = (details) => {
-		console.log(details);
-
 		if (
-			details.email == adminUser.email &&
-			details.password == adminUser.password
+			details.email ==
+				adminUser.find((e) => e.email === details.email)?.email &&
+			details.password ==
+				adminUser.find((e) => e.password === details.password)?.password
 		) {
-			console.log('logged In');
-			setUser({
-				email: details.email,
-			});
+			setError('');
+			localStorage.setItem('email', details.email);
+			history.replace('/dashboard');
 		} else {
-			console.log('details donot match');
+			setError('details donot match');
 		}
 	};
 
@@ -36,12 +38,7 @@ function Login() {
 				flexGrow: '1',
 			}}
 		>
-			{user.email != '' ? (
-				<Dashboard />
-			) : (
-				<LoginForm Login={Login} error={error} />
-			)}
-			{/* <LoginCard /> */}
+			<LoginForm Login={Login} error={error} />
 		</div>
 	);
 }
