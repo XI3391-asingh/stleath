@@ -5,7 +5,7 @@ import './styles.css';
 function PerformanceCardExcellence() {
 	return (
 		<div className='performance-card-excellence-tag'>
-			<Typography>Areas To Improve</Typography>
+			<Typography>Areas of Excellence</Typography>
 			<div>
 				<Chip
 					variant='outlined'

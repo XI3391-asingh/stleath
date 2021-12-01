@@ -1,6 +1,6 @@
-import { Button, Card, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { Link, NavLink, Redirect } from 'react-router-dom';
+
+import { Button, Card, Typography } from '@mui/material';
 
 import './styles.css';
 
@@ -47,11 +47,13 @@ function LoginForm({ Login, error }) {
 							/>
 						</div>
 						<div>
-							<Link to='/Dashboard'>
-								<Button type='submit' variant='contained'>
-									Log In
-								</Button>
-							</Link>
+							<Button
+								type='submit'
+								variant='contained'
+								onSubmit={submitHandler}
+							>
+								Log In
+							</Button>
 						</div>
 					</div>
 				</form>
