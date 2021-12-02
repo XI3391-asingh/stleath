@@ -1,8 +1,11 @@
-import { Card, CardHeader, Divider } from '@mui/material';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { Card, CardHeader, Divider } from '@mui/material';
 import { Bar } from 'react-chartjs-2';
 
 function SilenceDetectionCountChartCard() {
+	let history = useHistory();
 	const dataValues = [
 		{ x: 1, y: 50 },
 		{ x: 2, y: 20 },
@@ -25,6 +28,7 @@ function SilenceDetectionCountChartCard() {
 			},
 		],
 	};
+
 	return (
 		<div className='chart-detectionCardLayout'>
 			<Card>
@@ -34,6 +38,9 @@ function SilenceDetectionCountChartCard() {
 					<Bar
 						data={data}
 						options={{
+							onClick: (e) => {
+								history.push('/calls');
+							},
 							scales: {
 								xAxes: [
 									{

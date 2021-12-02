@@ -15,3 +15,12 @@
 .card-metaicons {
 	text-align: end;
 }
+
+/* .analysis-card-link {
+	text-decoration: none;
+} */
+
+.analysis-card-link :focus,
+:visited {
+	color: inherit;
+}

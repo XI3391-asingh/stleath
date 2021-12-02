@@ -37,7 +37,7 @@
 }
 
 .appbar-pages {
-	color: white;
+	color: white !important;
 	margin: 0 1rem !important;
 }
 
