@@ -29,8 +29,6 @@ function CallCategoriesCard() {
 						data={data}
 						options={{
 							onClick: (e) => {
-								// alert('one click');
-								// console.log('calls');
 								history.push('/calls');
 							},
 							indexAxis: 'y',

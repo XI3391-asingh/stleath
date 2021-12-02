@@ -102,8 +102,6 @@ function CallCompositionCard() {
 						height={220}
 						options={{
 							onClick: (e) => {
-								// alert('one click');
-								// console.log('calls');
 								history.push('/calls');
 							},
 							indexAxis: 'y',

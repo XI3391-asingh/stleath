@@ -31,8 +31,6 @@ function SentimentCard() {
 						data={state}
 						options={{
 							onClick: (e) => {
-								// alert('one click');
-								// console.log('calls');
 								history.push('/calls');
 							},
 							circumference: 180,

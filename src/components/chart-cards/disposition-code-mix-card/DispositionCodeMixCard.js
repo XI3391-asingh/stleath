@@ -28,14 +28,6 @@ function DispositionCodeMixCard() {
 		],
 	};
 
-	// const barClickHandler = (data) => {
-	// 	if (data[0] !== undefined) {
-	// 		let item = data[0];
-	// 		let type = item._model.label;
-	// 		console.log('type of the bar is: ', type);
-	// 	}
-	// };
-
 	return (
 		<div className='chart-cardLayout'>
 			<Card className='chart-card'>
@@ -46,13 +38,10 @@ function DispositionCodeMixCard() {
 						data={data}
 						options={{
 							onClick: (e) => {
-								// alert('one click');
-								// console.log('calls');
 								history.push('/calls');
 							},
 							indexAxis: 'y',
 						}}
-						// onElementsClick={barClickHandler}
 					/>
 				</div>
 			</Card>

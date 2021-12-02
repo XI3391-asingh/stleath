@@ -98,8 +98,6 @@ function AgentDispositionCompositionCard() {
 						height={220}
 						options={{
 							onClick: (e) => {
-								// alert('one click');
-								// console.log('calls');
 								history.push('/calls');
 							},
 							maintainAspectRatio: false,
