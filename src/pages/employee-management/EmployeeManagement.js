@@ -17,7 +17,9 @@ function EmployeeManagement() {
 				</Card> */}
 				<EmployeeManagementAchievementsCard />
 				<Card className='employee-management-main-card-layout'>
-					<MyTeamCard />
+					{localStorage.getItem('email') === 'admin@admin.com' && (
+						<MyTeamCard />
+					)}
 					<PerformanceCard />
 					<div className='employee-management-main-bottom-cards'>
 						<EmployeeFeedbackCard className='employee-management-main-feedback-card-layout' />

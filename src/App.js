@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import './App.css';
 
@@ -14,7 +14,6 @@ import Notifications from './pages/notifications/Notifications';
 
 function App() {
 	return (
-		// <ProvideAuth>
 		<Router>
 			<div className='App'>
 				<Switch>
@@ -45,7 +44,6 @@ function App() {
 				</Switch>
 			</div>
 		</Router>
-		// </ProvideAuth>
 	);
 }
 
