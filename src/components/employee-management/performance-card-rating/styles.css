@@ -1,0 +1,7 @@
+.performance-card-rating-tag {
+	align-self: center;
+}
+.performance-card-rating-number,
+.performance-card-rating-text {
+	font-weight: bold;
+}

@@ -1,0 +1,37 @@
+[
+	{
+		"label": "Agent",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Team/ Line of Business",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Opening Note",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Product_Autodebit",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Product_ZD+",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Product_PA",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	},
+	{
+		"label": "Product_SSZD",
+		"optionOne": "Type 1",
+		"OptionTwo": "Type 2"
+	}
+]

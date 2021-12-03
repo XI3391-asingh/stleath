@@ -1,0 +1,19 @@
+.employee-management-feedback-card-layout {
+	margin: 1rem;
+	padding: 1rem;
+}
+
+.employee-management-feedback-card-call-details {
+	display: flex;
+}
+
+.employee-management-feedback-card-call-details-key {
+	width: 10rem;
+	text-align: left;
+}
+
+.employee-management-feedback-card-call-details-value {
+	align-self: center;
+	width: 48rem;
+	text-align: justify;
+}

@@ -1,8 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import { Bar } from 'react-chartjs-2';
 import { Card, CardHeader, Divider } from '@mui/material';
 
 function CallCompositionCard() {
+	let history = useHistory();
 	const data = {
 		labels: ['Vishal', 'Priya', 'Nikhil', 'Neha', 'Abhinav', 'Chetan'],
 		agentDisposition1: {
@@ -32,7 +35,7 @@ function CallCompositionCard() {
 	};
 	return (
 		<div className='chart-callCompositionLayout'>
-			<Card>
+			<Card className='chart-callComposition-card-layout'>
 				<CardHeader
 					title='Call Composition (beta)'
 					className='chart-cardHeader'
@@ -98,6 +101,9 @@ function CallCompositionCard() {
 						}}
 						height={220}
 						options={{
+							onClick: (e) => {
+								history.push('/calls');
+							},
 							indexAxis: 'y',
 							drawTicks: true,
 							responsive: true,

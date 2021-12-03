@@ -81,6 +81,10 @@
 	align-self: flex-end;
 }
 
+.transcriptions-card-image {
+	width: 100%;
+}
+
 /* Visualizer Styles */
 
 .visualizer-card-layout {

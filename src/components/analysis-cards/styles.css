@@ -1,18 +1,26 @@
 .card-container-layout {
 	width: 10rem;
-	margin: 1rem 0.8rem;
 }
 
 .card {
-	width: fit-content;
+	width: 70rem;
 	display: flex;
 }
 
 .card-display {
 	width: 10rem;
-	margin-right: 1.5rem;
+	margin: 1rem;
 }
 
 .card-metaicons {
 	text-align: end;
+}
+
+/* .analysis-card-link {
+	text-decoration: none;
+} */
+
+.analysis-card-link :focus,
+:visited {
+	color: inherit;
 }

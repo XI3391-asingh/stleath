@@ -1,0 +1,21 @@
+.my-team-card-layout {
+	padding: 1rem;
+	margin: 1rem;
+}
+
+.my-team-card-heading {
+	text-align: left;
+	padding-bottom: 0.5rem;
+}
+
+.my-team-card-avatar-container {
+	overflow: auto;
+}
+
+.my-team-card-avatar {
+	margin: 0 0.8rem;
+}
+
+.my-team-card-name {
+	margin-top: 0.5rem;
+}

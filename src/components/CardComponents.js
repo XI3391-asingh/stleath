@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CompetitorAnalysisCard from './analysis-cards/CompetitorAnalysisCard';
+import AnalysisCard from './analysis-cards/AnalysisCard';
 
 import './style.css';
 
@@ -8,7 +8,7 @@ function CardComponents() {
 	return (
 		<div>
 			<div className='container'>
-				<CompetitorAnalysisCard />
+				<AnalysisCard />
 			</div>
 		</div>
 	);

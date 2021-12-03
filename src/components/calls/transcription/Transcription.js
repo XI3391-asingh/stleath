@@ -5,6 +5,8 @@ import { Card } from '@mui/material';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 
+import image from '../../../assets/images/image.png';
+
 import '../styles.css';
 
 function Transcription() {
@@ -32,6 +34,11 @@ function Transcription() {
 					</div>
 				</div>
 				<hr />
+				<img
+					src={image}
+					alt='transcription'
+					className='transcriptions-card-image'
+				/>
 			</Card>
 		</div>
 	);

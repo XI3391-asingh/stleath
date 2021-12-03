@@ -1,7 +1,7 @@
 /* Navbar Styles */
 
 .appbar-layout {
-	background-color: purple !important;
+	background-color: #6c1d5f !important;
 	width: auto;
 }
 
@@ -31,8 +31,13 @@
 	padding: 0 1rem;
 }
 
+.appbar-button-group {
+	padding: 0 1rem !important;
+	height: 4rem !important;
+}
+
 .appbar-pages {
-	color: white;
+	color: white !important;
 	margin: 0 1rem !important;
 }
 
@@ -71,10 +76,10 @@
 	padding: 1rem;
 }
 
-.appbar-notification-menu-list {
-	/* width: 25rem;
-	overflow: auto; */
-}
+/* .appbar-notification-menu-list {
+	width: 25rem;
+	overflow: auto;
+} */
 
 .appbar-notification-menu-item {
 	display: flex;
@@ -123,4 +128,11 @@
 
 .appbar-notification-menu-see-all-notifications {
 	text-align: center;
+}
+
+.active {
+	border-radius: 10px;
+	background-color: white;
+	color: #6c1d5f !important;
+	min-width: 8rem;
 }
