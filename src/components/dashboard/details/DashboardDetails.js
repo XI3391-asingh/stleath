@@ -20,7 +20,7 @@ function DashboardDetails() {
 	// const [reviewInput, setReviewInput] = useState([{ review: '' }]);
 	// const [reviewAgent, setReviewAgent] = useState([{ agent: '' }]);
 	const [review, setReview] = useState([{ input: '', agent: '' }]);
-	const [selectedFile, setSelectedFile] = useState();
+	const [selectedFile, setSelectedFile] = useState([]);
 	// const [isFilePicked, setIsFilePicked] = useState(false);
 	const [isSelected, setIsSelected] = useState(false);
 
@@ -33,8 +33,41 @@ function DashboardDetails() {
 	// };
 
 	const changeHandler = (event) => {
-		setSelectedFile(event.target.files[0]);
-		setIsSelected(true);
+		// setSelectedFile(event.target.files[0]);
+		// setIsSelected(true);
+		setSelectedFile([...selectedFile, event.target.files[0]]);
+	};
+
+	const submitHandler = async () => {
+		var formdata = new FormData();
+		console.log(selectedFile);
+		selectedFile.map((value, index) => {
+			formdata.append('files', value);
+			console.log(value);
+		});
+		// for (let i = 0; i < selectedFile; i++) {
+		// formdata.append('files[]', selectedFile[i]);
+		// }
+		// formdata.append('files', selectedFile);
+		formdata.append('media_type', 'video');
+		formdata.append('status', '0');
+		formdata.append('agent_name', '32');
+
+		var requestOptions = {
+			method: 'POST',
+			body: formdata,
+			redirect: 'follow',
+		};
+
+		fetch('http://13.233.186.45:8080/api/s3gallery-upload', requestOptions)
+			.then((response) => response.text())
+			.then((result) => {
+				setReview([{ input: '', agent: '' }]);
+				handleClose();
+			})
+			.catch((error) => console.log('error', error));
+		// console.log('uploaded a file');
+		// console.log(selectedFile);
 	};
 
 	const handleChangeAgent = (event, index) => {
@@ -69,9 +102,18 @@ function DashboardDetails() {
 		<div className='dashboard-details-call-details-layout'>
 			<div className='dashboard-details-call-details'>40 of 100 Calls</div>
 			<div>
-				<Button variant='contained' onClick={handleOpen}>
+				<Button
+					variant='contained'
+					onClick={handleOpen}
+					style={{ marginRight: '1rem' }}
+				>
 					Upload
 				</Button>
+				{{ submitHandler } == true ? (
+					<Button variant='contained' style={{ marginRight: '1rem' }}>
+						Generate Analysis
+					</Button>
+				) : null}
 				<Modal open={open} onClose={handleClose}>
 					<Box className='dashboard-details-call-details-modal'>
 						<div>
@@ -136,7 +178,7 @@ function DashboardDetails() {
 								<Button variant='contained' onClick={handleClose}>
 									Cancel
 								</Button>
-								<Button variant='contained' onClick={handleClose}>
+								<Button variant='contained' onClick={submitHandler}>
 									Submit
 								</Button>
 							</div>
