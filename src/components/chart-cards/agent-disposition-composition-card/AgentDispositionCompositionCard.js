@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Bar } from 'react-chartjs-2';
 import { Card, CardHeader, Divider } from '@mui/material';
@@ -40,6 +41,7 @@ const data = {
 };
 
 function AgentDispositionCompositionCard() {
+	let history = useHistory();
 	return (
 		<div className='chart-compositionCardLayout'>
 			<Card>
@@ -95,6 +97,9 @@ function AgentDispositionCompositionCard() {
 						}}
 						height={220}
 						options={{
+							onClick: (e) => {
+								history.push('/calls');
+							},
 							maintainAspectRatio: false,
 							legend: {
 								display: true,

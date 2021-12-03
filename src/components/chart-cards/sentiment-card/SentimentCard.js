@@ -4,6 +4,8 @@ import { Card, CardHeader, Divider } from '@mui/material';
 import { Doughnut } from 'react-chartjs-2';
 
 import '../styles.css';
+import { Link, useHistory } from 'react-router-dom';
+import Calls from '../../../pages/calls/Calls';
 
 const state = {
 	labels: ['Positive', 'Negative'],
@@ -18,6 +20,7 @@ const state = {
 };
 
 function SentimentCard() {
+	let history = useHistory();
 	return (
 		<div className='chart-cardLayout'>
 			<Card className='chart-card'>
@@ -27,6 +30,9 @@ function SentimentCard() {
 					<Doughnut
 						data={state}
 						options={{
+							onClick: (e) => {
+								history.push('/calls');
+							},
 							circumference: 180,
 							rotation: 270,
 							radius: '100%',

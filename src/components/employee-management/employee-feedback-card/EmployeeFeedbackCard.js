@@ -10,7 +10,7 @@ function EmployeeFeedbackCard() {
 	return (
 		<div>
 			<div className='employee-feedback-card-title'>
-				<Typography variant='subtitle1'>Continious Feedback:</Typography>
+				<Typography variant='subtitle1'>Continuous Feedback:</Typography>
 			</div>
 			<EmployeeManagementFeedback />
 			<EmployeeManagementFeedback />
