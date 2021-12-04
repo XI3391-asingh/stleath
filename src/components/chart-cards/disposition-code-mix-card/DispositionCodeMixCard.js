@@ -6,22 +6,27 @@ import { Bar } from 'react-chartjs-2';
 
 import '../styles.css';
 
-function DispositionCodeMixCard() {
+function DispositionCodeMixCard(props) {
 	let history = useHistory();
 	const data = {
-		labels: [
-			'FollowUp',
-			'Already Purchased',
-			'Customer Picked Up',
-			'Auto Wrap Up',
-			'Language Barrier',
-			'Commercial Vehicle',
-			'Car Not Finalized',
-		],
+		// labels: [
+		// 'FollowUp',
+		// 'Already Purchased',
+		// 'Customer Picked Up',
+		// 'Auto Wrap Up',
+		// 'Language Barrier',
+		// 'Commercial Vehicle',
+		// 'Car Not Finalized',
+		// 'Sad',
+		// 'Fear',
+		// 'Happy',
+		// ],
+		labels: Object.keys(props.data),
 		datasets: [
 			{
 				label: 'Data',
-				data: [650, 438, 578, 377, 100, 30, 0],
+				// data: [650, 438, 578, 30, 0],
+				data: Object.values(props.data),
 				fill: true,
 				backgroundColor: '#B5DEFF',
 			},

@@ -49,9 +49,9 @@ function DashboardDetails() {
 		// formdata.append('files[]', selectedFile[i]);
 		// }
 		// formdata.append('files', selectedFile);
-		formdata.append('media_type', 'video');
-		formdata.append('status', '0');
-		formdata.append('agent_name', '32');
+		// formdata.append('media_type', 'video');
+		// formdata.append('status', '0');
+		formdata.append('agent_name', 'waasi');
 
 		var requestOptions = {
 			method: 'POST',
@@ -59,7 +59,7 @@ function DashboardDetails() {
 			redirect: 'follow',
 		};
 
-		fetch('http://13.233.186.45:8080/api/s3gallery-upload', requestOptions)
+		fetch('http://13.127.135.117:8080/api/s3gallery-upload', requestOptions)
 			.then((response) => response.text())
 			.then((result) => {
 				setReview([{ input: '', agent: '' }]);
@@ -68,6 +68,21 @@ function DashboardDetails() {
 			.catch((error) => console.log('error', error));
 		// console.log('uploaded a file');
 		// console.log(selectedFile);
+	};
+
+	const generateAnalysis = () => {
+		var requestOptions = {
+			method: 'GET',
+			redirect: 'follow',
+		};
+
+		fetch(
+			'http://13.127.135.117:8080/api/generate-speech-to-text',
+			requestOptions
+		)
+			.then((response) => response.text())
+			.then((result) => console.log(result))
+			.catch((error) => console.log('error', error));
 	};
 
 	const handleChangeAgent = (event, index) => {
@@ -109,11 +124,15 @@ function DashboardDetails() {
 				>
 					Upload
 				</Button>
-				{{ submitHandler } == true ? (
-					<Button variant='contained' style={{ marginRight: '1rem' }}>
-						Generate Analysis
-					</Button>
-				) : null}
+				{/* {{ submitHandler } == true ? ( */}
+				<Button
+					variant='contained'
+					style={{ marginRight: '1rem' }}
+					onClick={generateAnalysis}
+				>
+					Generate Analysis
+				</Button>
+				{/* ) : null} */}
 				<Modal open={open} onClose={handleClose}>
 					<Box className='dashboard-details-call-details-modal'>
 						<div>

@@ -16,11 +16,11 @@
 	text-align: end;
 }
 
-/* .analysis-card-link {
-	text-decoration: none;
-} */
+.analysis-card-link {
+	color: black;
+}
 
-.analysis-card-link :focus,
+/* .analysis-card-link :focus,
 :visited {
 	color: inherit;
-}
+} */
