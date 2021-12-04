@@ -17,40 +17,23 @@ import './styles.css';
 
 function DashboardDetails() {
 	const [open, setOpen] = useState(false);
-	// const [reviewInput, setReviewInput] = useState([{ review: '' }]);
-	// const [reviewAgent, setReviewAgent] = useState([{ agent: '' }]);
 	const [review, setReview] = useState([{ input: '', agent: '' }]);
 	const [selectedFile, setSelectedFile] = useState([]);
-	// const [isFilePicked, setIsFilePicked] = useState(false);
 	const [isSelected, setIsSelected] = useState(false);
 
-	// const handleChangeReviewInput = (event, index) => {
-	// 	setReview([
-	// 		...review.map((item, key) =>
-	// 			key === index ? { review: event.target.value } : item
-	// 		),
-	// 	]);
-	// };
-
-	const changeHandler = (event) => {
-		// setSelectedFile(event.target.files[0]);
-		// setIsSelected(true);
-		setSelectedFile([...selectedFile, event.target.files[0]]);
+	const changeHandler = (event, i) => {
+		const values = [...review];
+		values[i].input = event.target.files[0];
+		setReview(values);
 	};
 
 	const submitHandler = async () => {
 		var formdata = new FormData();
-		console.log(selectedFile);
-		selectedFile.map((value, index) => {
-			formdata.append('files', value);
+		console.log(review);
+		review.map((value, index) => {
+			formdata.append('files', value?.input);
 			console.log(value);
 		});
-		// for (let i = 0; i < selectedFile; i++) {
-		// formdata.append('files[]', selectedFile[i]);
-		// }
-		// formdata.append('files', selectedFile);
-		// formdata.append('media_type', 'video');
-		// formdata.append('status', '0');
 		formdata.append('agent_name', 'waasi');
 
 		var requestOptions = {
@@ -66,8 +49,6 @@ function DashboardDetails() {
 				handleClose();
 			})
 			.catch((error) => console.log('error', error));
-		// console.log('uploaded a file');
-		// console.log(selectedFile);
 	};
 
 	const generateAnalysis = () => {
@@ -86,11 +67,9 @@ function DashboardDetails() {
 	};
 
 	const handleChangeAgent = (event, index) => {
-		setReview([
-			...review.map((item, key) =>
-				key === index ? { review: event.target.value } : item
-			),
-		]);
+		const values = [...review];
+		values[index].agent = event.target.value;
+		setReview(values);
 	};
 
 	const handleOpen = () => {
@@ -102,16 +81,19 @@ function DashboardDetails() {
 	};
 
 	const handleAddFields = () => {
-		setReview([...review, { input: '', agent: '' }]);
-		// setReview([...reviewAgent, { agent: '' }]);
+		const values = [...review];
+		values.push({
+			input: '',
+			agent: '',
+		});
+		setReview(values);
 	};
 
 	const handleRemoveFields = (index) => {
 		const values = [...review];
-		// const toRemoveValues = [...reviewAgent];
-		values.splice(index, 1);
-		setReview(values);
-		// setReviewAgent(toRemoveValues);
+		let fd = review.filter((img, i) => i !== index);
+		console.log(fd);
+		setReview(fd);
 	};
 	return (
 		<div className='dashboard-details-call-details-layout'>
@@ -124,7 +106,6 @@ function DashboardDetails() {
 				>
 					Upload
 				</Button>
-				{/* {{ submitHandler } == true ? ( */}
 				<Button
 					variant='contained'
 					style={{ marginRight: '1rem' }}
@@ -132,7 +113,6 @@ function DashboardDetails() {
 				>
 					Generate Analysis
 				</Button>
-				{/* ) : null} */}
 				<Modal open={open} onClose={handleClose}>
 					<Box className='dashboard-details-call-details-modal'>
 						<div>
@@ -148,15 +128,33 @@ function DashboardDetails() {
 								<div className='dashboard-details-dropdowns'>
 									<div className='dashboard-details-single-dropdown'>
 										{review.map((item, index) => (
-											<div style={{ display: 'flex' }}>
-												<input
-													type='file'
-													name='file'
-													accept='audio/*'
-													onChange={changeHandler}
-													className='dashboard-details-upload-file-button'
-												/>
-												<div key={index}>
+											<div
+												className='dashboard-file'
+												style={{
+													display: 'flex',
+													alignItems: 'center',
+													justifyContent: 'space-between',
+												}}
+											>
+												<div className='dashboard-details-upload-button-container'>
+													<input
+														type='file'
+														name='file'
+														accept='audio/*'
+														id='files'
+														onChange={(e) => changeHandler(e, index)}
+														className='dashboard-details-upload-file-button'
+													/>
+													<span htmlFor='fileLabel'>
+														{item?.input?.name
+															? item?.input?.name
+															: 'Choose file'}
+													</span>
+												</div>
+												<div
+													key={index}
+													className='dashboard-details-dropdown-container'
+												>
 													<FormControl className='dashboard-details-modal-dropdown'>
 														<InputLabel id='demo-simple-select-standard-label'>
 															agent
@@ -177,13 +175,13 @@ function DashboardDetails() {
 															<MenuItem value={30}>Rajat</MenuItem>
 														</Select>
 													</FormControl>
+													<IconButton>
+														<HighlightOffIcon
+															onClick={() => handleRemoveFields(index)}
+															className='dashboard-details-dropdown-delete-button'
+														/>
+													</IconButton>
 												</div>
-												<IconButton>
-													<HighlightOffIcon
-														onClick={() => handleRemoveFields(index)}
-														className='dashboard-details-dropdown-delete-button'
-													/>
-												</IconButton>
 											</div>
 										))}
 									</div>

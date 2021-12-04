@@ -42,8 +42,15 @@ function SentimentCard(props) {
 					<Doughnut
 						data={state}
 						options={{
-							onClick: (e) => {
-								history.push('/calls');
+							// onClick: (e) => {
+							// 	history.push('/calls');
+							// },
+							onClick: (e, element) => {
+								if (element.length > 0) {
+									history.push(
+										`/calls?feedback=${state.labels[element[0]?.index]}`
+									);
+								}
 							},
 							circumference: 180,
 							rotation: 270,
