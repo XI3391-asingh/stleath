@@ -58,10 +58,10 @@ const columns = [
 		sortable: false,
 		width: 250,
 		disableClickEventBubbling: true,
-		renderCell: () => {
+		renderCell: (row) => {
 			return (
 				<div>
-					<Link to='/call-visualizer'>
+					<Link to={`/call-visualizer?id=${row?.id}`}>
 						<Button
 							className='details-button'
 							disableElevation
