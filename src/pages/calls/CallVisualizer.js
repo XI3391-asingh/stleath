@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Card, Typography } from '@material-ui/core';
 import { useDemoData } from '@mui/x-data-grid-generator';
@@ -10,6 +10,7 @@ import WavesurferAudioVisualizer from '../../components/calls/wavesurfer-visuali
 
 import './styles.css';
 import moment from 'moment';
+import { useLocation } from 'react-router-dom';
 
 function CallVisualizer() {
 	let dateTime = moment().format('LLL');
@@ -20,6 +21,39 @@ function CallVisualizer() {
 		rowLength: 100,
 		maxColumns: 6,
 	});
+
+	const path = useLocation();
+	let query = new URLSearchParams(path?.search);
+	let callidquery = query.get('id');
+	const [call, setCall] = useState({});
+	console.log(callidquery);
+
+	useEffect(() => {
+		getCall();
+	}, []);
+
+	const getCall = () => {
+		fetch('http://13.127.135.117:8080/api/get-report', {
+			method: 'GET',
+		})
+			.then((response) => response.json())
+			.then(async (result) => {
+				if (result?.code === 200) {
+					let feeddata = result?.data;
+					if (feeddata?.length) {
+						let calldata = feeddata.filter(
+							(resp) => resp.id === parseInt(callidquery)
+						);
+						if (calldata?.length) {
+							console.log(calldata);
+							setCall(calldata[0]);
+						}
+					}
+				}
+			})
+			.catch((error) => console.log('error', error));
+	};
+
 	return (
 		<div className='calls-page-layout'>
 			<div>
@@ -34,12 +68,14 @@ function CallVisualizer() {
 						variant='button'
 						className='calls-visualizer-call-id-text'
 					>
-						Call Id: 62db0626-229724556-baf7-6f623a5a3cdc
+						Call Id: {call?.uuid}
 					</Typography>
 				</Card>
 			</div>
 			<div>
-				<WavesurferAudioVisualizer />
+				{Object?.keys(call)?.length && (
+					<WavesurferAudioVisualizer path={call?.path} />
+				)}
 			</div>
 			<div className='calls-visualizer-card-list'>
 				<div className='calls-visualizer-moments-card'>

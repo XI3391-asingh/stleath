@@ -1,20 +1,27 @@
 import { Button, ButtonGroup, Typography } from '@material-ui/core';
 import { Card } from '@mui/material';
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useEffect } from 'react';
 import { WaveSurfer, WaveForm } from 'wavesurfer-react';
 
 import './styles.css';
 
-function Visualizer() {
+function Visualizer({ path }) {
 	const wavesurferRef = useRef();
 	const wavesurferRef2 = useRef();
+
+	useEffect(() => {
+		return () => {
+			stop();
+			stop2();
+		};
+	}, []);
 
 	const handleWSMount = (waveSurfer) => {
 		console.log('...');
 		wavesurferRef.current = waveSurfer;
 		if (wavesurferRef.current) {
 			console.log('...2');
-			wavesurferRef.current.load('/audio/Simple Call.mov');
+			wavesurferRef.current.load(path);
 			wavesurferRef.current.on('ready', () => {
 				console.log('WaveSurfer is ready');
 			});
@@ -32,7 +39,8 @@ function Visualizer() {
 		wavesurferRef2.current = waveSurfer;
 		if (wavesurferRef2.current) {
 			console.log('...2');
-			wavesurferRef2.current.load('/audio/Simple Call.mov');
+			// wavesurferRef2.current.load('/audio/Simple Call.mov');
+			wavesurferRef2.current.load(path);
 			wavesurferRef2.current.on('ready', () => {
 				console.log('WaveSurfer is ready');
 			});

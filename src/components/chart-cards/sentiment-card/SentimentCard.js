@@ -7,19 +7,31 @@ import '../styles.css';
 import { Link, useHistory } from 'react-router-dom';
 import Calls from '../../../pages/calls/Calls';
 
-const state = {
-	labels: ['Positive', 'Negative'],
-	datasets: [
-		{
-			label: 'Sentiments',
-			backgroundColor: ['rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
-			hoverBackgroundColor: ['rgba(0, 255, 0, 1)', 'rgba(255, 0, 0, 1)'],
-			data: [1504, 743],
-		},
-	],
-};
+function SentimentCard(props) {
+	const state = {
+		labels: ['Positive', 'Neutral', 'Negative'],
+		datasets: [
+			{
+				label: 'Sentiments',
+				backgroundColor: [
+					'rgba(0, 255, 0, 0.5)',
+					'rgba(255, 255, 0, 0.5)',
+					'rgba(255, 0, 0, 0.5)',
+				],
+				hoverBackgroundColor: [
+					'rgba(0, 255, 0, 1)',
+					'rgba(255, 255, 0, 1)',
+					'rgba(255, 0, 0, 1)',
+				],
+				data: [
+					props.data['Positive Feedback'],
+					props.data['Neutral Feedback'],
+					props.data['Negative Feedback'],
+				],
+			},
+		],
+	};
 
-function SentimentCard() {
 	let history = useHistory();
 	return (
 		<div className='chart-cardLayout'>
@@ -30,8 +42,15 @@ function SentimentCard() {
 					<Doughnut
 						data={state}
 						options={{
-							onClick: (e) => {
-								history.push('/calls');
+							// onClick: (e) => {
+							// 	history.push('/calls');
+							// },
+							onClick: (e, element) => {
+								if (element.length > 0) {
+									history.push(
+										`/calls?feedback=${state.labels[element[0]?.index]}`
+									);
+								}
 							},
 							circumference: 180,
 							rotation: 270,

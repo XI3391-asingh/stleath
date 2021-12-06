@@ -16,7 +16,12 @@ const columns = [
 		type: 'number',
 		sortable: false,
 	},
-	{ field: 'agentName', headerName: 'Agent Name', width: 180, sortable: false },
+	{
+		field: 'agent_name',
+		headerName: 'Agent Name',
+		width: 180,
+		sortable: false,
+	},
 	{
 		field: 'customerName',
 		headerName: 'Customer Name',
@@ -30,13 +35,13 @@ const columns = [
 		sortable: false,
 	},
 	{
-		field: 'callDateAndTime',
+		field: 'updatedAt',
 		headerName: 'Call Date And Time',
 		width: 180,
 		sortable: false,
 	},
 	{
-		field: 'callSentiments',
+		field: 'feedback',
 		headerName: 'call Sentiments',
 		width: 150,
 		sortable: false,
@@ -53,10 +58,10 @@ const columns = [
 		sortable: false,
 		width: 250,
 		disableClickEventBubbling: true,
-		renderCell: () => {
+		renderCell: (row) => {
 			return (
 				<div>
-					<Link to='/call-visualizer'>
+					<Link to={`/call-visualizer?id=${row?.id}`}>
 						<Button
 							className='details-button'
 							disableElevation
@@ -71,11 +76,12 @@ const columns = [
 	},
 ];
 
-function CallsTable() {
+function CallsTable({ data = [] }) {
+	console.log(data);
 	return (
 		<div className='calls-table-layout'>
 			<DataGrid
-				rows={Calls}
+				rows={data}
 				columns={columns}
 				pageSize={10}
 				rowsPerPageOptions={[5]}
