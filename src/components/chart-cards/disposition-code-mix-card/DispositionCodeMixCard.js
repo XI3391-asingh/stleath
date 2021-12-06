@@ -24,7 +24,7 @@ function DispositionCodeMixCard(props) {
 		labels: Object.keys(props.data),
 		datasets: [
 			{
-				label: 'Data',
+				label: 'Emotions',
 				// data: [650, 438, 578, 30, 0],
 				data: Object.values(props.data),
 				fill: true,
@@ -36,7 +36,7 @@ function DispositionCodeMixCard(props) {
 	return (
 		<div className='chart-cardLayout'>
 			<Card className='chart-card'>
-				<CardHeader title='Disposition Code Mix' className='chart-cardHeader' />
+				<CardHeader title='Emotions' className='chart-cardHeader' />
 				<Divider />
 				<div>
 					<Bar
@@ -46,6 +46,30 @@ function DispositionCodeMixCard(props) {
 								history.push('/calls');
 							},
 							indexAxis: 'y',
+							scales: {
+								x: [
+									{
+										title: {
+											display: true,
+											text: 'No. of Calls',
+										},
+									},
+								],
+							},
+							// title: {
+							// 	display: true,
+							// 	text: 'No. of Calls',
+							// },
+							// scales: {
+							// 	xAxes: [
+							// 		{
+							// 			scaleLabel: {
+							// 				display: true,
+							// 				labelString: 'Number of Calls',
+							// 			},
+							// 		},
+							// 	],
+							// },
 						}}
 					/>
 				</div>

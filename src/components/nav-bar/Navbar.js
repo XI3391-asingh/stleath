@@ -286,6 +286,16 @@ function Navbar() {
 							</IconButton>
 						</Box>
 						<Box className='appbar-icon-list'>
+							{localStorage.getItem('email') ===
+							('user@admin.com' || 'userTwo@admin.com') ? (
+								<Typography variant='overline' className='appbar-profile'>
+									Viewing as an Agent
+								</Typography>
+							) : (
+								<Typography variant='overline' className='appbar-profile'>
+									Viewing as a Manager
+								</Typography>
+							)}
 							<IconButton className='appbar-button'>
 								<Link to='/messages'>
 									<Badge badgeContent={4} color='error'>

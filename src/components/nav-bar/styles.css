@@ -45,6 +45,18 @@
 	display: flex;
 }
 
+.appbar-profile {
+	align-self: center;
+	text-transform: capitalize !important;
+	/* margin-right: 2rem;
+    margin-top: 0.5rem; */
+	margin: 0.5rem 2rem 0 0 !important;
+	/* border-radius: 10px;
+	background-color: white;
+	color: #6c1d5f !important;
+	min-width: 8rem; */
+}
+
 .appbar-button {
 	padding: 0.8rem !important;
 }

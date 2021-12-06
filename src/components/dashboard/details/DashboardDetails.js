@@ -1,4 +1,5 @@
 import {
+	Alert,
 	Button,
 	FormControl,
 	IconButton,
@@ -6,6 +7,8 @@ import {
 	MenuItem,
 	Modal,
 	Select,
+	Snackbar,
+	Stack,
 	TextField,
 	Typography,
 } from '@mui/material';
@@ -14,6 +17,7 @@ import React, { useState } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 import './styles.css';
+import DashboardSnackbar from '../dashboard-snackbar/DashboardSnackbar';
 
 function DashboardDetails() {
 	const [open, setOpen] = useState(false);
@@ -80,6 +84,10 @@ function DashboardDetails() {
 		setOpen(false);
 	};
 
+	// const handleSnackbarClose = () => {
+	// 	setOpen(false);
+	// };
+
 	const handleAddFields = () => {
 		const values = [...review];
 		values.push({
@@ -97,7 +105,7 @@ function DashboardDetails() {
 	};
 	return (
 		<div className='dashboard-details-call-details-layout'>
-			<div className='dashboard-details-call-details'>40 of 100 Calls</div>
+			<div className='dashboard-details-call-details'></div>
 			<div>
 				<Button
 					variant='contained'
@@ -142,6 +150,7 @@ function DashboardDetails() {
 														name='file'
 														accept='audio/*'
 														id='files'
+														multiple
 														onChange={(e) => changeHandler(e, index)}
 														className='dashboard-details-upload-file-button'
 													/>
@@ -186,18 +195,33 @@ function DashboardDetails() {
 										))}
 									</div>
 								</div>
-								<Button variant='contained' onClick={() => handleAddFields()}>
+								{/* <Button variant='contained' onClick={() => handleAddFields()}>
 									+ Add More
-								</Button>
+								</Button> */}
 							</div>
 
 							<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 								<Button variant='contained' onClick={handleClose}>
 									Cancel
 								</Button>
+								{/* <Stack spacing={2} sx={{ width: '100%' }}> */}
 								<Button variant='contained' onClick={submitHandler}>
-									Submit
+									<DashboardSnackbar />
 								</Button>
+								{/* <Snackbar
+										open={open}
+										autoHideDuration={6000}
+										onClose={handleSnackbarClose}
+									>
+										<Alert
+											onClose={handleSnackbarClose}
+											severity='success'
+											sx={{ width: '100%' }}
+										>
+											2 calls got uploaded successfully
+										</Alert>
+									</Snackbar>
+								</Stack> */}
 							</div>
 						</div>
 					</Box>

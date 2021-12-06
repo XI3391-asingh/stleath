@@ -16,7 +16,7 @@ import './style.css';
 function ChartComponents() {
 	const [emotions, setEmotions] = useState({
 		Fear: 0,
-		Sad: 0,
+		Disappointed: 0,
 		Angry: 0,
 		Happy: 0,
 		Surprise: 0,
