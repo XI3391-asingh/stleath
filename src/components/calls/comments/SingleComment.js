@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { List, ListItem, ListItemText, Paper, Typography } from '@mui/material';
 
 import moment from 'moment';
 
-import CommentsData from '../../../data/comments.json';
+// import CommentsData from '../../../data/comments.json';
 
-function SingleComment() {
+function SingleComment(props) {
+	// console.log(props);
 	let dateTime = moment().format('lll');
 	let dateTime2 = moment().format('MMM Do YYYY, h:mm a');
 	let dateTime3 = Math.floor(moment.duration(400000).asMinutes());
+
+	// const [state, setstate] = useState([CommentsData]);
+	// useEffect(() => {
+	// 	localStorage.setItem('comments', JSON.stringify(CommentsData));
+	// }, []);
+	// function SaveDataToLOcalStorage(data) {
+	// 	let a = [];
+	// 	a = JSON.parse(localStorage.getItem('comments')) || [];
+	// 	a.push(data);
+	// 	localStorage.setItem('comments', JSON.stringify(a));
+	// }
 	return (
 		<List>
 			<React.Fragment>
 				<ListItem style={{ display: 'block', padding: '0.5rem' }}>
-					{CommentsData.map((comments, index) => {
+					{props.CommentsData.map((comments, index) => {
 						return (
 							<>
 								<ListItemText
