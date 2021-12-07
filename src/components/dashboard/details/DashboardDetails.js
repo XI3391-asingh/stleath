@@ -15,6 +15,7 @@ import {
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import CloseOutlined from '@mui/icons-material/CloseOutlined';
 
 import './styles.css';
 import DashboardSnackbar from '../dashboard-snackbar/DashboardSnackbar';
@@ -24,35 +25,52 @@ function DashboardDetails() {
 	const [review, setReview] = useState([{ input: '', agent: '' }]);
 	const [selectedFile, setSelectedFile] = useState([]);
 	const [isSelected, setIsSelected] = useState(false);
+	const [snackbar, setSnackbar] = useState(false);
+	const [count, setCount] = useState(0);
 
 	const changeHandler = (event, i) => {
 		const values = [...review];
-		values[i].input = event.target.files[0];
-		setReview(values);
+		let filesarr = [];
+		if (event?.target?.files?.length) {
+			const files = event.target.files;
+			for (let i = 0; i < files.length; i++) {
+				filesarr.push(files[i]);
+			}
+			// values[i].input = event.target.files[0];
+			values[i].input = filesarr;
+			console.log(values);
+			setReview(values);
+		}
 	};
 
 	const submitHandler = async () => {
 		var formdata = new FormData();
 		console.log(review);
-		review.map((value, index) => {
-			formdata.append('files', value?.input);
-			console.log(value);
-		});
-		formdata.append('agent_name', 'waasi');
+		if (review?.length && review[0] && review[0]?.input?.length) {
+			review[0]?.input?.map((value, index) => {
+				formdata.append('files', value);
+			});
+			formdata.append('agent_name', 'waasi');
 
-		var requestOptions = {
-			method: 'POST',
-			body: formdata,
-			redirect: 'follow',
-		};
+			var requestOptions = {
+				method: 'POST',
+				body: formdata,
+				redirect: 'follow',
+			};
+			console.log(requestOptions);
 
-		fetch('http://13.127.135.117:8080/api/s3gallery-upload', requestOptions)
-			.then((response) => response.text())
-			.then((result) => {
-				setReview([{ input: '', agent: '' }]);
-				handleClose();
-			})
-			.catch((error) => console.log('error', error));
+			fetch('http://13.127.135.117:8080/api/s3gallery-upload', requestOptions)
+				.then((response) => response.json())
+				.then((result) => {
+					if (result?.code === 200) {
+						setReview([{ input: '', agent: '' }]);
+						handleClose();
+						setSnackbar(true);
+						setCount(result?.data?.length);
+					}
+				})
+				.catch((error) => console.log('error', error));
+		}
 	};
 
 	const generateAnalysis = () => {
@@ -84,6 +102,10 @@ function DashboardDetails() {
 		setOpen(false);
 	};
 
+	const handleSnackbarClose = () => {
+		setSnackbar(false);
+	};
+
 	// const handleSnackbarClose = () => {
 	// 	setOpen(false);
 	// };
@@ -103,6 +125,20 @@ function DashboardDetails() {
 		console.log(fd);
 		setReview(fd);
 	};
+
+	const action = (
+		<React.Fragment>
+			<IconButton
+				size='small'
+				aria-label='close'
+				color='inherit'
+				onClick={handleSnackbarClose}
+			>
+				<CloseOutlined fontSize='small' />
+			</IconButton>
+		</React.Fragment>
+	);
+
 	return (
 		<div className='dashboard-details-call-details-layout'>
 			<div className='dashboard-details-call-details'></div>
@@ -154,11 +190,11 @@ function DashboardDetails() {
 														onChange={(e) => changeHandler(e, index)}
 														className='dashboard-details-upload-file-button'
 													/>
-													<span htmlFor='fileLabel'>
-														{item?.input?.name
-															? item?.input?.name
-															: 'Choose file'}
-													</span>
+													{/* <span htmlFor="fileLabel">
+                            {item?.input?.name
+                              ? item?.input?.name
+                              : "Choose file"}
+                          </span> */}
 												</div>
 												<div
 													key={index}
@@ -206,7 +242,7 @@ function DashboardDetails() {
 								</Button>
 								{/* <Stack spacing={2} sx={{ width: '100%' }}> */}
 								<Button variant='contained' onClick={submitHandler}>
-									<DashboardSnackbar />
+									Submit
 								</Button>
 								{/* <Snackbar
 										open={open}
@@ -226,6 +262,22 @@ function DashboardDetails() {
 						</div>
 					</Box>
 				</Modal>
+				{/* <DashboardSnackbar /> */}
+
+				<Snackbar
+					open={snackbar}
+					autoHideDuration={4000}
+					onClose={handleSnackbarClose}
+					action={action}
+				>
+					<Alert
+						onClose={handleSnackbarClose}
+						severity='success'
+						sx={{ width: '100%' }}
+					>
+						{`${count} calls got uploaded successfully`}
+					</Alert>
+				</Snackbar>
 			</div>
 		</div>
 	);

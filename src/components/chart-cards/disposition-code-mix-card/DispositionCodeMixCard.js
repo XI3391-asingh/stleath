@@ -46,20 +46,20 @@ function DispositionCodeMixCard(props) {
 								history.push('/calls');
 							},
 							indexAxis: 'y',
-							scales: {
-								x: [
-									{
-										title: {
-											display: true,
-											text: 'No. of Calls',
-										},
-									},
-								],
-							},
-							// title: {
-							// 	display: true,
-							// 	text: 'No. of Calls',
+							// scales: {
+							// 	x: [
+							// 		{
+							// 			title: {
+							// 				display: true,
+							// 				text: 'No. of Calls',
+							// 			},
+							// 		},
+							// 	],
 							// },
+							title: {
+								display: true,
+								text: 'No. of Calls',
+							},
 							// scales: {
 							// 	xAxes: [
 							// 		{

@@ -11,8 +11,8 @@ import './styles.css';
 const columns = [
 	{
 		field: 'id',
-		headerName: 'S.No.',
-		width: 90,
+		headerName: 'Call ID',
+		width: 100,
 		type: 'number',
 		sortable: false,
 	},
