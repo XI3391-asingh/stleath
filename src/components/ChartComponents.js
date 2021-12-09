@@ -16,7 +16,7 @@ import './style.css';
 function ChartComponents() {
 	const [emotions, setEmotions] = useState({
 		Fear: 0,
-		Sad: 0,
+		Disappointed: 0,
 		Angry: 0,
 		Happy: 0,
 		Surprise: 0,
@@ -24,9 +24,19 @@ function ChartComponents() {
 
 	const [sentiment, setSentiment] = useState({});
 
+	// useEffect(() => {
+	// 	getReport();
+	// 	getEmotionReport();
+	// }, []);
+
 	useEffect(() => {
 		getReport();
 		getEmotionReport();
+		const interval = setInterval(() => {
+			getReport();
+			getEmotionReport();
+		}, 60000);
+		return () => clearInterval(interval);
 	}, []);
 
 	const getEmotionReport = () => {
@@ -82,8 +92,8 @@ function ChartComponents() {
 	return (
 		<div>
 			<div className='chartCardContainer'>
-				<DispositionCodeMixCard data={emotions} />
 				<SentimentCard data={sentiment} />
+				<DispositionCodeMixCard data={emotions} />
 				<CallCategoriesCard />
 			</div>
 			<div>

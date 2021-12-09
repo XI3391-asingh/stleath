@@ -8,28 +8,60 @@ import '../styles.css';
 import SingleComment from './SingleComment';
 import CommentsData from '../../../data/comments.json';
 
-function Comments() {
-	const [state, setState] = useState(CommentsData);
+function Comments({ callid }) {
+	const [state, setState] = useState([]);
 	const [value, setValue] = useState('');
 
 	useEffect(() => {
-		if (!localStorage.getItem('comments')) {
-			localStorage.setItem('comments', JSON.stringify(CommentsData));
-		}
-		setState(JSON.parse(localStorage.getItem('comments')) || []);
+		getCallDetails();
 	}, []);
 
+	const getCallDetails = () => {
+		fetch('http://13.127.135.117:8080/api/get-call-details/' + callid, {
+			method: 'GET',
+		})
+			.then((response) => response.json())
+			.then((result) => {
+				if (result?.code === 200) {
+					setState(result?.data.call_comments);
+				}
+			})
+			.catch((error) => console.log('error', error));
+	};
+
 	function SaveDataToLOcalStorage() {
-		let a = [];
-		a = JSON.parse(localStorage.getItem('comments')) || [];
-		a.push({
-			name: 'Wasi Muka',
-			date: moment().format('MMM Do YYYY, h:mm a'),
+		var myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+
+		var raw = JSON.stringify({
+			call_id: parseInt(callid),
 			comment: value,
 		});
-		setState(a);
-		localStorage.setItem('comments', JSON.stringify(a));
-		setValue('');
+		var requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+		};
+		fetch('http://13.127.135.117:8080/api/add-comment', requestOptions)
+			.then((response) => response.json())
+			.then((result) => {
+				if (result?.code === 200) {
+					setState([...state, result?.data]);
+					setValue('');
+				}
+			})
+			.catch((error) => console.log('error', error));
+
+		//   let a = [];
+		// a = JSON.parse(localStorage.getItem("comments")) || [];
+		// a.push({
+		//   name: "Wasi Muka",
+		//   date: moment().format("MMM Do YYYY, h:mm a"),
+		//   comment: value,
+		// });
+		// setState(a);
+		// localStorage.setItem("comments", JSON.stringify(a));
+		// setValue("");
 	}
 
 	return (

@@ -254,8 +254,8 @@ function Navbar() {
 						<IconButton className='appbar-menu-button'>
 							<MenuIcon className='appbar-menu-icon' />
 						</IconButton>
-						<Typography variant='h5' className='appbar-heading'>
-							STLEATH
+						<Typography variant='h6' className='appbar-heading'>
+							STEALTH
 						</Typography>
 						<Box className='appbar-box'>
 							<IconButton>
@@ -264,16 +264,16 @@ function Navbar() {
 									activeClassName='active'
 									to='/dashboard'
 								>
-									<Typography variant='h6'>Dashboard</Typography>
+									<Typography variant='body1'>Dashboard</Typography>
 								</NavLink>
 								<NavLink
 									className='appbar-pages'
 									activeClassName='active'
 									to='/calls'
 								>
-									<Typography variant='h6'>Calls</Typography>
+									<Typography variant='body1'>Calls</Typography>
 								</NavLink>
-								<Typography variant='h6' className='appbar-pages'>
+								<Typography variant='body1' className='appbar-pages'>
 									QA
 								</Typography>
 								<NavLink
@@ -281,11 +281,43 @@ function Navbar() {
 									activeClassName='active'
 									to='/employee-management'
 								>
-									<Typography variant='h6'>Employee Management</Typography>
+									<Typography variant='body1'>Employee Management</Typography>
 								</NavLink>
+								<div>
+									<Typography variant='body1' className='appbar-pending-pages'>
+										AI Act
+									</Typography>
+									<Typography
+										variant='caption'
+										className='appbar-pending-page-notification'
+									>
+										Phase 2
+									</Typography>
+								</div>
+								<div>
+									<Typography variant='body1' className='appbar-pending-pages'>
+										AI Recommendations
+									</Typography>
+									<Typography
+										variant='caption'
+										className='appbar-pending-page-notification'
+									>
+										Phase 3
+									</Typography>
+								</div>
 							</IconButton>
 						</Box>
 						<Box className='appbar-icon-list'>
+							{localStorage.getItem('email') ===
+							('user@admin.com' || 'userTwo@admin.com') ? (
+								<Typography variant='overline' className='appbar-profile'>
+									Viewing as Agent
+								</Typography>
+							) : (
+								<Typography variant='overline' className='appbar-profile'>
+									Viewing as Manager
+								</Typography>
+							)}
 							<IconButton className='appbar-button'>
 								<Link to='/messages'>
 									<Badge badgeContent={4} color='error'>

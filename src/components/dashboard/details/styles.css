@@ -61,11 +61,11 @@
 	align-items: baseline !important;
 }
 
-.dashboard-file input[type='file'] {
+/* .dashboard-file input[type='file'] {
 	width: 100px;
 	color: transparent;
 }
 .dashboard-file span {
 	font-size: 14px;
 	padding-top: 22px;
-}
+} */

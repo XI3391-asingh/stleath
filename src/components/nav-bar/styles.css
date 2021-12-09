@@ -41,8 +41,32 @@
 	margin: 0 1rem !important;
 }
 
+.appbar-pending-page-notification {
+	color: white !important;
+	font-size: 0.6rem !important;
+}
+
+.appbar-pending-pages {
+	color: white !important;
+	margin: 0 1rem !important;
+	line-height: normal !important;
+}
+
 .appbar-icon-list {
 	display: flex;
+}
+
+.appbar-profile {
+	color: white !important;
+	align-self: center;
+	text-transform: capitalize !important;
+	/* margin-right: 2rem;
+    margin-top: 0.5rem; */
+	margin: 0.5rem 2rem 0 0 !important;
+	/* border-radius: 10px;
+	background-color: white;
+	color: #6c1d5f !important;
+	min-width: 10rem; */
 }
 
 .appbar-button {
@@ -56,7 +80,7 @@
 
 .appbar-avatar {
 	padding: 1.2rem !important;
-	color: white;
+	color: white !important;
 }
 
 .appbar-avatar-menu {

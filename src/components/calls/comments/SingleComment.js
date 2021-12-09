@@ -39,7 +39,9 @@ function SingleComment(props) {
 										<Typography variant='caption'>{comments.name}</Typography>
 									}
 									secondary={
-										<Typography variant='caption'>{comments.date}</Typography>
+										<Typography variant='caption'>
+											{comments.createdAt}
+										</Typography>
 									}
 								/>
 								<Paper elevation={3} style={{ borderRadius: '5px' }}>

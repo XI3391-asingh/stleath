@@ -68,7 +68,7 @@ function CallVisualizer() {
 						variant='button'
 						className='calls-visualizer-call-id-text'
 					>
-						Call Id: {call?.uuid}
+						Call Id: {call?.id}
 					</Typography>
 				</Card>
 			</div>
@@ -86,7 +86,7 @@ function CallVisualizer() {
 				</div>
 				<div className='calls-visualizer-comments-card-layout'>
 					<Card>
-						<Comments />
+						<Comments callid={callidquery} />;
 					</Card>
 				</div>
 			</div>
