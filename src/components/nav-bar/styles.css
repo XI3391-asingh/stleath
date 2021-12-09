@@ -49,7 +49,7 @@
 .appbar-pending-pages {
 	color: white !important;
 	margin: 0 1rem !important;
-	line-height: normal;
+	line-height: normal !important;
 }
 
 .appbar-icon-list {

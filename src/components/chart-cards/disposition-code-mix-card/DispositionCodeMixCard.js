@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Card, CardHeader, Divider } from '@mui/material';
+import { Card, CardHeader, Divider, Typography } from '@mui/material';
 import { Bar } from 'react-chartjs-2';
 
 import '../styles.css';
@@ -42,8 +42,16 @@ function DispositionCodeMixCard(props) {
 					<Bar
 						data={data}
 						options={{
-							onClick: (e) => {
-								history.push('/calls');
+							// onClick: (e) => {
+							// 	history.push('/calls');
+							// },
+							onClick: (e, element) => {
+								// history.push("/calls");
+								if (element.length > 0) {
+									history.push(
+										`/calls?call_emotion=${data?.labels[element[0]?.index]}`
+									);
+								}
 							},
 							indexAxis: 'y',
 							// scales: {
@@ -56,10 +64,10 @@ function DispositionCodeMixCard(props) {
 							// 		},
 							// 	],
 							// },
-							title: {
-								display: true,
-								text: 'No. of Calls',
-							},
+							// title: {
+							// 	display: true,
+							// 	text: 'No. of Calls',
+							// },
 							// scales: {
 							// 	xAxes: [
 							// 		{
@@ -72,6 +80,7 @@ function DispositionCodeMixCard(props) {
 							// },
 						}}
 					/>
+					<Typography variant='caption'>Number of Calls</Typography>
 				</div>
 			</Card>
 		</div>

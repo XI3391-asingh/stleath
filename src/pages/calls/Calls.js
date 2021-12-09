@@ -20,7 +20,7 @@ function Calls() {
 	console.log(feedbackquery);
 
 	useEffect(() => {
-		getCall();
+		query.get('call_emotion') ? getCallEmotion() : getCall();
 	}, []);
 
 	const getCall = () => {
@@ -45,6 +45,30 @@ function Calls() {
 							total: feeddata?.length,
 							filter: calldata?.length,
 							data: calldata,
+						});
+					}
+				}
+			})
+			.catch((error) => console.log('error', error));
+	};
+
+	const getCallEmotion = () => {
+		fetch(
+			'http://13.127.135.117:8080/api/get-report?call_emotion=' +
+				query.get('call_emotion'),
+			{
+				method: 'GET',
+			}
+		)
+			.then((response) => response.json())
+			.then(async (result) => {
+				if (result?.code === 200) {
+					let feeddata = result?.data;
+					if (feeddata?.length) {
+						setCall({
+							total: feeddata?.length,
+							filter: feeddata?.length,
+							data: feeddata,
 						});
 					}
 				}

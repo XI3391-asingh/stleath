@@ -284,25 +284,25 @@ function Navbar() {
 									<Typography variant='body1'>Employee Management</Typography>
 								</NavLink>
 								<div>
+									<Typography variant='body1' className='appbar-pending-pages'>
+										AI Act
+									</Typography>
 									<Typography
 										variant='caption'
 										className='appbar-pending-page-notification'
 									>
 										Phase 2
 									</Typography>
-									<Typography variant='body1' className='appbar-pending-pages'>
-										AI Act
-									</Typography>
 								</div>
 								<div>
+									<Typography variant='body1' className='appbar-pending-pages'>
+										AI Recommendations
+									</Typography>
 									<Typography
 										variant='caption'
 										className='appbar-pending-page-notification'
 									>
 										Phase 3
-									</Typography>
-									<Typography variant='body1' className='appbar-pending-pages'>
-										AI Recommendations
 									</Typography>
 								</div>
 							</IconButton>
