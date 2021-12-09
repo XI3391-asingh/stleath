@@ -255,7 +255,7 @@ function Navbar() {
 							<MenuIcon className='appbar-menu-icon' />
 						</IconButton>
 						<Typography variant='h6' className='appbar-heading'>
-							STLEATH
+							STEALTH
 						</Typography>
 						<Box className='appbar-box'>
 							<IconButton>
