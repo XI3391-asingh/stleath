@@ -36,7 +36,9 @@ function SingleComment(props) {
 										color: 'darkgrey',
 									}}
 									primary={
-										<Typography variant='caption'>{comments.name}</Typography>
+										<Typography variant='caption'>
+											{comments.commented_by}
+										</Typography>
 									}
 									secondary={
 										<Typography variant='caption'>

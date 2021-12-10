@@ -9,9 +9,16 @@ function Login() {
 		{
 			email: 'admin@admin.com',
 			password: 'admin123',
+			id: 1,
+			username: 'admin',
 		},
-		{ email: 'user@admin.com', password: 'user123' },
-		{ email: 'userTwo@admin.com', password: 'user1234' },
+		{ email: 'user@admin.com', password: 'user123', id: 2, username: 'user1' },
+		{
+			email: 'userTwo@admin.com',
+			password: 'user1234',
+			id: 3,
+			username: 'user2',
+		},
 	];
 
 	const [error, setError] = useState('');
@@ -25,6 +32,14 @@ function Login() {
 		) {
 			setError('');
 			localStorage.setItem('email', details.email);
+			localStorage.setItem(
+				'id',
+				adminUser.find((e) => e.email === details.email)?.id
+			);
+			localStorage.setItem(
+				'recipient_id',
+				adminUser.find((e) => e.email !== details.email)?.id
+			);
 			history.replace('/dashboard');
 		} else {
 			setError('details donot match');

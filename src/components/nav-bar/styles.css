@@ -106,9 +106,9 @@
 } */
 
 .appbar-notification-menu-item {
-	display: flex;
+	display: flex !important;
 	justify-content: space-between !important;
-	padding: '0.5rem';
+	padding: 0.5rem;
 }
 
 .appbar-notification-menu-list-button {

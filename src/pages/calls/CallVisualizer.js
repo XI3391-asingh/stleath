@@ -86,7 +86,7 @@ function CallVisualizer() {
 				</div>
 				<div className='calls-visualizer-comments-card-layout'>
 					<Card>
-						<Comments callid={callidquery} />;
+						<Comments callid={callidquery} />
 					</Card>
 				</div>
 			</div>
