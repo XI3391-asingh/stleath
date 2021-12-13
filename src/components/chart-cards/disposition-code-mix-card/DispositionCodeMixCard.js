@@ -9,23 +9,10 @@ import '../styles.css';
 function DispositionCodeMixCard(props) {
 	let history = useHistory();
 	const data = {
-		// labels: [
-		// 'FollowUp',
-		// 'Already Purchased',
-		// 'Customer Picked Up',
-		// 'Auto Wrap Up',
-		// 'Language Barrier',
-		// 'Commercial Vehicle',
-		// 'Car Not Finalized',
-		// 'Sad',
-		// 'Fear',
-		// 'Happy',
-		// ],
 		labels: Object.keys(props.data),
 		datasets: [
 			{
 				label: 'Emotions',
-				// data: [650, 438, 578, 30, 0],
 				data: Object.values(props.data),
 				fill: true,
 				backgroundColor: '#B5DEFF',
@@ -54,33 +41,16 @@ function DispositionCodeMixCard(props) {
 								}
 							},
 							indexAxis: 'y',
-							// scales: {
-							// 	x: [
-							// 		{
-							// 			title: {
-							// 				display: true,
-							// 				text: 'No. of Calls',
-							// 			},
-							// 		},
-							// 	],
-							// },
-							// title: {
-							// 	display: true,
-							// 	text: 'No. of Calls',
-							// },
-							// scales: {
-							// 	xAxes: [
-							// 		{
-							// 			scaleLabel: {
-							// 				display: true,
-							// 				labelString: 'Number of Calls',
-							// 			},
-							// 		},
-							// 	],
-							// },
+							scales: {
+								x: {
+									title: {
+										display: true,
+										text: 'Number of calls',
+									},
+								},
+							},
 						}}
 					/>
-					<Typography variant='caption'>Number of Calls</Typography>
 				</div>
 			</Card>
 		</div>

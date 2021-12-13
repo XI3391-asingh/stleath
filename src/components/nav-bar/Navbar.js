@@ -178,7 +178,8 @@ function Navbar() {
 										variant='body2'
 										className='appbar-notification-menu-notification-message'
 									>
-										{data?.message} : CallID - {data?.call_id}
+										{data?.message}
+										{/* : CallID - {data?.call_id} */}
 									</Typography>
 								</div>
 								<div className='appbar-notification-menu-notification-time-container'>
@@ -361,14 +362,13 @@ function Navbar() {
 							</IconButton>
 						</Box>
 						<Box className='appbar-icon-list'>
-							{localStorage.getItem('email') ===
-							('user@admin.com' || 'userTwo@admin.com') ? (
+							{localStorage.getItem('email') === 'rajat.bansal@xebia.com' ? (
 								<Typography variant='overline' className='appbar-profile'>
-									Viewing as Agent
+									Viewing as Manager
 								</Typography>
 							) : (
 								<Typography variant='overline' className='appbar-profile'>
-									Viewing as Manager
+									Viewing as Agent
 								</Typography>
 							)}
 							<IconButton className='appbar-button'>

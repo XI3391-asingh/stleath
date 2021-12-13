@@ -7,15 +7,20 @@ function Login() {
 	let history = useHistory();
 	const adminUser = [
 		{
-			email: 'admin@admin.com',
-			password: 'admin123',
+			email: 'rajat.bansal@xebia.com',
+			password: 'Rajat Bansal',
 			id: 1,
 			username: 'admin',
 		},
-		{ email: 'user@admin.com', password: 'user123', id: 2, username: 'user1' },
 		{
-			email: 'userTwo@admin.com',
-			password: 'user1234',
+			email: 'wasi.muka@xebia.com',
+			password: 'Wasi Muka',
+			id: 2,
+			username: 'user1',
+		},
+		{
+			email: 'jayanth.valluru@xebia.com',
+			password: 'Jayanth Valluru',
 			id: 3,
 			username: 'user2',
 		},

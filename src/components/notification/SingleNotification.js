@@ -7,8 +7,8 @@ import moment from 'moment';
 
 import './styles.css';
 
-function SingleNotification() {
-	let dateTime = moment().format('lll');
+function SingleNotification({ message, call_id, date, sender_id }) {
+	//   let dateTime = moment().format("lll");
 	return (
 		<div className='single-notification-layout'>
 			<div className='single-notification-format'>
@@ -16,13 +16,13 @@ function SingleNotification() {
 					<FiberManualRecordIcon className='single-notification-unread-icon' />
 				</div>
 				<div className='single-notification-message-source'>
-					<Typography variant='body2'>Rajat Bansal</Typography>
+					<Typography variant='body2'></Typography>
+					<Typography variant='body2'>{sender_id}</Typography>
 				</div>
 				<div className='single-notification-message-container'>
 					<Typography variant='body2' className='single-notification-message'>
-						Lorem Ipsum is simply dummy text of the printing and typesetting
-						industry. Lorem Ipsum has been the industry's standard dummy text
-						ever since the 1500s
+						{message}
+						{/* : CallID - {call_id} */}
 					</Typography>
 				</div>
 				<div className='single-notification-timestamp-container'>
@@ -30,7 +30,7 @@ function SingleNotification() {
 						variant='caption'
 						className='single-notification-timestamp'
 					>
-						{dateTime}
+						{moment(date).format('lll')}
 					</Typography>
 				</div>
 			</div>

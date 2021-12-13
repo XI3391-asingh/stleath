@@ -14,18 +14,18 @@ import { SET_PERFORMANCE, SET_RATING } from '../../store/type';
 
 function EmployeeManagement() {
 	const dispatch = useDispatch();
-	const { selectedUser } = useSelector(store => store.user);
+	const { selectedUser } = useSelector((store) => store.user);
 	useEffect(() => {
 		if (selectedUser) {
-
 			(async () => {
-				const perRes = await Axios.post('/get-performance', { agent_name: selectedUser.name });
+				const perRes = await Axios.post('/get-performance', {
+					agent_name: selectedUser.name,
+				});
 				if (perRes.isSuccess) {
 					dispatch({ type: SET_PERFORMANCE, payload: perRes.data });
 				}
-			})()
+			})();
 		}
-
 	}, [selectedUser]);
 	return (
 		<div className='employee-management-body-layout'>
@@ -35,7 +35,7 @@ function EmployeeManagement() {
 				</Card> */}
 				<EmployeeManagementAchievementsCard />
 				<Card className='employee-management-main-card-layout'>
-					{localStorage.getItem('email') === 'admin@admin.com' && (
+					{localStorage.getItem('email') === 'rajat.bansal@xebia.com' && (
 						<MyTeamCard />
 					)}
 					<PerformanceCard />
