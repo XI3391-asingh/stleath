@@ -10,13 +10,15 @@ import PerformanceCardSentiment from '../performance-card-sentiment/PerformanceC
 import PerformanceCardImprove from '../performance-card-improve/PerformanceCardImprove';
 import PerformanceCardExcellence from '../performance-card-excellence/PerformanceCardExcellence';
 import PerformanceCardProvideFeedback from '../performance-card-provide-feedback-button/PerformanceCardProvideFeedback';
+import { useSelector } from 'react-redux';
 
 function PerformanceCard() {
+	const { performance, selectedUser } = useSelector(store => store.user);
 	return (
 		<Card className='performance-card-layout'>
 			<div className='performance-card-header'>
 				<Typography variant='h6'>
-					Viewing Rajat Bansal's Performance:
+					Viewing {selectedUser?.name || "Rajat Bansal's"} Performance:
 				</Typography>
 				<PerformanceCardProvideFeedback />
 				<PerformanceCardFilters />
@@ -33,7 +35,7 @@ function PerformanceCard() {
 			{/* <div className='performance-card-tag-group-list'> */}
 			<div className='performance-card-tag-group'>
 				<PerformanceCardRating />
-				<PerformanceCardSentiment />
+				<PerformanceCardSentiment score={performance?.percentage} />
 				<PerformanceCardImprove />
 				<PerformanceCardExcellence />
 			</div>
