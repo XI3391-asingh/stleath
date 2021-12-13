@@ -14,7 +14,7 @@ const state = {
 	],
 };
 
-function PerformanceCardSentiment() {
+function PerformanceCardSentiment(props) {
 	return (
 		<div style={{ width: '220px', height: '220px', position: 'relative' }}>
 			<Doughnut
@@ -35,7 +35,7 @@ function PerformanceCardSentiment() {
 					bottom: '4rem',
 				}}
 			>
-				89%
+				{`${props.score}%` || '89%'}
 			</Typography>
 		</div>
 	);

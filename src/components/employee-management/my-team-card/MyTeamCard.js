@@ -4,6 +4,8 @@ import { Avatar, Card, Stack, Typography } from '@mui/material';
 import TeamData from '../../../data/team.json';
 
 import './styles.css';
+import { useDispatch } from 'react-redux';
+import { SET_USER } from '../../../store/type';
 
 function stringToColor(string) {
 	let hash = 0;
@@ -35,6 +37,7 @@ function stringAvatar(name) {
 }
 
 function MyTeamCard() {
+	const dispatch = useDispatch();
 	return (
 		// <div>
 		<Card className='my-team-card-layout'>
@@ -56,6 +59,7 @@ function MyTeamCard() {
 									<Avatar
 										{...stringAvatar(team.avatar)}
 										className='my-team-card-avatar'
+										onClick = {()=> dispatch({type: SET_USER, payload: team})}
 									/>
 									<Typography variant='caption' className='my-team-card-name'>
 										{team.name}
