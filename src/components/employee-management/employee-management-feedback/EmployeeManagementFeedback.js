@@ -4,7 +4,7 @@ import { Card, Typography } from '@mui/material';
 
 import './styles.css';
 
-function EmployeeManagementFeedback() {
+function EmployeeManagementFeedback(props) {
 	return (
 		<Card className='employee-management-feedback-card-layout'>
 			<div className='employee-management-feedback-card-call-details'>
@@ -18,7 +18,7 @@ function EmployeeManagementFeedback() {
 					variant='body1'
 					className='employee-management-feedback-card-call-details-value'
 				>
-					A.I
+					{props.sender_id}
 				</Typography>
 			</div>
 			<div style={{ display: 'flex' }}>
@@ -32,7 +32,7 @@ function EmployeeManagementFeedback() {
 					variant='body1'
 					className='employee-management-feedback-card-call-details-value'
 				>
-					Monthly
+					{props.feedback_type}
 				</Typography>
 			</div>
 			<div style={{ display: 'flex' }}>
@@ -46,7 +46,7 @@ function EmployeeManagementFeedback() {
 					variant='body1'
 					className='employee-management-feedback-card-call-details-value'
 				>
-					11/19/2021 11:00 AM
+					{props.createdAt}
 				</Typography>
 			</div>
 			{/* <div style={{ display: 'flex' }}>
@@ -74,10 +74,7 @@ function EmployeeManagementFeedback() {
 					variant='body1'
 					className='employee-management-feedback-card-call-details-value'
 				>
-					Lorem Ipsum is simply dummy text of the printing and typesetting
-					industry. Lorem Ipsum has been the industry's standard dummy text ever
-					since the 1500s, when an unknown printer took a galley of type and
-					scrambled it to make a type specimen book.
+					{props.feedback}
 				</Typography>
 			</div>
 		</Card>
