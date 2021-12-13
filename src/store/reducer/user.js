@@ -6,6 +6,7 @@ const initialState = {
         percentage: 0
     },
     selectedUser: null,
+    relodeFeedback: false,
 
 }
 
@@ -16,6 +17,8 @@ const reducer = (state = initialState, action) =>{
             return {...state, performance: action.payload};
         case actionTypes.SET_USER:
             return {...state, selectedUser: action.payload};
+        case actionTypes.SET_RELOAD_FEEDBACK:
+            return {...state, relodeFeedback: action.payload};
         default: 
             return state;
 

@@ -10,15 +10,21 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Axios from '../../../http/Axios';
+import { SET_RELOAD_FEEDBACK } from '../../../store/type';
 
 import './styles.css';
 
 function PerformanceCardProvideFeedback() {
 	const [open, setOpen] = useState(false);
 	const [review, setReview] = React.useState('');
+	const [feedback, setFeedback] = React.useState('');
+	const dispatch = useDispatch();
 
 	const handleChange = (event) => {
 		setReview(event.target.value);
+		console.log('Review', review);
 	};
 
 	const handleOpen = () => {
@@ -28,6 +34,15 @@ function PerformanceCardProvideFeedback() {
 	const handleClose = () => {
 		setOpen(false);
 	};
+	const {selectedUser} = useSelector( store => store.user);
+
+	const handleSubmit = async () =>{
+		const res = await Axios.post('/add-feedback', {feedback: feedback, feedback_type: review, recipient_id: selectedUser.name});
+		if(res.isSuccess){
+			dispatch({type: SET_RELOAD_FEEDBACK, payload: true});
+			handleClose();
+		} 
+	}
 
 	return (
 		<div>
@@ -65,9 +80,9 @@ function PerformanceCardProvideFeedback() {
 								<MenuItem value=''>
 									<em>Review</em>
 								</MenuItem>
-								<MenuItem value={10}>Monthly</MenuItem>
-								<MenuItem value={20}>Quarterly</MenuItem>
-								<MenuItem value={30}>Yearly</MenuItem>
+								<MenuItem value={'MONTHLY'}>Monthly</MenuItem>
+								<MenuItem value={'QUATERLY'}>Quarterly</MenuItem>
+								<MenuItem value={'YEARLY'}>Yearly</MenuItem>
 							</Select>
 						</FormControl>
 					</div>
@@ -80,6 +95,7 @@ function PerformanceCardProvideFeedback() {
 									placeholder='Placeholder'
 									multiline
 									fullWidth
+									onChange={(e)=> setFeedback(e.target.value)}
 								/>
 							</div>
 						</Box>
@@ -88,7 +104,7 @@ function PerformanceCardProvideFeedback() {
 						<Button variant='contained' onClick={handleClose}>
 							Cancel
 						</Button>
-						<Button variant='contained' onClick={handleClose}>
+						<Button variant='contained' onClick={handleSubmit}>
 							Submit
 						</Button>
 					</div>
