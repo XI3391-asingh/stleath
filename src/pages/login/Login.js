@@ -16,13 +16,13 @@ function Login() {
 			email: 'wasi.muka@xebia.com',
 			password: 'Wasi Muka',
 			id: 2,
-			username: 'Wasi',
+			username: 'Wasi Muka',
 		},
 		{
 			email: 'jayanth.valluru@xebia.com',
 			password: 'Jayanth Valluru',
 			id: 3,
-			username: 'Jayant',
+			username: 'Jayant Raja',
 		},
 	];
 
