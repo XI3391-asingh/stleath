@@ -13,6 +13,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Axios from '../../../http/Axios';
 import { SET_RELOAD_FEEDBACK } from '../../../store/type';
+import TeamData from '../../../data/team.json';
 
 import './styles.css';
 
@@ -40,7 +41,7 @@ function PerformanceCardProvideFeedback() {
 		const res = await Axios.post('/add-feedback', {
 			feedback: feedback,
 			feedback_type: review,
-			recipient_id: selectedUser.name,
+			recipient_id: selectedUser?.name ? selectedUser?.name : TeamData[0].name,
 			sender_id: localStorage.getItem('username'),
 		});
 		if (res.isSuccess) {

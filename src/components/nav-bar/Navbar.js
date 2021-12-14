@@ -54,7 +54,7 @@ function Navbar() {
 			.getNotification(localStorage.getItem('id'))
 			.then((resp) => {
 				if (resp.isSuccess) {
-					dispatch({ type: GET_NOTIFICATION, payload: resp.data });
+					dispatch({ type: GET_NOTIFICATION, payload: resp?.data?.reverse() });
 				}
 			});
 	};

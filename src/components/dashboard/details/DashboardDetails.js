@@ -26,6 +26,7 @@ function DashboardDetails() {
 	const [selectedFile, setSelectedFile] = useState([]);
 	const [isSelected, setIsSelected] = useState(false);
 	const [snackbar, setSnackbar] = useState(false);
+	const [analysisDone, setAnalysisDone] = useState(false);
 	const [count, setCount] = useState(0);
 
 	const changeHandler = (event, i) => {
@@ -50,7 +51,7 @@ function DashboardDetails() {
 			review[0]?.input?.map((value, index) => {
 				formdata.append('files', value);
 			});
-			formdata.append('agent_name', 'waasi');
+			formdata.append('agent_name', review[0].agent);
 
 			var requestOptions = {
 				method: 'POST',
@@ -83,8 +84,12 @@ function DashboardDetails() {
 			'http://13.127.135.117:8080/api/generate-speech-to-text',
 			requestOptions
 		)
-			.then((response) => response.text())
-			.then((result) => console.log(result))
+			.then((response) => response.json())
+			.then((result) => {
+				if (result?.code === 200) {
+					setAnalysisDone(true);
+				}
+			})
 			.catch((error) => console.log('error', error));
 	};
 
@@ -106,6 +111,9 @@ function DashboardDetails() {
 		setSnackbar(false);
 	};
 
+	const handleGenerateAnalysisClose = () => {
+		setAnalysisDone(false);
+	};
 	// const handleSnackbarClose = () => {
 	// 	setOpen(false);
 	// };
@@ -215,9 +223,9 @@ function DashboardDetails() {
 															<MenuItem value=''>
 																<em>Select Agent</em>
 															</MenuItem>
-															<MenuItem value={10}>Jayanth</MenuItem>
-															<MenuItem value={20}>Wasi</MenuItem>
-															<MenuItem value={30}>Rajat</MenuItem>
+															<MenuItem value={'Jayant Raja'}>Jayanth</MenuItem>
+															<MenuItem value={'Wasi Muka'}>Wasi</MenuItem>
+															<MenuItem value={'Rajat Bansal'}>Rajat</MenuItem>
 														</Select>
 													</FormControl>
 													<IconButton>
@@ -276,6 +284,21 @@ function DashboardDetails() {
 						sx={{ width: '100%' }}
 					>
 						{`${count} calls got uploaded successfully`}
+					</Alert>
+				</Snackbar>
+
+				<Snackbar
+					open={analysisDone}
+					autoHideDuration={4000}
+					onClose={handleGenerateAnalysisClose}
+					action={action}
+				>
+					<Alert
+						onClose={handleGenerateAnalysisClose}
+						severity='success'
+						sx={{ width: '100%' }}
+					>
+						The analysis will be generated
 					</Alert>
 				</Snackbar>
 			</div>

@@ -12,21 +12,40 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_PERFORMANCE, SET_RATING } from '../../store/type';
 
+import TeamData from '../../data/team.json';
+
 function EmployeeManagement() {
 	const dispatch = useDispatch();
 	const { selectedUser } = useSelector((store) => store.user);
 	useEffect(() => {
-		if (selectedUser || localStorage.getItem('username')) {
+		let userName = selectedUser
+			? selectedUser?.name
+			: localStorage.getItem('email') === 'rajat.bansal@xebia.com'
+			? TeamData[0].name
+			: localStorage.getItem('username');
+		if (userName) {
 			(async () => {
 				const perRes = await Axios.post('/get-performance', {
-					agent_name: selectedUser?.name || localStorage.getItem('username'),
+					agent_name: userName,
 				});
 				if (perRes.isSuccess) {
 					dispatch({ type: SET_PERFORMANCE, payload: perRes.data });
 				}
 			})();
 		}
-	}, [selectedUser, localStorage.getItem('username')]);
+
+		// if (selectedUser || localStorage.getItem("username")) {
+		//   (async () => {
+		//     const perRes = await Axios.post("/get-performance", {
+		//       agent_name: selectedUser?.name || localStorage.getItem("username"),
+		//     });
+		//     if (perRes.isSuccess) {
+		//       dispatch({ type: SET_PERFORMANCE, payload: perRes.data });
+		//     }
+		//   })();
+		// }
+		//   }, [selectedUser, localStorage.getItem("username")]);
+	}, [selectedUser]);
 	return (
 		<div className='employee-management-body-layout'>
 			<Card className='employee-management-card-layout'>

@@ -11,25 +11,27 @@ import PerformanceCardImprove from '../performance-card-improve/PerformanceCardI
 import PerformanceCardExcellence from '../performance-card-excellence/PerformanceCardExcellence';
 import PerformanceCardProvideFeedback from '../performance-card-provide-feedback-button/PerformanceCardProvideFeedback';
 import { useSelector } from 'react-redux';
+import TeamData from '../../../data/team.json';
 
 function PerformanceCard() {
 	const { performance, selectedUser } = useSelector((store) => store.user);
-	const viewName = ()=>{
-		if(selectedUser?.name){
+	const viewName = () => {
+		if (selectedUser?.name) {
 			return selectedUser?.name + "'s";
-		}else if(localStorage.getItem('username')){
-			return localStorage.getItem('username') + "'s";
-		}else{
-			return '';
 		}
-	}
+		// else if(localStorage.getItem('username')){
+		// 	return localStorage.getItem('username') + "'s";
+		// }
+		else {
+			return localStorage.getItem('email') === 'rajat.bansal@xebia.com'
+				? TeamData[0].name + "'s"
+				: localStorage.getItem('username') + "'s";
+		}
+	};
 	return (
 		<Card className='performance-card-layout'>
 			<div className='performance-card-header'>
-				<Typography variant='h6'>
-					Viewing {viewName()}{' '}
-					Performance:
-				</Typography>
+				<Typography variant='h6'>Viewing {viewName()} Performance:</Typography>
 				{localStorage.getItem('email') === 'rajat.bansal@xebia.com' && (
 					<PerformanceCardProvideFeedback />
 				)}
