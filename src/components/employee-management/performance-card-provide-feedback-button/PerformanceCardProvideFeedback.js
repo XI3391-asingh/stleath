@@ -34,15 +34,20 @@ function PerformanceCardProvideFeedback() {
 	const handleClose = () => {
 		setOpen(false);
 	};
-	const {selectedUser} = useSelector( store => store.user);
+	const { selectedUser } = useSelector((store) => store.user);
 
-	const handleSubmit = async () =>{
-		const res = await Axios.post('/add-feedback', {feedback: feedback, feedback_type: review, recipient_id: selectedUser.name});
-		if(res.isSuccess){
-			dispatch({type: SET_RELOAD_FEEDBACK, payload: true});
+	const handleSubmit = async () => {
+		const res = await Axios.post('/add-feedback', {
+			feedback: feedback,
+			feedback_type: review,
+			recipient_id: selectedUser.name,
+			sender_id: localStorage.getItem('recipient_name'),
+		});
+		if (res.isSuccess) {
+			dispatch({ type: SET_RELOAD_FEEDBACK, payload: true });
 			handleClose();
-		} 
-	}
+		}
+	};
 
 	return (
 		<div>
@@ -80,9 +85,9 @@ function PerformanceCardProvideFeedback() {
 								<MenuItem value=''>
 									<em>Review</em>
 								</MenuItem>
-								<MenuItem value={'MONTHLY'}>Monthly</MenuItem>
-								<MenuItem value={'QUATERLY'}>Quarterly</MenuItem>
-								<MenuItem value={'YEARLY'}>Yearly</MenuItem>
+								<MenuItem value={'Monthly'}>Monthly</MenuItem>
+								<MenuItem value={'Quarterly'}>Quarterly</MenuItem>
+								<MenuItem value={'Yearly'}>Yearly</MenuItem>
 							</Select>
 						</FormControl>
 					</div>
@@ -95,7 +100,7 @@ function PerformanceCardProvideFeedback() {
 									placeholder='Placeholder'
 									multiline
 									fullWidth
-									onChange={(e)=> setFeedback(e.target.value)}
+									onChange={(e) => setFeedback(e.target.value)}
 								/>
 							</div>
 						</Box>

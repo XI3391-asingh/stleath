@@ -22,9 +22,10 @@
 .single-notification-message-source {
 	padding-right: 1rem;
 	align-self: center;
-	font-style: italic;
+	/* font-style: italic; */
 	font-weight: 600;
 	width: 14%;
+	text-transform: capitalize;
 }
 
 .single-notification-message-container {

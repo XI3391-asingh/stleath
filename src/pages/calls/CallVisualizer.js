@@ -26,11 +26,10 @@ function CallVisualizer() {
 	let query = new URLSearchParams(path?.search);
 	let callidquery = query.get('id');
 	const [call, setCall] = useState({});
-	console.log(callidquery);
 
 	useEffect(() => {
 		getCall();
-	}, []);
+	}, [callidquery]);
 
 	const getCall = () => {
 		fetch('http://13.127.135.117:8080/api/get-report', {
@@ -38,6 +37,8 @@ function CallVisualizer() {
 		})
 			.then((response) => response.json())
 			.then(async (result) => {
+				console.log(callidquery);
+
 				if (result?.code === 200) {
 					let feeddata = result?.data;
 					if (feeddata?.length) {

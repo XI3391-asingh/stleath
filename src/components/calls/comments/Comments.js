@@ -14,7 +14,7 @@ function Comments({ callid }) {
 
 	useEffect(() => {
 		getCallDetails();
-	}, []);
+	}, [callid]);
 
 	const getCallDetails = () => {
 		fetch('http://13.127.135.117:8080/api/get-call-details/' + callid, {

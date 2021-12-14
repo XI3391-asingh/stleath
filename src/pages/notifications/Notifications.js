@@ -10,32 +10,28 @@ import {
 import React, { useEffect } from 'react';
 import SingleNotification from '../../components/notification/SingleNotification';
 import PageNumber from '../../components/shared-components/pagination/PageNumber';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { GET_NOTIFICATION } from '../../store/type';
+import notificationService from '../../service/notifications';
 import './styles.css';
 
 function Notifications() {
-	const [notificationData, setNotificationData] = React.useState([]);
+	const dispatch = useDispatch();
+	//   const [notificationData, setNotificationData] = React.useState([]);
+	const { notification } = useSelector((store) => store.notification);
 
-	useEffect(() => {
-		getNotification();
-	}, []);
+	// useEffect(() => {
+	// 	getNotification();
+	// }, []);
 
 	const getNotification = () => {
-		fetch(
-			'http://13.127.135.117:8080/api/get-notification?recipient_id=' +
-				localStorage.getItem('id'),
-			{
-				method: 'GET',
-			}
-		)
-			.then((response) => response.json())
-			.then(async (result) => {
-				if (result?.code === 200) {
-					let data = result?.data;
-					setNotificationData(data);
+		notificationService
+			.getNotification(localStorage.getItem('id'))
+			.then((resp) => {
+				if (resp.isSuccess) {
+					dispatch({ type: GET_NOTIFICATION, payload: resp.data });
 				}
-			})
-			.catch((error) => console.log('error', error));
+			});
 	};
 
 	const handleMarkReadNotification = () => {
@@ -74,17 +70,18 @@ function Notifications() {
 				</div>
 				{/* <Divider /> */}
 				<div>
-					{notificationData?.map((data, index) => {
-						return (
-							<SingleNotification
-								key={index}
-								message={data?.message}
-								call_id={data?.call_id}
-								date={data?.createdAt}
-								sender_id={data?.sender_id}
-							/>
-						);
-					})}
+					{notification?.length > 0 &&
+						notification?.map((data, index) => {
+							return (
+								<SingleNotification
+									key={index}
+									message={data?.message}
+									call_id={data?.call_id}
+									date={data?.createdAt}
+									sender_id={data?.sender_id}
+								/>
+							);
+						})}
 				</div>
 				<div>
 					<Stack spacing={2}>
