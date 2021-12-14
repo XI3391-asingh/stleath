@@ -30,7 +30,9 @@ function PerformanceCard() {
 					Viewing {viewName()}{' '}
 					Performance:
 				</Typography>
-				<PerformanceCardProvideFeedback />
+				{localStorage.getItem('email') === 'rajat.bansal@xebia.com' && (
+					<PerformanceCardProvideFeedback />
+				)}
 				<PerformanceCardFilters />
 			</div>
 			{/* <Divider /> */}

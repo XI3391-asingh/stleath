@@ -26,7 +26,7 @@ function Notifications() {
 
 	const getNotification = () => {
 		notificationService
-			.getNotification(localStorage.getItem('id'))
+			.getNotification(localStorage.getItem('username'))
 			.then((resp) => {
 				if (resp.isSuccess) {
 					dispatch({ type: GET_NOTIFICATION, payload: resp.data });
