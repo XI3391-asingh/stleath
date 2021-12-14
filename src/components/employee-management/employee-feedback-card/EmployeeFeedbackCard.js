@@ -36,7 +36,7 @@ function EmployeeFeedbackCard() {
 					<EmployeeManagementFeedback {...feedback} />
 				))
 			) : (
-				<div className='employee-feedback-card-title'>
+				<div className='employee-feedback-card-subtitle'>
 					<Typography variant='subtitle1'>No Feedback Yet</Typography>
 				</div>
 			)}
