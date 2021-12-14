@@ -14,11 +14,20 @@ import { useSelector } from 'react-redux';
 
 function PerformanceCard() {
 	const { performance, selectedUser } = useSelector((store) => store.user);
+	const viewName = ()=>{
+		if(selectedUser?.name){
+			return selectedUser?.name + "'s";
+		}else if(localStorage.getItem('username')){
+			return localStorage.getItem('username') + "'s";
+		}else{
+			return '';
+		}
+	}
 	return (
 		<Card className='performance-card-layout'>
 			<div className='performance-card-header'>
 				<Typography variant='h6'>
-					Viewing {selectedUser?.name || localStorage.getItem('username')}{' '}
+					Viewing {viewName()}{' '}
 					Performance:
 				</Typography>
 				<PerformanceCardProvideFeedback />
