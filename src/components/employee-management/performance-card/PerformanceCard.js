@@ -13,12 +13,13 @@ import PerformanceCardProvideFeedback from '../performance-card-provide-feedback
 import { useSelector } from 'react-redux';
 
 function PerformanceCard() {
-	const { performance, selectedUser } = useSelector(store => store.user);
+	const { performance, selectedUser } = useSelector((store) => store.user);
 	return (
 		<Card className='performance-card-layout'>
 			<div className='performance-card-header'>
 				<Typography variant='h6'>
-					Viewing {selectedUser?.name || "Rajat Bansal's"} Performance:
+					Viewing {selectedUser?.name || localStorage.getItem('username')}{' '}
+					Performance:
 				</Typography>
 				<PerformanceCardProvideFeedback />
 				<PerformanceCardFilters />

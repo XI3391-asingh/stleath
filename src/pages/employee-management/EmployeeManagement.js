@@ -16,17 +16,17 @@ function EmployeeManagement() {
 	const dispatch = useDispatch();
 	const { selectedUser } = useSelector((store) => store.user);
 	useEffect(() => {
-		if (selectedUser) {
+		if (selectedUser || localStorage.getItem('username')) {
 			(async () => {
 				const perRes = await Axios.post('/get-performance', {
-					agent_name: selectedUser.name,
+					agent_name: selectedUser?.name || localStorage.getItem('username'),
 				});
 				if (perRes.isSuccess) {
 					dispatch({ type: SET_PERFORMANCE, payload: perRes.data });
 				}
 			})();
 		}
-	}, [selectedUser]);
+	}, [selectedUser, localStorage.getItem('username')]);
 	return (
 		<div className='employee-management-body-layout'>
 			<Card className='employee-management-card-layout'>

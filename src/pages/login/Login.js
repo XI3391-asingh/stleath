@@ -10,41 +10,38 @@ function Login() {
 			email: 'rajat.bansal@xebia.com',
 			password: 'Rajat Bansal',
 			id: 1,
-			username: 'admin',
+			username: 'Rajat Bansal',
 		},
 		{
 			email: 'wasi.muka@xebia.com',
 			password: 'Wasi Muka',
 			id: 2,
-			username: 'user1',
+			username: 'Wasi',
 		},
 		{
 			email: 'jayanth.valluru@xebia.com',
 			password: 'Jayanth Valluru',
 			id: 3,
-			username: 'user2',
+			username: 'Jayant',
 		},
 	];
 
 	const [error, setError] = useState('');
 
 	const Login = (details) => {
+		let findUser = adminUser.find((e) => e.email === details.email);
+		let notUser = adminUser.find((e) => e.email !== details.email);
 		if (
-			details.email ==
-				adminUser.find((e) => e.email === details.email)?.email &&
-			details.password ==
-				adminUser.find((e) => e.password === details.password)?.password
+			details.email == findUser?.email &&
+			details.password == findUser?.password
 		) {
 			setError('');
-			localStorage.setItem('email', details.email);
-			localStorage.setItem(
-				'id',
-				adminUser.find((e) => e.email === details.email)?.id
-			);
-			localStorage.setItem(
-				'recipient_id',
-				adminUser.find((e) => e.email !== details.email)?.id
-			);
+			localStorage.setItem('email', findUser?.email);
+			localStorage.setItem('id', findUser?.id);
+			localStorage.setItem('username', findUser?.username);
+			localStorage.setItem('recipient_id', notUser?.id);
+			localStorage.setItem('recipient_name', notUser?.username);
+
 			history.replace('/dashboard');
 		} else {
 			setError('details donot match');

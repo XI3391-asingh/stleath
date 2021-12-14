@@ -9,24 +9,34 @@ import { useSelector } from 'react-redux';
 import Axios from '../../../http/Axios';
 
 function EmployeeFeedbackCard() {
-	const {relodeFeedback, selectedUser} = useSelector(store => store.user);
+	const { relodeFeedback, selectedUser } = useSelector((store) => store.user);
 	const [feedbacks, setFeedback] = useState([]);
-	useEffect(async () =>{
-		if(selectedUser?.name){
-			(async ()=>{
-				const res = await Axios.post('/get-feedback', {recipient_id: selectedUser.name});
-				if(res.isSuccess){
+	useEffect(async () => {
+		if (selectedUser?.name || localStorage.getItem('username')) {
+			(async () => {
+				const res = await Axios.post('/get-feedback', {
+					recipient_id: selectedUser?.name || localStorage.getItem('username'),
+				});
+				if (res.isSuccess) {
 					setFeedback(res.data);
 				}
 			})();
 		}
-	}, [relodeFeedback, selectedUser])
+	}, [relodeFeedback, selectedUser, localStorage.getItem('username')]);
 	return (
 		<div>
 			<div className='employee-feedback-card-title'>
 				<Typography variant='subtitle1'>Continuous Feedback:</Typography>
 			</div>
-			{feedbacks.map(feedback => <EmployeeManagementFeedback {...feedback} />)}
+			{feedbacks?.length ? (
+				feedbacks.map((feedback) => (
+					<EmployeeManagementFeedback {...feedback} />
+				))
+			) : (
+				<div className='employee-feedback-card-title'>
+					<Typography variant='subtitle1'>No Feedback Yet</Typography>
+				</div>
+			)}
 			{/* <EmployeeManagementFeedback />
 			<EmployeeManagementFeedback />
 			<EmployeeManagementFeedback /> */}

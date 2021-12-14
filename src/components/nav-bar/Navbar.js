@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import {
 	AppBar,
@@ -26,38 +27,36 @@ import { Box } from '@mui/system';
 import moment from 'moment';
 
 import LogoutButton from '../logout/LogoutButton';
-
 import './styles.css';
 
+import notificationService from '../../service/notifications';
+import { useDispatch, useSelector } from 'react-redux';
+import { GET_NOTIFICATION } from '../../store/type';
+
 function Navbar() {
-	let dateTime = moment().format('lll');
+	const dispatch = useDispatch();
+	let history = useHistory();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [notificationAnchorEl, setNotificationAnchorEl] = React.useState(null);
-	const [notificationData, setNotificationData] = React.useState([]);
-
 	const isMenuOpen = Boolean(anchorEl);
 	const isNotificationMenuOpen = Boolean(notificationAnchorEl);
+	const { notification } = useSelector((store) => store.notification);
 
 	useEffect(() => {
 		getNotification();
+		setInterval(() => {
+			getNotification();
+		}, 10000);
 	}, []);
 
 	const getNotification = () => {
-		fetch(
-			'http://13.127.135.117:8080/api/get-notification?recipient_id=' +
-				localStorage.getItem('id'),
-			{
-				method: 'GET',
-			}
-		)
-			.then((response) => response.json())
-			.then(async (result) => {
-				if (result?.code === 200) {
-					let data = result?.data;
-					setNotificationData(data);
+		notificationService
+			.getNotification(localStorage.getItem('id'))
+			.then((resp) => {
+				if (resp.isSuccess) {
+					dispatch({ type: GET_NOTIFICATION, payload: resp.data });
 				}
-			})
-			.catch((error) => console.log('error', error));
+			});
 	};
 
 	const handleProfileMenuOpen = (event) => {
@@ -166,10 +165,15 @@ function Navbar() {
 					</Button>
 				</MenuItem>
 				<Divider />
-				{notificationData?.slice(0, 5)?.map((data, index) => {
+				{notification?.slice(0, 5)?.map((data, index) => {
 					return (
 						<>
-							<MenuItem className='appbar-notification-menu-list-notification-item'>
+							<MenuItem
+								className='appbar-notification-menu-list-notification-item'
+								onClick={() => {
+									history.push(`/call-visualizer?id=${data?.call_id}`);
+								}}
+							>
 								<div className='appbar-notification-menu-notification-container'>
 									<div className='appbar-notification-menu-notification-icon-container'>
 										<FiberManualRecordIcon className='appbar-notification-menu-notification-icon' />
@@ -191,102 +195,11 @@ function Navbar() {
 									</Typography>
 								</div>
 							</MenuItem>
+							{/* </Link> */}
 							<Divider />
 						</>
 					);
 				})}
-				{/* <MenuItem className="appbar-notification-menu-list-notification-item">
-          <div className="appbar-notification-menu-notification-container">
-            <div className="appbar-notification-menu-notification-icon-container">
-              <FiberManualRecordIcon className="appbar-notification-menu-notification-icon" />
-            </div>
-            <Typography
-              variant="body2"
-              className="appbar-notification-menu-notification-message"
-            >
-              Jayanth Commented on your call dated 25th, October 2021:
-              CallID-0747
-            </Typography>
-          </div>
-          <div className="appbar-notification-menu-notification-time-container">
-            <Typography
-              variant="caption"
-              className="appbar-notification-menu-notification-time"
-            >
-              {dateTime}
-            </Typography>
-          </div>
-        </MenuItem>
-        <Divider />
-        <MenuItem className="appbar-notification-menu-list-notification-item">
-          <div className="appbar-notification-menu-notification-container">
-            <div className="appbar-notification-menu-notification-icon-container">
-              <FiberManualRecordIcon className="appbar-notification-menu-notification-icon" />
-            </div>
-            <Typography
-              variant="body2"
-              className="appbar-notification-menu-notification-message"
-            >
-              Jayanth Commented on your call dated 25th, October 2021:
-              CallID-0747
-            </Typography>
-          </div>
-          <div className="appbar-notification-menu-notification-time-container">
-            <Typography
-              variant="caption"
-              className="appbar-notification-menu-notification-time"
-            >
-              {dateTime}
-            </Typography>
-          </div>
-        </MenuItem>
-        <Divider />
-        <MenuItem className="appbar-notification-menu-list-notification-item">
-          <div className="appbar-notification-menu-notification-container">
-            <div className="appbar-notification-menu-notification-icon-container">
-              <FiberManualRecordIcon className="appbar-notification-menu-notification-icon" />
-            </div>
-            <Typography
-              variant="body2"
-              className="appbar-notification-menu-notification-message"
-            >
-              Jayanth Commented on your call dated 25th, October 2021:
-              CallID-0747
-            </Typography>
-          </div>
-          <div className="appbar-notification-menu-notification-time-container">
-            <Typography
-              variant="caption"
-              className="appbar-notification-menu-notification-time"
-            >
-              {dateTime}
-            </Typography>
-          </div>
-        </MenuItem>
-        <Divider />
-        <MenuItem className="appbar-notification-menu-list-notification-item">
-          <div className="appbar-notification-menu-notification-container">
-            <div className="appbar-notification-menu-notification-icon-container">
-              <FiberManualRecordIcon className="appbar-notification-menu-notification-icon" />
-            </div>
-            <Typography
-              variant="body2"
-              className="appbar-notification-menu-notification-message"
-            >
-              Jayanth Commented on your call dated 25th, October 2021:
-              CallID-0747
-            </Typography>
-          </div>
-          <div className="appbar-notification-menu-notification-time-container">
-            <Typography
-              variant="caption"
-              className="appbar-notification-menu-notification-time"
-            >
-              {dateTime}
-            </Typography>
-          </div>
-        </MenuItem>
-        <Divider /> */}
 			</MenuList>
 			<div className='appbar-notification-menu-see-all-notifications'>
 				<Link to='/notifications'>
@@ -387,8 +300,8 @@ function Navbar() {
 								onClick={handleNotificationMenuOpen}
 								color='inherit'
 							>
-								{notificationData.length > 0 ? (
-									<Badge badgeContent={notificationData?.length} color='error'>
+								{notification.length > 0 ? (
+									<Badge badgeContent={notification?.length} color='error'>
 										<NotificationsIcon className='appbar-icons' />
 									</Badge>
 								) : (
