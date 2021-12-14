@@ -50,7 +50,7 @@ function DashboardDetails() {
 			review[0]?.input?.map((value, index) => {
 				formdata.append('files', value);
 			});
-			formdata.append('agent_name', 'waasi');
+			formdata.append('agent_name', review[0].agent);
 
 			var requestOptions = {
 				method: 'POST',
@@ -215,9 +215,9 @@ function DashboardDetails() {
 															<MenuItem value=''>
 																<em>Select Agent</em>
 															</MenuItem>
-															<MenuItem value={10}>Jayanth</MenuItem>
-															<MenuItem value={20}>Wasi</MenuItem>
-															<MenuItem value={30}>Rajat</MenuItem>
+															<MenuItem value={'Jayant Raja'}>Jayanth</MenuItem>
+															<MenuItem value={'Wasi Muka'}>Wasi</MenuItem>
+															<MenuItem value={'Rajat Bansal'}>Rajat</MenuItem>
 														</Select>
 													</FormControl>
 													<IconButton>
