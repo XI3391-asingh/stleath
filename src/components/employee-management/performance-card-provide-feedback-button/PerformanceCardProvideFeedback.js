@@ -41,7 +41,7 @@ function PerformanceCardProvideFeedback() {
 			feedback: feedback,
 			feedback_type: review,
 			recipient_id: selectedUser.name,
-			sender_id: localStorage.getItem('recipient_name'),
+			sender_id: localStorage.getItem('username'),
 		});
 		if (res.isSuccess) {
 			dispatch({ type: SET_RELOAD_FEEDBACK, payload: true });
