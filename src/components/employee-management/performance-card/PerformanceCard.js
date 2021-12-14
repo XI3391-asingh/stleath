@@ -21,7 +21,9 @@ function PerformanceCard() {
 					Viewing {selectedUser?.name || localStorage.getItem('username')}{' '}
 					Performance:
 				</Typography>
-				<PerformanceCardProvideFeedback />
+				{localStorage.getItem('email') === 'rajat.bansal@xebia.com' && (
+					<PerformanceCardProvideFeedback />
+				)}
 				<PerformanceCardFilters />
 			</div>
 			{/* <Divider /> */}
