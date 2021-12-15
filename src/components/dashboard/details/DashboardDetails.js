@@ -275,12 +275,13 @@ function DashboardDetails() {
 				{/* <DashboardSnackbar /> */}
 
 				<Snackbar
-					anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+					anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
 					key={vertical + horizontal}
 					open={snackbar}
 					autoHideDuration={4000}
 					onClose={handleSnackbarClose}
 					action={action}
+					className='dashboard-details-upload-snackbar'
 				>
 					<Alert
 						onClose={handleSnackbarClose}
@@ -292,12 +293,13 @@ function DashboardDetails() {
 				</Snackbar>
 
 				<Snackbar
-					anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+					anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
 					key={vertical + horizontal}
 					open={analysisDone}
 					autoHideDuration={4000}
 					onClose={handleGenerateAnalysisClose}
 					action={action}
+					className='dashboard-details-upload-snackbar'
 				>
 					<Alert
 						onClose={handleGenerateAnalysisClose}
