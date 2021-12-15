@@ -39,7 +39,7 @@ function Notifications() {
 		myHeaders.append('Content-Type', 'application/json');
 
 		var raw = JSON.stringify({
-			recipient_id: localStorage.getItem('id'),
+			recipient_id: localStorage.getItem('username'),
 		});
 		var requestOptions = {
 			method: 'POST',

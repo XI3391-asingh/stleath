@@ -39,7 +39,7 @@ function Login() {
 			localStorage.setItem('email', findUser?.email);
 			localStorage.setItem('id', findUser?.id);
 			localStorage.setItem('username', findUser?.username);
-			localStorage.setItem('recipient_id', notUser?.id);
+			localStorage.setItem('recipient_id', notUser?.username);
 			localStorage.setItem('recipient_name', notUser?.username);
 
 			history.replace('/dashboard');
