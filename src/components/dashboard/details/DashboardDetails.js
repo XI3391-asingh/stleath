@@ -26,6 +26,7 @@ function DashboardDetails() {
 	const [selectedFile, setSelectedFile] = useState([]);
 	const [isSelected, setIsSelected] = useState(false);
 	const [snackbar, setSnackbar] = useState(false);
+	const [analysisDone, setAnalysisDone] = useState(false);
 	const [count, setCount] = useState(0);
 
 	const changeHandler = (event, i) => {
@@ -83,8 +84,12 @@ function DashboardDetails() {
 			'http://13.127.135.117:8080/api/generate-speech-to-text',
 			requestOptions
 		)
-			.then((response) => response.text())
-			.then((result) => console.log(result))
+			.then((response) => response.json())
+			.then((result) => {
+				if (result?.code === 200) {
+					setAnalysisDone(true);
+				}
+			})
 			.catch((error) => console.log('error', error));
 	};
 
@@ -106,6 +111,9 @@ function DashboardDetails() {
 		setSnackbar(false);
 	};
 
+	const handleGenerateAnalysisClose = () => {
+		setAnalysisDone(false);
+	};
 	// const handleSnackbarClose = () => {
 	// 	setOpen(false);
 	// };
@@ -276,6 +284,21 @@ function DashboardDetails() {
 						sx={{ width: '100%' }}
 					>
 						{`${count} calls got uploaded successfully`}
+					</Alert>
+				</Snackbar>
+
+				<Snackbar
+					open={analysisDone}
+					autoHideDuration={4000}
+					onClose={handleGenerateAnalysisClose}
+					action={action}
+				>
+					<Alert
+						onClose={handleGenerateAnalysisClose}
+						severity='success'
+						sx={{ width: '100%' }}
+					>
+						The analysis will be generated
 					</Alert>
 				</Snackbar>
 			</div>
