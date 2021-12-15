@@ -3,18 +3,17 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import { Doughnut } from 'react-chartjs-2';
 
-const state = {
-	labels: [],
-	datasets: [
-		{
-			label: 'Review',
-			backgroundColor: ['rgba(0, 255, 0, 0.5)'],
-			data: [153],
-		},
-	],
-};
-
 function PerformanceCardSentiment(props) {
+	const state = {
+		labels: [],
+		datasets: [
+			{
+				label: 'Review',
+				backgroundColor: ['rgba(0, 255, 0, 0.5)'],
+				data: [props.score],
+			},
+		],
+	};
 	return (
 		<div style={{ width: '220px', height: '220px', position: 'relative' }}>
 			<Doughnut
