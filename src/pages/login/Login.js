@@ -44,7 +44,7 @@ function Login() {
 
 			history.replace('/dashboard');
 		} else {
-			setError('details donot match');
+			setError(<div style={{ color: `red` }}>Invalid Email or Password!!</div>);
 		}
 	};
 
@@ -53,6 +53,8 @@ function Login() {
 			style={{
 				display: 'flow-root',
 				flexGrow: '1',
+				backgroundColor: '#F3EBF6',
+				height: '100vh',
 			}}
 		>
 			<LoginForm Login={Login} error={error} />
