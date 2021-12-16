@@ -38,7 +38,7 @@
 
 .appbar-pages {
 	color: white !important;
-	margin: 0 1rem !important;
+	margin: 0 0.5rem !important;
 }
 
 .appbar-pending-page-notification {
@@ -48,7 +48,7 @@
 
 .appbar-pending-pages {
 	color: white !important;
-	margin: 0 1rem !important;
+	margin: 0 0.5rem !important;
 	line-height: normal !important;
 }
 
@@ -155,8 +155,9 @@
 }
 
 .active {
-	border-radius: 10px;
+	border-radius: 1rem;
 	background-color: white;
 	color: #6c1d5f !important;
 	min-width: 8rem;
+	padding: 0 1rem;
 }
