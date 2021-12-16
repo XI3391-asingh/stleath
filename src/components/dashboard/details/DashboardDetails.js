@@ -29,6 +29,8 @@ function DashboardDetails() {
 	const [analysisDone, setAnalysisDone] = useState(false);
 	const [count, setCount] = useState(0);
 
+	const { vertical, horizontal, openSnackbar } = snackbar;
+
 	const changeHandler = (event, i) => {
 		const values = [...review];
 		let filesarr = [];
@@ -66,7 +68,7 @@ function DashboardDetails() {
 					if (result?.code === 200) {
 						setReview([{ input: '', agent: '' }]);
 						handleClose();
-						setSnackbar(true);
+						setSnackbar({ openSnackbar: true });
 						setCount(result?.data?.length);
 					}
 				})
@@ -273,10 +275,13 @@ function DashboardDetails() {
 				{/* <DashboardSnackbar /> */}
 
 				<Snackbar
+					anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+					key={vertical + horizontal}
 					open={snackbar}
 					autoHideDuration={4000}
 					onClose={handleSnackbarClose}
 					action={action}
+					className='dashboard-details-upload-snackbar'
 				>
 					<Alert
 						onClose={handleSnackbarClose}
@@ -288,10 +293,13 @@ function DashboardDetails() {
 				</Snackbar>
 
 				<Snackbar
+					anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+					key={vertical + horizontal}
 					open={analysisDone}
 					autoHideDuration={4000}
 					onClose={handleGenerateAnalysisClose}
 					action={action}
+					className='dashboard-details-upload-snackbar'
 				>
 					<Alert
 						onClose={handleGenerateAnalysisClose}

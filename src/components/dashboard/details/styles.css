@@ -61,6 +61,10 @@
 	align-items: baseline !important;
 }
 
+.dashboard-details-upload-snackbar {
+	margin: 5rem 0 0 12rem;
+}
+
 /* .dashboard-file input[type='file'] {
 	width: 100px;
 	color: transparent;

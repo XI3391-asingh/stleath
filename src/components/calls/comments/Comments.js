@@ -36,7 +36,7 @@ function Comments({ callid }) {
 		var raw = JSON.stringify({
 			call_id: parseInt(callid),
 			comment: value,
-			commented_by: 'wasi',
+			commented_by: localStorage.getItem('username'),
 			recipient_id: localStorage.getItem('recipient_id'),
 		});
 		var requestOptions = {

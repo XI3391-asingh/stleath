@@ -15,14 +15,18 @@ function LoginForm({ Login, error }) {
 
 	return (
 		<div className='login-form-card-layout'>
+			<Typography variant='h3' className='login-form-heading'>
+				Stealth
+			</Typography>
 			<Card className='login-form-card'>
 				<form onSubmit={submitHandler}>
 					<div>
 						<div className='login-form-header'>
-							<Typography variant='h5'>Log In</Typography>
+							<Typography variant='h5' className='login-form-card-title'>
+								Log In
+							</Typography>
 						</div>
 						<div className='login-form-elements'>
-							{error !== '' ? <div>{error}</div> : ''}
 							<label>Email:</label>
 							<input
 								type='text'
@@ -32,6 +36,7 @@ function LoginForm({ Login, error }) {
 									setDetails({ ...details, email: e.target.value })
 								}
 								value={details.email}
+								className='login-form-input'
 							/>
 						</div>
 						<div className='login-form-elements'>
@@ -44,17 +49,21 @@ function LoginForm({ Login, error }) {
 									setDetails({ ...details, password: e.target.value })
 								}
 								value={details.password}
+								className='login-form-input'
 							/>
 						</div>
+						{error !== '' ? <div>{error}</div> : ''}
 						<div>
 							<Button
 								type='submit'
 								variant='contained'
 								onSubmit={submitHandler}
+								className='login-form-submit-button'
 							>
 								Log In
 							</Button>
 						</div>
+						{/* {error !== '' ? <div>{error}</div> : ''} */}
 					</div>
 				</form>
 			</Card>

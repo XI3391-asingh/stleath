@@ -39,12 +39,12 @@ function Login() {
 			localStorage.setItem('email', findUser?.email);
 			localStorage.setItem('id', findUser?.id);
 			localStorage.setItem('username', findUser?.username);
-			localStorage.setItem('recipient_id', notUser?.id);
+			localStorage.setItem('recipient_id', notUser?.username);
 			localStorage.setItem('recipient_name', notUser?.username);
 
 			history.replace('/dashboard');
 		} else {
-			setError('details donot match');
+			setError(<div style={{ color: `red` }}>Invalid Email or Password!!</div>);
 		}
 	};
 
@@ -53,6 +53,8 @@ function Login() {
 			style={{
 				display: 'flow-root',
 				flexGrow: '1',
+				backgroundColor: '#F3EBF6',
+				height: '100vh',
 			}}
 		>
 			<LoginForm Login={Login} error={error} />
