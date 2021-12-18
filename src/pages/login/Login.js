@@ -1,51 +1,62 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import LoginForm from '../../components/login/LoginForm';
+import { useDispatch } from 'react-redux';
+import { LOGIN_USER } from '../../store/type';
+import authService from '../../service/auth';
 
 function Login() {
 	let history = useHistory();
-	const adminUser = [
-		{
-			email: 'rajat.bansal@xebia.com',
-			password: 'Rajat Bansal',
-			id: 1,
-			username: 'Rajat Bansal',
-		},
-		{
-			email: 'wasi.muka@xebia.com',
-			password: 'Wasi Muka',
-			id: 2,
-			username: 'Wasi Muka',
-		},
-		{
-			email: 'jayanth.valluru@xebia.com',
-			password: 'Jayanth Valluru',
-			id: 3,
-			username: 'Jayant Raja',
-		},
-	];
-
+	const dispatch = useDispatch();
 	const [error, setError] = useState('');
 
-	const Login = (details) => {
-		let findUser = adminUser.find((e) => e.email === details.email);
-		let notUser = adminUser.find((e) => e.email !== details.email);
-		if (
-			details.email == findUser?.email &&
-			details.password == findUser?.password
-		) {
-			setError('');
-			localStorage.setItem('email', findUser?.email);
-			localStorage.setItem('id', findUser?.id);
-			localStorage.setItem('username', findUser?.username);
-			localStorage.setItem('recipient_id', notUser?.username);
-			localStorage.setItem('recipient_name', notUser?.username);
+	//   const adminUser = [
+	//     {
+	//       email: "rajat.bansal@xebia.com",
+	//       password: "Rajat Bansal",
+	//       id: 1,
+	//       username: "Rajat Bansal",
+	//     },
+	//     {
+	//       email: "wasi.muka@xebia.com",
+	//       password: "Wasi Muka",
+	//       id: 2,
+	//       username: "Wasi Muka",
+	//     },
+	//     {
+	//       email: "jayanth.valluru@xebia.com",
+	//       password: "Jayanth Valluru",
+	//       id: 3,
+	//       username: "Jayant Raja",
+	//     },
+	//   ];
 
-			history.replace('/dashboard');
-		} else {
-			setError(<div style={{ color: `red` }}>Invalid Email or Password!!</div>);
-		}
+	const Login = (details) => {
+		authService
+			.login({
+				email: details.email,
+				password: details.password,
+			})
+			.then((resp) => {
+				if (resp.isSuccess) {
+					dispatch({ type: LOGIN_USER, payload: resp?.data });
+					setError('');
+					localStorage.setItem('access_token', resp?.data?.access_token);
+					//   localStorage.setItem("user", JSON.stringify(resp?.data?.user));
+					localStorage.setItem('username', resp?.data?.user?.user_name);
+					localStorage.setItem('id', resp?.data?.user?.id);
+					localStorage.setItem(
+						'userable_type',
+						resp?.data?.user?.userable_type
+					);
+					history.replace('/dashboard');
+				}
+			})
+			.catch((error) => {
+				setError(
+					<div style={{ color: `red` }}>Invalid Email or Password!!</div>
+				);
+			});
 	};
 
 	return (

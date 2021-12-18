@@ -8,7 +8,7 @@ import '../styles.css';
 import SingleComment from './SingleComment';
 import CommentsData from '../../../data/comments.json';
 
-function Comments({ callid }) {
+function Comments({ callid, agent_name }) {
 	const [state, setState] = useState([]);
 	const [value, setValue] = useState('');
 
@@ -19,6 +19,10 @@ function Comments({ callid }) {
 	const getCallDetails = () => {
 		fetch('http://13.127.135.117:8080/api/get-call-details/' + callid, {
 			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+			},
 		})
 			.then((response) => response.json())
 			.then((result) => {
@@ -37,7 +41,7 @@ function Comments({ callid }) {
 			call_id: parseInt(callid),
 			comment: value,
 			commented_by: localStorage.getItem('username'),
-			recipient_id: localStorage.getItem('recipient_id'),
+			recipient_id: agent_name,
 		});
 		var requestOptions = {
 			method: 'POST',

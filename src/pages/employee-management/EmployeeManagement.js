@@ -20,14 +20,24 @@ function EmployeeManagement() {
 	useEffect(() => {
 		let userName = selectedUser
 			? selectedUser?.name
-			: localStorage.getItem('email') === 'rajat.bansal@xebia.com'
+			: localStorage.getItem('userable_type').toLowerCase() === 'manager'
 			? TeamData[0].name
 			: localStorage.getItem('username');
 		if (userName) {
 			(async () => {
-				const perRes = await Axios.post('/get-performance', {
-					agent_name: userName,
-				});
+				const headers = {
+					'Content-Type': 'application/json',
+					Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+				};
+				const perRes = await Axios.post(
+					'/get-performance',
+					{
+						agent_name: userName,
+					},
+					{
+						headers: headers,
+					}
+				);
 				if (perRes.isSuccess) {
 					dispatch({ type: SET_PERFORMANCE, payload: perRes.data });
 				}
@@ -54,9 +64,8 @@ function EmployeeManagement() {
 				</Card> */}
 				<EmployeeManagementAchievementsCard />
 				<Card className='employee-management-main-card-layout'>
-					{localStorage.getItem('email') === 'rajat.bansal@xebia.com' && (
-						<MyTeamCard />
-					)}
+					{localStorage.getItem('userable_type').toLowerCase() ===
+						'manager' && <MyTeamCard />}
 					<PerformanceCard />
 					<div className='employee-management-main-bottom-cards'>
 						<EmployeeFeedbackCard className='employee-management-main-feedback-card-layout' />
