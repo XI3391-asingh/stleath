@@ -23,6 +23,7 @@ function ChartComponents() {
 	});
 
 	const [sentiment, setSentiment] = useState({});
+	const [callCountByDuration, setCallCountByDuration] = useState({});
 	// const [agent_name, setAgent_name] = useState({});
 	// const [totalCall, setTotalCall] = useState({});
 	// const [data, setData] = useState(data)
@@ -36,10 +37,12 @@ function ChartComponents() {
 		getReport();
 		getEmotionReport();
 		// getCallReport();
+		getCallCountByDuration();
 		const interval = setInterval(() => {
 			getReport();
 			getEmotionReport();
 			// getCallReport();
+			getCallCountByDuration();
 		}, 60000);
 		return () => clearInterval(interval);
 	}, []);
@@ -61,19 +64,19 @@ function ChartComponents() {
 	};
 
 	// const getCallReport = () => {
-	// 	// fetch('http://13.127.135.117:8080/api/get-call-count', {
-	// 	// 	method: 'GET',
-	// 	// })
-	// 	// 	.then((response) => response.json())
-	// 	// 	.then((result) => {
-	// 	// 		if (result?.code === 200) {
-	// 	// 			let callcount = result?.data;
-	// 	// 			if (callcount) {
-	// 	// 				setTotalCall(callcount);
-	// 	// 			}
-	// 	// 		}
-	// 	// 	});
-	// 	// .catch((error) => console.log('error', error));
+	// fetch('http://13.127.135.117:8080/api/get-call-count', {
+	// 	method: 'GET',
+	// })
+	// 	.then((response) => response.json())
+	// 	.then((result) => {
+	// 		if (result?.code === 200) {
+	// 			let callcount = result?.data;
+	// 			if (callcount) {
+	// 				setTotalCall(callcount);
+	// 			}
+	// 		}
+	// 	});
+	// .catch((error) => console.log('error', error));
 	// 	var requestOptions = {
 	// 		method: 'POST',
 	// 		redirect: 'follow',
@@ -130,12 +133,25 @@ function ChartComponents() {
 		return dataSet;
 	}
 
+	const getCallCountByDuration = () => {
+		fetch('http://13.127.135.117:8080/api/get-call-count-by-duration', {
+			method: 'post',
+		})
+			.then((response) => response.json())
+			.then((result) => {
+				if (result?.code === 200) {
+					setCallCountByDuration(result?.data);
+				}
+			})
+			.catch((error) => console.log('error', error));
+	};
+
 	return (
 		<div>
 			<div className='chartCardContainer'>
 				<SentimentCard data={sentiment} />
 				<DispositionCodeMixCard data={emotions} />
-				<CallCategoriesCard />
+				<CallCategoriesCard data={callCountByDuration} />
 			</div>
 			<div>
 				<AgentDispositionCompositionCard />
