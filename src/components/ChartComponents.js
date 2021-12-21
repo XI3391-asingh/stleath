@@ -161,6 +161,12 @@ function ChartComponents() {
 				<DispositionCodeMixCard data={emotions} />
 				<CallCategoriesCard data={callCountByDuration} />
 			</div>
+			<div style={{ display: 'flex' }}>
+				<DashboardTable
+				// data={(totalCall, agent_name)}
+				/>
+				<CallCompositionCard />
+			</div>
 			<div>
 				<AgentDispositionCompositionCard />
 			</div>
@@ -173,12 +179,6 @@ function ChartComponents() {
 			</div>
 			<div className='ruleCompliance'>
 				<AgentRuleComplianceCard />
-			</div>
-			<div style={{ display: 'flex' }}>
-				<DashboardTable
-				// data={(totalCall, agent_name)}
-				/>
-				<CallCompositionCard />
 			</div>
 		</div>
 	);
