@@ -48,20 +48,24 @@ function DashboardDetails() {
 
 	const submitHandler = async () => {
 		var formdata = new FormData();
-		console.log(review);
 		if (review?.length && review[0] && review[0]?.input?.length) {
 			review[0]?.input?.map((value, index) => {
 				formdata.append('files', value);
 			});
 			formdata.append('agent_name', review[0].agent);
 
+			var myHeaders = new Headers();
+			// myHeaders.append('Content-Type', 'application/json');
+			myHeaders.append(
+				'Authorization',
+				'Bearer ' + localStorage.getItem('access_token')
+			);
+
 			var requestOptions = {
 				method: 'POST',
 				body: formdata,
-				redirect: 'follow',
+				headers: myHeaders,
 			};
-			console.log(requestOptions);
-
 			fetch('http://13.127.135.117:8080/api/s3gallery-upload', requestOptions)
 				.then((response) => response.json())
 				.then((result) => {
@@ -79,9 +83,11 @@ function DashboardDetails() {
 	const generateAnalysis = () => {
 		var requestOptions = {
 			method: 'GET',
-			redirect: 'follow',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+			},
 		};
-
 		fetch(
 			'http://13.127.135.117:8080/api/generate-speech-to-text',
 			requestOptions

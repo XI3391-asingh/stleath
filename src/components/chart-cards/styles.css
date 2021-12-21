@@ -6,7 +6,18 @@
 .chart-cardLayout {
 	margin: 0 1rem;
 	width: 21rem !important;
+	/* width: 26rem !important; */
 }
+
+/* .sentiment-chart-cardLayout {
+	margin: 0 1rem;
+	width: 18rem !important;
+}
+
+.emotions-chart-cardLayout {
+	margin: 0 1rem;
+	width: 18rem !important;
+} */
 
 .chart-card {
 	height: 288px;
@@ -58,4 +69,8 @@
 
 .chart-callComposition-card-layout {
 	height: '96%';
+}
+
+.chart-call-categories-body {
+	padding: 1rem 0 0 0.5rem;
 }

@@ -34,11 +34,13 @@ function CallVisualizer() {
 	const getCall = () => {
 		fetch('http://13.127.135.117:8080/api/get-report', {
 			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+			},
 		})
 			.then((response) => response.json())
 			.then(async (result) => {
-				console.log(callidquery);
-
 				if (result?.code === 200) {
 					let feeddata = result?.data;
 					if (feeddata?.length) {
@@ -87,7 +89,7 @@ function CallVisualizer() {
 				</div>
 				<div className='calls-visualizer-comments-card-layout'>
 					<Card>
-						<Comments callid={callidquery} />
+						<Comments callid={callidquery} agent_name={call?.agent_name} />
 					</Card>
 				</div>
 			</div>

@@ -51,7 +51,7 @@ function Navbar() {
 
 	const getNotification = () => {
 		notificationService
-			.getNotification(localStorage.getItem('id'))
+			.getNotification(localStorage.getItem('username'))
 			.then((resp) => {
 				if (resp.isSuccess) {
 					dispatch({ type: GET_NOTIFICATION, payload: resp?.data?.reverse() });
@@ -78,7 +78,10 @@ function Navbar() {
 	const handleMarkReadNotification = () => {
 		var myHeaders = new Headers();
 		myHeaders.append('Content-Type', 'application/json');
-
+		myHeaders.append(
+			'Authorization',
+			'Bearer ' + localStorage.getItem('access_token')
+		);
 		var raw = JSON.stringify({
 			recipient_id: localStorage.getItem('username'),
 		});
@@ -87,6 +90,7 @@ function Navbar() {
 			headers: myHeaders,
 			body: raw,
 		};
+
 		fetch(
 			'http://13.127.135.117:8080/api/mark-read-notification',
 			requestOptions
@@ -134,6 +138,13 @@ function Navbar() {
 		</Menu>
 	);
 
+	const handleNotificationMenu = (type, call_id) => {
+		type === 'FEEDBACK'
+			? history.push(`/employee-management`)
+			: history.push(`/call-visualizer?id=${call_id}`);
+		setNotificationAnchorEl(null);
+	};
+
 	const notificationMenuId = 'notification-menu';
 	const renderNotificationMenu = (
 		<Menu
@@ -171,7 +182,7 @@ function Navbar() {
 							<MenuItem
 								className='appbar-notification-menu-list-notification-item'
 								onClick={() => {
-									history.push(`/call-visualizer?id=${data?.call_id}`);
+									handleNotificationMenu(data.type, data?.call_id);
 								}}
 							>
 								<div className='appbar-notification-menu-notification-container'>
@@ -275,7 +286,8 @@ function Navbar() {
 							</IconButton>
 						</Box>
 						<Box className='appbar-icon-list'>
-							{localStorage.getItem('email') === 'rajat.bansal@xebia.com' ? (
+							{localStorage.getItem('userable_type').toLowerCase() ===
+							'manager' ? (
 								<Typography variant='overline' className='appbar-profile'>
 									Viewing as Manager
 								</Typography>
