@@ -19,7 +19,7 @@ function EmployeeFeedbackCard() {
 	useEffect(async () => {
 		let interval = '';
 		getFeedback();
-		if (localStorage.getItem('email') !== 'rajat.bansal@xebia.com') {
+		if (localStorage.getItem('userable_type').toLowerCase() !== 'manager') {
 			const feedtimer = setInterval(() => {
 				getFeedback();
 			}, 10000);
@@ -53,14 +53,24 @@ function EmployeeFeedbackCard() {
 	function getFeedback() {
 		let userName = selectedUser
 			? selectedUser?.name
-			: localStorage.getItem('email') === 'rajat.bansal@xebia.com'
+			: localStorage.getItem('userable_type').toLowerCase() === 'manager'
 			? TeamData[0].name
 			: localStorage.getItem('username');
 		if (userName) {
 			(async () => {
-				const res = await Axios.post('/get-feedback', {
-					recipient_id: userName,
-				});
+				const headers = {
+					'Content-Type': 'application/json',
+					Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+				};
+				const res = await Axios.post(
+					'/get-feedback',
+					{
+						recipient_id: userName,
+					},
+					{
+						headers: headers,
+					}
+				);
 				if (res.isSuccess) {
 					dispatch({ type: SET_RELOAD_FEEDBACK, payload: false });
 					setFeedback(res.data);

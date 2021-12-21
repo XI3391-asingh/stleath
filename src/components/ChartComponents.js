@@ -42,6 +42,10 @@ function ChartComponents() {
 	const getEmotionReport = () => {
 		fetch('http://13.127.135.117:8080/api/get-count-call-emotions', {
 			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+			},
 		})
 			.then((response) => response.json())
 			.then((result) => {
@@ -58,6 +62,10 @@ function ChartComponents() {
 	const getReport = () => {
 		fetch('http://13.127.135.117:8080/api/get-report', {
 			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+			},
 		})
 			.then((response) => response.json())
 			.then(async (result) => {
