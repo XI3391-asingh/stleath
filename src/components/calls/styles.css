@@ -65,7 +65,7 @@
 
 .transcriptions-card {
 	padding: 1rem;
-	height: 23rem;
+	height: 30rem;
 }
 
 .transactions-card-heading {
@@ -83,6 +83,68 @@
 
 .transcriptions-card-image {
 	width: 100%;
+}
+
+.call-transcription-layout {
+	display: flex;
+	justify-content: space-between;
+}
+
+.call-transcription-timing-profile {
+	margin-right: 1rem !important;
+	color: darkgrey;
+}
+
+.call-transcription-chip {
+	height: 1.5rem !important;
+}
+
+.call-transcription-comment {
+	padding: 0 !important;
+}
+
+.call-transcription-comment-button {
+	padding: 0 !important;
+}
+
+.call-transcription-add-comment {
+	color: black;
+	font-size: 1rem !important;
+}
+
+.call-transcription-play-button {
+	background-color: white !important;
+	border: 1px solid darkgrey;
+	border-radius: 4px;
+	color: black;
+}
+
+.call-transcription-play-icon {
+	font-size: 15px !important;
+	vertical-align: bottom;
+	height: 1rem !important;
+}
+
+.transcription-layout {
+	margin: 1rem 0;
+}
+
+.transcription-agent-speech {
+	text-align: justify;
+	height: auto;
+	background-color: lightgrey;
+	padding: 0.5rem 1rem;
+	margin: 0.3rem 0 !important;
+	border-left: 2px solid blue;
+}
+
+.transcription-customer-speech {
+	text-align: justify;
+	height: auto;
+	background-color: lightgrey;
+	padding: 0.5rem 1rem;
+	margin: 0.3rem 0 !important;
+	border-left: 2px solid green;
 }
 
 /* Visualizer Styles */
