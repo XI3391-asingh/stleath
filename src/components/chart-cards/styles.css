@@ -6,10 +6,15 @@
 .chart-cardLayout {
 	margin: 0 1rem;
 	width: 21rem !important;
-	/* width: 22.5rem !important; */
+	/* width: 26rem !important; */
 }
 
 /* .sentiment-chart-cardLayout {
+	margin: 0 1rem;
+	width: 18rem !important;
+}
+
+.emotions-chart-cardLayout {
 	margin: 0 1rem;
 	width: 18rem !important;
 } */

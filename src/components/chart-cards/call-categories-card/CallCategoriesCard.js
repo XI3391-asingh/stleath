@@ -28,6 +28,7 @@ function CallCategoriesCard(props) {
 					<Bar
 						data={data}
 						options={{
+							// layout: { padding: { left: '1rem' } },
 							onClick: (e) => {
 								history.push('/calls');
 							},
