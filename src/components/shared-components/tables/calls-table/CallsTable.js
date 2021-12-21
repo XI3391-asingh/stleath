@@ -77,7 +77,6 @@ const columns = [
 ];
 
 function CallsTable({ data = [] }) {
-	console.log(data);
 	return (
 		<div className='calls-table-layout'>
 			<DataGrid

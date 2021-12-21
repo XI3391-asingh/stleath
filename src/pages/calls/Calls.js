@@ -8,33 +8,27 @@ import CallsTable from '../../components/shared-components/tables/calls-table/Ca
 import './styles.css';
 import { useLocation } from 'react-router-dom';
 
+import indexService from '../../service/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { GET_ALL_CALLS } from '../../store/type';
+
 function Calls() {
 	const path = useLocation();
+	const dispatch = useDispatch();
+	const { calls } = useSelector((store) => store.call);
 	let query = new URLSearchParams(path?.search);
 	let feedbackquery = query.get('feedback');
-	const [call, setCall] = useState({
-		total: 0,
-		filter: 0,
-		data: [],
-	});
-	console.log(feedbackquery);
 
 	useEffect(() => {
-		query.get('call_emotion') ? getCallEmotion() : getCall();
+		getCall();
 	}, []);
 
 	const getCall = () => {
-		fetch('http://13.127.135.117:8080/api/get-report', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-			},
-		})
-			.then((response) => response.json())
-			.then(async (result) => {
-				if (result?.code === 200) {
-					let feeddata = result?.data;
+		indexService
+			.getReport(query.get('call_emotion') ? query.get('call_emotion') : '')
+			.then((resp) => {
+				if (resp.isSuccess) {
+					let feeddata = resp?.data;
 					if (feeddata?.length) {
 						let calldata = [];
 						if (feedbackquery) {
@@ -44,44 +38,17 @@ function Calls() {
 						} else {
 							calldata = feeddata;
 						}
-
-						setCall({
-							total: feeddata?.length,
-							filter: calldata?.length,
-							data: calldata,
+						dispatch({
+							type: GET_ALL_CALLS,
+							payload: {
+								total: feeddata?.length,
+								filter: calldata?.length,
+								data: calldata,
+							},
 						});
 					}
 				}
-			})
-			.catch((error) => console.log('error', error));
-	};
-
-	const getCallEmotion = () => {
-		fetch(
-			'http://13.127.135.117:8080/api/get-report?call_emotion=' +
-				query.get('call_emotion'),
-			{
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-				},
-			}
-		)
-			.then((response) => response.json())
-			.then(async (result) => {
-				if (result?.code === 200) {
-					let feeddata = result?.data;
-					if (feeddata?.length) {
-						setCall({
-							total: feeddata?.length,
-							filter: feeddata?.length,
-							data: feeddata,
-						});
-					}
-				}
-			})
-			.catch((error) => console.log('error', error));
+			});
 	};
 
 	return (
@@ -93,11 +60,11 @@ function Calls() {
 					</div>
 					<div className='calls-page-card-main-body'>
 						<div className='calls-page-call-details'>
-							{call?.filter} of {call?.total} Calls
+							{calls?.filter} of {calls?.total} Calls
 						</div>
 						<hr className='calls-page-divider' />
 						<div className='calls-page-table-layout'>
-							<CallsTable data={call?.data} />
+							{calls?.data?.length && <CallsTable data={calls?.data} />}
 						</div>
 					</div>
 				</div>

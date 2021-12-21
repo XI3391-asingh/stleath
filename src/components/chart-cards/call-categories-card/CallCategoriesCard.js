@@ -6,14 +6,14 @@ import { Bar } from 'react-chartjs-2';
 
 import '../styles.css';
 
-function CallCategoriesCard() {
+function CallCategoriesCard(props) {
 	let history = useHistory();
 	const data = {
-		labels: ['Talk Greater Than', 'Talk Time 10 to 60 seconds', ''],
+		labels: Object.keys(props.data),
 		datasets: [
 			{
 				label: 'Data',
-				data: [650, 438, 0],
+				data: Object.values(props.data),
 				fill: true,
 				backgroundColor: '#B5CDA3',
 			},
