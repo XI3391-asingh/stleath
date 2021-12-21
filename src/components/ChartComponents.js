@@ -23,6 +23,10 @@ function ChartComponents() {
 	});
 
 	const [sentiment, setSentiment] = useState({});
+	const [callCountByDuration, setCallCountByDuration] = useState({});
+	// const [agent_name, setAgent_name] = useState({});
+	// const [totalCall, setTotalCall] = useState({});
+	// const [data, setData] = useState(data)
 
 	// useEffect(() => {
 	// 	getReport();
@@ -32,9 +36,13 @@ function ChartComponents() {
 	useEffect(() => {
 		getReport();
 		getEmotionReport();
+		// getCallReport();
+		getCallCountByDuration();
 		const interval = setInterval(() => {
 			getReport();
 			getEmotionReport();
+			// getCallReport();
+			getCallCountByDuration();
 		}, 60000);
 		return () => clearInterval(interval);
 	}, []);
@@ -58,6 +66,42 @@ function ChartComponents() {
 			})
 			.catch((error) => console.log('error', error));
 	};
+
+	// const getCallReport = () => {
+	// fetch('http://13.127.135.117:8080/api/get-call-count', {
+	// 	method: 'GET',
+	// })
+	// 	.then((response) => response.json())
+	// 	.then((result) => {
+	// 		if (result?.code === 200) {
+	// 			let callcount = result?.data;
+	// 			if (callcount) {
+	// 				setTotalCall(callcount);
+	// 			}
+	// 		}
+	// 	});
+	// .catch((error) => console.log('error', error));
+	// 	var requestOptions = {
+	// 		method: 'POST',
+	// 		redirect: 'follow',
+	// 	};
+
+	// 	fetch('http://13.127.135.117:8080/api/get-call-count', requestOptions)
+	// 		.then((response) => response.json())
+	// 		.then((result) => {
+	// 			// if (result?.code === 200) {
+	// 				// let callcount = result?.data;
+	// 				// if (callcount) {
+	// 				// 	setTotalCall(callcount);
+	// 				// }
+	// 				// setAgent_name([result?.data]);
+	// 				// setTotalCall([result?.data]);
+	// 				setAgent_name(result?.data);
+	// 				setTotalCall(result?.data);
+	// 			// }
+	// 		})
+	// 		.catch((error) => console.log('error', error));
+	// };
 
 	const getReport = () => {
 		fetch('http://13.127.135.117:8080/api/get-report', {
@@ -97,12 +141,25 @@ function ChartComponents() {
 		return dataSet;
 	}
 
+	const getCallCountByDuration = () => {
+		fetch('http://13.127.135.117:8080/api/get-call-count-by-duration', {
+			method: 'post',
+		})
+			.then((response) => response.json())
+			.then((result) => {
+				if (result?.code === 200) {
+					setCallCountByDuration(result?.data);
+				}
+			})
+			.catch((error) => console.log('error', error));
+	};
+
 	return (
 		<div>
 			<div className='chartCardContainer'>
 				<SentimentCard data={sentiment} />
 				<DispositionCodeMixCard data={emotions} />
-				<CallCategoriesCard />
+				<CallCategoriesCard data={callCountByDuration} />
 			</div>
 			<div>
 				<AgentDispositionCompositionCard />
@@ -118,7 +175,9 @@ function ChartComponents() {
 				<AgentRuleComplianceCard />
 			</div>
 			<div style={{ display: 'flex' }}>
-				<DashboardTable />
+				<DashboardTable
+				// data={(totalCall, agent_name)}
+				/>
 				<CallCompositionCard />
 			</div>
 		</div>
