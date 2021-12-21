@@ -26,6 +26,10 @@ function Calls() {
 	const getCall = () => {
 		fetch('http://13.127.135.117:8080/api/get-report', {
 			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+			},
 		})
 			.then((response) => response.json())
 			.then(async (result) => {
@@ -58,6 +62,10 @@ function Calls() {
 				query.get('call_emotion'),
 			{
 				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+				},
 			}
 		)
 			.then((response) => response.json())

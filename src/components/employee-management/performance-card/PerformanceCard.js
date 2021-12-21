@@ -23,7 +23,7 @@ function PerformanceCard() {
 		// 	return localStorage.getItem('username') + "'s";
 		// }
 		else {
-			return localStorage.getItem('email') === 'rajat.bansal@xebia.com'
+			return localStorage.getItem('userable_type').toLowerCase() === 'manager'
 				? TeamData[0].name + "'s"
 				: localStorage.getItem('username') + "'s";
 		}
@@ -32,7 +32,7 @@ function PerformanceCard() {
 		<Card className='performance-card-layout'>
 			<div className='performance-card-header'>
 				<Typography variant='h6'>Viewing {viewName()} Performance:</Typography>
-				{localStorage.getItem('email') === 'rajat.bansal@xebia.com' && (
+				{localStorage.getItem('userable_type').toLowerCase() === 'manager' && (
 					<PerformanceCardProvideFeedback />
 				)}
 				<PerformanceCardFilters />

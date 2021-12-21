@@ -38,11 +38,18 @@ function PerformanceCardProvideFeedback() {
 	const { selectedUser } = useSelector((store) => store.user);
 
 	const handleSubmit = async () => {
+		// const headers = {
+		// 	'Content-Type': 'application/json',
+		// 	Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+		// };
 		const res = await Axios.post('/add-feedback', {
 			feedback: feedback,
 			feedback_type: review,
 			recipient_id: selectedUser?.name ? selectedUser?.name : TeamData[0].name,
 			sender_id: localStorage.getItem('username'),
+			// },
+			// {
+			// 	headers: headers,
 		});
 		if (res.isSuccess) {
 			dispatch({ type: SET_RELOAD_FEEDBACK, payload: true });
