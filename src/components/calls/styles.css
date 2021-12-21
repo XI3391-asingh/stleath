@@ -132,21 +132,19 @@
 .transcription-agent-speech {
 	text-align: justify;
 	height: auto;
-	/* background-color: lightgrey; */
+	background-color: lightgrey;
 	padding: 0.5rem 1rem;
 	margin: 0.3rem 0 !important;
-	border: 2px solid blue;
-	border-radius: 10px;
+	border-left: 2px solid blue;
 }
 
 .transcription-customer-speech {
 	text-align: justify;
 	height: auto;
-	/* background-color: lightgrey; */
+	background-color: lightgrey;
 	padding: 0.5rem 1rem;
 	margin: 0.3rem 0 !important;
-	border: 2px solid green;
-	border-radius: 10px;
+	border-left: 2px solid green;
 }
 
 /* Visualizer Styles */
