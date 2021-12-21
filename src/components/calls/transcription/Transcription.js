@@ -8,6 +8,8 @@ import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import image from '../../../assets/images/image.png';
 
 import '../styles.css';
+import CallTranscription from './CallTranscription';
+import CallTranscriptionSpeech from './CallTranscriptionSpeech';
 
 function Transcription() {
 	return (
@@ -34,11 +36,12 @@ function Transcription() {
 					</div>
 				</div>
 				<hr />
-				<img
+				<CallTranscriptionSpeech />
+				{/* <img
 					src={image}
 					alt='transcription'
 					className='transcriptions-card-image'
-				/>
+				/> */}
 			</Card>
 		</div>
 	);

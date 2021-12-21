@@ -47,6 +47,42 @@ function ChartComponents() {
 		});
 	};
 
+	// const getCallReport = () => {
+	// fetch('http://13.127.135.117:8080/api/get-call-count', {
+	// 	method: 'GET',
+	// })
+	// 	.then((response) => response.json())
+	// 	.then((result) => {
+	// 		if (result?.code === 200) {
+	// 			let callcount = result?.data;
+	// 			if (callcount) {
+	// 				setTotalCall(callcount);
+	// 			}
+	// 		}
+	// 	});
+	// .catch((error) => console.log('error', error));
+	// 	var requestOptions = {
+	// 		method: 'POST',
+	// 		redirect: 'follow',
+	// 	};
+
+	// 	fetch('http://13.127.135.117:8080/api/get-call-count', requestOptions)
+	// 		.then((response) => response.json())
+	// 		.then((result) => {
+	// 			// if (result?.code === 200) {
+	// 				// let callcount = result?.data;
+	// 				// if (callcount) {
+	// 				// 	setTotalCall(callcount);
+	// 				// }
+	// 				// setAgent_name([result?.data]);
+	// 				// setTotalCall([result?.data]);
+	// 				setAgent_name(result?.data);
+	// 				setTotalCall(result?.data);
+	// 			// }
+	// 		})
+	// 		.catch((error) => console.log('error', error));
+	// };
+
 	const getReport = () => {
 		indexService.getReport().then(async (resp) => {
 			if (resp.isSuccess) {
@@ -109,7 +145,9 @@ function ChartComponents() {
 				<AgentRuleComplianceCard />
 			</div>
 			<div style={{ display: 'flex' }}>
-				<DashboardTable />
+				<DashboardTable
+				// data={(totalCall, agent_name)}
+				/>
 				<CallCompositionCard />
 			</div>
 		</div>

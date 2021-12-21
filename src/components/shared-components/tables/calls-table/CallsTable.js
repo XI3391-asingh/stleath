@@ -43,7 +43,7 @@ const columns = [
 	{
 		field: 'feedback',
 		headerName: 'Call Sentiments',
-		width: 150,
+		width: 160,
 		sortable: false,
 	},
 	{

@@ -24,10 +24,11 @@ function CallCategoriesCard(props) {
 			<Card className='chart-card'>
 				<CardHeader title='Call Categories' className='chart-cardHeader' />
 				<Divider />
-				<div>
+				<div className='chart-call-categories-body'>
 					<Bar
 						data={data}
 						options={{
+							// layout: { padding: { left: '1rem' } },
 							onClick: (e) => {
 								history.push('/calls');
 							},
