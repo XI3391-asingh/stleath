@@ -10,8 +10,10 @@ import image from '../../../assets/images/image.png';
 import '../styles.css';
 import CallTranscription from './CallTranscription';
 import CallTranscriptionSpeech from './CallTranscriptionSpeech';
+import { useSelector } from 'react-redux';
 
 function Transcription() {
+	const { comments } = useSelector((store) => store.call);
 	return (
 		<div>
 			<Card className='transcriptions-card'>
@@ -36,7 +38,13 @@ function Transcription() {
 					</div>
 				</div>
 				<hr />
-				<CallTranscriptionSpeech />
+				{comments?.transcript?.length && (
+					<CallTranscriptionSpeech
+						speaker={comments?.transcript}
+						// speaker1={comments?.transcript && comments?.transcript[0]}
+						// speaker2={comments?.transcript && comments?.transcript[1]}
+					/>
+				)}
 				{/* <img
 					src={image}
 					alt='transcription'

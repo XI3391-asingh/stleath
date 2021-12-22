@@ -1,7 +1,7 @@
 import * as actionTypes from '../type';
 
 const initialState = {
-	comments: [],
+	comments: {},
 	calls: {
 		total: 0,
 		filter: 0,
@@ -15,7 +15,10 @@ const reducer = (state = initialState, action) => {
 		case actionTypes.GET_ALL_COMMENTS:
 			return { ...state, comments: action.payload };
 		case actionTypes.ADD_COMMENT:
-			return { ...state, comments: [...state.comments, action.payload] };
+			state?.comments?.call_comments.push(action.payload);
+			return {
+				...state,
+			};
 		case actionTypes.GET_ALL_CALLS:
 			return { ...state, calls: action.payload };
 		case actionTypes.GET_CALL_VISUALIZER:

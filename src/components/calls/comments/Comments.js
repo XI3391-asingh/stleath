@@ -13,21 +13,6 @@ function Comments({ callid, agent_name }) {
 	const [value, setValue] = useState('');
 	const { comments } = useSelector((store) => store.call);
 
-	useEffect(() => {
-		getCallDetails();
-	}, [callid]);
-
-	const getCallDetails = () => {
-		indexService.getCallDetails(callid).then((resp) => {
-			if (resp.isSuccess) {
-				dispatch({
-					type: GET_ALL_COMMENTS,
-					payload: resp?.data?.call_comments,
-				});
-			}
-		});
-	};
-
 	function SaveDataToLOcalStorage() {
 		var raw = JSON.stringify({
 			call_id: parseInt(callid),
@@ -54,7 +39,7 @@ function Comments({ callid, agent_name }) {
 			</div>
 			<div>
 				<div className='comments-block'>
-					<SingleComment CommentsData={comments} />
+					<SingleComment CommentsData={comments?.call_comments} />
 				</div>
 			</div>
 			<div>

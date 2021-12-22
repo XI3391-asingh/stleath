@@ -7,7 +7,6 @@ class notificationService {
 			{
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: 'Bearer ' + localStorage.getItem('access_token'),
 				},
 			}
 		);
@@ -15,17 +14,15 @@ class notificationService {
 	};
 
 	markReadNotification = async () => {
-		const headers = {
-			'Content-Type': 'application/json',
-			Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-		};
 		const perRequest = await Axios.post(
 			'/mark-read-notification',
 			JSON.stringify({
 				recipient_id: localStorage.getItem('username'),
 			}),
 			{
-				headers: headers,
+				headers: {
+					'Content-Type': 'application/json',
+				},
 			}
 		);
 

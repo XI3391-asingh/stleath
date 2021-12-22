@@ -12,13 +12,22 @@ const Axios = axios.create({
 	baseURL: apiBaseUrl,
 });
 
-// export const setToken = (token) => {
-// 	if (token) {
-// 		Axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-// 	} else {
-// 		delete Axios.defaults.headers.common['Authorization'];
-// 	}
-// };
+Axios.interceptors.request.use((config) => {
+	const token = localStorage.getItem('access_token');
+	config.headers.Authorization = token ? `Bearer ${token}` : '';
+	return config;
+});
+
+// Axios.defaults.headers.common["Authorization"] =
+//   "Bearer " + localStorage.getItem("access_token");
+
+// axios.interceptors.request.use((config) => {
+//   if (localStorage.getItem("access_token")) {
+//     Axios.defaults.headers.common["Authorization"] =
+//       "Bearer " + localStorage.getItem("access_token");
+//   }
+//   return config;
+// });
 
 Axios.interceptors.response.use(
 	(response) => {

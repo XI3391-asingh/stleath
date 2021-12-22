@@ -2,25 +2,30 @@ import { Typography } from '@material-ui/core';
 import React from 'react';
 import CallTranscription from './CallTranscription';
 
-function CallTranscriptionSpeech() {
+function CallTranscriptionSpeech({ speaker }) {
+	console.log(speaker);
 	return (
 		<div>
-			<div className='transcription-layout'>
-				<CallTranscription />
-				<Typography variant='body2' className='transcription-agent-speech'>
-					This is Agent speaking.
-				</Typography>
-			</div>
-			<div className='transcription-layout'>
-				<CallTranscription />
-				<Typography variant='body2' className='transcription-customer-speech'>
-					This is Customer speaking on the call id: 1. Lorem Ipsum is simply
-					dummy text of the printing and typesetting industry. Lorem Ipsum has
-					been the industry's standard dummy text ever since the 1500s, when an
-					unknown printer took a galley of type and scrambled it to make a type
-					specimen book.
-				</Typography>
-			</div>
+			{speaker?.length > 0 &&
+				speaker?.map((data, index) => {
+					return (
+						<div className='transcription-layout' key={index}>
+							<CallTranscription calltime={data[1]} />
+							<Typography
+								variant='body2'
+								className='transcription-agent-speech'
+							>
+								{data[0]}
+							</Typography>
+						</div>
+					);
+				})}
+			{/* <div className="transcription-layout">
+        <CallTranscription calltime={speaker2 && speaker2[1]} speaker={true} />
+        <Typography variant="body2" className="transcription-customer-speech">
+          {speaker2 && speaker2[0]}
+        </Typography>
+      </div> */}
 		</div>
 	);
 }

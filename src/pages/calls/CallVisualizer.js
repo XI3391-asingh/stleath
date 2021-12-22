@@ -14,7 +14,7 @@ import { useLocation } from 'react-router-dom';
 
 import indexService from '../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_CALL_VISUALIZER } from '../../store/type';
+import { GET_CALL_VISUALIZER, GET_ALL_COMMENTS } from '../../store/type';
 
 function CallVisualizer() {
 	let dateTime = moment().format('LLL');
@@ -23,7 +23,6 @@ function CallVisualizer() {
 	let callidquery = query.get('id');
 	const dispatch = useDispatch();
 	const { visualizer } = useSelector((store) => store.call);
-	const [call, setCall] = useState({});
 	const { data } = useDemoData({
 		dataSet: 'Commodity',
 		rowLength: 100,
@@ -32,7 +31,24 @@ function CallVisualizer() {
 
 	useEffect(() => {
 		getCall();
+		getCallDetails();
+		const interval = setInterval(() => {
+			getCallDetails();
+			getCall();
+		}, 30000);
+		return () => clearInterval(interval);
 	}, [callidquery]);
+
+	const getCallDetails = () => {
+		indexService.getCallDetails(callidquery).then((resp) => {
+			if (resp.isSuccess) {
+				dispatch({
+					type: GET_ALL_COMMENTS,
+					payload: resp?.data,
+				});
+			}
+		});
+	};
 
 	const getCall = () => {
 		indexService.getReport().then((resp) => {
@@ -85,7 +101,10 @@ function CallVisualizer() {
 				</div>
 				<div className='calls-visualizer-comments-card-layout'>
 					<Card>
-						<Comments callid={callidquery} agent_name={call?.agent_name} />
+						<Comments
+							callid={callidquery}
+							agent_name={visualizer?.agent_name}
+						/>
 					</Card>
 				</div>
 			</div>

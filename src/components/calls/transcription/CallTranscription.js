@@ -5,8 +5,13 @@ import Button from '@mui/material/Button';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import CallTranscriptionSpeech from './CallTranscriptionSpeech';
+import moment from 'moment';
 
-function CallTranscription() {
+function CallTranscription({ calltime, speaker }) {
+	const handleTime = (time) => {
+		var formatted = moment.utc(time * 1000).format('mm:ss');
+		return formatted;
+	};
 	return (
 		<div>
 			<div className='call-transcription-layout'>
@@ -15,19 +20,22 @@ function CallTranscription() {
 						variant='caption'
 						className='call-transcription-timing-profile'
 					>
-						00:01 min
+						{/* {moment.duration(seconds, 'seconds')} */}
+						{handleTime(calltime && calltime[0])} min
 					</Typography>
 					<Typography
 						variant='caption'
 						className='call-transcription-timing-profile'
 					>
-						Agent
+						{speaker ? 'Customer' : 'Agent'}
 					</Typography>
-					<Chip
-						label='Display Patience and Courtesy'
-						variant='outlined'
-						className='call-transcription-chip'
-					/>
+					{!speaker && (
+						<Chip
+							label='Display Patience and Courtesy'
+							variant='outlined'
+							className='call-transcription-chip'
+						/>
+					)}
 				</div>
 				<div>
 					<IconButton className='call-transcription-comment'>
