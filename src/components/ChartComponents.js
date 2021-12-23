@@ -48,7 +48,7 @@ function ChartComponents() {
 	}, []);
 
 	const getEmotionReport = () => {
-		fetch('http://13.127.135.117:8080/api/get-count-call-emotions', {
+		fetch('http://35.200.228.197:4000/api/get-count-call-emotions', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ function ChartComponents() {
 	// };
 
 	const getReport = () => {
-		fetch('http://13.127.135.117:8080/api/get-report', {
+		fetch('http://35.200.228.197:4000/api/get-report', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ function ChartComponents() {
 	}
 
 	const getCallCountByDuration = () => {
-		fetch('http://13.127.135.117:8080/api/get-call-count-by-duration', {
+		fetch('http://35.200.228.197:4000/api/get-call-count-by-duration', {
 			method: 'post',
 		})
 			.then((response) => response.json())
@@ -161,6 +161,12 @@ function ChartComponents() {
 				<DispositionCodeMixCard data={emotions} />
 				<CallCategoriesCard data={callCountByDuration} />
 			</div>
+			<div style={{ display: 'flex' }}>
+				<DashboardTable
+				// data={(totalCall, agent_name)}
+				/>
+				<CallCompositionCard />
+			</div>
 			<div>
 				<AgentDispositionCompositionCard />
 			</div>
@@ -173,12 +179,6 @@ function ChartComponents() {
 			</div>
 			<div className='ruleCompliance'>
 				<AgentRuleComplianceCard />
-			</div>
-			<div style={{ display: 'flex' }}>
-				<DashboardTable
-				// data={(totalCall, agent_name)}
-				/>
-				<CallCompositionCard />
 			</div>
 		</div>
 	);

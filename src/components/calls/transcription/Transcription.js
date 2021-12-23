@@ -36,12 +36,12 @@ function Transcription() {
 					</div>
 				</div>
 				<hr />
-				<CallTranscriptionSpeech />
-				{/* <img
+				{/* <CallTranscriptionSpeech /> */}
+				<img
 					src={image}
 					alt='transcription'
 					className='transcriptions-card-image'
-				/> */}
+				/>
 			</Card>
 		</div>
 	);

@@ -92,7 +92,7 @@ function Navbar() {
 		};
 
 		fetch(
-			'http://13.127.135.117:8080/api/mark-read-notification',
+			'http://35.200.228.197:4000/api/mark-read-notification',
 			requestOptions
 		)
 			.then((response) => response.json())

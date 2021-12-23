@@ -32,7 +32,7 @@ function CallVisualizer() {
 	}, [callidquery]);
 
 	const getCall = () => {
-		fetch('http://13.127.135.117:8080/api/get-report', {
+		fetch('http://35.200.228.197:4000/api/get-report', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
