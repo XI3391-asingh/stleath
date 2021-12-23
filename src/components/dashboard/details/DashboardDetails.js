@@ -66,7 +66,7 @@ function DashboardDetails() {
 				body: formdata,
 				headers: myHeaders,
 			};
-			fetch('http://13.127.135.117:8080/api/s3gallery-upload', requestOptions)
+			fetch('http://35.200.228.197:4000/api/s3gallery-upload', requestOptions)
 				.then((response) => response.json())
 				.then((result) => {
 					if (result?.code === 200) {
@@ -89,7 +89,7 @@ function DashboardDetails() {
 			},
 		};
 		fetch(
-			'http://13.127.135.117:8080/api/generate-speech-to-text',
+			'http://35.200.228.197:4000/api/generate-speech-to-text',
 			requestOptions
 		)
 			.then((response) => response.json())

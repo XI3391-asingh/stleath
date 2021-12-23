@@ -16,7 +16,7 @@ function DashboardTable() {
 			redirect: 'follow',
 		};
 
-		fetch('http://13.127.135.117:8080/api/get-call-count', requestOptions)
+		fetch('http://35.200.228.197:4000/api/get-call-count', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				result.data.forEach((dataitem, index) => {

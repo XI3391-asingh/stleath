@@ -24,7 +24,7 @@ function Calls() {
 	}, []);
 
 	const getCall = () => {
-		fetch('http://13.127.135.117:8080/api/get-report', {
+		fetch('http://35.200.228.197:4000/api/get-report', {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ function Calls() {
 
 	const getCallEmotion = () => {
 		fetch(
-			'http://13.127.135.117:8080/api/get-report?call_emotion=' +
+			'http://35.200.228.197:4000/api/get-report?call_emotion=' +
 				query.get('call_emotion'),
 			{
 				method: 'GET',

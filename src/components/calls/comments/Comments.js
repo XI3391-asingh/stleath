@@ -17,7 +17,7 @@ function Comments({ callid, agent_name }) {
 	}, [callid]);
 
 	const getCallDetails = () => {
-		fetch('http://13.127.135.117:8080/api/get-call-details/' + callid, {
+		fetch('http://35.200.228.197:4000/api/get-call-details/' + callid, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function Comments({ callid, agent_name }) {
 			headers: myHeaders,
 			body: raw,
 		};
-		fetch('http://13.127.135.117:8080/api/add-comment', requestOptions)
+		fetch('http://35.200.228.197:4000/api/add-comment', requestOptions)
 			.then((response) => response.json())
 			.then((result) => {
 				if (result?.code === 200) {
