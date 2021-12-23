@@ -38,18 +38,18 @@ function Transcription() {
 					</div>
 				</div>
 				<hr />
-				{comments?.transcript?.length && (
+				{/* {comments?.transcript?.length && (
 					<CallTranscriptionSpeech
 						speaker={comments?.transcript}
 						// speaker1={comments?.transcript && comments?.transcript[0]}
 						// speaker2={comments?.transcript && comments?.transcript[1]}
 					/>
-				)}
-				{/* <img
+				)} */}
+				<img
 					src={image}
 					alt='transcription'
 					className='transcriptions-card-image'
-				/> */}
+				/>
 			</Card>
 		</div>
 	);
