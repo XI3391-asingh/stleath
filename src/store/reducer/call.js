@@ -23,6 +23,8 @@ const reducer = (state = initialState, action) => {
 			return { ...state, calls: action.payload };
 		case actionTypes.GET_CALL_VISUALIZER:
 			return { ...state, visualizer: action.payload };
+		case actionTypes.CLEAR_CALL_VISUALIZER:
+			return { ...state, visualizer: {} };
 		default:
 			return state;
 	}

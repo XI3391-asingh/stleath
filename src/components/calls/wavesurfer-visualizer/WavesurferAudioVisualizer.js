@@ -1,11 +1,14 @@
 import { Button, ButtonGroup, Typography } from '@material-ui/core';
 import { Card } from '@mui/material';
 import React, { useRef, useCallback, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { WaveSurfer, WaveForm } from 'wavesurfer-react';
+import { CLEAR_CALL_VISUALIZER } from '../../../store/type';
 
 import './styles.css';
 
 function Visualizer({ path }) {
+	const dispatch = useDispatch();
 	const wavesurferRef = useRef();
 	const wavesurferRef2 = useRef();
 
@@ -13,11 +16,12 @@ function Visualizer({ path }) {
 		return () => {
 			stop();
 			stop2();
+			dispatch({type: CLEAR_CALL_VISUALIZER});
 		};
 	}, []);
 
 	const handleWSMount = (waveSurfer) => {
-		console.log('...');
+		console.log('Path-1: ', path); 
 		wavesurferRef.current = waveSurfer;
 		if (wavesurferRef.current) {
 			console.log('...2');
@@ -35,7 +39,7 @@ function Visualizer({ path }) {
 	};
 
 	const handleWSMount2 = (waveSurfer) => {
-		console.log('...');
+		console.log('Path-2: ', path); 
 		wavesurferRef2.current = waveSurfer;
 		if (wavesurferRef2.current) {
 			console.log('...2');
