@@ -12,49 +12,61 @@ import './styles.css';
 import moment from 'moment';
 import { useLocation } from 'react-router-dom';
 
+import indexService from '../../service/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { GET_CALL_VISUALIZER, GET_ALL_COMMENTS } from '../../store/type';
+
 function CallVisualizer() {
 	let dateTime = moment().format('LLL');
-	// let dateTime2 = moment().format('LLL');
-	let duration = moment().set({ minute: 20, second: 33 });
+	const path = useLocation();
+	let query = new URLSearchParams(path?.search);
+	let callidquery = query.get('id');
+	const dispatch = useDispatch();
+	const { visualizer } = useSelector((store) => store.call);
 	const { data } = useDemoData({
 		dataSet: 'Commodity',
 		rowLength: 100,
 		maxColumns: 6,
 	});
 
-	const path = useLocation();
-	let query = new URLSearchParams(path?.search);
-	let callidquery = query.get('id');
-	const [call, setCall] = useState({});
-
 	useEffect(() => {
 		getCall();
+		getCallDetails();
+		const interval = setInterval(() => {
+			getCallDetails();
+			getCall();
+		}, 30000);
+		return () => clearInterval(interval);
 	}, [callidquery]);
 
+	const getCallDetails = () => {
+		indexService.getCallDetails(callidquery).then((resp) => {
+			if (resp.isSuccess) {
+				dispatch({
+					type: GET_ALL_COMMENTS,
+					payload: resp?.data,
+				});
+			}
+		});
+	};
+
 	const getCall = () => {
-		fetch('http://13.127.135.117:8080/api/get-report', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: 'Bearer ' + localStorage.getItem('access_token'),
-			},
-		})
-			.then((response) => response.json())
-			.then(async (result) => {
-				if (result?.code === 200) {
-					let feeddata = result?.data;
-					if (feeddata?.length) {
-						let calldata = feeddata.filter(
-							(resp) => resp.id === parseInt(callidquery)
-						);
-						if (calldata?.length) {
-							console.log(calldata);
-							setCall(calldata[0]);
-						}
+		indexService.getReport().then((resp) => {
+			if (resp.isSuccess) {
+				let feeddata = resp?.data;
+				if (feeddata?.length) {
+					let calldata = feeddata.filter(
+						(resp) => resp.id === parseInt(callidquery)
+					);
+					if (calldata?.length) {
+						dispatch({
+							type: GET_CALL_VISUALIZER,
+							payload: calldata[0],
+						});
 					}
 				}
-			})
-			.catch((error) => console.log('error', error));
+			}
+		});
 	};
 
 	return (
@@ -71,13 +83,13 @@ function CallVisualizer() {
 						variant='button'
 						className='calls-visualizer-call-id-text'
 					>
-						Call Id: {call?.id}
+						Call Id: {visualizer?.id}
 					</Typography>
 				</Card>
 			</div>
 			<div>
-				{Object?.keys(call)?.length && (
-					<WavesurferAudioVisualizer path={call?.path} />
+				{Object?.keys(visualizer)?.length && (
+					<WavesurferAudioVisualizer path={visualizer?.path} />
 				)}
 			</div>
 			<div className='calls-visualizer-card-list'>
@@ -89,7 +101,10 @@ function CallVisualizer() {
 				</div>
 				<div className='calls-visualizer-comments-card-layout'>
 					<Card>
-						<Comments callid={callidquery} agent_name={call?.agent_name} />
+						<Comments
+							callid={callidquery}
+							agent_name={visualizer?.agent_name}
+						/>
 					</Card>
 				</div>
 			</div>

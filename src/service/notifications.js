@@ -7,10 +7,25 @@ class notificationService {
 			{
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: 'Bearer ' + localStorage.getItem('access_token'),
 				},
 			}
 		);
+		return perRequest;
+	};
+
+	markReadNotification = async () => {
+		const perRequest = await Axios.post(
+			'/mark-read-notification',
+			JSON.stringify({
+				recipient_id: localStorage.getItem('username'),
+			}),
+			{
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}
+		);
+
 		return perRequest;
 	};
 }

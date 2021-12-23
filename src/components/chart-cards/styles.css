@@ -34,7 +34,7 @@
 }
 
 .chart-compositionCardLayout {
-	margin: 2rem 1rem;
+	margin: 0.5rem 1rem;
 }
 
 .chart-compositionCardHeader {
@@ -68,7 +68,7 @@
 }
 
 .chart-callComposition-card-layout {
-	height: '96%';
+	height: 96%;
 }
 
 .chart-call-categories-body {

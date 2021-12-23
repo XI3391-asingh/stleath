@@ -2,30 +2,35 @@ import * as React from 'react';
 
 import { DataGrid } from '@mui/x-data-grid';
 
-import DashboardCalls from '../../../../data/tables/DashboardCalls.json';
-
 import './styles.css';
 import { Card, Typography } from '@mui/material';
+import indexService from '../../../../service/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { GET_CALL_COUNT } from '../../../../store/type';
 
 function DashboardTable() {
-	const [data, setData] = React.useState([]);
-
+	const dispatch = useDispatch();
+	const { callcount } = useSelector((store) => store.dashboard);
 	React.useEffect(() => {
-		var requestOptions = {
-			method: 'POST',
-			redirect: 'follow',
-		};
-
-		fetch('http://13.127.135.117:8080/api/get-call-count', requestOptions)
-			.then((response) => response.json())
-			.then((result) => {
-				result.data.forEach((dataitem, index) => {
-					dataitem.id = index + 1;
-				});
-				console.log(result.data);
-				setData(result.data);
-			});
+		getCallCount();
 	}, []);
+
+	const getCallCount = () => {
+		indexService.getCallCount().then((resp) => {
+			if (resp.isSuccess) {
+				let callcount = resp?.data;
+				if (callcount) {
+					for (var i = 0; i < callcount.length; i++) {
+						callcount[i].id = i + 1;
+					}
+					dispatch({
+						type: GET_CALL_COUNT,
+						payload: callcount,
+					});
+				}
+			}
+		});
+	};
 
 	const columns = [
 		{
@@ -56,7 +61,7 @@ function DashboardTable() {
 					Total Agents Calls
 				</Typography>
 				<DataGrid
-					rows={data}
+					rows={callcount}
 					columns={columns}
 					pageSize={10}
 					rowsPerPageOptions={[5]}

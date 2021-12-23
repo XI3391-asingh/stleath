@@ -108,7 +108,7 @@
 .appbar-notification-menu-item {
 	display: flex !important;
 	justify-content: space-between !important;
-	padding: 0.5rem;
+	padding: 0.5rem !important;
 }
 
 .appbar-notification-menu-list-button {
@@ -117,8 +117,8 @@
 
 .appbar-notification-menu-list-notification-item {
 	display: block;
-	justify-content: space-between;
-	padding: 0.5rem;
+	justify-content: space-between !important;
+	padding: 0.5rem !important;
 }
 
 .appbar-notification-menu-notification-container {

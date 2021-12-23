@@ -17,12 +17,7 @@ import './styles.css';
 
 function Notifications() {
 	const dispatch = useDispatch();
-	//   const [notificationData, setNotificationData] = React.useState([]);
 	const { notification } = useSelector((store) => store.notification);
-
-	// useEffect(() => {
-	// 	getNotification();
-	// }, []);
 
 	const getNotification = () => {
 		notificationService
@@ -35,28 +30,11 @@ function Notifications() {
 	};
 
 	const handleMarkReadNotification = () => {
-		var myHeaders = new Headers();
-		myHeaders.append('Content-Type', 'application/json');
-
-		var raw = JSON.stringify({
-			recipient_id: localStorage.getItem('username'),
+		notificationService.markReadNotification().then((resp) => {
+			if (resp.isSuccess) {
+				getNotification();
+			}
 		});
-		var requestOptions = {
-			method: 'POST',
-			headers: myHeaders,
-			body: raw,
-		};
-		fetch(
-			'http://13.127.135.117:8080/api/mark-read-notification',
-			requestOptions
-		)
-			.then((response) => response.json())
-			.then((result) => {
-				if (result?.code === 200) {
-					getNotification();
-				}
-			})
-			.catch((error) => console.log('error', error));
 	};
 
 	return (

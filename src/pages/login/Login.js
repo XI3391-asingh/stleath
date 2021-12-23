@@ -4,6 +4,7 @@ import LoginForm from '../../components/login/LoginForm';
 import { useDispatch } from 'react-redux';
 import { LOGIN_USER } from '../../store/type';
 import authService from '../../service/auth';
+// import { setToken } from '../../http/Axios';
 
 function Login() {
 	let history = useHistory();
@@ -42,6 +43,7 @@ function Login() {
 					dispatch({ type: LOGIN_USER, payload: resp?.data });
 					setError('');
 					localStorage.setItem('access_token', resp?.data?.access_token);
+					// setToken(resp?.data?.access_token);
 					//   localStorage.setItem("user", JSON.stringify(resp?.data?.user));
 					localStorage.setItem('username', resp?.data?.user?.user_name);
 					localStorage.setItem('id', resp?.data?.user?.id);
