@@ -4,24 +4,14 @@ import { useHistory } from 'react-router-dom';
 import { Card, CardHeader, Divider } from '@mui/material';
 import { Bar } from 'react-chartjs-2';
 
-function SilenceDetectionCountChartCard() {
+function SilenceDetectionCountChartCard(props) {
 	let history = useHistory();
-	const dataValues = [
-		{ x: 1, y: 50 },
-		{ x: 2, y: 20 },
-		{ x: 3, y: 44 },
-		{ x: 4, y: 21 },
-		{ x: 5, y: 10 },
-		{ x: 6, y: 3 },
-		{ x: 7, y: 17 },
-	];
-	const dataLabels = [1, 2, 3, 4, 5, 6, 7];
 	const data = {
-		labels: dataLabels,
+		labels: props?.data?.map((item) => item.agent_name),
 		datasets: [
 			{
 				label: 'Silence Detection',
-				data: dataValues,
+				data: props?.data?.map((item) => item.totalCall),
 				backgroundColor: '#B5CDA3',
 				barPercentage: 0.5,
 				categoryPercentage: 0.5,
