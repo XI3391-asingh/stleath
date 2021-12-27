@@ -31,20 +31,20 @@ function SilenceDetectionCountChartCard(props) {
 							onClick: (e) => {
 								history.push('/calls');
 							},
-							scales: {
-								xAxes: [
-									{
-										display: false,
-										type: 'linear',
-										offset: true,
-										grid: { offset: false },
-										ticks: { stepSize: 2, max: 3 },
-										title: { display: false, text: 'Hours' },
-									},
-									{ display: true, ticks: { autoSkip: false, max: 4 } },
-								],
-								yAxes: [{ display: false }],
-							},
+							// scales: {
+							// 	xAxes: [
+							// 		{
+							// 			display: false,
+							// 			type: 'linear',
+							// 			offset: true,
+							// 			grid: { offset: false },
+							// 			ticks: { stepSize: 2, max: 3 },
+							// 			title: { display: false, text: 'Hours' },
+							// 		},
+							// 		{ display: true, ticks: { autoSkip: false, max: 4 } },
+							// 	],
+							// 	yAxes: [{ display: false }],
+							// },
 						}}
 					/>
 				</div>

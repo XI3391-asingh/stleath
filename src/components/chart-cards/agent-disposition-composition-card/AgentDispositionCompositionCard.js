@@ -64,7 +64,7 @@ function AgentDispositionCompositionCard() {
 								{
 									label: 'FollowUp',
 									data: data.agentDisposition1.dataSet,
-									categoryPercentage: 1,
+									// categoryPercentage: 1,
 									pointStyle: 'rectRounded',
 									stack: 'Stack 0',
 									backgroundColor: '#C9E4C5',
@@ -72,7 +72,7 @@ function AgentDispositionCompositionCard() {
 								{
 									label: 'AlreadyPurchased',
 									data: data.agentDisposition2.dataSet,
-									categoryPercentage: 1,
+									// categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
 									backgroundColor: '#B5DEFF',
@@ -80,7 +80,7 @@ function AgentDispositionCompositionCard() {
 								{
 									label: 'CustomerPickedUp',
 									data: data.agentDisposition3.dataSet,
-									categoryPercentage: 1,
+									// categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
 									backgroundColor: '#FCFFA6',
@@ -88,7 +88,7 @@ function AgentDispositionCompositionCard() {
 								{
 									label: 'AutoWrapUp',
 									data: data.agentDisposition4.dataSet,
-									categoryPercentage: 1,
+									// categoryPercentage: 1,
 									pointStyle: 'triangle',
 									stack: 'Stack 0',
 									backgroundColor: '#CAB8FF',
