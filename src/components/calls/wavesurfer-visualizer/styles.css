@@ -13,3 +13,11 @@
 	background-color: blue !important;
 	color: white !important;
 }
+
+/* new audio visualizer */
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-panel {
+	background-color: #fff;
+	color: #000;
+}
