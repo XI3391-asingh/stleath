@@ -31,7 +31,13 @@
 .comments-send-button {
 	background-color: blue !important;
 	color: white !important;
-	margin: 1rem 0.5rem !important;
+	margin: 0.8rem 0.5rem !important;
+	/* background-color: blue;
+	color: white; */
+	border: none;
+	font-size: 0.9rem;
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
 }
 
 /* Moments-Styles */

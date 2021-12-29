@@ -2,7 +2,6 @@ import { Search } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
 import {
 	Badge,
-	Button,
 	Card,
 	CardContent,
 	CardHeader,
@@ -139,9 +138,9 @@ function Messages() {
 									multiline
 									className='messages-page-chat-textfield'
 								/>
-								<Button variant='contained' className='comments-send-button'>
+								<button variant='contained' className='messages-send-button'>
 									Send
-								</Button>
+								</button>
 							</Box>
 						</div>
 					</Box>

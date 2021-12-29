@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { DataGrid } from '@mui/x-data-grid';
-import { Button, Typography } from '@mui/material';
 
 import Calls from '../../../../data/tables/calls.json';
 
@@ -62,13 +61,13 @@ const columns = [
 			return (
 				<div>
 					<Link to={`/call-visualizer?id=${row?.id}`}>
-						<Button
+						<button
 							className='details-button'
 							disableElevation
 							variant='contained'
 						>
-							<Typography variant='button'>View Details</Typography>
-						</Button>
+							View Details
+						</button>
 					</Link>
 				</div>
 			);
