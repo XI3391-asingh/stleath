@@ -145,8 +145,8 @@
 	background-color: lightgrey;
 	padding: 0.5rem 1rem;
 	margin: 0.3rem 0 !important;
-	border-left: 2px solid blue;
-	font-size: 0.7rem !important;
+	border-left: 3px solid blue;
+	font-size: 0.8rem !important;
 }
 
 .transcription-customer-speech {
@@ -155,8 +155,8 @@
 	background-color: lightgrey;
 	padding: 0.5rem 1rem;
 	margin: 0.3rem 0 !important;
-	border-left: 2px solid green;
-	font-size: 0.7rem !important;
+	border-left: 3px solid green;
+	font-size: 0.8rem !important;
 }
 
 /* Visualizer Styles */

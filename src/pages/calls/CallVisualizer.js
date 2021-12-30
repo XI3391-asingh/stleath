@@ -23,6 +23,8 @@ function CallVisualizer() {
 	let callidquery = query.get('id');
 	const dispatch = useDispatch();
 	const { visualizer } = useSelector((store) => store.call);
+	const [nowTime, setNowTime] = useState(0);
+
 	const { data } = useDemoData({
 		dataSet: 'Commodity',
 		rowLength: 100,
@@ -90,7 +92,10 @@ function CallVisualizer() {
 			</div>
 			<div>
 				{Object?.keys(visualizer)?.length && (
-					<WavesurferAudioVisualizer path={visualizer?.path} />
+					<WavesurferAudioVisualizer
+						path={visualizer?.path}
+						currentTime={(data) => setNowTime(data)}
+					/>
 				)}
 			</div>
 			<div className='calls-visualizer-card-list'>
@@ -98,7 +103,7 @@ function CallVisualizer() {
 					<Moments />
 				</div>
 				<div className='calls-visualizer-transcription-card'>
-					<Transcription />
+					<Transcription time={nowTime} />
 				</div>
 				<div className='calls-visualizer-comments-card-layout'>
 					<Card>

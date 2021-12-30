@@ -2,8 +2,8 @@ import { Typography } from '@material-ui/core';
 import React from 'react';
 import CallTranscription from './CallTranscription';
 
-function CallTranscriptionSpeech({ speaker }) {
-	console.log(speaker);
+function CallTranscriptionSpeech({ speaker, currentTime }) {
+	console.log(currentTime);
 	const callTranscriptionData = [
 		{
 			id: 1,
@@ -11,6 +11,8 @@ function CallTranscriptionSpeech({ speaker }) {
 			data: 'Hello sir, thank you for calling HDFC bank, my name is Rajat, how may I help you today?',
 			type: 'Agent',
 			path: '',
+			starttime: '11',
+			endtime: '2000',
 		},
 		{
 			id: 2,
@@ -18,6 +20,8 @@ function CallTranscriptionSpeech({ speaker }) {
 			data: 'Hi Rajat, my name is Ashish, I called you as I wanted to gather some information regarding your lifetime free credit card.',
 			type: 'Customer',
 			path: '',
+			starttime: '2000',
+			endtime: '3500',
 		},
 		{
 			id: 3,
@@ -25,6 +29,8 @@ function CallTranscriptionSpeech({ speaker }) {
 			data: 'Sure sir, may I please know where did you get this information from so that I can put the same in my notes?',
 			type: 'Agent',
 			path: '',
+			starttime: '3500',
+			endtime: '5000',
 		},
 		{
 			id: 4,
@@ -32,6 +38,8 @@ function CallTranscriptionSpeech({ speaker }) {
 			data: 'Yes, I read the same in a newspaper this morning.',
 			type: 'Customer',
 			path: '',
+			starttime: '5000',
+			endtime: '8000',
 		},
 		{
 			id: 5,
@@ -39,6 +47,8 @@ function CallTranscriptionSpeech({ speaker }) {
 			data: 'Thank you for the confirmation. Yes, sir, the offer is going on right now where we are providing a lifetime free credit card with no joining fee or yearly fee. The bill is generated on the 1st of every month which needs to be paid by the 15th of every month.',
 			type: 'Agent',
 			path: '',
+			starttime: '8000',
+			endtime: '9000',
 		},
 		{
 			id: 6,
@@ -46,6 +56,8 @@ function CallTranscriptionSpeech({ speaker }) {
 			data: 'Great, that’s so good to know, will you be able to explain to me any more features of this credit card such as reward points and cashback offers.',
 			type: 'Customer',
 			path: '',
+			starttime: '10000',
+			endtime: '13000',
 		},
 		{
 			id: 7,
@@ -53,6 +65,8 @@ function CallTranscriptionSpeech({ speaker }) {
 			data: 'Sure sir, just a moment, please. Yes, so there are various offers applicable on this card right now such as complimentary airport lounge access, 5% cashback at the restaurants, and zero surcharges on the fuel.',
 			type: 'Agent',
 			path: '',
+			starttime: '13000',
+			endtime: '16000',
 		},
 		{
 			id: 8,
@@ -60,6 +74,8 @@ function CallTranscriptionSpeech({ speaker }) {
 			data: 'Thanks for the information, how can I further proceed with this?',
 			type: 'Customer',
 			path: '',
+			starttime: '23811',
+			endtime: '24000',
 		},
 		{
 			id: 9,
@@ -67,6 +83,8 @@ function CallTranscriptionSpeech({ speaker }) {
 			data: 'Let me help you with that, so I need to ask you for some information to process your application from here and then our bank representative will contact you to collect a couple of documents from you.',
 			type: 'Agent',
 			path: '',
+			starttime: '24000',
+			endtime: '26811',
 		},
 		{
 			id: 10,
@@ -190,6 +208,13 @@ function CallTranscriptionSpeech({ speaker }) {
 									<Typography
 										variant='body2'
 										className='transcription-agent-speech'
+										style={{
+											backgroundColor:
+												currentTime >= data?.starttime &&
+												currentTime <= data?.endtime
+													? 'lightgrey'
+													: 'darkgrey',
+										}}
 									>
 										{data.data}
 									</Typography>
@@ -204,6 +229,13 @@ function CallTranscriptionSpeech({ speaker }) {
 									<Typography
 										variant='body2'
 										className='transcription-customer-speech'
+										style={{
+											backgroundColor:
+												currentTime >= data?.starttime &&
+												currentTime <= data?.endtime
+													? 'lightgrey'
+													: 'darkgrey',
+										}}
 									>
 										{data.data}
 									</Typography>

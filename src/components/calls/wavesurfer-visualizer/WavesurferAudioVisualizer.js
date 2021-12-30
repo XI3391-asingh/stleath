@@ -7,7 +7,7 @@ import { CLEAR_CALL_VISUALIZER } from '../../../store/type';
 
 import './styles.css';
 
-function Visualizer({ path }) {
+function Visualizer({ path, currentTime }) {
 	const dispatch = useDispatch();
 	const wavesurferRef = useRef();
 	const wavesurferRef2 = useRef();
@@ -16,12 +16,12 @@ function Visualizer({ path }) {
 		return () => {
 			stop();
 			stop2();
-			dispatch({type: CLEAR_CALL_VISUALIZER});
+			dispatch({ type: CLEAR_CALL_VISUALIZER });
 		};
 	}, []);
 
 	const handleWSMount = (waveSurfer) => {
-		console.log('Path-1: ', path); 
+		console.log('Path-1: ', path);
 		wavesurferRef.current = waveSurfer;
 		if (wavesurferRef.current) {
 			console.log('...2');
@@ -32,14 +32,32 @@ function Visualizer({ path }) {
 			wavesurferRef.current.on('loading', (data) => {
 				console.log('loading --> ', data);
 			});
+			wavesurferRef.current.on('audioprocess', () => {
+				if (wavesurferRef.current.isPlaying()) {
+					//   let nowtime = millisToMinutesAndSeconds(
+					//     Math.round(wavesurferRef.current.getCurrentTime() * 1000)
+					//   );
+					let nowtime = Math.round(
+						wavesurferRef.current.getCurrentTime() * 1000
+					);
+					currentTime(nowtime);
+					//   console.log(nowtime);
+				}
+			});
 			if (window) {
 				window.surferidze = wavesurferRef.current;
 			}
 		}
 	};
 
+	// function millisToMinutesAndSeconds(millis) {
+	// 	var minutes = Math.floor(millis / 60000);
+	// 	var seconds = ((millis % 60000) / 1000).toFixed(0);
+	// 	return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+	// }
+
 	const handleWSMount2 = (waveSurfer) => {
-		console.log('Path-2: ', path); 
+		console.log('Path-2: ', path);
 		wavesurferRef2.current = waveSurfer;
 		if (wavesurferRef2.current) {
 			console.log('...2');
