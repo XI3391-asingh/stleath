@@ -62,13 +62,163 @@ function AudioVisualizer({ path }) {
 		<div>
 			<Card className='audio-visualizer-card-layout'>
 				<Typography variant='h5'>Audio Visualizer</Typography>
-				<audio
-					style={{ width: '100%', ariaLabel: 'small' }}
-					controls
-					src={path}
-					ref={audioRef}
-					type='audio'
-				/>
+				<div>
+					<div className='audio-visualizer-type mt-25'>
+						<div className='audio-visualizer-agent-text'>Agent</div>
+						<div className='audio-visualizer-agent'>
+							<div className='audio-visualizer-box-agent w-4'></div>&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-2'></div>&nbsp;
+							<div className='audio-visualizer-box-agent w-4'></div>&nbsp;
+							<div className='audio-visualizer-box-agent w-2'></div>&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-4'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-20'></div>
+							&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-2'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-4'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-6'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-20'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='w-100'></div>
+							<div className=' w-50'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-2'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-4'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-6'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className=' w-12'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className=' w-14'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-16'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-12'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-14'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-50'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-2'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-4'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-100'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-2'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-20'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-100'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-2'></div>
+							&nbsp;
+							<div className='audio-visualizer-box-agent w-2'></div>
+							&nbsp;
+							<div className='audio-visualizer-box-agent w-2'></div>
+							&nbsp;
+							<div className='audio-visualizer-box-agent w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-agent w-10'></div>
+						</div>
+					</div>
+					<div className='audio-visualizer-block'>
+						<div className='audio-visualizer-box'></div>
+					</div>
+					<div className='audio-visualizer-type mb-20'>
+						<div className='audio-visualizer-customer-text'>Customer</div>
+						{/* <hr className='audio-visualizer-customer-divider' /> */}
+						<div className='audio-visualizer-customer'>
+							<div className='audio-visualizer-box-customer w-2'></div>
+							&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-4'></div>&nbsp;
+							<div className='audio-visualizer-box-customer w-2'></div>&nbsp;
+							<div className='audio-visualizer-box-customer w-4'></div>
+							&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-4'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-30'></div>
+							&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-20'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-2'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-4'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-6'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-20'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='w-100'></div>
+							<div className=' w-50'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-2'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-4'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-6'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className=' w-12'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className=' w-14'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-16'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-12'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-14'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-2'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-4'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-50'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-2'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-20'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-50'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-2'></div>
+							&nbsp;
+							<div className='audio-visualizer-box-customer w-2'></div>
+							&nbsp;
+							<div className='audio-visualizer-box-customer w-2'></div>
+							&nbsp;
+							<div className='audio-visualizer-box-customer w-10'></div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div className='audio-visualizer-box-customer w-100'></div>
+						</div>
+					</div>
+					<audio
+						style={{ width: '100%', ariaLabel: 'small' }}
+						controls
+						src={path}
+						ref={audioRef}
+						type='audio'
+					/>
+				</div>
 				{/* <Card className='audio-visualizer-wave-card'>
 					<Typography variant='body2'>Agent</Typography>
 					<WaveSurfer onMount={handleWSMount}>
