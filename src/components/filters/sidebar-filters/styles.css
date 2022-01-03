@@ -16,10 +16,16 @@
 
 /* Sidebar-datepickers */
 
+.sidebar-datepicker-layout {
+	width: 10rem;
+}
+
 .sidebar-datepickers {
 	width: 70%;
-	height: 1.5rem;
+	height: 2rem;
 	margin: 0.5rem;
 	border-radius: 4px;
 	display: flex;
+	text-align: center;
+	border: 1px solid #d3d3d3;
 }

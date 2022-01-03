@@ -17,7 +17,7 @@ function SidebarDatepicker() {
 				selectsStart
 				startDate={startDate}
 				endDate={endDate}
-				placeholderText='Start Date'
+				placeholderText='From Date'
 			/>
 			<DatePicker
 				className='sidebar-datepickers'
@@ -28,7 +28,7 @@ function SidebarDatepicker() {
 				startDate={startDate}
 				endDate={endDate}
 				minDate={startDate}
-				placeholderText='End Date'
+				placeholderText='To Date'
 			/>
 		</div>
 	);
