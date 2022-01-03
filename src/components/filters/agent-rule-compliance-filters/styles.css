@@ -1,0 +1,17 @@
+.agent-rule-compliance-filters-layout {
+	display: flex;
+}
+
+.agent-rule-compliance-filters-dropdown-layout {
+	margin-left: 1rem;
+}
+
+.agent-rule-compliance-filter-dropdown {
+	margin: 0;
+}
+
+.agent-rule-compliance-filter {
+	/* height: 2rem; */
+	width: 8rem !important;
+	margin-bottom: 0.5rem !important;
+}
