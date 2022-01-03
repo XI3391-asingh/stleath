@@ -77,7 +77,8 @@ function CallVisualizer() {
 						variant='button'
 						className='calls-visualizer-details-text'
 					>
-						Rajat Bansal on {dateTime} for 30:37 minutes
+						{visualizer?.agent_name} on {visualizer?.createdAt}
+						{/* for 30:37 minutes */}
 					</Typography>
 					<Typography
 						variant='button'

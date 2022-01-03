@@ -8,6 +8,7 @@ import ChartComponents from '../../components/ChartComponents';
 
 import './styles.css';
 import DashboardDetails from '../../components/dashboard/details/DashboardDetails';
+import DashboardScrollbar from '../../components/dashboard/dashboard-scrollbar/DashboardScrollbar';
 
 function Dashboard() {
 	return (
@@ -20,6 +21,9 @@ function Dashboard() {
 					<div>
 						<DashboardDetails />
 						<hr className='dashboard-page-divider' />
+						<div className='dashboard-page-scroller'>
+							<DashboardScrollbar />
+						</div>
 						<div className='dashboard-page-components'>
 							<CardComponents />
 							<ChartComponents />
