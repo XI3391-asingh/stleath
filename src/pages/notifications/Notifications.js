@@ -1,5 +1,4 @@
 import {
-	Button,
 	Card,
 	CardHeader,
 	Divider,
@@ -42,9 +41,12 @@ function Notifications() {
 			<Card className='notifications-page-card'>
 				<div className='notifications-page-card-header'>
 					<Typography variant='h5'>Notifications</Typography>
-					<Button onClick={handleMarkReadNotification}>
-						<Typography variant='button'>Mark All As Read</Typography>
-					</Button>
+					<button
+						onClick={handleMarkReadNotification}
+						className='notifications-page-button'
+					>
+						Mark All As Read
+					</button>
 				</div>
 				{/* <Divider /> */}
 				<div>

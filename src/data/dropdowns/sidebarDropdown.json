@@ -1,52 +1,19 @@
 [
 	{
+		"id": "1",
 		"label": "Agent Name",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
+		"options": [
+			{ "id": "1", "name": "Jayant Raja" },
+			{ "id": "2", "name": "Wasi Muka" },
+			{ "id": "3", "name": "Rajat Bansal" }
+		]
 	},
 	{
-		"label": "Recording Date and Time",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
+		"id": "2",
 		"label": "Product Issues",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Service Issues",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Opening Check",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Customer Not Interested",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Agent Disposition",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Sub Disposition",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Closing Check",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
-	},
-	{
-		"label": "Casual Tone",
-		"optionOne": "Type 1",
-		"OptionTwo": "Type 2"
+		"options": [
+			{ "id": "1", "option": "Yes" },
+			{ "id": "2", "option": "No" }
+		]
 	}
 ]

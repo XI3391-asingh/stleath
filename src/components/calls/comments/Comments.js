@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Card, TextField, Typography } from '@mui/material';
-import { Button } from '@material-ui/core';
 import moment from 'moment';
 import '../styles.css';
 import SingleComment from './SingleComment';
@@ -58,14 +57,14 @@ function Comments({ callid, agent_name }) {
 						value={value}
 						onChange={(e) => setValue(e.target.value)}
 					/>
-					<Button
+					<button
 						type='button'
 						variant='contained'
 						className='comments-send-button'
 						onClick={SaveDataToLOcalStorage}
 					>
 						Send
-					</Button>
+					</button>
 				</Box>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Alert, Button, Snackbar, Stack } from '@mui/material';
+import { Snackbar, Stack } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 
 function DashboardSnackbar() {
@@ -25,9 +25,12 @@ function DashboardSnackbar() {
 	return (
 		<div>
 			<Stack spacing={2} sx={{ width: '100%' }}>
-				<Button variant='outlined' onClick={handleClick}>
+				<button
+					className='dashboard-snackbar-submit-button'
+					onClick={handleClick}
+				>
 					Submit
-				</Button>
+				</button>
 				<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
 					<Alert
 						onClose={handleClose}

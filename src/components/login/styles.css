@@ -56,6 +56,10 @@
 
 .login-form-submit-button {
 	width: 6rem;
+	height: 2rem;
+	background-color: blue;
+	border: none;
+	color: white;
 	text-transform: capitalize !important;
 	margin: 1rem 0 !important;
 	border-radius: 20px !important;
