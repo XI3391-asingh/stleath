@@ -16,22 +16,23 @@ import {
 	GET_CALL_REPORT,
 	GET_COUNT_CALL_EMOTION,
 	GET_CALL_COUNT_BY_DURATION,
+	GET_CALL_COUNT_BY_HOLD_VIOLATION,
 } from '../store/type';
 
 function ChartComponents() {
 	const dispatch = useDispatch();
-	const { emotions, sentiment, callcountbyduration } = useSelector(
-		(store) => store.dashboard
-	);
-
+	const { emotions, sentiment, callcountbyduration, callcountbyholdviolation } =
+		useSelector((store) => store.dashboard);
 	useEffect(() => {
 		getReport();
 		getEmotionReport();
 		getCallCountByDuration();
+		getCallCountByHoldViolation();
 		const interval = setInterval(() => {
 			getReport();
 			getEmotionReport();
 			getCallCountByDuration();
+			getCallCountByHoldViolation();
 		}, 60000);
 		return () => clearInterval(interval);
 	}, []);
@@ -124,6 +125,17 @@ function ChartComponents() {
 		});
 	};
 
+	const getCallCountByHoldViolation = () => {
+		indexService.getCallCountByHoldViolation().then((resp) => {
+			if (resp.isSuccess) {
+				dispatch({
+					type: GET_CALL_COUNT_BY_HOLD_VIOLATION,
+					payload: resp?.data,
+				});
+			}
+		});
+	};
+
 	return (
 		<div>
 			<div className='chartCardContainer'>
@@ -141,7 +153,7 @@ function ChartComponents() {
 				<AgentDispositionCompositionCard />
 			</div>
 			<div className='detctionChart'>
-				<SilenceDetectionCountChartCard />
+				<SilenceDetectionCountChartCard data={callcountbyholdviolation} />
 				<VoiceEnergyDeviationCountCard />
 			</div>
 			<div>

@@ -66,5 +66,12 @@ class indexService {
 		});
 		return perRequest;
 	};
+
+	getCallCountByHoldViolation = async () => {
+		const perRequest = await Axios.post('/get-call-count-by-hold-violation', {
+			headers: headers,
+		});
+		return perRequest;
+	};
 }
 export default new indexService();
