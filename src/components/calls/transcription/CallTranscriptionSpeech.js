@@ -11,8 +11,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Hello sir, thank you for calling HDFC bank, my name is Rajat, how may I help you today?',
 			type: 'Agent',
 			path: '',
-			starttime: '11',
-			endtime: '2000',
+			starttime: '1',
+			endtime: '4000',
 		},
 		{
 			id: 2,
@@ -20,8 +20,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Hi Rajat, my name is Ashish, I called you as I wanted to gather some information regarding your lifetime free credit card.',
 			type: 'Customer',
 			path: '',
-			starttime: '2000',
-			endtime: '3500',
+			starttime: '4000',
+			endtime: '6500',
 		},
 		{
 			id: 3,
@@ -29,8 +29,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Sure sir, may I please know where did you get this information from so that I can put the same in my notes?',
 			type: 'Agent',
 			path: '',
-			starttime: '3500',
-			endtime: '5000',
+			starttime: '6500',
+			endtime: '9000',
 		},
 		{
 			id: 4,
@@ -38,8 +38,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Yes, I read the same in a newspaper this morning.',
 			type: 'Customer',
 			path: '',
-			starttime: '5000',
-			endtime: '8000',
+			starttime: '9000',
+			endtime: '10000',
 		},
 		{
 			id: 5,
@@ -47,8 +47,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Thank you for the confirmation. Yes, sir, the offer is going on right now where we are providing a lifetime free credit card with no joining fee or yearly fee. The bill is generated on the 1st of every month which needs to be paid by the 15th of every month.',
 			type: 'Agent',
 			path: '',
-			starttime: '8000',
-			endtime: '9000',
+			starttime: '10000',
+			endtime: '15000',
 		},
 		{
 			id: 6,
@@ -56,8 +56,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Great, that’s so good to know, will you be able to explain to me any more features of this credit card such as reward points and cashback offers.',
 			type: 'Customer',
 			path: '',
-			starttime: '10000',
-			endtime: '13000',
+			starttime: '15000',
+			endtime: '19000',
 		},
 		{
 			id: 7,
@@ -65,8 +65,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Sure sir, just a moment, please. Yes, so there are various offers applicable on this card right now such as complimentary airport lounge access, 5% cashback at the restaurants, and zero surcharges on the fuel.',
 			type: 'Agent',
 			path: '',
-			starttime: '13000',
-			endtime: '16000',
+			starttime: '19000',
+			endtime: '22000',
 		},
 		{
 			id: 8,
@@ -92,6 +92,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Sure, please tell me.',
 			type: 'Customer',
 			path: '',
+			starttime: '26813',
+			endtime: '26850',
 		},
 		{
 			id: 11,
@@ -99,6 +101,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Please confirm whether you are salaried or self-employed?',
 			type: 'Agent',
 			path: '',
+			starttime: '26855',
+			endtime: '26900',
 		},
 		{
 			id: 12,
@@ -106,6 +110,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Salaried',
 			type: 'Customer',
 			path: '',
+			starttime: '26910',
+			endtime: '26920',
 		},
 		{
 			id: 13,
@@ -113,6 +119,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'May I please know your monthly income?',
 			type: 'Agent',
 			path: '',
+			starttime: '26923',
+			endtime: '26943',
 		},
 		{
 			id: 14,
@@ -120,6 +128,8 @@ function CallTranscriptionSpeech({ speaker, currentTime }) {
 			data: 'Thirty thousand rupees.',
 			type: 'Customer',
 			path: '',
+			starttime: '26943',
+			endtime: '26957',
 		},
 		{
 			id: 15,
