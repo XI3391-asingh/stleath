@@ -1,6 +1,5 @@
 import {
 	Alert,
-	Button,
 	FormControl,
 	IconButton,
 	InputLabel,
@@ -161,20 +160,20 @@ function DashboardDetails() {
 		<div className='dashboard-details-call-details-layout'>
 			<div className='dashboard-details-call-details'></div>
 			<div>
-				<Button
-					variant='contained'
+				<button
+					// variant='contained'
 					onClick={handleOpen}
-					style={{ marginRight: '1rem' }}
+					className='dashboard-details-upload-button'
 				>
 					Upload
-				</Button>
-				<Button
+				</button>
+				<button
 					variant='contained'
-					style={{ marginRight: '1rem' }}
+					className='dashboard-details-upload-button'
 					onClick={generateAnalysis}
 				>
 					Generate Analysis
-				</Button>
+				</button>
 				<Modal open={open} onClose={handleClose}>
 					<Box className='dashboard-details-call-details-modal'>
 						<div>
@@ -249,19 +248,25 @@ function DashboardDetails() {
 										))}
 									</div>
 								</div>
-								{/* <Button variant='contained' onClick={() => handleAddFields()}>
+								{/* <button variant='contained' onClick={() => handleAddFields()}>
 									+ Add More
-								</Button> */}
+								</button> */}
 							</div>
 
 							<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-								<Button variant='contained' onClick={handleClose}>
+								<button
+									className='dashboard-details-upload-button'
+									onClick={handleClose}
+								>
 									Cancel
-								</Button>
+								</button>
 								{/* <Stack spacing={2} sx={{ width: '100%' }}> */}
-								<Button variant='contained' onClick={submitHandler}>
+								<button
+									className='dashboard-details-upload-button'
+									onClick={submitHandler}
+								>
 									Submit
-								</Button>
+								</button>
 							</div>
 						</div>
 					</Box>

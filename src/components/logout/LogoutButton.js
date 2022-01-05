@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button } from '@mui/material';
+import './styles.css';
 
 function LogoutButton() {
 	const [user, setUser] = useState({ name: '', email: '' });
@@ -10,7 +10,11 @@ function LogoutButton() {
 		window.location.href = '/';
 	};
 
-	return <Button onClick={Logout}>Logout</Button>;
+	return (
+		<button className='logout-button-layout' onClick={Logout}>
+			Logout
+		</button>
+	);
 }
 
 export default LogoutButton;

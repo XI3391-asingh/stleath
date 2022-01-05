@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import { Card } from '@mui/material';
 
-import SideBar from '../../components/side-bar/SideBar';
 import CallsTable from '../../components/shared-components/tables/calls-table/CallsTable';
 
 import './styles.css';
@@ -11,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 import indexService from '../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_ALL_CALLS } from '../../store/type';
+import SidebarFilters from '../../components/filters/sidebar-filters/SidebarFilters';
 
 function Calls() {
 	const path = useLocation();
@@ -56,7 +56,7 @@ function Calls() {
 			<Card className='calls-page-card-body-layout'>
 				<div className='calls-page-card-body-design'>
 					<div>
-						<SideBar />
+						<SidebarFilters />
 					</div>
 					<div className='calls-page-card-main-body'>
 						<div className='calls-page-call-details'>

@@ -35,7 +35,7 @@ function CallVisualizer() {
 		getCallDetails();
 		const interval = setInterval(() => {
 			getCallDetails();
-			getCall();
+			// getCall();
 		}, 30000);
 		return () => clearInterval(interval);
 	}, [callidquery]);
@@ -78,7 +78,8 @@ function CallVisualizer() {
 						variant='button'
 						className='calls-visualizer-details-text'
 					>
-						Rajat Bansal on {dateTime} for 30:37 minutes
+						{visualizer?.agent_name} on {visualizer?.createdAt}
+						{/* for 30:37 minutes */}
 					</Typography>
 					<Typography
 						variant='button'

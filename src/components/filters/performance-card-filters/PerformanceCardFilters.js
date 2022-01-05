@@ -1,29 +1,30 @@
 import React from 'react';
 
-import { MenuItem, Select } from '@mui/material';
+import Select from 'react-select';
 
 import './styles.css';
 
+const options = {
+	id: '1',
+	label: 'Agent Name',
+	options: [
+		{ value: '1', label: 'Monthly' },
+		{ value: '2', label: 'Quarterly' },
+		{ value: '3', label: 'Yearly' },
+	],
+};
+
 function PerformanceFilters() {
-	const [age, setAge] = React.useState('');
-
-	const handleChange = (event) => {
-		setAge(event.target.value);
-	};
-
 	return (
-		<Select
-			labelId='demo-simple-select-label'
-			id='demo-simple-select'
-			value={age}
-			label='Age'
-			onChange={handleChange}
-			className='performance-filter'
-		>
-			<MenuItem value={10}>Ten</MenuItem>
-			<MenuItem value={20}>Twenty</MenuItem>
-			<MenuItem value={30}>Thirty</MenuItem>
-		</Select>
+		<div>
+			<div className='agent-disposition-filter-dropdown-layout'>
+				{/* <h6 className='agent-disposition-filter-dropdown-label'>{label}</h6> */}
+				<Select
+					className='performance-filter-select'
+					options={options.options}
+				/>
+			</div>
+		</div>
 	);
 }
 

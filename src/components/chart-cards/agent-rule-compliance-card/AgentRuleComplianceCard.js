@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Card, CardHeader, Divider, Grid } from '@mui/material';
 import { Bar } from 'react-chartjs-2';
 
-import ChartFiltersDropdown from '../../dropdowns/ChartFiltersDropdown';
+import AgentRuleComplianceFilters from '../../filters/agent-rule-compliance-filters/AgentRuleComplianceFilters';
 
 function AgentRuleComplianceCard() {
 	let history = useHistory();
@@ -41,7 +41,7 @@ function AgentRuleComplianceCard() {
 				/>
 				<Grid item lg={12} md={12} xs={12}>
 					<div>
-						<ChartFiltersDropdown />
+						<AgentRuleComplianceFilters labelOne='Agent Name' labelTwo='Note' />
 					</div>
 					<Divider />
 				</Grid>

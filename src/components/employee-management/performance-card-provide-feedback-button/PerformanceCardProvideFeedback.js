@@ -1,5 +1,4 @@
 import {
-	Button,
 	FormControl,
 	InputLabel,
 	MenuItem,
@@ -59,9 +58,12 @@ function PerformanceCardProvideFeedback() {
 
 	return (
 		<div>
-			<Button variant='contained' onClick={handleOpen}>
+			<button
+				className='employee-management-feedback-button'
+				onClick={handleOpen}
+			>
 				Feedback
-			</Button>
+			</button>
 			<Modal open={open} onClose={handleClose}>
 				<Box className='performance-card-provide-feedback-modal'>
 					<div style={{ margin: '2rem' }}>
@@ -114,12 +116,18 @@ function PerformanceCardProvideFeedback() {
 						</Box>
 					</div>
 					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-						<Button variant='contained' onClick={handleClose}>
+						<button
+							className='employee-management-feedback-button'
+							onClick={handleClose}
+						>
 							Cancel
-						</Button>
-						<Button variant='contained' onClick={handleSubmit}>
+						</button>
+						<button
+							className='employee-management-feedback-button'
+							onClick={handleSubmit}
+						>
 							Submit
-						</Button>
+						</button>
 					</div>
 				</Box>
 			</Modal>

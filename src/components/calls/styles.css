@@ -31,7 +31,13 @@
 .comments-send-button {
 	background-color: blue !important;
 	color: white !important;
-	margin: 1rem 0.5rem !important;
+	margin: 0.8rem 0.5rem !important;
+	/* background-color: blue;
+	color: white; */
+	border: none;
+	font-size: 0.9rem;
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
 }
 
 /* Moments-Styles */
@@ -64,12 +70,16 @@
 /* Transcriptions */
 
 .transcriptions-card {
-	padding: 1rem;
-	height: 23rem;
+	height: 25rem;
 }
 
-.transactions-card-heading {
-	padding-bottom: 1rem;
+.transcriptions-card-heading {
+	/* padding-bottom: 1rem; */
+	margin: 1rem;
+}
+
+.transcriptions-card-divider {
+	margin: 0;
 }
 
 .transcriptions-card-chip-list {
@@ -83,6 +93,12 @@
 
 .transcriptions-card-image {
 	width: 100%;
+}
+
+.transcriptions-main-layout {
+	overflow-y: auto;
+	height: 25rem !important;
+	padding: 0.5rem;
 }
 
 .call-transcription-layout {

@@ -36,6 +36,11 @@ audio::-webkit-media-controls-panel {
 .audio-visualizer-card-button {
 	background-color: blue !important;
 	color: white !important;
+	border: none;
+	font-size: 0.9rem;
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
+	margin: 0 0.2rem;
 }
 
 /* new audio visualizer */

@@ -1,0 +1,26 @@
+/* .agent-disposition-filter-dropdown {
+	margin: 0;
+}
+
+.agent-disposition-filter {
+	height: 2rem;
+	width: 8rem;
+	margin-bottom: 0.5rem !important;
+} */
+/* .agent-disposition-filters-layout {
+	display: flex;
+} */
+
+.agent-disposition-filters-dropdown-layout {
+	margin-left: 1rem;
+}
+
+.agent-disposition-filter-dropdown-label {
+	margin: 0;
+}
+
+.agent-disposition-filter {
+	/* height: 2rem; */
+	width: 8rem !important;
+	margin-bottom: 0.5rem !important;
+}

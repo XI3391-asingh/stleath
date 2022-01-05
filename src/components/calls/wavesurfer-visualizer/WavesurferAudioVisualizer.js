@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { Card } from '@mui/material';
 import React, { useRef, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -16,12 +16,12 @@ function Visualizer({ path }) {
 		return () => {
 			stop();
 			stop2();
-			dispatch({type: CLEAR_CALL_VISUALIZER});
+			dispatch({ type: CLEAR_CALL_VISUALIZER });
 		};
 	}, []);
 
 	const handleWSMount = (waveSurfer) => {
-		console.log('Path-1: ', path); 
+		console.log('Path-1: ', path);
 		wavesurferRef.current = waveSurfer;
 		if (wavesurferRef.current) {
 			console.log('...2');
@@ -39,7 +39,7 @@ function Visualizer({ path }) {
 	};
 
 	const handleWSMount2 = (waveSurfer) => {
-		console.log('Path-2: ', path); 
+		console.log('Path-2: ', path);
 		wavesurferRef2.current = waveSurfer;
 		if (wavesurferRef2.current) {
 			console.log('...2');
@@ -116,49 +116,49 @@ function Visualizer({ path }) {
 					</WaveSurfer>
 				</Card>
 				<div>
-					<ButtonGroup
+					{/* <ButtonGroup
 						variant='contained'
 						aria-label='outlined primary button group'
+					> */}
+					<button
+						onClick={() => {
+							play();
+							play2();
+						}}
+						className='audio-visualizer-card-button'
 					>
-						<Button
-							onClick={() => {
-								play();
-								play2();
-							}}
-							className='audio-visualizer-card-button'
-						>
-							Play / Pause
-						</Button>
-						<Button
-							onClick={() => {
-								seekBack();
-								seekBack2();
-								seek();
-								seek2();
-							}}
-							className='audio-visualizer-card-button'
-						>
-							Rewind
-						</Button>
-						<Button
-							onClick={() => {
-								seekTo();
-								seekTo2();
-							}}
-							className='audio-visualizer-card-button'
-						>
-							Forward
-						</Button>
-						<Button
-							onClick={() => {
-								stop();
-								stop2();
-							}}
-							className='audio-visualizer-card-button'
-						>
-							Stop
-						</Button>
-					</ButtonGroup>
+						Play / Pause
+					</button>
+					<button
+						onClick={() => {
+							seekBack();
+							seekBack2();
+							seek();
+							seek2();
+						}}
+						className='audio-visualizer-card-button'
+					>
+						Rewind
+					</button>
+					<button
+						onClick={() => {
+							seekTo();
+							seekTo2();
+						}}
+						className='audio-visualizer-card-button'
+					>
+						Forward
+					</button>
+					<button
+						onClick={() => {
+							stop();
+							stop2();
+						}}
+						className='audio-visualizer-card-button'
+					>
+						Stop
+					</button>
+					{/* </ButtonGroup> */}
 				</div>
 			</Card>
 		</div>

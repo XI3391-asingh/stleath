@@ -17,39 +17,27 @@ function Transcription() {
 	return (
 		<div>
 			<Card className='transcriptions-card'>
-				<div className='transactions-card-heading'>
+				<div className='transcriptions-card-heading'>
 					<Typography variant='h5'>Transcription</Typography>
 				</div>
-				<div className='transcriptions-card-chip-list'>
-					<div>
-						<Chip label='2:37' variant='outlined' />
-					</div>
+				{/* <div className='transcriptions-card-chip-list'>
 					<div>
 						<Chip label='Agent' variant='outlined' />
 					</div>
-					<div>
-						<Chip label='Positive' variant='outlined' />
-					</div>
-					<div className='transcriptions-card-icons'>
-						<AddCommentIcon />
-					</div>
-					<div className='transcriptions-card-icons'>
-						<PlayArrowRoundedIcon />
-					</div>
-				</div>
-				<hr />
-				{comments?.transcript?.length && (
-					<CallTranscriptionSpeech
-						speaker={comments?.transcript}
-						// speaker1={comments?.transcript && comments?.transcript[0]}
-						// speaker2={comments?.transcript && comments?.transcript[1]}
-					/>
-				)}
+					</div>*/}
+				<hr className='transcriptions-card-divider' />
+				{/* {comments?.transcript?.length && ( */}
+				<CallTranscriptionSpeech
+				// speaker={comments?.transcript}
+				// speaker1={comments?.transcript && comments?.transcript[0]}
+				// speaker2={comments?.transcript && comments?.transcript[1]}
+				/>
+				{/* )} */}
 				{/* <img
-					src={image}
-					alt='transcription'
-					className='transcriptions-card-image'
-				/> */}
+          src={image}
+          alt="transcription"
+          className="transcriptions-card-image"
+        /> */}
 			</Card>
 		</div>
 	);

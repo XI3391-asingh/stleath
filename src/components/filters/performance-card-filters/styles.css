@@ -1,5 +1,4 @@
-.performance-filter {
-	/* min-height: 0.5rem !important; */
-	height: 2rem;
-	width: 8rem;
+.performance-filter-select {
+	width: 8rem !important;
+	margin-bottom: 0.5rem !important;
 }
