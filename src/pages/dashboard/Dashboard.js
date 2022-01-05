@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Card } from '@mui/material';
 
-import SideBar from '../../components/side-bar/SideBar';
 import CardComponents from '../../components/CardComponents';
 import ChartComponents from '../../components/ChartComponents';
 
 import './styles.css';
 import DashboardDetails from '../../components/dashboard/details/DashboardDetails';
+import SidebarFilters from '../../components/filters/sidebar-filters/SidebarFilters';
 import DashboardScrollbar from '../../components/dashboard/dashboard-scrollbar/DashboardScrollbar';
 
 function Dashboard() {
@@ -16,7 +16,7 @@ function Dashboard() {
 			<Card className='dashboard-page-card'>
 				<div className='dashboard-page-card-list'>
 					<div>
-						<SideBar />
+						<SidebarFilters />
 					</div>
 					<div>
 						<DashboardDetails />

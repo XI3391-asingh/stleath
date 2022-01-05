@@ -13,7 +13,6 @@ import {
 	ListItemIcon,
 	MenuList,
 	Divider,
-	Button,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MailIcon from '@mui/icons-material/Mail';
@@ -145,14 +144,12 @@ function Navbar() {
 			<MenuList className='appbar-notification-menu-list'>
 				<MenuItem className='appbar-notification-menu-item'>
 					<Typography variant='h6'>Notifications</Typography>
-					<Button onClick={handleMarkReadNotification}>
-						<Typography
-							variant='caption'
-							className='appbar-notification-menu-list-button'
-						>
-							Mark All As Read
-						</Typography>
-					</Button>
+					<button
+						onClick={handleMarkReadNotification}
+						className='appbar-notification-menu-list-button'
+					>
+						Mark All As Read
+					</button>
 				</MenuItem>
 				<Divider />
 				{notification?.slice(0, 5)?.map((data, index) => {
@@ -193,11 +190,9 @@ function Navbar() {
 			</MenuList>
 			<div className='appbar-notification-menu-see-all-notifications'>
 				<Link to='/notifications'>
-					<Button>
-						<Typography variant='button' onClick={handleNotificationMenuClose}>
-							See All Notifications
-						</Typography>
-					</Button>
+					<button className='appbar-notification-menu-list-button'>
+						See All Notifications
+					</button>
 				</Link>
 			</div>
 		</Menu>

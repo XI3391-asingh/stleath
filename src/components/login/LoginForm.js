@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Card, Typography } from '@mui/material';
+import { Card, Typography } from '@mui/material';
 
 import './styles.css';
 
@@ -54,14 +54,14 @@ function LoginForm({ Login, error }) {
 						</div>
 						{error !== '' ? <div>{error}</div> : ''}
 						<div>
-							<Button
+							<button
 								type='submit'
 								variant='contained'
 								onSubmit={submitHandler}
 								className='login-form-submit-button'
 							>
 								Log In
-							</Button>
+							</button>
 						</div>
 						{/* {error !== '' ? <div>{error}</div> : ''} */}
 					</div>

@@ -13,6 +13,17 @@
 	padding: 1rem;
 }
 
+.notifications-page-button {
+	text-align: end;
+	background-color: initial;
+	color: blue;
+	border: none;
+	font-size: 0.9rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
 .notification-page-pagination {
 	align-content: center !important;
 	justify-content: center !important;

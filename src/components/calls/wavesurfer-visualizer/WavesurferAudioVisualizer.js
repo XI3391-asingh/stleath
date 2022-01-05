@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { Card } from '@mui/material';
 import React, { useRef, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -134,49 +134,49 @@ function Visualizer({ path, currentTime }) {
 					</WaveSurfer>
 				</Card>
 				<div>
-					<ButtonGroup
+					{/* <ButtonGroup
 						variant='contained'
 						aria-label='outlined primary button group'
+					> */}
+					<button
+						onClick={() => {
+							play();
+							play2();
+						}}
+						className='audio-visualizer-card-button'
 					>
-						<Button
-							onClick={() => {
-								play();
-								play2();
-							}}
-							className='audio-visualizer-card-button'
-						>
-							Play / Pause
-						</Button>
-						<Button
-							onClick={() => {
-								seekBack();
-								seekBack2();
-								seek();
-								seek2();
-							}}
-							className='audio-visualizer-card-button'
-						>
-							Rewind
-						</Button>
-						<Button
-							onClick={() => {
-								seekTo();
-								seekTo2();
-							}}
-							className='audio-visualizer-card-button'
-						>
-							Forward
-						</Button>
-						<Button
-							onClick={() => {
-								stop();
-								stop2();
-							}}
-							className='audio-visualizer-card-button'
-						>
-							Stop
-						</Button>
-					</ButtonGroup>
+						Play / Pause
+					</button>
+					<button
+						onClick={() => {
+							seekBack();
+							seekBack2();
+							seek();
+							seek2();
+						}}
+						className='audio-visualizer-card-button'
+					>
+						Rewind
+					</button>
+					<button
+						onClick={() => {
+							seekTo();
+							seekTo2();
+						}}
+						className='audio-visualizer-card-button'
+					>
+						Forward
+					</button>
+					<button
+						onClick={() => {
+							stop();
+							stop2();
+						}}
+						className='audio-visualizer-card-button'
+					>
+						Stop
+					</button>
+					{/* </ButtonGroup> */}
 				</div>
 			</Card>
 		</div>
