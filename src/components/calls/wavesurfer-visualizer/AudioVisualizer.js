@@ -7,10 +7,26 @@ import { CLEAR_CALL_VISUALIZER } from '../../../store/type';
 
 import './styles.css';
 
-function AudioVisualizer({ path }) {
+function AudioVisualizer({ path, currentTime, isplayaudio }) {
 	const audioRef = React.useRef(null);
 	const dispatch = useDispatch();
 	// const wavesurferRef = useRef();
+
+	useEffect(() => {
+		// Everything around if statement
+		if (audioRef && audioRef.current) {
+			audioRef.current.addEventListener('play', () => {
+				isplayaudio(true);
+			});
+			audioRef.current.addEventListener('ended', () => {
+				isplayaudio(false);
+			});
+
+			return () => {
+				// audioRef.current.removeEventListener(...)
+			};
+		}
+	});
 
 	useEffect(() => {
 		return () => {
@@ -57,6 +73,14 @@ function AudioVisualizer({ path }) {
 	// const stop = useCallback(() => {
 	// 	wavesurferRef.current.stop();
 	// });
+
+	const onPlaying = () => {
+		let nowtime = Math.round(audioRef.current.currentTime);
+		currentTime(nowtime);
+		// setSeekValue(
+		//   (audioPlayer.current.currentTime / audioPlayer.current.duration) * 100
+		// );
+	};
 
 	return (
 		<div>
@@ -217,6 +241,7 @@ function AudioVisualizer({ path }) {
 						src={path}
 						ref={audioRef}
 						type='audio'
+						onTimeUpdate={onPlaying}
 					/>
 				</div>
 				{/* <Card className='audio-visualizer-wave-card'>

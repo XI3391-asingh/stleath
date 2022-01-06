@@ -20,15 +20,13 @@ function CallTranscription({ calltime, speaker, id }) {
 						variant='caption'
 						className='call-transcription-timing-profile'
 					>
-						{/* {moment.duration(seconds, 'seconds')} */}
-						{/* {handleTime(calltime && calltime[0])} min */}
-						{calltime}
+						{handleTime(calltime)} min
 					</Typography>
 					<Typography
 						variant='caption'
 						className='call-transcription-timing-profile'
 					>
-						{speaker === 'Customer' ? 'Customer' : 'Agent'}
+						{speaker}
 					</Typography>
 					{id === 0 && (
 						<Chip

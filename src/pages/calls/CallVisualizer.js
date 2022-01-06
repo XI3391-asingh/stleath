@@ -23,6 +23,8 @@ function CallVisualizer() {
 	let query = new URLSearchParams(path?.search);
 	let callidquery = query.get('id');
 	const dispatch = useDispatch();
+	const [nowTime, setNowTime] = useState(0);
+	const [isplaying, setIsplaying] = useState(false);
 	const { visualizer } = useSelector((store) => store.call);
 	const { data } = useDemoData({
 		dataSet: 'Commodity',
@@ -43,6 +45,8 @@ function CallVisualizer() {
 	const getCallDetails = () => {
 		indexService.getCallDetails(callidquery).then((resp) => {
 			if (resp.isSuccess) {
+				console.log(resp);
+
 				dispatch({
 					type: GET_ALL_COMMENTS,
 					payload: resp?.data,
@@ -92,7 +96,11 @@ function CallVisualizer() {
 			<div>
 				{Object?.keys(visualizer)?.length && (
 					// <WavesurferAudioVisualizer path={visualizer?.path} />
-					<AudioVisualizer path={visualizer?.path} />
+					<AudioVisualizer
+						path={visualizer?.path}
+						currentTime={(data) => setNowTime(data)}
+						isplayaudio={(data) => setIsplaying(data)}
+					/>
 				)}
 			</div>
 			<div className='calls-visualizer-card-list'>
@@ -100,7 +108,7 @@ function CallVisualizer() {
 					<Moments />
 				</div>
 				<div className='calls-visualizer-transcription-card'>
-					<Transcription />
+					<Transcription time={nowTime} isaudioplaying={isplaying} />
 				</div>
 				<div className='calls-visualizer-comments-card-layout'>
 					<Card>
