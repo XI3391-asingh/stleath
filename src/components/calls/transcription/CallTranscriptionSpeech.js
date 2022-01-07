@@ -193,8 +193,7 @@ function CallTranscriptionSpeech({ transcript, currentTime, isplaying }) {
 											backgroundColor:
 												currentTime >= data?.start_time &&
 												isplaying &&
-												transcript[index + 1] &&
-												currentTime <= transcript[index + 1]['start_time'] - 1
+												currentTime <= data.end_time
 													? 'lightgrey'
 													: 'darkgrey',
 										}}
@@ -216,8 +215,7 @@ function CallTranscriptionSpeech({ transcript, currentTime, isplaying }) {
 											backgroundColor:
 												currentTime >= data?.start_time &&
 												isplaying &&
-												transcript[index + 1] &&
-												currentTime <= transcript[index + 1]['start_time'] - 1
+												currentTime <= data.end_time
 													? 'lightgrey'
 													: 'darkgrey',
 										}}
