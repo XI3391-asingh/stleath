@@ -15,6 +15,7 @@ import { useLocation } from 'react-router-dom';
 import indexService from '../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_CALL_VISUALIZER, GET_ALL_COMMENTS } from '../../store/type';
+import AudioVisualizer from '../../components/calls/wavesurfer-visualizer/AudioVisualizer';
 
 function CallVisualizer() {
 	let dateTime = moment().format('LLL');
@@ -22,6 +23,8 @@ function CallVisualizer() {
 	let query = new URLSearchParams(path?.search);
 	let callidquery = query.get('id');
 	const dispatch = useDispatch();
+	const [nowTime, setNowTime] = useState(0);
+	const [isplaying, setIsplaying] = useState(false);
 	const { visualizer } = useSelector((store) => store.call);
 	const { data } = useDemoData({
 		dataSet: 'Commodity',
@@ -34,7 +37,7 @@ function CallVisualizer() {
 		getCallDetails();
 		const interval = setInterval(() => {
 			getCallDetails();
-			getCall();
+			// getCall();
 		}, 30000);
 		return () => clearInterval(interval);
 	}, [callidquery]);
@@ -42,6 +45,8 @@ function CallVisualizer() {
 	const getCallDetails = () => {
 		indexService.getCallDetails(callidquery).then((resp) => {
 			if (resp.isSuccess) {
+				console.log(resp);
+
 				dispatch({
 					type: GET_ALL_COMMENTS,
 					payload: resp?.data,
@@ -90,7 +95,12 @@ function CallVisualizer() {
 			</div>
 			<div>
 				{Object?.keys(visualizer)?.length && (
-					<WavesurferAudioVisualizer path={visualizer?.path} />
+					// <WavesurferAudioVisualizer path={visualizer?.path} />
+					<AudioVisualizer
+						path={visualizer?.path}
+						currentTime={(data) => setNowTime(data)}
+						isplayaudio={(data) => setIsplaying(data)}
+					/>
 				)}
 			</div>
 			<div className='calls-visualizer-card-list'>
@@ -98,7 +108,7 @@ function CallVisualizer() {
 					<Moments />
 				</div>
 				<div className='calls-visualizer-transcription-card'>
-					<Transcription />
+					<Transcription time={nowTime} isaudioplaying={isplaying} />
 				</div>
 				<div className='calls-visualizer-comments-card-layout'>
 					<Card>

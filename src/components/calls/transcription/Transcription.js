@@ -12,8 +12,9 @@ import CallTranscription from './CallTranscription';
 import CallTranscriptionSpeech from './CallTranscriptionSpeech';
 import { useSelector } from 'react-redux';
 
-function Transcription() {
+function Transcription({ time, isaudioplaying }) {
 	const { comments } = useSelector((store) => store.call);
+	//   console.log(comments);
 	return (
 		<div>
 			<Card className='transcriptions-card'>
@@ -28,9 +29,12 @@ function Transcription() {
 				<hr className='transcriptions-card-divider' />
 				{/* {comments?.transcript?.length && ( */}
 				<CallTranscriptionSpeech
-				// speaker={comments?.transcript}
-				// speaker1={comments?.transcript && comments?.transcript[0]}
-				// speaker2={comments?.transcript && comments?.transcript[1]}
+					transcript={comments && comments?.transcript}
+					currentTime={time}
+					isplaying={isaudioplaying}
+					// speaker={comments?.transcript}
+					// speaker1={comments?.transcript && comments?.transcript[0]}
+					// speaker2={comments?.transcript && comments?.transcript[1]}
 				/>
 				{/* )} */}
 				{/* <img

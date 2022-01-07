@@ -70,7 +70,7 @@
 /* Transcriptions */
 
 .transcriptions-card {
-	height: 25rem;
+	height: auto;
 }
 
 .transcriptions-card-heading {
@@ -97,7 +97,7 @@
 
 .transcriptions-main-layout {
 	overflow-y: auto;
-	height: 25rem !important;
+	height: 20rem !important;
 	padding: 0.5rem;
 }
 
