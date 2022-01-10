@@ -17,12 +17,18 @@ import {
 	GET_COUNT_CALL_EMOTION,
 	GET_CALL_COUNT_BY_DURATION,
 	GET_CALL_COUNT_BY_HOLD_VIOLATION,
+	GET_CALL_COMPOSITION,
 } from '../store/type';
 
 function ChartComponents() {
 	const dispatch = useDispatch();
-	const { emotions, sentiment, callcountbyduration, callcountbyholdviolation } =
-		useSelector((store) => store.dashboard);
+	const {
+		emotions,
+		sentiment,
+		callcountbyduration,
+		callcountbyholdviolation,
+		callcomposition,
+	} = useSelector((store) => store.dashboard);
 	useEffect(() => {
 		getReport();
 		getEmotionReport();
@@ -96,9 +102,16 @@ function ChartComponents() {
 						}
 					});
 					let sentimentdata = await getUniqueDataCount(feedbackdata);
+					let callcompositiondata = await getUniqueCallCompositionCount(
+						feeddata
+					);
 					dispatch({
 						type: GET_CALL_REPORT,
 						payload: sentimentdata,
+					});
+					dispatch({
+						type: GET_CALL_COMPOSITION,
+						payload: callcompositiondata,
 					});
 				}
 			}
@@ -110,6 +123,24 @@ function ChartComponents() {
 		var dataSet = {};
 		for (var i = 0; i < uniqueList.length; i++) {
 			dataSet[uniqueList[i]] = objArr.filter((x) => x == uniqueList[i]).length;
+		}
+		return dataSet;
+	}
+
+	function getUniqueCallCompositionCount(feeddata) {
+		const uniqueList = [...new Set(feeddata.map((e) => e.agent_name))];
+		var dataSet = {};
+		for (var i = 0; i < feeddata.length; i++) {
+			if (feeddata[i].is_call_opened_with_compliance === 1)
+				dataSet[feeddata[i].agent_name] = dataSet[feeddata[i].agent_name]
+					? dataSet[feeddata[i].agent_name] + 1
+					: 1;
+		}
+
+		if (!Object.keys(dataSet).length) {
+			for (var i = 0; i < uniqueList.length; i++) {
+				dataSet[uniqueList[i]] = 0;
+			}
 		}
 		return dataSet;
 	}
@@ -147,7 +178,7 @@ function ChartComponents() {
 				<DashboardTable
 				// data={(totalCall, agent_name)}
 				/>
-				<CallCompositionCard />
+				<CallCompositionCard data={callcomposition} />
 			</div>
 			<div>
 				<AgentDispositionCompositionCard />

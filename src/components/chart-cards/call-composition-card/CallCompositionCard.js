@@ -4,13 +4,14 @@ import { useHistory } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import { Card, CardHeader, Divider } from '@mui/material';
 
-function CallCompositionCard() {
+function CallCompositionCard(props) {
 	let history = useHistory();
 	const data = {
-		labels: ['Vishal', 'Priya', 'Nikhil', 'Neha', 'Abhinav', 'Chetan'],
+		labels: Object.keys(props.data),
+		// labels: ["Vishal", "Priya", "Nikhil", "Neha", "Abhinav", "Chetan"],
 		agentDisposition1: {
 			label: 'TotalOpening',
-			dataSet: [25, 15, 30, 10, 5, 13],
+			dataSet: Object.values(props.data),
 		},
 		agentDisposition2: {
 			label: 'TotalClosing',
