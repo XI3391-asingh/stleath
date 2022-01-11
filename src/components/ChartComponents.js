@@ -34,11 +34,13 @@ function ChartComponents() {
 		getEmotionReport();
 		getCallCountByDuration();
 		getCallCountByHoldViolation();
+		getCallCountCompliance();
 		const interval = setInterval(() => {
 			getReport();
 			getEmotionReport();
 			getCallCountByDuration();
 			getCallCountByHoldViolation();
+			getCallCountCompliance();
 		}, 60000);
 		return () => clearInterval(interval);
 	}, []);
@@ -102,16 +104,9 @@ function ChartComponents() {
 						}
 					});
 					let sentimentdata = await getUniqueDataCount(feedbackdata);
-					let callcompositiondata = await getUniqueCallCompositionCount(
-						feeddata
-					);
 					dispatch({
 						type: GET_CALL_REPORT,
 						payload: sentimentdata,
-					});
-					dispatch({
-						type: GET_CALL_COMPOSITION,
-						payload: callcompositiondata,
 					});
 				}
 			}
@@ -123,24 +118,6 @@ function ChartComponents() {
 		var dataSet = {};
 		for (var i = 0; i < uniqueList.length; i++) {
 			dataSet[uniqueList[i]] = objArr.filter((x) => x == uniqueList[i]).length;
-		}
-		return dataSet;
-	}
-
-	function getUniqueCallCompositionCount(feeddata) {
-		const uniqueList = [...new Set(feeddata.map((e) => e.agent_name))];
-		var dataSet = {};
-		for (var i = 0; i < feeddata.length; i++) {
-			if (feeddata[i].is_call_opened_with_compliance === 1)
-				dataSet[feeddata[i].agent_name] = dataSet[feeddata[i].agent_name]
-					? dataSet[feeddata[i].agent_name] + 1
-					: 1;
-		}
-
-		if (!Object.keys(dataSet).length) {
-			for (var i = 0; i < uniqueList.length; i++) {
-				dataSet[uniqueList[i]] = 0;
-			}
 		}
 		return dataSet;
 	}
@@ -167,6 +144,17 @@ function ChartComponents() {
 		});
 	};
 
+	const getCallCountCompliance = () => {
+		indexService.getCallCountCompliance().then((resp) => {
+			if (resp.isSuccess) {
+				dispatch({
+					type: GET_CALL_COMPOSITION,
+					payload: resp?.data,
+				});
+			}
+		});
+	};
+
 	return (
 		<div>
 			<div className='chartCardContainer'>
@@ -178,7 +166,7 @@ function ChartComponents() {
 				<DashboardTable
 				// data={(totalCall, agent_name)}
 				/>
-				<CallCompositionCard data={callcomposition} />
+				<CallCompositionCard callcompositiondata={callcomposition} />
 			</div>
 			<div>
 				<AgentDispositionCompositionCard />

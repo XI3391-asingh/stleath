@@ -4,34 +4,42 @@ import { useHistory } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import { Card, CardHeader, Divider } from '@mui/material';
 
-function CallCompositionCard(props) {
+function CallCompositionCard({ callcompositiondata = [] }) {
 	let history = useHistory();
 	const data = {
-		labels: Object.keys(props.data),
-		// labels: ["Vishal", "Priya", "Nikhil", "Neha", "Abhinav", "Chetan"],
+		labels:
+			callcompositiondata.length &&
+			callcompositiondata.map((item) => item.agent_name),
+		// labels: ['Vishal', 'Priya', 'Nikhil', 'Neha', 'Abhinav', 'Chetan'],
 		agentDisposition1: {
 			label: 'TotalOpening',
-			dataSet: Object.values(props.data),
+			dataSet:
+				callcompositiondata.length &&
+				callcompositiondata.map((item) => item.totalOpeningCompliance),
 		},
 		agentDisposition2: {
 			label: 'TotalClosing',
-			dataSet: [15, 20, 9, 17, 25, 17],
+			dataSet:
+				callcompositiondata.length &&
+				callcompositiondata.map((item) => item.totalClosingCompliance),
 		},
 		agentDisposition3: {
 			label: 'TotalEscalation',
-			dataSet: [19, 15, 20, 13, 20, 15],
+			dataSet: [19, 15, 20],
 		},
 		agentDisposition4: {
 			label: 'TotalPricing',
-			dataSet: [11, 25, 10, 25, 15, 10],
+			dataSet: [11, 25, 10],
 		},
 		agentDisposition5: {
 			label: 'TotalCompliance',
-			dataSet: [19, 15, 21, 30, 20, 25],
+			dataSet:
+				callcompositiondata.length &&
+				callcompositiondata.map((item) => item.totalCallCompliance),
 		},
 		agentDisposition6: {
 			label: 'TotalCompetitor',
-			dataSet: [11, 10, 10, 5, 15, 20],
+			dataSet: [11, 10, 10],
 		},
 	};
 	return (
