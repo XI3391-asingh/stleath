@@ -25,7 +25,9 @@ function CallCompositionCard({ callcompositiondata = [] }) {
 		},
 		agentDisposition3: {
 			label: 'TotalEscalation',
-			dataSet: [19, 15, 20],
+			dataSet:
+				callcompositiondata.length &&
+				callcompositiondata.map((item) => item.totalEscalation),
 		},
 		agentDisposition4: {
 			label: 'TotalPricing',

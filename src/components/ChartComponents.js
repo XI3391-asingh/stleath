@@ -147,10 +147,36 @@ function ChartComponents() {
 	const getCallCountCompliance = () => {
 		indexService.getCallCountCompliance().then((resp) => {
 			if (resp.isSuccess) {
-				dispatch({
-					type: GET_CALL_COMPOSITION,
-					payload: resp?.data,
-				});
+				let callcountcompliancedata = resp?.data;
+
+				if (callcountcompliancedata?.length) {
+					for (let i = 0; i < callcountcompliancedata.length; i++) {
+						callcountcompliancedata[i].totalCallCompliance = (
+							(callcountcompliancedata[i].totalCallCompliance /
+								callcountcompliancedata[i].totalCall) *
+							100
+						).toFixed(2);
+						callcountcompliancedata[i].totalClosingCompliance = (
+							(callcountcompliancedata[i].totalClosingCompliance /
+								callcountcompliancedata[i].totalCall) *
+							100
+						).toFixed(2);
+						callcountcompliancedata[i].totalEscalation = (
+							(callcountcompliancedata[i].totalEscalation /
+								callcountcompliancedata[i].totalCall) *
+							100
+						).toFixed(2);
+						callcountcompliancedata[i].totalOpeningCompliance = (
+							(callcountcompliancedata[i].totalOpeningCompliance /
+								callcountcompliancedata[i].totalCall) *
+							100
+						).toFixed(2);
+					}
+					dispatch({
+						type: GET_CALL_COMPOSITION,
+						payload: callcountcompliancedata,
+					});
+				}
 			}
 		});
 	};
