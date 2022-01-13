@@ -5,6 +5,7 @@
 	font-size: 0.9rem;
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
+	cursor: pointer;
 }
 .performance-card-provide-feedback-modal {
 	position: absolute;

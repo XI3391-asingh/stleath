@@ -17,22 +17,30 @@ import {
 	GET_COUNT_CALL_EMOTION,
 	GET_CALL_COUNT_BY_DURATION,
 	GET_CALL_COUNT_BY_HOLD_VIOLATION,
+	GET_CALL_COMPOSITION,
 } from '../store/type';
 
 function ChartComponents() {
 	const dispatch = useDispatch();
-	const { emotions, sentiment, callcountbyduration, callcountbyholdviolation } =
-		useSelector((store) => store.dashboard);
+	const {
+		emotions,
+		sentiment,
+		callcountbyduration,
+		callcountbyholdviolation,
+		callcomposition,
+	} = useSelector((store) => store.dashboard);
 	useEffect(() => {
 		getReport();
 		getEmotionReport();
 		getCallCountByDuration();
 		getCallCountByHoldViolation();
+		getCallCountCompliance();
 		const interval = setInterval(() => {
 			getReport();
 			getEmotionReport();
 			getCallCountByDuration();
 			getCallCountByHoldViolation();
+			getCallCountCompliance();
 		}, 60000);
 		return () => clearInterval(interval);
 	}, []);
@@ -136,6 +144,43 @@ function ChartComponents() {
 		});
 	};
 
+	const getCallCountCompliance = () => {
+		indexService.getCallCountCompliance().then((resp) => {
+			if (resp.isSuccess) {
+				let callcountcompliancedata = resp?.data;
+
+				if (callcountcompliancedata?.length) {
+					for (let i = 0; i < callcountcompliancedata.length; i++) {
+						callcountcompliancedata[i].totalCallCompliance = (
+							(callcountcompliancedata[i].totalCallCompliance /
+								callcountcompliancedata[i].totalCall) *
+							100
+						).toFixed(2);
+						callcountcompliancedata[i].totalClosingCompliance = (
+							(callcountcompliancedata[i].totalClosingCompliance /
+								callcountcompliancedata[i].totalCall) *
+							100
+						).toFixed(2);
+						callcountcompliancedata[i].totalEscalation = (
+							(callcountcompliancedata[i].totalEscalation /
+								callcountcompliancedata[i].totalCall) *
+							100
+						).toFixed(2);
+						callcountcompliancedata[i].totalOpeningCompliance = (
+							(callcountcompliancedata[i].totalOpeningCompliance /
+								callcountcompliancedata[i].totalCall) *
+							100
+						).toFixed(2);
+					}
+					dispatch({
+						type: GET_CALL_COMPOSITION,
+						payload: callcountcompliancedata,
+					});
+				}
+			}
+		});
+	};
+
 	return (
 		<div>
 			<div className='chartCardContainer'>
@@ -147,7 +192,7 @@ function ChartComponents() {
 				<DashboardTable
 				// data={(totalCall, agent_name)}
 				/>
-				<CallCompositionCard />
+				<CallCompositionCard callcompositiondata={callcomposition} />
 			</div>
 			<div>
 				<AgentDispositionCompositionCard />

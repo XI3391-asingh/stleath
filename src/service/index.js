@@ -73,5 +73,12 @@ class indexService {
 		});
 		return perRequest;
 	};
+
+	getCallCountCompliance = async () => {
+		const perRequest = await Axios.post('/get-call-count-compliance', {
+			headers: headers,
+		});
+		return perRequest;
+	};
 }
 export default new indexService();

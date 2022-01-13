@@ -63,6 +63,7 @@
 	text-transform: capitalize !important;
 	margin: 1rem 0 !important;
 	border-radius: 20px !important;
+	cursor: pointer;
 }
 
 /* .login-paper-styles {

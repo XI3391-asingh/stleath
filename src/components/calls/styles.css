@@ -38,6 +38,7 @@
 	font-size: 0.9rem;
 	border-radius: 10px;
 	padding: 0.5rem 1rem;
+	cursor: pointer;
 }
 
 /* Moments-Styles */
@@ -121,6 +122,7 @@
 
 .call-transcription-comment-button {
 	padding: 0 !important;
+	cursor: pointer;
 }
 
 .call-transcription-add-comment {
@@ -133,6 +135,7 @@
 	border: 1px solid darkgrey;
 	border-radius: 4px;
 	color: black;
+	cursor: pointer;
 }
 
 .call-transcription-play-icon {
