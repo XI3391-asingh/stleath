@@ -80,5 +80,12 @@ class indexService {
 		});
 		return perRequest;
 	};
+
+	getCallCountForCards = async () => {
+		const perRequest = await Axios.post('/get-call-count-for-cards', {
+			headers: headers,
+		});
+		return perRequest;
+	};
 }
 export default new indexService();
