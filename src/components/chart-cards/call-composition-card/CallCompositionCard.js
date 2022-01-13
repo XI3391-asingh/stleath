@@ -29,20 +29,20 @@ function CallCompositionCard({ callcompositiondata = [] }) {
 				callcompositiondata.length &&
 				callcompositiondata.map((item) => item.totalEscalation),
 		},
-		agentDisposition4: {
-			label: 'TotalPricing',
-			dataSet: [11, 25, 10],
-		},
+		// agentDisposition4: {
+		// 	label: 'TotalPricing',
+		// 	dataSet: [11, 25, 10],
+		// },
 		agentDisposition5: {
 			label: 'TotalCompliance',
 			dataSet:
 				callcompositiondata.length &&
 				callcompositiondata.map((item) => item.totalCallCompliance),
 		},
-		agentDisposition6: {
-			label: 'TotalCompetitor',
-			dataSet: [11, 10, 10],
-		},
+		// agentDisposition6: {
+		// 	label: 'TotalCompetitor',
+		// 	dataSet: [11, 10, 10],
+		// },
 	};
 	return (
 		<div className='chart-callCompositionLayout'>
@@ -84,14 +84,14 @@ function CallCompositionCard({ callcompositiondata = [] }) {
 									stack: 'Stack 0',
 									backgroundColor: '#B5DEFF',
 								},
-								{
-									label: 'TotalPricing',
-									data: data.agentDisposition4.dataSet,
-									categoryPercentage: 1,
-									pointStyle: 'triangle',
-									stack: 'Stack 0',
-									backgroundColor: '#C1AC95',
-								},
+								// {
+								// 	label: 'TotalPricing',
+								// 	data: data.agentDisposition4.dataSet,
+								// 	categoryPercentage: 1,
+								// 	pointStyle: 'triangle',
+								// 	stack: 'Stack 0',
+								// 	backgroundColor: '#C1AC95',
+								// },
 								{
 									label: 'TotalCompliance',
 									data: data.agentDisposition5.dataSet,
@@ -100,20 +100,34 @@ function CallCompositionCard({ callcompositiondata = [] }) {
 									stack: 'Stack 0',
 									backgroundColor: '#C9E4C5',
 								},
-								{
-									label: 'TotalCompetitor',
-									data: data.agentDisposition6.dataSet,
-									categoryPercentage: 1,
-									pointStyle: 'triangle',
-									stack: 'Stack 0',
-									backgroundColor: '#CAB8FF',
-								},
+								// {
+								// 	label: 'TotalCompetitor',
+								// 	data: data.agentDisposition6.dataSet,
+								// 	categoryPercentage: 1,
+								// 	pointStyle: 'triangle',
+								// 	stack: 'Stack 0',
+								// 	backgroundColor: '#CAB8FF',
+								// },
 							],
 						}}
 						height={220}
 						options={{
 							onClick: (e) => {
 								history.push('/calls');
+							},
+							plugins: {
+								tooltip: {
+									callbacks: {
+										label: function (tooltipItem, data) {
+											return (
+												tooltipItem.dataset.label +
+												': ' +
+												tooltipItem.formattedValue +
+												'%'
+											);
+										},
+									},
+								},
 							},
 							indexAxis: 'y',
 							drawTicks: true,
