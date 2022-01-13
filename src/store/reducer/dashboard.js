@@ -17,6 +17,7 @@ const initialState = {
 	callcount: [],
 	callcountbyholdviolation: [],
 	callcomposition: {},
+	callcountforcards: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -35,6 +36,8 @@ const reducer = (state = initialState, action) => {
 			return { ...state, callcountbyholdviolation: action.payload };
 		case actionTypes.GET_CALL_COMPOSITION:
 			return { ...state, callcomposition: action.payload };
+		case actionTypes.GET_CALL_COUNT_FOR_CARDS:
+			return { ...state, callcountforcards: action.payload };
 		default:
 			return state;
 	}
