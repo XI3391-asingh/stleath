@@ -26,6 +26,7 @@ function CallVisualizer() {
 	const [nowTime, setNowTime] = useState(0);
 	const [isplaying, setIsplaying] = useState(false);
 	const { visualizer } = useSelector((store) => store.call);
+	const { comments } = useSelector((store) => store.call);
 	const { data } = useDemoData({
 		dataSet: 'Commodity',
 		rowLength: 100,
@@ -100,6 +101,7 @@ function CallVisualizer() {
 						path={visualizer?.path}
 						currentTime={(data) => setNowTime(data)}
 						isplayaudio={(data) => setIsplaying(data)}
+						transcript={comments && comments?.transcript}
 					/>
 				)}
 			</div>

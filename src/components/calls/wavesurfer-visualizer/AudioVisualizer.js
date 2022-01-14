@@ -7,7 +7,7 @@ import { CLEAR_CALL_VISUALIZER } from '../../../store/type';
 
 import './styles.css';
 
-function AudioVisualizer({ path, currentTime, isplayaudio }) {
+function AudioVisualizer({ path, currentTime, isplayaudio, transcript }) {
 	const audioRef = React.useRef(null);
 	const dispatch = useDispatch();
 	// const wavesurferRef = useRef();
@@ -90,72 +90,28 @@ function AudioVisualizer({ path, currentTime, isplayaudio }) {
 					<div className='audio-visualizer-type mt-25'>
 						<div className='audio-visualizer-agent-text'>Agent</div>
 						<div className='audio-visualizer-agent'>
-							<div className='audio-visualizer-box-agent w-4'></div>&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-20'></div>
-							&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-6'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='w-100'></div>
-							<div className=' w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-6'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className=' w-12'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className=' w-14'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-16'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-12'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-14'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-100'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-100'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
+							{/* <div style={{ 'display': 'flex','justify-content':'space-between','min-width': '100%'}}> */}
+						
+						{	transcript?.length > 0 &&
+							transcript?.map((data, index, localTranscript) => {
+
+								// let prevNode = (index === 0) ? null : (index === 1 ? localTranscript[index -1] : localTranscript[index -2]);
+								let prevNode = (index === 0) ? null : localTranscript[index -1];
+
+								return data.speaker === 'Agent' ?
+								<>
+									{ prevNode && <div className={`audio-visualizer-box-transparent w-${data.start_time - prevNode.end_time}`}></div> }
+									{/* { prevNode && data.start_time > prevNode.end_time && <div className={`audio-visualizer-box-transparent w-${data.start_time - prevNode.end_time}`}></div> } */}
+									<div className={`audio-visualizer-box-agent w-${data.end_time - data.start_time}`}></div>
+								</>
+								: <>
+									{ prevNode && <div className={`audio-visualizer-box-transparent w-${Math.abs(data.start_time - prevNode.end_time)}`}></div> }
+									<div className={`audio-visualizer-box-transparent w-${data.end_time - data.start_time}`}></div>
+								</>;
+							})
+						}
+						{/* </div> */}
+							
 						</div>
 					</div>
 					<div className='audio-visualizer-block'>
@@ -165,74 +121,23 @@ function AudioVisualizer({ path, currentTime, isplayaudio }) {
 						<div className='audio-visualizer-customer-text'>Customer</div>
 						{/* <hr className='audio-visualizer-customer-divider' /> */}
 						<div className='audio-visualizer-customer'>
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-30'></div>
-							&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-6'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='w-100'></div>
-							<div className=' w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-6'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className=' w-12'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className=' w-14'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-16'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-12'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-14'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-100'></div>
+						{	transcript?.length > 0 &&
+							transcript?.map((data, index, localTranscript) => {
+
+								// let prevNode = (index === 0) ? null : (index === 1 ? localTranscript[index -1] : localTranscript[index -2]);
+								let prevNode = (index === 0) ? null : localTranscript[index -1];
+
+								return data.speaker === 'Customer' ?
+								<>
+									{ prevNode && <div className={`audio-visualizer-box-transparent w-${data.start_time - prevNode.end_time}`}></div> }
+									<div className={`audio-visualizer-box-customer w-${data.end_time - data.start_time}`}></div>
+								</>
+								: <>
+									{ prevNode && <div className={`audio-visualizer-box-transparent w-${Math.abs(data.start_time - prevNode.end_time)}`}></div> }
+									<div className={`audio-visualizer-box-transparent w-${data.end_time - data.start_time}`}></div>
+								</>;
+							})
+						}
 						</div>
 					</div>
 					<audio
