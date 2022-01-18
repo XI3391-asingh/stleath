@@ -37,6 +37,9 @@ function ConfigSettings() {
 					<VoiceEnergyCard title='Voice Energy' />
 					<SilenceDetection title='Silence Detection' />
 				</div>
+				<div>
+					<button className='config-page-settings-save-button'>SAVE</button>
+				</div>
 			</Card>
 		</div>
 	);
