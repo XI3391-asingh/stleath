@@ -104,7 +104,9 @@ function Navbar() {
 				<ListItemIcon>
 					<Settings fontSize='small' />
 				</ListItemIcon>
-				<Typography variant='body1'>Settings</Typography>
+				<Link to='/config-settings' className='appbar-avatar-settings-layout'>
+					<Typography variant='body1'>Config-Settings</Typography>
+				</Link>
 			</MenuItem>
 			<MenuItem onClick={handleMenuClose} className='appbar-avatar-menuItem'>
 				<ListItemIcon>

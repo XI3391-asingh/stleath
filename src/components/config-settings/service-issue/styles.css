@@ -1,0 +1,36 @@
+.service-issue-card-layout {
+	margin: 1rem;
+	padding: 1rem;
+	width: 50%;
+}
+
+.service-issue-card-settings {
+	height: 10rem;
+	padding: 1rem;
+}
+
+.service-issue-layout {
+	display: flex;
+	height: inherit;
+}
+
+.service-issue-label {
+	text-align: start;
+	font-weight: bold !important;
+	align-self: center;
+	width: 50%;
+}
+
+.service-issue-chips-layout {
+	align-self: center;
+	overflow-y: auto;
+	height: 10rem;
+	width: fit-content;
+	border: 1px solid;
+	border-radius: 10px;
+	text-align: justify;
+}
+
+.service-issue-chips {
+	margin: 0.25rem !important;
+}

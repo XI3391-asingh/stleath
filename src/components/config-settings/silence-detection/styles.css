@@ -1,0 +1,41 @@
+.silence-detection-card-layout {
+	margin: 1rem;
+	padding: 1rem;
+	width: 50%;
+}
+
+.silence-detection-card-settings {
+	height: 10rem;
+	padding: 1rem;
+}
+
+.silence-detection-layout {
+	display: flex;
+	height: inherit;
+}
+
+.silence-detection-filter-layout {
+	display: flex;
+}
+
+.silence-detection-label {
+	text-align: start;
+	font-weight: bold !important;
+	align-self: center;
+	width: 50%;
+}
+
+.silence-detection-chips-layout {
+	align-self: center;
+	overflow-y: auto;
+	height: 8rem;
+	width: fit-content;
+	border: 1px solid;
+	border-radius: 10px;
+	text-align: justify;
+	margin-top: 1rem;
+}
+
+.silence-detection-chips {
+	margin: 0.25rem !important;
+}

@@ -1,0 +1,13 @@
+.config-settings-page-layout {
+	display: flow-root;
+	flex-grow: 1;
+}
+
+.config-page-card-layout {
+	margin: 1rem !important;
+	padding: 1rem 0;
+}
+
+.config-page-settings-cards {
+	display: flex;
+}
