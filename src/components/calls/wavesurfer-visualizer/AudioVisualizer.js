@@ -1,6 +1,6 @@
 import { Button, ButtonGroup, Typography } from '@material-ui/core';
 import { Card } from '@mui/material';
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 // import { WaveSurfer, WaveForm } from 'wavesurfer-react';
 import { CLEAR_CALL_VISUALIZER } from '../../../store/type';
@@ -10,6 +10,9 @@ import './styles.css';
 function AudioVisualizer({ path, currentTime, isplayaudio, transcript }) {
 	const audioRef = React.useRef(null);
 	const dispatch = useDispatch();
+	const [ audioDuration, setAudioDuration ]= useState(0);
+	// const pageWidth = document.getElementById('audioVisualizerAgent') ? document.getElementById('audioVisualizerAgent').scrollWidth : 0;
+	const pageWidth = 1230;
 	// const wavesurferRef = useRef();
 
 	useEffect(() => {
@@ -77,6 +80,15 @@ function AudioVisualizer({ path, currentTime, isplayaudio, transcript }) {
 	const onPlaying = () => {
 		let nowtime = Math.round(audioRef.current.currentTime);
 		currentTime(nowtime);
+		console.log(document.getElementById('audioVisualizerAgent').scrollWidth);
+		console.log('page width'+pageWidth);
+		// setSeekValue(
+		//   (audioPlayer.current.currentTime / audioPlayer.current.duration) * 100
+		// );
+	};
+	const onAudioPlayerLoad = () => {
+		setAudioDuration(audioRef.current.duration);
+		console.log('audio duration:' + audioRef.current.duration);
 		// setSeekValue(
 		//   (audioPlayer.current.currentTime / audioPlayer.current.duration) * 100
 		// );
@@ -89,7 +101,7 @@ function AudioVisualizer({ path, currentTime, isplayaudio, transcript }) {
 				<div>
 					<div className='audio-visualizer-type mt-25'>
 						<div className='audio-visualizer-agent-text'>Agent</div>
-						<div className='audio-visualizer-agent'>
+						<div className='audio-visualizer-agent' id='audioVisualizerAgent'>
 							{/* <div style={{ 'display': 'flex','justify-content':'space-between','min-width': '100%'}}> */}
 						
 						{	transcript?.length > 0 &&
@@ -98,15 +110,22 @@ function AudioVisualizer({ path, currentTime, isplayaudio, transcript }) {
 								// let prevNode = (index === 0) ? null : (index === 1 ? localTranscript[index -1] : localTranscript[index -2]);
 								let prevNode = (index === 0) ? null : localTranscript[index -1];
 
+								if(!document.getElementById('audioVisualizerAgent') || !document.getElementById('audioVisualizerAgent').scrollWidth){
+									return <></>;
+								}
+
 								return data.speaker === 'Agent' ?
 								<>
-									{ prevNode && <div className={`audio-visualizer-box-transparent w-${data.start_time - prevNode.end_time}`}></div> }
-									{/* { prevNode && data.start_time > prevNode.end_time && <div className={`audio-visualizer-box-transparent w-${data.start_time - prevNode.end_time}`}></div> } */}
-									<div className={`audio-visualizer-box-agent w-${data.end_time - data.start_time}`}></div>
+									{/* { prevNode && <div className={`audio-visualizer-box transparent w-${data.start_time - prevNode.end_time}`}></div> } */}
+									{ prevNode && <div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (data.start_time - prevNode.end_time)}}></div> }
+									{/* <div className={`audio-visualizer-box customer w-${data.end_time - data.start_time}`}></div> */}
+									<div className={`audio-visualizer-box agent`} style={{width:(pageWidth / audioDuration) * (data.end_time - data.start_time)}}></div>
 								</>
 								: <>
-									{ prevNode && <div className={`audio-visualizer-box-transparent w-${Math.abs(data.start_time - prevNode.end_time)}`}></div> }
-									<div className={`audio-visualizer-box-transparent w-${data.end_time - data.start_time}`}></div>
+									{/* { prevNode && <div className={`audio-visualizer-box transparent w-${Math.abs(data.start_time - prevNode.end_time)}`}></div> } */}
+									{ prevNode && <div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (Math.abs(data.start_time - prevNode.end_time))}}></div> }
+									{/* <div className={`audio-visualizer-box transparent w-${data.end_time - data.start_time}`}></div> */}
+									<div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (data.end_time - data.start_time)}}></div>
 								</>;
 							})
 						}
@@ -127,14 +146,22 @@ function AudioVisualizer({ path, currentTime, isplayaudio, transcript }) {
 								// let prevNode = (index === 0) ? null : (index === 1 ? localTranscript[index -1] : localTranscript[index -2]);
 								let prevNode = (index === 0) ? null : localTranscript[index -1];
 
+								if(!document.getElementById('audioVisualizerAgent') || !document.getElementById('audioVisualizerAgent').scrollWidth) {
+									return <></>;
+								}
+
 								return data.speaker === 'Customer' ?
 								<>
-									{ prevNode && <div className={`audio-visualizer-box-transparent w-${data.start_time - prevNode.end_time}`}></div> }
-									<div className={`audio-visualizer-box-customer w-${data.end_time - data.start_time}`}></div>
+									{/* { prevNode && <div className={`audio-visualizer-box transparent w-${data.start_time - prevNode.end_time}`}></div> } */}
+									{ prevNode && <div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (data.start_time - prevNode.end_time)}}></div> }
+									{/* <div className={`audio-visualizer-box customer w-${data.end_time - data.start_time}`}></div> */}
+									<div className={`audio-visualizer-box customer`} style={{width:(pageWidth / audioDuration) * (data.end_time - data.start_time)}}></div>
 								</>
 								: <>
-									{ prevNode && <div className={`audio-visualizer-box-transparent w-${Math.abs(data.start_time - prevNode.end_time)}`}></div> }
-									<div className={`audio-visualizer-box-transparent w-${data.end_time - data.start_time}`}></div>
+									{/* { prevNode && <div className={`audio-visualizer-box transparent w-${Math.abs(data.start_time - prevNode.end_time)}`}></div> } */}
+									{ prevNode && <div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (Math.abs(data.start_time - prevNode.end_time))}}></div> }
+									{/* <div className={`audio-visualizer-box transparent w-${data.end_time - data.start_time}`}></div> */}
+									<div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (data.end_time - data.start_time)}}></div>
 								</>;
 							})
 						}
@@ -147,6 +174,7 @@ function AudioVisualizer({ path, currentTime, isplayaudio, transcript }) {
 						ref={audioRef}
 						type='audio'
 						onTimeUpdate={onPlaying}
+						onLoadedData={onAudioPlayerLoad}
 					/>
 				</div>
 				{/* <Card className='audio-visualizer-wave-card'>

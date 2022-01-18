@@ -64,7 +64,8 @@ audio::-webkit-media-controls-panel {
 	margin: 0 5.6rem 0 1rem;
 	text-align: left;
 	display: flex;
-	width: 82%;
+	width: 94%;
+	justify-content: space-between;
 }
 .audio-visualizer-block {
 	padding-left: 18.75rem;
@@ -81,7 +82,8 @@ audio::-webkit-media-controls-panel {
 	margin: 0 5.6rem 0 1rem;
 	text-align: left;
 	display: flex;
-	width: 83.8%;
+	width: 94%;
+	justify-content: space-between;
 }
 
 .audio-visualizer-agent-text {
@@ -100,25 +102,22 @@ audio::-webkit-media-controls-panel {
 	margin: 0.1rem 0 0 1rem;
 }
 
-.audio-visualizer-box-agent {
+.audio-visualizer-box {
 	width: 0.75rem;
 	height: 1.25rem;
+	margin-bottom: 0.25rem;
+}
+
+.audio-visualizer-box.agent {
 	background: #a3d5fb;
-	margin-bottom: 0.25rem;
 }
 
-.audio-visualizer-box-transparent {
-	width: 0.75rem;
-	height: 1.25rem;
+.audio-visualizer-box.transparent {
 	background: transparent;
-	margin-bottom: 0.25rem;
 }
 
-.audio-visualizer-box-customer {
-	width: 0.75rem;
-	height: 1.25rem;
+.audio-visualizer-box.customer {
 	background: #dcefc3;
-	margin-top: 0.25rem;
 }
 
 .mt-25 {
