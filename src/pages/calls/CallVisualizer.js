@@ -107,7 +107,7 @@ function CallVisualizer() {
 			</div>
 			<div className='calls-visualizer-card-list'>
 				<div className='calls-visualizer-moments-card'>
-					<Moments />
+					<Moments callDetails={comments} />
 				</div>
 				<div className='calls-visualizer-transcription-card'>
 					<Transcription time={nowTime} isaudioplaying={isplaying} />
