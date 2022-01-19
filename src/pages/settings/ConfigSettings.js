@@ -15,6 +15,9 @@ function ConfigSettings() {
 				<Typography variant='h5'>Configuration Settings</Typography>
 				<div className='config-page-settings-cards'>
 					<CompetitorAnalysis title='Competitor Analysis' />
+					<CompetitorAnalysis title='Escalation' />
+				</div>
+				<div className='config-page-settings-cards'>
 					<ServiceIssue
 						title='Service Issue'
 						data={[
@@ -30,8 +33,6 @@ function ConfigSettings() {
 							'Facing this issue again',
 						]}
 					/>
-				</div>
-				<div className='config-page-settings-cards'>
 					<ServiceIssue
 						title='Product Issue'
 						data={[
@@ -44,11 +45,6 @@ function ConfigSettings() {
 							'Not able to make any transactions',
 							'charges are more',
 						]}
-					/>
-					<ServiceIssue
-						title='Warranty & Others'
-						data={['Out of warranty']}
-						defaultdata={['Out of warranty']}
 					/>
 				</div>
 				<div className='config-page-settings-cards'>
@@ -86,12 +82,23 @@ function ConfigSettings() {
 					/>
 				</div>
 				<div className='config-page-settings-cards'>
-					<ServiceIssue title='Escalation' data={[]} defaultdata={[]} />
+					<ServiceIssue
+						title='Warranty & Others'
+						data={['Out of warranty']}
+						defaultdata={['Out of warranty']}
+					/>
 					<ServiceIssue title='Pricing' data={[]} defaultdata={[]} />
 				</div>
 				<div className='config-page-settings-cards'>
 					<VoiceEnergyCard title='Voice Energy' />
 					<SilenceDetection title='Silence Detection' />
+				</div>
+				<div className='config-page-settings-cards'>
+					<ServiceIssue
+						title='Agent Identification'
+						data={[]}
+						defaultdata={[]}
+					/>
 				</div>
 				<div>
 					<button className='config-page-settings-save-button'>SAVE</button>
