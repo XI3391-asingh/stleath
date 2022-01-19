@@ -15,23 +15,79 @@ function ConfigSettings() {
 				<Typography variant='h5'>Configuration Settings</Typography>
 				<div className='config-page-settings-cards'>
 					<CompetitorAnalysis title='Competitor Analysis' />
-					<ServiceIssue title='Service Issue' />
+					<ServiceIssue
+						title='Service Issue'
+						data={[
+							'Called so many times',
+							'Issue is still not resolved',
+							'Raised this problem again and again',
+							'Facing this issue again',
+						]}
+						defaultdata={[
+							'Called so many times',
+							'Issue is still not resolved',
+							'Raised this problem again and again',
+							'Facing this issue again',
+						]}
+					/>
 				</div>
 				<div className='config-page-settings-cards'>
-					<ServiceIssue title='Product Issue' />
-					<ServiceIssue title='Warranty & Others' />
+					<ServiceIssue
+						title='Product Issue'
+						data={[
+							'card stops working',
+							'Not able to make any transactions',
+							'charges are more',
+						]}
+						defaultdata={[
+							'card stops working',
+							'Not able to make any transactions',
+							'charges are more',
+						]}
+					/>
+					<ServiceIssue
+						title='Warranty & Others'
+						data={['Out of warranty']}
+						defaultdata={['Out of warranty']}
+					/>
 				</div>
 				<div className='config-page-settings-cards'>
-					<ServiceIssue title='Hold Time Violations' />
-					<ServiceIssue title='Repeat Calls Volume' />
+					<ServiceIssue
+						title='Hold Time Violations'
+						data={[]}
+						defaultdata={[]}
+					/>
+					<ServiceIssue
+						title='Repeat Calls Volume'
+						data={['Stop calling me', 'Why are you calling again and again']}
+						defaultdata={[
+							'Stop calling me',
+							'Why are you calling again and again',
+						]}
+					/>
 				</div>
 				<div className='config-page-settings-cards'>
-					<ServiceIssue title='Opening Call' />
-					<ServiceIssue title='Closing Call' />
+					<ServiceIssue title='Opening Call' data={[]} defaultdata={[]} />
+					<ServiceIssue
+						title='Closing Call'
+						data={[
+							'Thank you',
+							'Is there anything that I can help you with?',
+							'Thank you for calling',
+							'Thank you for your valuable time',
+							'I hope I was able to solve your problem',
+							'I hope I was able to solve your query',
+						]}
+						defaultdata={[
+							'Thank you',
+							'Is there anything that I can help you with?',
+							'Thank you for calling',
+						]}
+					/>
 				</div>
 				<div className='config-page-settings-cards'>
-					<ServiceIssue title='Escalation' />
-					<ServiceIssue title='Pricing' />
+					<ServiceIssue title='Escalation' data={[]} defaultdata={[]} />
+					<ServiceIssue title='Pricing' data={[]} defaultdata={[]} />
 				</div>
 				<div className='config-page-settings-cards'>
 					<VoiceEnergyCard title='Voice Energy' />

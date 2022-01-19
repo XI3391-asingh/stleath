@@ -1,8 +1,8 @@
-import { Chip, Typography } from '@mui/material';
+import { Autocomplete, Chip, TextField, Typography } from '@mui/material';
 import React from 'react';
 import SilenceDetectionSettingsFilters from '../../filters/silence-detection-settings-filters/SilenceDetectionSettingsFilters';
 
-function SilenceDetectionSettings() {
+function SilenceDetectionSettings({ data, defaultdata }) {
 	const handleClick = () => {
 		console.info('You clicked the Chip.');
 	};
@@ -21,9 +21,25 @@ function SilenceDetectionSettings() {
 			</div>
 			<div className='silence-detection-layout'>
 				<Typography variant='subtitle2' className='silence-detection-label'>
-					Keywords & Phrases:
+					Phrases to avoid hold flag:
 				</Typography>
-				<div className='silence-detection-chips-layout'>
+				<Autocomplete
+					multiple
+					freeSolo
+					id='tags-outlined'
+					options={data}
+					defaultValue={defaultdata}
+					renderInput={(params) => (
+						<TextField
+							className='service-issue-textfield'
+							{...params}
+							variant='outlined'
+							label=''
+							placeholder='Type'
+						/>
+					)}
+				/>
+				{/* <div className='silence-detection-chips-layout'>
 					<Chip
 						label='Charge'
 						variant='outlined'
@@ -59,7 +75,7 @@ function SilenceDetectionSettings() {
 						onDelete={handleDelete}
 						className='silence-detection-chips'
 					/>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);
