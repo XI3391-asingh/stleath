@@ -219,7 +219,7 @@ function Moments({ callDetails }) {
             <typography variant="h6">
               Category &nbsp;
               <Chip
-                label="Above 60s"
+                label={callDetails.call_duration > 60 ? 'Above 60s' : (callDetails.call_duration >= 20) ? 'B/w 20-60s' : 'Below 20s'}
                 color="default"
                 size="small"
                 variant="outlined"
@@ -231,7 +231,7 @@ function Moments({ callDetails }) {
           <div className="moments-font">
             <typography variant="h6">
               Voice Energy Deviation &nbsp;
-              {callDetails.product_issue === 1 ? (
+              {callDetails.is_voice_energy_deviation === 1 ? (
                 <Chip
                   label="yes"
                   color="primary"
