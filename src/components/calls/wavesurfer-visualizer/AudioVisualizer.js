@@ -11,8 +11,8 @@ function AudioVisualizer({ path, currentTime, isplayaudio, transcript }) {
 	const audioRef = React.useRef(null);
 	const dispatch = useDispatch();
 	const [ audioDuration, setAudioDuration ]= useState(0);
-	// const pageWidth = document.getElementById('audioVisualizerAgent') ? document.getElementById('audioVisualizerAgent').scrollWidth : 0;
-	const pageWidth = 1230;
+	const pageWidth = document.getElementById('audioVisualizerAgent') ? document.getElementById('audioVisualizerAgent').scrollWidth : 0;
+	// const pageWidth = 1230;
 	// const wavesurferRef = useRef();
 
 	useEffect(() => {
