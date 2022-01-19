@@ -27,6 +27,7 @@ function SilenceDetectionSettings({ data, defaultdata }) {
 					multiple
 					freeSolo
 					id='tags-outlined'
+					size='small'
 					options={data}
 					defaultValue={defaultdata}
 					renderInput={(params) => (

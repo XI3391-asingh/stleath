@@ -44,10 +44,13 @@
 
 .MuiAutocomplete-root {
 	width: 100%;
+	overflow-y: auto;
+	border: 1px solid;
+	border-radius: 6px;
 }
 
 .MuiOutlinedInput-root {
-	height: 10rem;
+	height: 100% !important;
 }
 
 .MuiButtonBase-root,
@@ -60,4 +63,8 @@
 	-webkit-box-align: unset;
 	-ms-flex-align: unset;
 	align-items: unset !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+	border: 0 !important;
 }
