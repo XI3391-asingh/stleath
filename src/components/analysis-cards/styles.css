@@ -3,19 +3,36 @@
 }
 
 .card {
-	width: 69rem;
+	width: 82rem;
 	display: flex;
 }
 
 .card-display {
 	width: 10rem;
 	margin: 1rem;
+	box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45) !important;
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45) !important;
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45) !important;
+
 }
 
 .card-metaicons {
-	text-align: end;
+	text-align: right;
+	box-sizing: border-box;
+    padding: 6px 5px;
 }
 
+.card-value{ 
+	background-color: #6a1d5d;
+    padding: 12px 5px !important;
+    color: #fff;
+    margin-top: 10px;
+}
+.card-title{
+	margin-bottom: 40px;
+	color: #3d3d3d;
+	font-size: 1.2rem;
+}
 .analysis-card-link {
 	color: black;
 }

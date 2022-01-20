@@ -56,7 +56,7 @@ function Login() {
 			})
 			.catch((error) => {
 				setError(
-					<div style={{ color: `red` }}>Invalid Email or Password!!</div>
+					<div className="login-form-error">Invalid email or password!!</div>
 				);
 			});
 	};

@@ -18,10 +18,11 @@ function CompetitorAnalysisCard(props) {
 				</div>
 				<Link to='/calls'>
 					<div className='analysis-card-link'>
-						<div>
+						<div className='card-title'>
 							<h5>{title}</h5>
 						</div>
-						<CardContent>{vlaue}</CardContent>
+						{/* <CardContent className='card-value'>{vlaue}</CardContent> */}
+						<CardContent className='card-value'>{10}</CardContent>
 					</div>
 				</Link>
 			</Card>

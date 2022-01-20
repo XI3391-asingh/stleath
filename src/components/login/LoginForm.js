@@ -23,11 +23,11 @@ function LoginForm({ Login, error }) {
 					<div>
 						<div className='login-form-header'>
 							<Typography variant='h5' className='login-form-card-title'>
-								Log In
+								LogIn
 							</Typography>
 						</div>
 						<div className='login-form-elements'>
-							<label>Email:</label>
+							<label className="login-for-label">Email</label>
 							<input
 								type='text'
 								name='email'
@@ -40,7 +40,7 @@ function LoginForm({ Login, error }) {
 							/>
 						</div>
 						<div className='login-form-elements'>
-							<label>Password:</label>
+							<label className="login-for-label">Password</label>
 							<input
 								type='password'
 								name='password'
@@ -63,6 +63,7 @@ function LoginForm({ Login, error }) {
 								Log In
 							</button>
 						</div>
+						<div className="forgot-password"><label className="login-forgot-password"><a>Forgot Password?</a></label></div>
 						{/* {error !== '' ? <div>{error}</div> : ''} */}
 					</div>
 				</form>
