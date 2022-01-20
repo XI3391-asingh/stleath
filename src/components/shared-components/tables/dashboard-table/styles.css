@@ -1,6 +1,9 @@
 .dashboard-table-layout {
 	margin: 1rem;
 	width: 40%;
+	box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
 }
 
 .dashboard-table-card {

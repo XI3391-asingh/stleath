@@ -12,13 +12,24 @@
 	display: flex;
 }
 
+.dashboard-right-content{
+	width: 82%;
+    margin:0  0.4rem;
+    box-sizing: border-box;
+}
 /* .dashboard-page-call-details {
 	padding: 1rem;
 	text-align: left;
 } */
+canvas {
+    padding: 10px 20px
+}
 
 .dashboard-page-divider {
 	margin: 0.3rem 0;
+	height: 1px;
+    background-color: #e0e0e0;
+    border: none;
 }
 
 .dashboard-page-components {

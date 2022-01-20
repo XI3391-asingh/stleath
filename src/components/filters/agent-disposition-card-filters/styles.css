@@ -17,10 +17,13 @@
 
 .agent-disposition-filter-dropdown-label {
 	margin: 0;
+	font-size: .8rem;
+    color: #6e6c6c;
 }
 
 .agent-disposition-filter {
 	/* height: 2rem; */
-	width: 8rem !important;
-	margin-bottom: 0.5rem !important;
+	width: 15rem !important;
+    margin-bottom: 0.5rem !important;
+    margin: 10px 0;
 }

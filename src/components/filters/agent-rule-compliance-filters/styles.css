@@ -8,6 +8,8 @@
 
 .agent-rule-compliance-filter-dropdown {
 	margin: 0;
+	font-size: .8rem;
+    color: #6e6c6c;
 }
 
 .agent-rule-compliance-filter {
