@@ -21,6 +21,7 @@ function CompetitorAnalysisCard(props) {
 						<div className='card-title'>
 							<h5>{title}</h5>
 						</div>
+						
 						{vlaue && <CardContent className='card-value'>{vlaue}</CardContent>}
 					</div>
 				</Link>
