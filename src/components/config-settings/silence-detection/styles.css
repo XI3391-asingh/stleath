@@ -18,6 +18,8 @@
 
 .silence-detection-filter-layout {
 	display: flex;
+	margin-top: 1rem;
+	/* height: auto; */
 }
 
 .silence-detection-label {
@@ -25,6 +27,11 @@
 	font-weight: bold !important;
 	align-self: center;
 	width: 50%;
+}
+
+.silence-detection-settings-dropdown {
+	height: 5rem;
+	overflow-y: auto;
 }
 
 .silence-detection-chips-layout {

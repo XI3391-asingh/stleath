@@ -13,12 +13,6 @@ function SilenceDetectionSettings({ data, defaultdata }) {
 
 	return (
 		<div>
-			<div className='silence-detection-filter-layout'>
-				<Typography variant='subtitle2' className='silence-detection-label'>
-					Holdtime Threshold
-				</Typography>
-				<SilenceDetectionSettingsFilters />
-			</div>
 			<div className='silence-detection-layout'>
 				<Typography variant='subtitle2' className='silence-detection-label'>
 					Phrases to avoid hold flag:
@@ -77,6 +71,17 @@ function SilenceDetectionSettings({ data, defaultdata }) {
 						className='silence-detection-chips'
 					/>
 				</div> */}
+			</div>
+			<div className='silence-detection-filter-layout'>
+				<Typography variant='subtitle2' className='silence-detection-label'>
+					Holdtime Threshold
+				</Typography>
+				{/* <div style={{ height: '5rem', overflowY: 'auto' }}> */}
+				<SilenceDetectionSettingsFilters
+					className='silence-detection-settings-dropdown'
+					style={{ height: '5rem', overflowY: 'auto' }}
+				/>
+				{/* </div> */}
 			</div>
 		</div>
 	);

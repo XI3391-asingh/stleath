@@ -1,8 +1,7 @@
 import { Autocomplete, TextField, Typography } from '@mui/material';
 import React from 'react';
 
-function ServiceIssuesSettings({ data, defaultdata }) {
-	// const [autoCompleteValue, setAutoCompleteValue] = React.useState(data);
+function ServiceIssuesSettings({ data, defaultdata, onchangedata }) {
 	const handleClick = () => {
 		console.info('You clicked the Chip.');
 	};
@@ -16,37 +15,16 @@ function ServiceIssuesSettings({ data, defaultdata }) {
 			<Typography variant='subtitle2' className='service-issue-label'>
 				Keywords & Phrases:
 			</Typography>
-			{/* <Autocomplete
-				multiple
-				style={{ overflowY: 'auto' }}
-				id='tags-outlined'
-				options={defaultdata}
-				value={autoCompleteValue}
-				onChange={(e, newval, reason) => {
-					setAutoCompleteValue(newval);
-				}}
-				renderInput={(params) => (
-					<TextField
-						{...params}
-						variant='outlined'
-						label=''
-						placeholder='Favorites'
-						onKeyDown={(e) => {
-							if (e.keyCode === 13 && e.target.value) {
-								setAutoCompleteValue(autoCompleteValue.concat(e.target.value));
-							}
-						}}
-					/>
-				)}
-			/> */}
-			{/* <div> */}
 			<Autocomplete
 				multiple
 				freeSolo
 				id='tags-outlined'
 				options={data}
 				size='small'
-				defaultValue={defaultdata}
+				value={defaultdata}
+				onChange={(event, value) => {
+					onchangedata(value);
+				}}
 				renderInput={(params) => (
 					<TextField
 						{...params}
@@ -56,7 +34,6 @@ function ServiceIssuesSettings({ data, defaultdata }) {
 					/>
 				)}
 			/>
-			{/* </div> */}
 			{/* <div className="service-issue-chips-layout">
 	  
 

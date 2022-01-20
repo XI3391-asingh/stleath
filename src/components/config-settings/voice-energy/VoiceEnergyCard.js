@@ -8,7 +8,9 @@ function VoiceEnergyCard({ title }) {
 	return (
 		<Card className='voice-energy-card-layout'>
 			<Typography variant='h6'>{title}</Typography>
-			<VoiceEnergySettingsFilters />
+			<div className='voice-energy-card-dropdown'>
+				<VoiceEnergySettingsFilters />
+			</div>
 		</Card>
 	);
 }

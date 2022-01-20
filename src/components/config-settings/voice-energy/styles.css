@@ -3,3 +3,8 @@
 	padding: 1rem;
 	width: 50%;
 }
+
+.voice-energy-card-dropdown {
+	height: 10rem;
+	overflow-y: auto;
+}
