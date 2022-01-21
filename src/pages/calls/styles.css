@@ -69,3 +69,51 @@
 /* .calls-visualizer-comments-card {
 	height: 100%;
 } */
+
+.calls-page-legends {
+	font-size: 0.8rem;
+	text-align: right;
+}
+.calls-page-legends .legend-1 {
+	color: green;
+}
+.calls-page-legends .legend-2 {
+	color: red;
+}
+.calls-page-legends .legend-3 {
+	color: skyblue;
+}
+.calls-page-legends .legend-4 {
+	color: yellowgreen;
+}
+.calls-page-legends .legend-5 {
+	color: orange;
+}
+.calls-page-moments {
+	color: white !important;
+}
+.calls-page-moments .legend-1 {
+	color: white !important;
+	background-color: green !important;
+	margin: 0 0.5rem;
+}
+.calls-page-moments .legend-2 {
+	color: white !important;
+	background-color: red !important;
+	margin: 0 0.5rem;
+}
+.calls-page-moments .legend-3 {
+	color: white !important;
+	background-color: skyblue !important;
+	margin: 0 0.5rem;
+}
+.calls-page-moments .legend-4 {
+	color: white !important;
+	background-color: yellowgreen !important;
+	margin: 0 0.5rem;
+}
+.calls-page-moments .legend-5 {
+	color: white !important;
+	background-color: orange !important;
+	margin: 0 0.5rem;
+}
