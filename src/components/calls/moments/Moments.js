@@ -195,7 +195,7 @@ function Moments({ callDetails }) {
             <typography variant="h6">
               Sentiment &nbsp;
               <Chip
-                label={callDetails.feedback.split(" ")[0] ? callDetails.feedback.split(" ")[0] : callDetails.feedback}
+                label={callDetails?.feedback?.split(" ")[0] ? callDetails.feedback.split(" ")[0] : callDetails.feedback}
                 color="default"
                 size="small"
                 variant="outlined"
