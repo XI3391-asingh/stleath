@@ -22,6 +22,12 @@ function ConfigSettings() {
 	const [callClosingRule, setCallClosingRule] = useState([]);
 	const [warrantIssueRule, setWarrantIssueRule] = useState([]);
 	const [agentIdentificationRule, setAgentIdentificationRule] = useState([]);
+	const [competitorAnalysis, setCompetitorAnalysis] = useState([
+		{ label: '', score: '' },
+	]);
+	const [escalationRule, setEscalationRule] = useState([
+		{ label: '', score: '' },
+	]);
 	const [open, setOpen] = React.useState(false);
 
 	const dispatch = useDispatch();
@@ -46,6 +52,8 @@ function ConfigSettings() {
 				setCallClosingRule(resp?.data?.call_closing_rule);
 				setWarrantIssueRule(resp?.data?.warrant_issue_rule);
 				setAgentIdentificationRule(resp?.data?.agent_identification_rule);
+				setCompetitorAnalysis(resp?.data?.comparison_label_rule);
+				setEscalationRule(resp?.data?.escalation_label_rule);
 			}
 		});
 	};
@@ -59,8 +67,10 @@ function ConfigSettings() {
 			product_issue_rule: productIssueRule,
 			warrant_issue_rule: warrantIssueRule,
 			repeat_call_volume_rule: repeatCallVolumeRule,
-			comparison_score: 0.65,
-			escalation_score: 0.6,
+			//   comparison_score: 0.65,
+			//   escalation_score: 0.6,
+			comparison_label_rule: competitorAnalysis,
+			escalation_label_rule: escalationRule,
 		};
 		indexService.addSettingConfiguration(payload).then((resp) => {
 			if (resp.isSuccess) {
@@ -89,24 +99,14 @@ function ConfigSettings() {
 					<div className='config-page-settings-cards'>
 						<CompetitorAnalysis
 							title='Competitor Analysis'
-							data={
-								[
-									// 'Called so many times',
-									// 'Issue is still not resolved',
-									// 'Raised this problem again and again',
-									// 'Facing this issue again',
-								]
-							}
-							defaultdata={
-								[
-									// 'Called so many times',
-									// 'Issue is still not resolved',
-									// 'Raised this problem again and again',
-									// 'Facing this issue again',
-								]
-							}
+							defaultdata={competitorAnalysis}
+							onchangedata={(data) => setCompetitorAnalysis(data)}
 						/>
-						<CompetitorAnalysis title='Escalation' />
+						<CompetitorAnalysis
+							title='Escalation'
+							defaultdata={escalationRule}
+							onchangedata={(data) => setEscalationRule(data)}
+						/>
 					</div>
 					<div className='config-page-settings-cards'>
 						<ServiceIssue
@@ -137,9 +137,10 @@ function ConfigSettings() {
 					</div>
 					<div className='config-page-settings-cards'>
 						<ServiceIssue
-							title='Hold Time Violations'
+							title='Agent Identification'
 							data={[]}
-							defaultdata={[]}
+							defaultdata={agentIdentificationRule || []}
+							onchangedata={(data) => setAgentIdentificationRule(data)}
 						/>
 						<ServiceIssue
 							title='Repeat Calls Volume'
@@ -199,15 +200,7 @@ function ConfigSettings() {
 					</div>
 					<div className='config-page-settings-cards'>
 						<VoiceEnergyCard title='Voice Energy' />
-						<SilenceDetection title='Silence Detection' />
-					</div>
-					<div className='config-page-settings-cards'>
-						<ServiceIssue
-							title='Agent Identification'
-							data={[]}
-							defaultdata={agentIdentificationRule || []}
-							onchangedata={(data) => setAgentIdentificationRule(data)}
-						/>
+						<SilenceDetection title='Hold Time Violations' />
 					</div>
 					<div>
 						<button
