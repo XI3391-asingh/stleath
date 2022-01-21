@@ -1,21 +1,28 @@
 .calls-table-layout {
-	height: 41rem;
-	width: 100%;
+  height: 41rem;
+  width: 100%;
 }
 
 .details-button {
-	color: #ffffff !important;
-	background-color: blue;
-	/* background-color: #0e86d4 !important; */
-	border-radius: 10px !important;
-	padding: 5px !important;
-	border: none;
-	font-size: 0.9rem;
-	padding: 0.5rem 1rem;
-	cursor: pointer;
+  color: #ffffff !important;
+  background-color: #6b1d5e;
+  /* background-color: #0e86d4 !important; */
+  border-radius: 10px !important;
+  padding: 5px !important;
+  border: none;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.view-btn {
+  color: #6b1d5e !important;
+}
+.MuiDataGrid-root .MuiDataGrid-columnHeader:focus,
+.MuiDataGrid-root .MuiDataGrid-cell:focus {
+  outline: none !important;;
 }
 
 .details-button:hover {
-	color: #0e86d4 !important;
-	background-color: #ffffff !important;
+  color: #0e86d4 !important;
+  background-color: #ffffff !important;
 }

@@ -73,18 +73,33 @@ function Calls() {
               <Grid container spacing={2}>
                 <Grid item xs={7}>
                   {/* <Item> */}
-                    {calls?.filter} of {calls?.total} Calls
+                  {calls?.filter} of {calls?.total} Calls
                   {/* </Item> */}
                 </Grid>
                 <Grid item xs={5} className="calls-page-legends">
                   {/* <Item> */}
-                    {/* {calls?.filter} of {calls?.total} Calls */}
+                  {/* {calls?.filter} of {calls?.total} Calls */}
                   {/* </Item> */}
-				  <typography className='legend-1'>1.Happy</typography> &nbsp; 
-				  <typography className='legend-2'>2.Angry</typography> &nbsp; 
-				  <typography className='legend-3'>3.Dissapointed</typography> &nbsp; 
-				  <typography className='legend-4'>4.Hold time Violation</typography> &nbsp; 
-				  <typography className='legend-5'>5.Voice Energy Deviation</typography> &nbsp; 
+                  <typography className="legend-1">
+                    <span>1</span>Happy
+                  </typography>{" "}
+                  &nbsp;
+                  <typography className="legend-2">
+                    <span>2</span>Angry
+                  </typography>{" "}
+                  &nbsp;
+                  <typography className="legend-3">
+                    <span>3</span>Dissapointed
+                  </typography>{" "}
+                  &nbsp;
+                  <typography className="legend-4">
+                    <span>4</span>Hold time Violation
+                  </typography>{" "}
+                  &nbsp;
+                  <typography className="legend-5">
+                    <span>5</span>Voice Energy Deviation
+                  </typography>{" "}
+                  &nbsp;
                 </Grid>
               </Grid>
             </div>

@@ -105,7 +105,7 @@ const columns = [
 				<div>
 					<Link to={`/call-visualizer?id=${row?.id}`}>
 						{/* <Button size="small" variant="text">View</Button> */}
-						<Button variant="text" endIcon={<SendIcon />}>View</Button>
+						<Button variant="text" endIcon={<SendIcon />} className='view-btn'>View</Button>
 						{/* <button
 							className='details-button'
 							disableElevation
