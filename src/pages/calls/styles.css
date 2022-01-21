@@ -13,6 +13,7 @@
 
 .calls-page-card-main-body {
 	width: 100%;
+	padding: 0 5px;
 }
 
 .calls-page-call-details {
@@ -22,6 +23,9 @@
 
 .calls-page-divider {
 	margin: 0.3rem 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    border: none;
 }
 
 .calls-page-table-layout {
@@ -35,6 +39,9 @@
 	height: 2rem;
 	padding: 0.5rem;
 	text-align: justify;
+	box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45) !important;
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45) !important;
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45) !important;
 }
 
 .calls-visualizer-details-text,
@@ -42,6 +49,7 @@
 	text-transform: capitalize !important;
 	vertical-align: sub;
 	font-weight: bold !important;
+	padding-left: 20px;
 }
 
 .calls-visualizer-call-id-text {
@@ -77,18 +85,80 @@
 .calls-page-legends .legend-1 {
 	color: green;
 }
+.calls-page-legends .legend-1 span{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: green;
+    color: white !important;
+	border-radius: 20px;
+    padding: 3px 7px;
+    margin-right: 5px;
+    font-size: .7rem;
+}
+
+
 .calls-page-legends .legend-2 {
 	color: red;
+}
+
+.calls-page-legends .legend-2 span{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: red;
+    color: white !important;
+	border-radius: 20px;
+    padding: 3px 6px;
+    margin-right: 5px;
+    font-size: .7rem;
 }
 .calls-page-legends .legend-3 {
 	color: skyblue;
 }
+.calls-page-legends .legend-3 span{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: skyblue;
+    color: white !important;
+	border-radius: 20px;
+    padding: 3px 6px;
+    margin-right: 5px;
+    font-size: .7rem;
+}
 .calls-page-legends .legend-4 {
 	color: yellowgreen;
+}
+
+.calls-page-legends .legend-4 span{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: yellowgreen;
+    color: white !important;
+	border-radius: 20px;
+    padding: 3px 6px;
+    margin-right: 5px;
+    font-size: .7rem;
 }
 .calls-page-legends .legend-5 {
 	color: orange;
 }
+
+
+.calls-page-legends .legend-5 span{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: orange;
+    color: white !important;
+	border-radius: 20px;
+    padding: 3px 6px;
+    margin-right: 5px;
+    font-size: .7rem;
+}
+
 .calls-page-moments {
 	color: white !important;
 }
