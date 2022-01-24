@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Card, Snackbar, Typography } from '@mui/material';
+import { Card, collapseClasses, Snackbar, Typography } from '@mui/material';
 
 import './styles.css';
 import CompetitorAnalysis from '../../components/config-settings/competitor-analysis/CompetitorAnalysis';
@@ -15,6 +15,8 @@ import {
 } from '../../store/type';
 
 function ConfigSettings() {
+	const dispatch = useDispatch();
+	const [open, setOpen] = React.useState(false);
 	const [serviceIssueRule, setServiceIssueRule] = useState([]);
 	const [productIssueRule, setProductIssueRule] = useState([]);
 	const [repeatCallVolumeRule, setRepeatCallVolumeRule] = useState([]);
@@ -22,17 +24,18 @@ function ConfigSettings() {
 	const [callClosingRule, setCallClosingRule] = useState([]);
 	const [warrantIssueRule, setWarrantIssueRule] = useState([]);
 	const [agentIdentificationRule, setAgentIdentificationRule] = useState([]);
+	const [priceRule, setPriceRule] = useState([]);
+	const [holdTimeViolationRule, setHoldTimeViolationRule] = useState([]);
+	const [holdTimeViolationThreshold, setHoldTimeViolationThreshold] =
+		useState();
+	const [voiceEnergyThreshold, setVoiceEnergyThreshold] = useState();
+	const [domainAccuracy, setDomainAccuracy] = useState([]);
 	const [competitorAnalysis, setCompetitorAnalysis] = useState([
 		{ label: '', score: '' },
 	]);
 	const [escalationRule, setEscalationRule] = useState([
 		{ label: '', score: '' },
 	]);
-	const [open, setOpen] = React.useState(false);
-
-	const dispatch = useDispatch();
-	//   const { settingconfiguration } = useSelector((store) => store.setting);
-	//   console.log(settingconfiguration);
 
 	useEffect(() => {
 		getSettingConfiguration();
@@ -52,13 +55,69 @@ function ConfigSettings() {
 				setCallClosingRule(resp?.data?.call_closing_rule);
 				setWarrantIssueRule(resp?.data?.warrant_issue_rule);
 				setAgentIdentificationRule(resp?.data?.agent_identification_rule);
-				setCompetitorAnalysis(resp?.data?.comparison_label_rule);
-				setEscalationRule(resp?.data?.escalation_label_rule);
+				setPriceRule(resp?.data?.pricing_rule);
+				setDomainAccuracy(resp?.data?.domain_accuracy_rule);
+				setHoldTimeViolationRule(resp?.data?.hold_time_violation_rule);
+				setHoldTimeViolationThreshold(
+					resp?.data?.hold_time_violation_threshold
+				);
+				setVoiceEnergyThreshold(resp?.data?.voice_energy_threshold);
+				if (
+					resp?.data?.label_rule &&
+					resp?.data?.label_rule.length &&
+					resp?.data?.label_rule[0]
+				) {
+					let comparisonobj = resp?.data?.label_rule[0].comparison;
+					let labelval = comparisonobj.label;
+					let comparison_rule = [];
+					for (var i = 0; i < labelval.length; i++) {
+						comparison_rule.push({
+							label: labelval[i],
+							score: comparisonobj.score[i],
+						});
+					}
+					setCompetitorAnalysis(comparison_rule);
+				}
+
+				if (
+					resp?.data?.label_rule &&
+					resp?.data?.label_rule.length &&
+					resp?.data?.label_rule[1]
+				) {
+					let escalationobj = resp?.data?.label_rule[1].escalation;
+					let labelval = escalationobj.label;
+					let escalation_rule = [];
+					for (var i = 0; i < labelval.length; i++) {
+						escalation_rule.push({
+							label: labelval[i],
+							score: escalationobj.score[i],
+						});
+					}
+					setEscalationRule(escalation_rule);
+				}
 			}
 		});
 	};
 
 	const onSubmit = () => {
+		let comparisonrule = {
+			label: [],
+			score: [],
+		};
+		if (competitorAnalysis && competitorAnalysis.length) {
+			comparisonrule.label = [...competitorAnalysis.map((obj) => obj.label)];
+			comparisonrule.score = [...competitorAnalysis.map((obj) => obj.score)];
+		}
+		let escalationrule = {
+			label: [],
+			score: [],
+		};
+
+		if (escalationRule && escalationRule.length) {
+			escalationrule.label = [...escalationRule.map((obj) => obj.label)];
+			escalationrule.score = [...escalationRule.map((obj) => obj.score)];
+		}
+
 		const payload = {
 			agent_identification_rule: agentIdentificationRule,
 			call_opening_rule: callOpeningRule,
@@ -67,10 +126,19 @@ function ConfigSettings() {
 			product_issue_rule: productIssueRule,
 			warrant_issue_rule: warrantIssueRule,
 			repeat_call_volume_rule: repeatCallVolumeRule,
-			//   comparison_score: 0.65,
-			//   escalation_score: 0.6,
-			comparison_label_rule: competitorAnalysis,
-			escalation_label_rule: escalationRule,
+			label_rule: [
+				{
+					comparison: comparisonrule,
+				},
+				{
+					escalation: escalationrule,
+				},
+			],
+			pricing_rule: priceRule,
+			domain_accuracy_rule: domainAccuracy,
+			voice_energy_threshold: voiceEnergyThreshold,
+			hold_time_violation_threshold: holdTimeViolationThreshold,
+			hold_time_violation_rule: holdTimeViolationRule,
 		};
 		indexService.addSettingConfiguration(payload).then((resp) => {
 			if (resp.isSuccess) {
@@ -111,26 +179,13 @@ function ConfigSettings() {
 					<div className='config-page-settings-cards'>
 						<ServiceIssue
 							title='Service Issue'
-							data={
-								[
-									// 'Called so many times',
-									// 'Issue is still not resolved',
-									// 'Raised this problem again and again',
-									// 'Facing this issue again',
-								]
-							}
+							data={[]}
 							defaultdata={serviceIssueRule || []}
 							onchangedata={(data) => setServiceIssueRule(data)}
 						/>
 						<ServiceIssue
 							title='Product Issue'
-							data={
-								[
-									// 'card stops working',
-									// 'Not able to make any transactions',
-									// 'charges are more',
-								]
-							}
+							data={[]}
 							defaultdata={productIssueRule || []}
 							onchangedata={(data) => setProductIssueRule(data)}
 						/>
@@ -144,11 +199,7 @@ function ConfigSettings() {
 						/>
 						<ServiceIssue
 							title='Repeat Calls Volume'
-							data={
-								[
-									// 'Stop calling me', 'Why are you calling again and again'
-								]
-							}
+							data={[]}
 							defaultdata={repeatCallVolumeRule || []}
 							onchangedata={(data) => setRepeatCallVolumeRule(data)}
 						/>
@@ -156,31 +207,13 @@ function ConfigSettings() {
 					<div className='config-page-settings-cards'>
 						<ServiceIssue
 							title='Opening Call'
-							data={
-								[
-									// 'Thank you',
-									// 'Is there anything that I can help you with?',
-									// 'Thank you for calling',
-									// 'Thank you for your valuable time',
-									// 'I hope I was able to solve your problem',
-									// 'I hope I was able to solve your query',
-								]
-							}
+							data={[]}
 							defaultdata={callOpeningRule || []}
 							onchangedata={(data) => setCallOpeningRule(data)}
 						/>
 						<ServiceIssue
 							title='Closing Call'
-							data={
-								[
-									// 'Thank you',
-									// 'Is there anything that I can help you with?',
-									// 'Thank you for calling',
-									// 'Thank you for your valuable time',
-									// 'I hope I was able to solve your problem',
-									// 'I hope I was able to solve your query',
-								]
-							}
+							data={[]}
 							defaultdata={callClosingRule || []}
 							onchangedata={(data) => setCallClosingRule(data)}
 						/>
@@ -188,19 +221,40 @@ function ConfigSettings() {
 					<div className='config-page-settings-cards'>
 						<ServiceIssue
 							title='Warranty & Others'
-							data={
-								[
-									// 'Out of warranty'
-								]
-							}
+							data={[]}
 							defaultdata={warrantIssueRule || []}
 							onchangedata={(data) => setWarrantIssueRule(data)}
 						/>
-						<ServiceIssue title='Pricing' data={[]} defaultdata={[]} />
+						<ServiceIssue
+							title='Pricing'
+							data={[]}
+							defaultdata={priceRule || []}
+							onchangedata={(data) => setPriceRule(data)}
+						/>
 					</div>
 					<div className='config-page-settings-cards'>
-						<VoiceEnergyCard title='Voice Energy' />
-						<SilenceDetection title='Hold Time Violations' />
+						<VoiceEnergyCard
+							title='Voice Energy'
+							defaultdata={voiceEnergyThreshold}
+							onchangedata={(data) => setVoiceEnergyThreshold(data)}
+						/>
+						<SilenceDetection
+							title='Hold Time Violations'
+							defaultdata={holdTimeViolationRule || []}
+							onchangedata={(data) => setHoldTimeViolationRule(data)}
+							defaultholdtimethresholddata={holdTimeViolationThreshold}
+							onchangeholdtimethresholddata={(data) =>
+								setHoldTimeViolationThreshold(parseFloat(data))
+							}
+						/>
+					</div>
+					<div className='config-page-settings-cards'>
+						<ServiceIssue
+							title='Domain Accuracy'
+							data={[]}
+							defaultdata={domainAccuracy || []}
+							onchangedata={(data) => setDomainAccuracy(data)}
+						/>
 					</div>
 					<div>
 						<button

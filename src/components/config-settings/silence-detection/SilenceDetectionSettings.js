@@ -2,7 +2,13 @@ import { Autocomplete, Chip, TextField, Typography } from '@mui/material';
 import React from 'react';
 import SilenceDetectionSettingsFilters from '../../filters/silence-detection-settings-filters/SilenceDetectionSettingsFilters';
 
-function SilenceDetectionSettings({ data, defaultdata }) {
+function SilenceDetectionSettings({
+	data,
+	defaultdata,
+	onchangedata,
+	defaultholdtimethresholddata,
+	onchangeholdtimethresholddata,
+}) {
 	const handleClick = () => {
 		console.info('You clicked the Chip.');
 	};
@@ -23,7 +29,10 @@ function SilenceDetectionSettings({ data, defaultdata }) {
 					id='tags-outlined'
 					size='small'
 					options={data}
-					defaultValue={defaultdata}
+					value={defaultdata}
+					onChange={(event, value) => {
+						onchangedata(value);
+					}}
 					renderInput={(params) => (
 						<TextField
 							className='service-issue-textfield'
@@ -80,6 +89,10 @@ function SilenceDetectionSettings({ data, defaultdata }) {
 				<SilenceDetectionSettingsFilters
 					className='silence-detection-settings-dropdown'
 					style={{ height: '5rem', overflowY: 'auto' }}
+					defaultholdtimethresholddata={defaultholdtimethresholddata}
+					onchangeholdtimethresholddata={(data) =>
+						onchangeholdtimethresholddata(data)
+					}
 				/>
 				{/* </div> */}
 			</div>

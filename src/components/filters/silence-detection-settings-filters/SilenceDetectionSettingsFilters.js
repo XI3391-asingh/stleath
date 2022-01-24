@@ -17,12 +17,24 @@ const options = {
 	],
 };
 
-function SilenceDetectionSettingsFilters() {
+function SilenceDetectionSettingsFilters({
+	defaultholdtimethresholddata,
+	onchangeholdtimethresholddata,
+}) {
+	const handleSelectChange = (e) => {
+		onchangeholdtimethresholddata(e?.value);
+	};
 	return (
 		<div>
 			<Select
 				options={options.options}
 				className='silence-detection-settings-filters'
+				value={options.options.filter(
+					(option) =>
+						option.value ===
+						defaultholdtimethresholddata?.toFixed(2)?.toString()
+				)}
+				onChange={(e) => handleSelectChange(e)}
 			/>
 		</div>
 	);

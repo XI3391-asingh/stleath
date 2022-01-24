@@ -4,12 +4,15 @@ import VoiceEnergySettingsFilters from '../../filters/voice-energy-settings-filt
 
 import './styles.css';
 
-function VoiceEnergyCard({ title }) {
+function VoiceEnergyCard({ title, defaultdata, onchangedata }) {
 	return (
 		<Card className='voice-energy-card-layout'>
 			<Typography variant='h6'>{title}</Typography>
 			<div className='voice-energy-card-dropdown'>
-				<VoiceEnergySettingsFilters />
+				<VoiceEnergySettingsFilters
+					defaultdata={defaultdata}
+					onchangedata={onchangedata}
+				/>
 			</div>
 		</Card>
 	);

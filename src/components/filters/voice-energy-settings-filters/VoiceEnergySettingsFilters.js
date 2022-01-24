@@ -35,12 +35,20 @@ const options = {
 	],
 };
 
-function VoiceEnergySettingsFilters() {
+function VoiceEnergySettingsFilters({ defaultdata, onchangedata }) {
+	const handleSelectChange = (e) => {
+		onchangedata(e?.value);
+	};
+
 	return (
 		<div>
 			<Select
 				options={options.options}
 				className='voice-energy-settings-filters'
+				value={options.options.filter(
+					(option) => option.value === defaultdata?.toString()
+				)}
+				onChange={(e) => handleSelectChange(e)}
 			/>
 		</div>
 	);
