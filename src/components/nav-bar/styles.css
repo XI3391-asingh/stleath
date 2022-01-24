@@ -42,6 +42,44 @@
 	padding: 0 0.5rem !important;
 }
 
+.nav{
+	padding: 0;
+}
+.nav-bar {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+  }
+  
+  .nav-bar li {
+	float: left;
+	border-right: 1px solid #f358d92e;
+  }
+  
+  .nav-bar li:last-child {
+	border-right: none;
+  }
+  
+  .nav-bar li a {
+	display: block;
+	color: white !important;
+	text-align: center;
+	padding: 22px 16px;
+	text-decoration: none;
+  }
+  .nav-bar li a span {
+	  font-size: 12px;
+  }
+  .nav-bar li a:hover:not(.active) {
+	background-color: #c13fab8c;
+  }
+  
+  .nav-bar .active {
+	background-color: #c13fab8c;
+	border-radius: 0;
+  }
+
 .appbar-pending-page-notification {
 	color: white !important;
 	font-size: 0.6rem !important;
@@ -68,6 +106,8 @@
 	background-color: white;
 	color: #6c1d5f !important;
 	min-width: 10rem; */
+	border-right: 1px solid #f358d92e;
+    padding-right: 10px;
 }
 
 .appbar-button {

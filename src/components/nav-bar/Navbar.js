@@ -105,7 +105,7 @@ function Navbar() {
 					<Settings fontSize='small' />
 				</ListItemIcon>
 				<Link to='/config-settings' className='appbar-avatar-settings-layout'>
-					<Typography variant='body1'>Config-Settings</Typography>
+					<Typography variant='body1'>Settings</Typography>
 				</Link>
 			</MenuItem>
 			<MenuItem onClick={handleMenuClose} className='appbar-avatar-menuItem'>
@@ -212,54 +212,40 @@ function Navbar() {
 							STEALTH
 						</Typography>
 						<Box className='appbar-box'>
-							<IconButton>
-								<NavLink
-									className='appbar-pages'
-									activeClassName='active'
-									to='/dashboard'
-								>
-									<Typography variant='body1'>Dashboard</Typography>
-								</NavLink>
-								<NavLink
-									className='appbar-pages'
-									activeClassName='active'
-									to='/calls'
-								>
-									<Typography variant='body1'>Calls</Typography>
-								</NavLink>
-								<Typography variant='body1' className='appbar-pages'>
-									QA
-								</Typography>
-								<NavLink
-									className='appbar-pages'
-									activeClassName='active'
-									to='/employee-management'
-								>
-									<Typography variant='body1'>Employee Management</Typography>
-								</NavLink>
-								<div>
-									<Typography variant='body1' className='appbar-pending-pages'>
+							<ul className='nav-bar'>
+								<li>
+									<NavLink activeClassName='active' to='/dashboard'>
+										Dashboard
+									</NavLink>
+								</li>
+								<li>
+									<NavLink activeClassName='active' to='/calls'>
+										Calls
+									</NavLink>
+								</li>
+								<li>
+									<NavLink activeClassName='active' to='/qa'>
+										QA
+									</NavLink>
+								</li>
+								<li>
+									<NavLink activeClassName='active' to='/employee-management'>
+										Employee Management
+									</NavLink>
+								</li>
+								<li>
+									<NavLink activeClassName='active' to='/employee-management-1'>
 										AI Act
-									</Typography>
-									<Typography
-										variant='caption'
-										className='appbar-pending-page-notification'
-									>
-										Phase 2
-									</Typography>
-								</div>
-								<div>
-									<Typography variant='body1' className='appbar-pending-pages'>
+										<span> (Phase 2)</span>
+									</NavLink>
+								</li>
+								<li>
+									<NavLink activeClassName='active' to='/employee-management-2'>
 										AI Recommendations
-									</Typography>
-									<Typography
-										variant='caption'
-										className='appbar-pending-page-notification'
-									>
-										Phase 3
-									</Typography>
-								</div>
-							</IconButton>
+										<span> (Phase 3)</span>
+									</NavLink>
+								</li>
+							</ul>
 						</Box>
 						<Box className='appbar-icon-list'>
 							{localStorage.getItem('userable_type').toLowerCase() ===

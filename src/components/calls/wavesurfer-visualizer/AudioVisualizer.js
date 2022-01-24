@@ -1,15 +1,18 @@
 import { Button, ButtonGroup, Typography } from '@material-ui/core';
 import { Card } from '@mui/material';
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 // import { WaveSurfer, WaveForm } from 'wavesurfer-react';
 import { CLEAR_CALL_VISUALIZER } from '../../../store/type';
 
 import './styles.css';
 
-function AudioVisualizer({ path, currentTime, isplayaudio }) {
+function AudioVisualizer({ path, currentTime, isplayaudio, transcript }) {
 	const audioRef = React.useRef(null);
 	const dispatch = useDispatch();
+	const [ audioDuration, setAudioDuration ]= useState(0);
+	const pageWidth = document.getElementById('audioVisualizerAgent') ? document.getElementById('audioVisualizerAgent').scrollWidth : 0;
+	// const pageWidth = 1230;
 	// const wavesurferRef = useRef();
 
 	useEffect(() => {
@@ -77,6 +80,15 @@ function AudioVisualizer({ path, currentTime, isplayaudio }) {
 	const onPlaying = () => {
 		let nowtime = Math.round(audioRef.current.currentTime);
 		currentTime(nowtime);
+		console.log(document.getElementById('audioVisualizerAgent').scrollWidth);
+		console.log('page width'+pageWidth);
+		// setSeekValue(
+		//   (audioPlayer.current.currentTime / audioPlayer.current.duration) * 100
+		// );
+	};
+	const onAudioPlayerLoad = () => {
+		setAudioDuration(audioRef.current.duration);
+		console.log('audio duration:' + audioRef.current.duration);
 		// setSeekValue(
 		//   (audioPlayer.current.currentTime / audioPlayer.current.duration) * 100
 		// );
@@ -89,73 +101,36 @@ function AudioVisualizer({ path, currentTime, isplayaudio }) {
 				<div>
 					<div className='audio-visualizer-type mt-25'>
 						<div className='audio-visualizer-agent-text'>Agent</div>
-						<div className='audio-visualizer-agent'>
-							<div className='audio-visualizer-box-agent w-4'></div>&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-20'></div>
-							&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-6'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='w-100'></div>
-							<div className=' w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-6'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className=' w-12'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className=' w-14'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-16'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-12'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-14'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-100'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-100'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-agent w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-agent w-10'></div>
+						<div className='audio-visualizer-agent' id='audioVisualizerAgent'>
+							{/* <div style={{ 'display': 'flex','justify-content':'space-between','min-width': '100%'}}> */}
+						
+						{	transcript?.length > 0 &&
+							transcript?.map((data, index, localTranscript) => {
+
+								// let prevNode = (index === 0) ? null : (index === 1 ? localTranscript[index -1] : localTranscript[index -2]);
+								let prevNode = (index === 0) ? null : localTranscript[index -1];
+
+								if(!document.getElementById('audioVisualizerAgent') || !document.getElementById('audioVisualizerAgent').scrollWidth){
+									return <></>;
+								}
+
+								return data.speaker === 'Agent' ?
+								<>
+									{/* { prevNode && <div className={`audio-visualizer-box transparent w-${data.start_time - prevNode.end_time}`}></div> } */}
+									{ prevNode && <div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (data.start_time - prevNode.end_time)}}></div> }
+									{/* <div className={`audio-visualizer-box customer w-${data.end_time - data.start_time}`}></div> */}
+									<div className={`audio-visualizer-box agent`} style={{width:(pageWidth / audioDuration) * (data.end_time - data.start_time)}}></div>
+								</>
+								: <>
+									{/* { prevNode && <div className={`audio-visualizer-box transparent w-${Math.abs(data.start_time - prevNode.end_time)}`}></div> } */}
+									{ prevNode && <div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (Math.abs(data.start_time - prevNode.end_time))}}></div> }
+									{/* <div className={`audio-visualizer-box transparent w-${data.end_time - data.start_time}`}></div> */}
+									<div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (data.end_time - data.start_time)}}></div>
+								</>;
+							})
+						}
+						{/* </div> */}
+							
 						</div>
 					</div>
 					<div className='audio-visualizer-block'>
@@ -165,74 +140,31 @@ function AudioVisualizer({ path, currentTime, isplayaudio }) {
 						<div className='audio-visualizer-customer-text'>Customer</div>
 						{/* <hr className='audio-visualizer-customer-divider' /> */}
 						<div className='audio-visualizer-customer'>
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-30'></div>
-							&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-6'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='w-100'></div>
-							<div className=' w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-6'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className=' w-12'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className=' w-14'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-16'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-12'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-14'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-4'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-20'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-50'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-customer w-2'></div>
-							&nbsp;
-							<div className='audio-visualizer-box-customer w-10'></div>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<div className='audio-visualizer-box-customer w-100'></div>
+						{	transcript?.length > 0 &&
+							transcript?.map((data, index, localTranscript) => {
+
+								// let prevNode = (index === 0) ? null : (index === 1 ? localTranscript[index -1] : localTranscript[index -2]);
+								let prevNode = (index === 0) ? null : localTranscript[index -1];
+
+								if(!document.getElementById('audioVisualizerAgent') || !document.getElementById('audioVisualizerAgent').scrollWidth) {
+									return <></>;
+								}
+
+								return data.speaker === 'Customer' ?
+								<>
+									{/* { prevNode && <div className={`audio-visualizer-box transparent w-${data.start_time - prevNode.end_time}`}></div> } */}
+									{ prevNode && <div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (data.start_time - prevNode.end_time)}}></div> }
+									{/* <div className={`audio-visualizer-box customer w-${data.end_time - data.start_time}`}></div> */}
+									<div className={`audio-visualizer-box customer`} style={{width:(pageWidth / audioDuration) * (data.end_time - data.start_time)}}></div>
+								</>
+								: <>
+									{/* { prevNode && <div className={`audio-visualizer-box transparent w-${Math.abs(data.start_time - prevNode.end_time)}`}></div> } */}
+									{ prevNode && <div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (Math.abs(data.start_time - prevNode.end_time))}}></div> }
+									{/* <div className={`audio-visualizer-box transparent w-${data.end_time - data.start_time}`}></div> */}
+									<div className={`audio-visualizer-box transparent`} style={{width:(pageWidth / audioDuration) * (data.end_time - data.start_time)}}></div>
+								</>;
+							})
+						}
 						</div>
 					</div>
 					<audio
@@ -242,6 +174,7 @@ function AudioVisualizer({ path, currentTime, isplayaudio }) {
 						ref={audioRef}
 						type='audio'
 						onTimeUpdate={onPlaying}
+						onLoadedData={onAudioPlayerLoad}
 					/>
 				</div>
 				{/* <Card className='audio-visualizer-wave-card'>

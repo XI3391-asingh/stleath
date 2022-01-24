@@ -18,7 +18,7 @@ function Dashboard() {
 					<div>
 						<SidebarFilters />
 					</div>
-					<div>
+					<div className='dashboard-right-content'>
 						<DashboardDetails />
 						<hr className='dashboard-page-divider' />
 						<div className='dashboard-page-scroller'>
