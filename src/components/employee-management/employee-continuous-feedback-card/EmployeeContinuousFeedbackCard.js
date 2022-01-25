@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Card, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import EmployeeManagementFeedback from '../employee-management-feedback/EmployeeManagementFeedback';
 
@@ -10,7 +10,7 @@ import Axios from '../../../http/Axios';
 import { SET_RELOAD_FEEDBACK } from '../../../store/type';
 import TeamData from '../../../data/team.json';
 
-function EmployeeFeedbackCard() {
+function EmployeeContinuousFeedbackCard() {
 	const dispatch = useDispatch();
 	const { relodeFeedback, selectedUser } = useSelector((store) => store.user);
 	const [feedbacks, setFeedback] = useState([]);
@@ -92,11 +92,8 @@ function EmployeeFeedbackCard() {
 					<Typography variant='subtitle1'>No Feedback Yet</Typography>
 				</div>
 			)}
-			{/* <EmployeeManagementFeedback />
-			<EmployeeManagementFeedback />
-			<EmployeeManagementFeedback /> */}
 		</div>
 	);
 }
 
-export default EmployeeFeedbackCard;
+export default EmployeeContinuousFeedbackCard;

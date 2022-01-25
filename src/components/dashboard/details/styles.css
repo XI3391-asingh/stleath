@@ -3,17 +3,18 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 0.5rem;
+	margin: 0.6rem;
 }
 
 .dashboard-details-upload-button {
-    margin-right: 1rem;
-    background-color: #6b1d5e;
-    color: white;
-    border: none;
-    font-size: 0.9rem;
-    border-radius: 0.2rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
+	margin-right: 1rem;
+	background-color: #6b1d5e;
+	color: white;
+	border: none;
+	font-size: 0.9rem;
+	border-radius: 0.2rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
 }
 
 /* .dashboard-details-call-details {

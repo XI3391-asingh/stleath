@@ -49,20 +49,6 @@ function EmployeeManagementFeedback(props) {
 					{props.createdAt}
 				</Typography>
 			</div>
-			{/* <div style={{ display: 'flex' }}>
-				<Typography
-					variant='subtitle1'
-					className='employee-management-feedback-card-call-details-key'
-				>
-					Duration:
-				</Typography>
-				<Typography
-					variant='body1'
-					className='employee-management-feedback-card-call-details-value'
-				>
-					87 Minutes
-				</Typography>
-			</div> */}
 			<div style={{ display: 'flex' }}>
 				<Typography
 					variant='subtitle1'

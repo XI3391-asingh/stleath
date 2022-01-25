@@ -3,6 +3,8 @@ import React from 'react';
 import { Typography } from '@mui/material';
 import { Doughnut } from 'react-chartjs-2';
 
+import './styles.css';
+
 function PerformanceCardSentiment(props) {
 	const state = {
 		labels: [],
@@ -15,7 +17,7 @@ function PerformanceCardSentiment(props) {
 		],
 	};
 	return (
-		<div style={{ width: '220px', height: '220px', position: 'relative' }}>
+		<div className='performance-card-sentiment-layout'>
 			<Doughnut
 				data={state}
 				options={{
@@ -27,6 +29,7 @@ function PerformanceCardSentiment(props) {
 			/>
 			<Typography
 				variant='button'
+				className='performance-card-sentiment-percentage'
 				style={{
 					position: 'absolute',
 					transform: 'translate(-50%, 0)',

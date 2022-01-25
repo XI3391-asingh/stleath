@@ -1,11 +1,15 @@
 .employee-management-feedback-button {
-	background-color: blue;
+	margin-right: 1rem;
+	background-color: #6b1d5e;
 	color: white;
 	border: none;
 	font-size: 0.9rem;
-	border-radius: 10px;
+	border-radius: 0.2rem;
 	padding: 0.5rem 1rem;
 	cursor: pointer;
+	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
 }
 .performance-card-provide-feedback-modal {
 	position: absolute;
@@ -19,7 +23,16 @@
 	padding: 2rem;
 }
 
+.performance-card-form-components {
+	margin: 2rem;
+}
+
 .performance-card-modal-dropdown {
 	margin: 1rem;
 	min-width: 10rem !important;
+}
+
+.employee-management-feedback-buttons-group {
+	display: flex;
+	justify-content: space-between;
 }

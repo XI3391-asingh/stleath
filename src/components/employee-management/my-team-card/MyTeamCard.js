@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Avatar, Card, Stack, Typography } from '@mui/material';
+import { Avatar, Stack, Typography } from '@mui/material';
 import TeamData from '../../../data/team.json';
 
 import './styles.css';
@@ -39,8 +39,7 @@ function stringAvatar(name) {
 function MyTeamCard() {
 	const dispatch = useDispatch();
 	return (
-		// <div>
-		<Card className='my-team-card-layout'>
+		<div className='my-team-card-layout'>
 			<div>
 				<div>
 					<Typography variant='h6' className='my-team-card-heading'>
@@ -55,11 +54,11 @@ function MyTeamCard() {
 					>
 						{TeamData.map((team, index) => {
 							return (
-								<div>
+								<div className='my-team-card-avatar-block'>
 									<Avatar
 										{...stringAvatar(team.avatar)}
 										className='my-team-card-avatar'
-										onClick = {()=> dispatch({type: SET_USER, payload: team})}
+										onClick={() => dispatch({ type: SET_USER, payload: team })}
 									/>
 									<Typography variant='caption' className='my-team-card-name'>
 										{team.name}
@@ -70,8 +69,7 @@ function MyTeamCard() {
 					</Stack>
 				</div>
 			</div>
-		</Card>
-		// </div>
+		</div>
 	);
 }
 

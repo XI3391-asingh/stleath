@@ -1,8 +1,11 @@
 .employee-achievements-layout {
-	padding: 0.5rem;
-	display: flex;
 	justify-content: space-between;
+}
+
+.employee-achievements {
+	display: flex;
 	margin: 1rem;
+	justify-content: center;
 }
 
 .employee-achievements-header-layout {
@@ -15,4 +18,8 @@
 
 .employee-achievements-caption {
 	color: darkgrey;
+}
+
+.employee-achievements-divider {
+	border: 1px solid #e0e0e0;
 }
