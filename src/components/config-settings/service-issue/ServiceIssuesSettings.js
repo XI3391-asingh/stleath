@@ -34,46 +34,6 @@ function ServiceIssuesSettings({ data, defaultdata, onchangedata }) {
 					/>
 				)}
 			/>
-			{/* <div className="service-issue-chips-layout">
-	  
-
-
-        <Chip
-          label="Charge"
-          variant="outlined"
-          onClick={handleClick}
-          onDelete={handleDelete}
-          className="service-issue-chips"
-        />
-        <Chip
-          label="Chip"
-          variant="outlined"
-          onClick={handleClick}
-          onDelete={handleDelete}
-          className="service-issue-chips"
-        />
-        <Chip
-          label="Click"
-          variant="outlined"
-          onClick={handleClick}
-          onDelete={handleDelete}
-          className="service-issue-chips"
-        />
-        <Chip
-          label="Service"
-          variant="outlined"
-          onClick={handleClick}
-          onDelete={handleDelete}
-          className="service-issue-chips"
-        />
-        <Chip
-          label="Comparison"
-          variant="outlined"
-          onClick={handleClick}
-          onDelete={handleDelete}
-          className="service-issue-chips"
-        />
-      </div> */}
 		</div>
 	);
 }

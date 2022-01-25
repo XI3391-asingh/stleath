@@ -165,18 +165,6 @@ function ConfigSettings() {
 				<Card className='config-page-card-layout'>
 					<Typography variant='h5'>Configuration Settings</Typography>
 					<div className='config-page-settings-cards'>
-						<CompetitorAnalysis
-							title='Competitor Analysis'
-							defaultdata={competitorAnalysis}
-							onchangedata={(data) => setCompetitorAnalysis(data)}
-						/>
-						<CompetitorAnalysis
-							title='Escalation'
-							defaultdata={escalationRule}
-							onchangedata={(data) => setEscalationRule(data)}
-						/>
-					</div>
-					<div className='config-page-settings-cards'>
 						<ServiceIssue
 							title='Service Issue'
 							data={[]}
@@ -246,6 +234,18 @@ function ConfigSettings() {
 							onchangeholdtimethresholddata={(data) =>
 								setHoldTimeViolationThreshold(parseFloat(data))
 							}
+						/>
+					</div>
+					<div className='config-page-settings-cards'>
+						<CompetitorAnalysis
+							title='Competitor Analysis'
+							defaultdata={competitorAnalysis}
+							onchangedata={(data) => setCompetitorAnalysis(data)}
+						/>
+						<CompetitorAnalysis
+							title='Escalation'
+							defaultdata={escalationRule}
+							onchangedata={(data) => setEscalationRule(data)}
 						/>
 					</div>
 					<div className='config-page-settings-cards'>

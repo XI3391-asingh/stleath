@@ -1,4 +1,4 @@
-import { Autocomplete, Chip, TextField, Typography } from '@mui/material';
+import { Autocomplete, TextField, Typography } from '@mui/material';
 import React from 'react';
 import SilenceDetectionSettingsFilters from '../../filters/silence-detection-settings-filters/SilenceDetectionSettingsFilters';
 
@@ -43,58 +43,17 @@ function SilenceDetectionSettings({
 						/>
 					)}
 				/>
-				{/* <div className='silence-detection-chips-layout'>
-					<Chip
-						label='Charge'
-						variant='outlined'
-						onClick={handleClick}
-						onDelete={handleDelete}
-						className='silence-detection-chips'
-					/>
-					<Chip
-						label='Chip'
-						variant='outlined'
-						onClick={handleClick}
-						onDelete={handleDelete}
-						className='silence-detection-chips'
-					/>
-					<Chip
-						label='Click'
-						variant='outlined'
-						onClick={handleClick}
-						onDelete={handleDelete}
-						className='silence-detection-chips'
-					/>
-					<Chip
-						label='Service'
-						variant='outlined'
-						onClick={handleClick}
-						onDelete={handleDelete}
-						className='silence-detection-chips'
-					/>
-					<Chip
-						label='Comparison'
-						variant='outlined'
-						onClick={handleClick}
-						onDelete={handleDelete}
-						className='silence-detection-chips'
-					/>
-				</div> */}
 			</div>
 			<div className='silence-detection-filter-layout'>
 				<Typography variant='subtitle2' className='silence-detection-label'>
 					Holdtime Threshold
 				</Typography>
-				{/* <div style={{ height: '5rem', overflowY: 'auto' }}> */}
 				<SilenceDetectionSettingsFilters
-					className='silence-detection-settings-dropdown'
-					style={{ height: '5rem', overflowY: 'auto' }}
 					defaultholdtimethresholddata={defaultholdtimethresholddata}
 					onchangeholdtimethresholddata={(data) =>
 						onchangeholdtimethresholddata(data)
 					}
 				/>
-				{/* </div> */}
 			</div>
 		</div>
 	);
