@@ -51,24 +51,6 @@ function CompetitorAnalysisCard(props) {
 					title='Repeat Calls Volume'
 					vlaue={props?.data?.totalRepeatCallVolume}
 				/>
-
-				{/* {AnalysisCardsData.map((analysisCard) => {
-          return (
-            <Card className="card-display" style={{ width: "25%" }}>
-              <div className="card-metaicons">
-                <CardMetaicons />
-              </div>
-              <Link to="/calls">
-                <div className="analysis-card-link">
-                  <div>
-                    <h5>{analysisCard.title}</h5>
-                  </div>
-                  <CardContent>{analysisCard.Value}</CardContent>
-                </div>
-              </Link>
-            </Card>
-          );
-        })} */}
 			</div>
 		</div>
 	);

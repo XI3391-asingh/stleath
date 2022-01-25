@@ -109,5 +109,13 @@ class indexService {
 		const perRequest = await Axios.post('/set-configuration', payload);
 		return perRequest;
 	};
+
+	getNegativeCallCount = async () => {
+		const perRequest = await Axios.post('/get-negative-call-count', {
+			agent_name: localStorage.getItem('username'),
+		});
+		return perRequest;
+	};
 }
+
 export default new indexService();
