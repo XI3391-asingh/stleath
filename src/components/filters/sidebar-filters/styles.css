@@ -40,3 +40,7 @@
     box-sizing: border-box;
 	border: 1px solid #d3d3d3;
 }
+
+.sidebar-clear-filters {
+	text-transform: lowercase !important;
+}
