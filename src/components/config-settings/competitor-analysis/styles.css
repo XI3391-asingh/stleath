@@ -1,0 +1,48 @@
+.competitor-card-layout {
+	margin: 1rem;
+	width: 50%;
+	height: 20% !important;
+	padding: 1rem;
+}
+
+.competitor-card-heading {
+	padding: 1rem 1rem 0 1rem;
+}
+
+.competitor-card-settings {
+	height: 10rem;
+	overflow-y: auto !important;
+}
+
+.competitor-card-button {
+	margin: 1rem 0;
+	background-color: white !important;
+	color: blue !important;
+	border: none;
+	cursor: pointer;
+}
+
+.competitor-analysis-layout {
+	display: flex;
+	padding: 1rem 0;
+}
+
+.competitor-analysis-label {
+	text-align: start;
+	font-weight: bold !important;
+	align-self: center;
+	width: 25%;
+}
+
+.competitor-analysis-input {
+	margin: 0 1rem 0 0;
+}
+
+.competitor-analysis-filter {
+	width: 25%;
+}
+
+.dashboard-details-dropdown-delete-button {
+	align-self: center;
+	padding-left: 1rem;
+}

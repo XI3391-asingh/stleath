@@ -87,5 +87,17 @@ class indexService {
 		});
 		return perRequest;
 	};
+
+	getSettingConfiguration = async () => {
+		const perRequest = await Axios.get(`/get-configuration`, {
+			headers: headers,
+		});
+		return perRequest;
+	};
+
+	addSettingConfiguration = async (payload) => {
+		const perRequest = await Axios.post('/set-configuration', payload);
+		return perRequest;
+	};
 }
 export default new indexService();

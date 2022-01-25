@@ -11,6 +11,7 @@ import EmployeeManagement from './pages/employee-management/EmployeeManagement';
 import Login from './pages/login/Login';
 import Messages from './pages/messages/Messages';
 import Notifications from './pages/notifications/Notifications';
+import ConfigSettings from './pages/settings/ConfigSettings';
 
 function App() {
 	return (
@@ -39,6 +40,9 @@ function App() {
 						</Route>
 						<Route path='/notifications'>
 							<Notifications />
+						</Route>
+						<Route path='/config-settings'>
+							<ConfigSettings />
 						</Route>
 					</div>
 				</Switch>
