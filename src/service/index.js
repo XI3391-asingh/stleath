@@ -88,6 +88,16 @@ class indexService {
 		return perRequest;
 	};
 
+	getCallCountForVoiceEnergyDeviation = async () => {
+		const perRequest = await Axios.post(
+			'/get-call-count-for-voice-energy-deviation',
+			{
+				headers: headers,
+			}
+		);
+		return perRequest;
+	};
+
 	getSettingConfiguration = async () => {
 		const perRequest = await Axios.get(`/get-configuration`, {
 			headers: headers,
