@@ -95,6 +95,9 @@ class indexService {
 				headers: headers,
 			}
 		);
+		return perRequest;
+	};
+
 	getSettingConfiguration = async () => {
 		const perRequest = await Axios.get(`/get-configuration`, {
 			headers: headers,
