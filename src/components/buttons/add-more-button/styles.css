@@ -1,0 +1,7 @@
+.add-more-button {
+	margin: 1rem 0;
+	background-color: white !important;
+	color: blue !important;
+	border: none;
+	cursor: pointer;
+}

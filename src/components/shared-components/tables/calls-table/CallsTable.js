@@ -53,7 +53,7 @@ const columns = [
 		width: 150,
 		sortable: true,
 		valueFormatter: (params) => {
-			return params.value.split(" ")[0] ? params.value.split(" ")[0] : params.value;
+			return params?.value?.split(" ")[0] ? params.value.split(" ")[0] : params.value;
 		},
 	},
 	{

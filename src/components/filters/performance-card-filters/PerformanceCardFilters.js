@@ -14,18 +14,12 @@ const options = {
 	],
 };
 
-function PerformanceFilters() {
+function PerformanceCardFilters() {
 	return (
-		<div>
-			<div className='agent-disposition-filter-dropdown-layout'>
-				{/* <h6 className='agent-disposition-filter-dropdown-label'>{label}</h6> */}
-				<Select
-					className='performance-filter-select'
-					options={options.options}
-				/>
-			</div>
+		<div className='performance-filter-layout'>
+			<Select className='performance-filter-select' options={options.options} />
 		</div>
 	);
 }
 
-export default PerformanceFilters;
+export default PerformanceCardFilters;
