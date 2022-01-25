@@ -135,6 +135,17 @@
 	padding: 1rem !important;
 }
 
+.appbar-avatar-settings-layout {
+	background-color: initial;
+	color: blue;
+	border: none;
+	font-size: initial;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	display: flex;
+	text-decoration: none;
+}
+
 .appbar-notification-menu {
 	top: 3rem !important;
 	right: 20rem;

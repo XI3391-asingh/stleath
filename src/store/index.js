@@ -4,6 +4,7 @@ import notification from './reducer/notification';
 import auth from './reducer/auth';
 import dashboard from './reducer/dashboard';
 import call from './reducer/call';
+import setting from './reducer/setting';
 
 const rootReducer = combineReducers({
 	user: user,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
 	auth: auth,
 	dashboard: dashboard,
 	call: call,
+	setting: setting,
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
