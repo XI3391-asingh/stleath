@@ -1,4 +1,9 @@
+.performance-filter-layout {
+	text-align: justify;
+}
+
 .performance-filter-select {
-	width: 8rem !important;
+	width: 10rem !important;
 	margin-bottom: 0.5rem !important;
+	height: 2rem;
 }

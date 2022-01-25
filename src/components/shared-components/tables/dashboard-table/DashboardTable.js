@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 
 import { DataGrid } from '@mui/x-data-grid';
 
@@ -11,8 +11,12 @@ import { GET_CALL_COUNT } from '../../../../store/type';
 function DashboardTable() {
 	const dispatch = useDispatch();
 	const { callcount } = useSelector((store) => store.dashboard);
-	React.useEffect(() => {
+	useEffect(() => {
 		getCallCount();
+		const interval = setInterval(() => {
+			getCallCount();
+		}, 60000);
+		return () => clearInterval(interval);
 	}, []);
 
 	const getCallCount = () => {

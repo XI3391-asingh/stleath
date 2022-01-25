@@ -66,22 +66,9 @@ function PerformanceCardProvideFeedback() {
 			</button>
 			<Modal open={open} onClose={handleClose}>
 				<Box className='performance-card-provide-feedback-modal'>
-					<div style={{ margin: '2rem' }}>
+					<div className='performance-card-form-components'>
 						<Typography variant='h6'>Feedback Type</Typography>
-						{/* <Box component='form' noValidate autoComplete='off'>
-							<div>
-								<TextField
-									label='Monthly Feedback'
-									placeholder='Placeholder'
-									multiline
-									fullWidth
-								/>
-							</div>
-						</Box> */}
-						<FormControl
-							className='performance-card-modal-dropdown'
-							// sx={{ m: 1, minWidth: 120 }}
-						>
+						<FormControl className='performance-card-modal-dropdown'>
 							<InputLabel id='demo-simple-select-standard-label'>
 								review
 							</InputLabel>
@@ -101,7 +88,7 @@ function PerformanceCardProvideFeedback() {
 							</Select>
 						</FormControl>
 					</div>
-					<div style={{ margin: '2rem' }}>
+					<div className='performance-card-form-components'>
 						<Typography variant='h6'>Comments</Typography>
 						<Box component='form' noValidate autoComplete='off'>
 							<div>
@@ -115,7 +102,10 @@ function PerformanceCardProvideFeedback() {
 							</div>
 						</Box>
 					</div>
-					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
+					<div
+						className='employee-management-feedback-buttons-group'
+						style={{ display: 'flex', justifyContent: 'space-between' }}
+					>
 						<button
 							className='employee-management-feedback-button'
 							onClick={handleClose}
