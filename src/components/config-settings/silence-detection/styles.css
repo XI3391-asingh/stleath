@@ -3,6 +3,7 @@
 	padding: 1rem;
 	width: 50%;
 	height: 16rem;
+	overflow: visible !important;
 }
 
 .silence-detection-card-settings {
@@ -19,7 +20,6 @@
 .silence-detection-filter-layout {
 	display: flex;
 	margin-top: 1rem;
-	/* height: auto; */
 }
 
 .silence-detection-label {
@@ -27,11 +27,6 @@
 	font-weight: bold !important;
 	align-self: center;
 	width: 50%;
-}
-
-.silence-detection-settings-dropdown {
-	height: 5rem;
-	overflow-y: auto;
 }
 
 .silence-detection-chips-layout {

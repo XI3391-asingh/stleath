@@ -3,15 +3,11 @@
 	width: 50%;
 	height: 20% !important;
 	padding: 1rem;
+	overflow: visible !important;
 }
 
 .competitor-card-heading {
 	padding: 1rem 1rem 0 1rem;
-}
-
-.competitor-card-settings {
-	height: 10rem;
-	overflow-y: auto !important;
 }
 
 .competitor-card-button {

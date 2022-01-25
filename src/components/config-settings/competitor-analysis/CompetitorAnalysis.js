@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Card, Typography } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Select from 'react-select';
 import './styles.css';
-import CompetitorAnalysisSettings from './CompetitorAnalysisSettings';
-import AddMoreButton from '../../buttons/add-more-button/AddMoreButton';
 
 const rate = {
 	id: '1',
 	label: 'Rate',
 	options: [
-		// { value: '1', label: 5 },
-		// { value: '2', label: 10 },
-		// { value: '3', label: 15 },
 		{ value: '0.05', label: 5 },
 		{ value: '0.10', label: 10 },
 		{ value: '0.15', label: 15 },
@@ -42,15 +37,12 @@ function CompetitorAnalysis({
 	defaultdata = [{ label: '', score: '' }],
 	onchangedata,
 }) {
-	//   const [inputList, setInputList] = useState(defaultdata);
-
 	// handle input change
 	const handleInputChange = (e, index) => {
 		const { name, value } = e.target;
 		const list = [...defaultdata];
 		list[index]['label'] = value;
 		onchangedata(list);
-		// setInputList(list);
 	};
 
 	const handleSelectChange = (e, index) => {
@@ -58,20 +50,18 @@ function CompetitorAnalysis({
 		const list = [...defaultdata];
 		list[index]['score'] = e?.value;
 		onchangedata(list);
-		// setInputList(list);
 	};
+
 	// handle click event of the Remove button
 	const handleRemoveClick = (index) => {
 		const list = [...defaultdata];
 		list.splice(index, 1);
 		onchangedata(list);
-		// setInputList(list);
 	};
 
 	// handle click event of the Add button
 	const handleAddClick = () => {
 		onchangedata([...defaultdata, { label: '', score: '' }]);
-		// setInputList([...inputList, { competitorname: "", competitorscore: "" }]);
 	};
 
 	return (
@@ -79,7 +69,7 @@ function CompetitorAnalysis({
 			<Typography variant='h6' className='competitor-card-heading'>
 				{title}
 			</Typography>
-			<div className='competitor-card-settings'>
+			<div>
 				{defaultdata?.length > 0 &&
 					defaultdata.map((x, i) => {
 						return (
@@ -116,18 +106,9 @@ function CompetitorAnalysis({
 							</div>
 						);
 					})}
-				{/* // <CompetitorAnalysisSettings />
-        // <CompetitorAnalysisSettings />
-        // <CompetitorAnalysisSettings />
-        // <CompetitorAnalysisSettings /> */}
 			</div>
-			{/* <AddMoreButton /> */}
 			<div>
-				<button
-					className='competitor-card-button'
-					onClick={handleAddClick}
-					// onClick={() => handleAddFields()}
-				>
+				<button className='competitor-card-button' onClick={handleAddClick}>
 					+ ADD MORE
 				</button>
 			</div>

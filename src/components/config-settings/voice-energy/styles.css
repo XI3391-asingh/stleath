@@ -2,9 +2,5 @@
 	margin: 1rem;
 	padding: 1rem;
 	width: 50%;
-}
-
-.voice-energy-card-dropdown {
-	height: 10rem;
-	overflow-y: auto;
+	overflow: visible !important;
 }
