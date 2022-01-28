@@ -92,7 +92,7 @@ function ChartComponents({ triggerRefresh }) {
 	};
 
 	const getReport = () => {
-		indexService.getReport().then(async (resp) => {
+		indexService.getReport(generatePayload()).then(async (resp) => {
 			if (resp.isSuccess) {
 				let feeddata = resp?.data;
 				if (feeddata?.length) {

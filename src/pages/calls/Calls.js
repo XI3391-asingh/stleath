@@ -27,31 +27,32 @@ function Calls() {
   }, []);
 
   const getCall = () => {
-    indexService
-      .getReport(query.get("call_emotion") ? query.get("call_emotion") : "")
-      .then((resp) => {
-        if (resp.isSuccess) {
-          let feeddata = resp?.data;
-          if (feeddata?.length) {
-            let calldata = [];
-            if (feedbackquery) {
-              calldata = feeddata.filter(
-                (resp) => resp.feedback === `${feedbackquery} Feedback`
-              );
-            } else {
-              calldata = feeddata;
-            }
-            dispatch({
-              type: GET_ALL_CALLS,
-              payload: {
-                total: feeddata?.length,
-                filter: calldata?.length,
-                data: calldata,
-              },
-            });
-          }
-        }
-      });
+    // TODO: recheck Jayanth
+    // indexService
+    //   .getReport(query.get("call_emotion") ? query.get("call_emotion") : "")
+    //   .then((resp) => {
+    //     if (resp.isSuccess) {
+    //       let feeddata = resp?.data;
+    //       if (feeddata?.length) {
+    //         let calldata = [];
+    //         if (feedbackquery) {
+    //           calldata = feeddata.filter(
+    //             (resp) => resp.feedback === `${feedbackquery} Feedback`
+    //           );
+    //         } else {
+    //           calldata = feeddata;
+    //         }
+    //         dispatch({
+    //           type: GET_ALL_CALLS,
+    //           payload: {
+    //             total: feeddata?.length,
+    //             filter: calldata?.length,
+    //             data: calldata,
+    //           },
+    //         });
+    //       }
+    //     }
+    //   });
   };
 
   const Item = styled(Paper)(({ theme }) => ({

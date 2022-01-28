@@ -57,22 +57,23 @@ function CallVisualizer() {
 	};
 
 	const getCall = () => {
-		indexService.getReport().then((resp) => {
-			if (resp.isSuccess) {
-				let feeddata = resp?.data;
-				if (feeddata?.length) {
-					let calldata = feeddata.filter(
-						(resp) => resp.id === parseInt(callidquery)
-					);
-					if (calldata?.length) {
-						dispatch({
-							type: GET_CALL_VISUALIZER,
-							payload: calldata[0],
-						});
-					}
-				}
-			}
-		});
+		// TODO: recheck Jayanth
+		// indexService.getReport().then((resp) => {
+		// 	if (resp.isSuccess) {
+		// 		let feeddata = resp?.data;
+		// 		if (feeddata?.length) {
+		// 			let calldata = feeddata.filter(
+		// 				(resp) => resp.id === parseInt(callidquery)
+		// 			);
+		// 			if (calldata?.length) {
+		// 				dispatch({
+		// 					type: GET_CALL_VISUALIZER,
+		// 					payload: calldata[0],
+		// 				});
+		// 			}
+		// 		}
+		// 	}
+		// });
 	};
 
 	return (

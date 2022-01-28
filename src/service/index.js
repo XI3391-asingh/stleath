@@ -12,9 +12,8 @@ class indexService {
 		return perRequest;
 	};
 
-	getReport = async (id) => {
-		let calltype = id ? `?call_emotion=${id}` : '';
-		const perRequest = await Axios.get(`/get-report${calltype}`, {
+	getReport = async (payload) => {
+		const perRequest = await Axios.post(`/get-report${calltype}`, payload, {
 			headers: headers,
 		});
 		return perRequest;
