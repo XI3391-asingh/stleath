@@ -5,8 +5,8 @@ const headers = {
 };
 
 class indexService {
-	getEmotionReport = async () => {
-		const perRequest = await Axios.get(`/get-count-call-emotions`, {
+	getEmotionReport = async (payload) => {
+		const perRequest = await Axios.post(`/get-count-call-emotions`, payload, {
 			headers: headers,
 		});
 		return perRequest;
@@ -53,8 +53,8 @@ class indexService {
 		return perRequest;
 	};
 
-	getCallCountByDuration = async () => {
-		const perRequest = await Axios.post('/get-call-count-by-duration', {
+	getCallCountByDuration = async (payload) => {
+		const perRequest = await Axios.post('/get-call-count-by-duration', payload, {
 			headers: headers,
 		});
 		return perRequest;
@@ -81,8 +81,8 @@ class indexService {
 		return perRequest;
 	};
 
-	getCallCountForCards = async () => {
-		const perRequest = await Axios.post('/get-call-count-for-cards', {
+	getCallCountForCards = async (payload) => {
+		const perRequest = await Axios.post('/get-call-count-for-cards', payload, {
 			headers: headers,
 		});
 		return perRequest;

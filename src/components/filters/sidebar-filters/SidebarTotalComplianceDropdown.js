@@ -1,25 +1,33 @@
-import React from 'react';
+import React from "react";
 
-import Select from 'react-select';
+import Select from "react-select";
 
 const issues = {
-	id: '2',
-	label: 'Total Compliance',
-	options: [
-		{ value: '1', label: 'Compliant' },
-		{ value: '2', label: 'Non-Compliant' },
-	],
+  id: "2",
+  label: "Total Compliance",
+  options: [
+    { value: true, label: "Compliant" },
+    { value: false, label: "Non-Compliant" },
+  ],
 };
 
-function SidebarTotakComplianceDropdown({ label }) {
-	return (
-		<div>
-			<div>
-				<h6 className='sidebar-filter-dropdowns'>{label}</h6>
-				<Select className='sidebar-filter' options={issues.options} />
-			</div>
-		</div>
-	);
+function SidebarTotalComplianceDropdown({
+  label,
+  isTotalCompliance,
+  setIsTotalCompliance,
+}) {
+  return (
+    <div>
+      <div>
+        <h6 className="sidebar-filter-dropdowns">{label}</h6>
+        <Select
+          className="sidebar-filter"
+          options={issues.options}
+          onChange={(option) => setIsTotalCompliance(option.value)}
+        />
+      </div>
+    </div>
+  );
 }
 
-export default SidebarTotakComplianceDropdown;
+export default SidebarTotalComplianceDropdown;

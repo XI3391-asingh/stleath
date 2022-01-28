@@ -5,6 +5,7 @@ import auth from './reducer/auth';
 import dashboard from './reducer/dashboard';
 import call from './reducer/call';
 import setting from './reducer/setting';
+import filter from './reducer/filter';
 
 const rootReducer = combineReducers({
 	user: user,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
 	dashboard: dashboard,
 	call: call,
 	setting: setting,
+	filter: filter
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

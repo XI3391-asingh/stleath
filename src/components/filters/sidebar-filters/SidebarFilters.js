@@ -1,38 +1,204 @@
-import React from 'react';
-// import SidebarDatePicker from '../../date-picker/SidebarDatePicker';
-import SidebarAgentDispositionDropdown from './SidebarAgentDispositionDropdown';
-import SidebarAgentDropdown from './SidebarAgentDropdown';
-import SidebarClosingCheckDropdown from './SidebarClosingCheckDropdown';
-import SidebarDatepicker from './SidebarDatepicker';
-import SidebarOpeningCheckDropdown from './SidebarOpeningCheckDropdown';
-import SidebarPIDropdown from './SidebarPIDropdown';
-import SidebarSIDropdown from './SidebarSIDropdown';
-import SidebarTotakComplianceDropdown from './SidebarTotalComplianceDropdown';
+import React, { useEffect, useState } from "react";
+import SidebarAgentDispositionDropdown from "./SidebarAgentDispositionDropdown";
+import SidebarAgentDropdown from "./SidebarAgentDropdown";
+import SidebarClosingCheckDropdown from "./SidebarClosingCheckDropdown";
+import SidebarDatepicker from "./SidebarDatepicker";
+import SidebarOpeningCheckDropdown from "./SidebarOpeningCheckDropdown";
+import SidebarPIDropdown from "./SidebarPIDropdown";
+import SidebarSIDropdown from "./SidebarSIDropdown";
+import SidebarTotalComplianceDropdown from "./SidebarTotalComplianceDropdown";
 
-import Button from '@mui/material/Button';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import Button from "@mui/material/Button";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-import './styles.css';
+import "./styles.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  CLEAR_FILTERS,
+  SET_AGENT_NAME,
+  SET_FROM_DATE,
+  SET_IS_CALL_CLOSED_WITH_COMPLIANCE,
+  SET_IS_CALL_OPENED_WITH_COMPLIANCE,
+  SET_IS_PRODUCT_ISSUE,
+  SET_IS_SERVICE_ISSUE,
+  SET_IS_TOTAL_COMPLIANCE,
+  SET_TO_DATE,
+} from "../../../store/type";
 
-function SidebarFilters() {
-	return (
-		<div className='sidebar-filters-layout'>
-			<h4>Filters</h4>
-			{/* <SidebarDatePicker /> */}
-			<SidebarDatepicker />
-			<SidebarAgentDropdown label='Agents' />
-			<SidebarPIDropdown label='Product Issues' />
-			<SidebarSIDropdown label='Service Issues' />
-			<SidebarOpeningCheckDropdown label='Opening Check' />
-			<SidebarClosingCheckDropdown label='Closing Check' />
-			<SidebarTotakComplianceDropdown label='Total Compliance' />
-			<SidebarAgentDispositionDropdown label='Agent Disposition' />
-			<br/>
-			<Button variant="outlined" className="sidebar-clear-filters" startIcon={<HighlightOffIcon />}>
-				Clear All
-			</Button>
-		</div>
-	);
+function SidebarFilters({ setTriggerRefresh }) {
+  const dispatch = useDispatch();
+  const filterStore = useSelector((store) => store.filters);
+
+  const [fromDate, setFromDate] = useState(new Date(1970));
+  const [toDate, setToDate] = useState(new Date());
+  const [agentName, setAgentName] = useState("All");
+  const [isProductIssue, setIsProductIssue] = useState(false);
+  const [isServiceIssue, setIsServiceIssue] = useState(false);
+  const [isCallOpenedWithCompliance, setIsCallOpenedWithCompliance] =
+    useState(false);
+  const [isCallClosedWithCompliance, setIsCallClosedWithCompliance] =
+    useState(false);
+  const [isTotalCompliance, setIsTotalCompliance] = useState(false);
+
+  useEffect(() => {
+    setFromDateOnStore();
+    setToDateOnStore();
+    setAgentNameOnStore();
+    setIsProductIssueOnStore();
+    setIsServiceIssueOnStore();
+    setIsCallOpenedWithComplianceOnStore();
+    setIsCallClosedWithComplianceOnStore();
+    setIsTotalComplianceOnStore();
+  });
+
+  const setFromDateOnStore = () => {
+    dispatch({
+      type: SET_FROM_DATE,
+      payload: fromDate,
+    });
+  };
+  const setToDateOnStore = () => {
+    dispatch({
+      type: SET_TO_DATE,
+      payload: toDate,
+    });
+  };
+  const setAgentNameOnStore = () => {
+    dispatch({
+      type: SET_AGENT_NAME,
+      payload: agentName,
+    });
+  };
+  const setIsProductIssueOnStore = () => {
+    dispatch({
+      type: SET_IS_PRODUCT_ISSUE,
+      payload: isProductIssue,
+    });
+    // console.log(isProductIssue);
+  };
+  const setIsServiceIssueOnStore = () => {
+    dispatch({
+      type: SET_IS_SERVICE_ISSUE,
+      payload: isServiceIssue,
+    });
+  };
+  const setIsCallOpenedWithComplianceOnStore = () => {
+    dispatch({
+      type: SET_IS_CALL_OPENED_WITH_COMPLIANCE,
+      payload: isCallOpenedWithCompliance,
+    });
+  };
+  const setIsCallClosedWithComplianceOnStore = () => {
+    dispatch({
+      type: SET_IS_CALL_CLOSED_WITH_COMPLIANCE,
+      payload: isCallClosedWithCompliance,
+    });
+  };
+  const setIsTotalComplianceOnStore = () => {
+    dispatch({
+      type: SET_IS_TOTAL_COMPLIANCE,
+      payload: isTotalCompliance,
+    });
+  };
+  const clearAllFilters = () => {
+    setFromDate(new Date(1970));
+    setToDate(new Date());
+    setAgentName("All");
+    setIsServiceIssue(false);
+    setIsProductIssue(false);
+    setIsCallOpenedWithCompliance(false);
+    setIsCallClosedWithCompliance(false);
+    setIsTotalCompliance(false);
+
+    dispatch(
+      {
+        type: CLEAR_FILTERS,
+      },
+      () => {
+        // console.log(isProductIssue);
+      }
+    );
+  };
+
+  const refreshDashboard = () => {
+    setTriggerRefresh();
+    // alert('refreshed');
+  };
+
+  return (
+    <div className="sidebar-filters-layout">
+      <h4>Filters</h4>
+      <SidebarDatepicker
+        fromDate={fromDate}
+        toDate={toDate}
+        setFromDate={setFromDate}
+        setToDate={setToDate}
+      />
+      <SidebarAgentDropdown
+        label="Agents"
+        agentName={agentName}
+        setAgentName={setAgentName}
+      />
+      <SidebarPIDropdown
+        label="Product Issues"
+        isProductIssue={isProductIssue}
+        setIsProductIssue={setIsProductIssue}
+      />
+      <SidebarSIDropdown
+        label="Service Issues"
+        isServiceIssue={isServiceIssue}
+        setIsServiceIssue={setIsServiceIssue}
+      />
+      <SidebarOpeningCheckDropdown
+        label="Opening Check"
+        isCallOpenedWithCompliance={isCallOpenedWithCompliance}
+        setIsCallOpenedWithCompliance={setIsCallOpenedWithCompliance}
+      />
+      <SidebarClosingCheckDropdown
+        label="Closing Check"
+        isCallClosedWithCompliance={isCallClosedWithCompliance}
+        setIsCallClosedWithCompliance={setIsCallClosedWithCompliance}
+      />
+      <SidebarTotalComplianceDropdown
+        label="Total Compliance"
+        isTotalCompliance={isTotalCompliance}
+        setIsTotalCompliance={setIsTotalCompliance}
+      />
+      <SidebarAgentDispositionDropdown label="Agent Disposition" />
+      <br />
+      {/* <Button
+        variant="outlined"
+        className="sidebar-clear-filters"
+        startIcon={<HighlightOffIcon />}
+        onClick={clearAllFilters}
+      >
+        Clear All
+      </Button>
+      <Button
+        variant="outlined"
+        className=""
+        startIcon={<HighlightOffIcon />}
+        onClick={refreshDashboard}
+      >
+        Filter
+      </Button> */}
+      <div>
+        <button
+          className="dashboard-details-upload-button sidebar-clear-btn"
+          onClick={clearAllFilters}
+        >
+          Clear All
+        </button>
+        <button
+          variant="contained"
+          className="dashboard-details-upload-button sidebar-filter-btn"
+          onClick={refreshDashboard}
+        >
+          Filter
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default SidebarFilters;
