@@ -13,7 +13,7 @@ class indexService {
 	};
 
 	getReport = async (payload) => {
-		const perRequest = await Axios.post(`/get-report${calltype}`, payload, {
+		const perRequest = await Axios.post(`/get-report`, payload, {
 			headers: headers,
 		});
 		return perRequest;
