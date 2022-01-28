@@ -18,6 +18,8 @@ const initialState = {
 	callcountbyholdviolation: [],
 	callcomposition: {},
 	callcountforcards: {},
+	callcountvoiceenergydeviation: [],
+	negativecallcount: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -38,6 +40,12 @@ const reducer = (state = initialState, action) => {
 			return { ...state, callcomposition: action.payload };
 		case actionTypes.GET_CALL_COUNT_FOR_CARDS:
 			return { ...state, callcountforcards: action.payload };
+		case actionTypes.GET_CALL_COUNT_FOR_CARDS:
+			return { ...state, callcountforcards: action.payload };
+		case actionTypes.GET_CALL_COUNT_FOR_VOICE_ENERGY_DEVIATION:
+			return { ...state, callcountvoiceenergydeviation: action.payload };
+		case actionTypes.GET_NEGATIVE_CALL_COUNT:
+			return { ...state, negativecallcount: action.payload };
 		default:
 			return state;
 	}

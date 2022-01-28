@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import AgentDispositionCompositionCard from './chart-cards/agent-disposition-composition-card/AgentDispositionCompositionCard';
 import AgentRankingCard from './chart-cards/agent-ranking-card/AgentRankingCard';
 import AgentRuleComplianceCard from './chart-cards/agent-rule-compliance-card/AgentRuleComplianceCard';
@@ -18,6 +18,7 @@ import {
 	GET_CALL_COUNT_BY_DURATION,
 	GET_CALL_COUNT_BY_HOLD_VIOLATION,
 	GET_CALL_COMPOSITION,
+	GET_CALL_COUNT_FOR_VOICE_ENERGY_DEVIATION,
 } from '../store/type';
 
 function ChartComponents({ triggerRefresh }) {
@@ -29,6 +30,7 @@ function ChartComponents({ triggerRefresh }) {
 		callcountbyduration,
 		callcountbyholdviolation,
 		callcomposition,
+		callcountvoiceenergydeviation,
 	} = useSelector((store) => store.dashboard);
 
 	// Fetching filter store
@@ -40,7 +42,7 @@ function ChartComponents({ triggerRefresh }) {
 		isServiceIssue,
 		isCallOpenedWithCompliance,
 		isCallClosedWithCompliance,
-		isTotalCompliance
+		isTotalCompliance,
 	} = useSelector((store) => store.filter);
 
 	useEffect(() => {
@@ -49,32 +51,34 @@ function ChartComponents({ triggerRefresh }) {
 		getCallCountByDuration();
 		getCallCountByHoldViolation();
 		getCallCountCompliance();
+		getCallCountVoiceEnergyDeviation();
 		const interval = setInterval(() => {
 			getReport();
 			getEmotionReport();
 			getCallCountByDuration();
 			getCallCountByHoldViolation();
 			getCallCountCompliance();
+			getCallCountVoiceEnergyDeviation();
 		}, 60000);
 		return () => clearInterval(interval);
 	}, [triggerRefresh]);
 
 	const generatePayload = () => {
 		const payload = {
-			"from_date": new Date(fromDate).toISOString().slice(0,10), //"2021-02-23",
-			"to_date": new Date(toDate).toISOString().slice(0,10), //"2021-03-23",
+			from_date: new Date(fromDate).toISOString().slice(0, 10), //"2021-02-23",
+			to_date: new Date(toDate).toISOString().slice(0, 10), //"2021-03-23",
 			// "agent_name": agentName,
-			"is_call_opened_with_compliance": isCallOpenedWithCompliance ? 1 : 0,
-			"is_call_closed_with_compliance": isCallClosedWithCompliance ? 1 : 0,
-			"is_compliance_call": isTotalCompliance ? 1 : 0,
-			"service_issue": isServiceIssue ? 1 : 0,
-			"product_issue": isProductIssue ? 1 : 0
-		}
-		if(agentName !== 'All'){
-			payload["agent_name"] = agentName;
+			is_call_opened_with_compliance: isCallOpenedWithCompliance ? 1 : 0,
+			is_call_closed_with_compliance: isCallClosedWithCompliance ? 1 : 0,
+			is_compliance_call: isTotalCompliance ? 1 : 0,
+			service_issue: isServiceIssue ? 1 : 0,
+			product_issue: isProductIssue ? 1 : 0,
+		};
+		if (agentName !== 'All') {
+			payload['agent_name'] = agentName;
 		}
 		return payload;
-	}
+	};
 
 	const getEmotionReport = () => {
 		indexService.getEmotionReport(generatePayload()).then((resp) => {
@@ -86,42 +90,6 @@ function ChartComponents({ triggerRefresh }) {
 			}
 		});
 	};
-
-	// const getCallReport = () => {
-	// fetch('http://13.127.135.117:8080/api/get-call-count', {
-	// 	method: 'GET',
-	// })
-	// 	.then((response) => response.json())
-	// 	.then((result) => {
-	// 		if (result?.code === 200) {
-	// 			let callcount = result?.data;
-	// 			if (callcount) {
-	// 				setTotalCall(callcount);
-	// 			}
-	// 		}
-	// 	});
-	// .catch((error) => console.log('error', error));
-	// 	var requestOptions = {
-	// 		method: 'POST',
-	// 		redirect: 'follow',
-	// 	};
-
-	// 	fetch('http://13.127.135.117:8080/api/get-call-count', requestOptions)
-	// 		.then((response) => response.json())
-	// 		.then((result) => {
-	// 			// if (result?.code === 200) {
-	// 				// let callcount = result?.data;
-	// 				// if (callcount) {
-	// 				// 	setTotalCall(callcount);
-	// 				// }
-	// 				// setAgent_name([result?.data]);
-	// 				// setTotalCall([result?.data]);
-	// 				setAgent_name(result?.data);
-	// 				setTotalCall(result?.data);
-	// 			// }
-	// 		})
-	// 		.catch((error) => console.log('error', error));
-	// };
 
 	const getReport = () => {
 		indexService.getReport().then(async (resp) => {
@@ -212,6 +180,17 @@ function ChartComponents({ triggerRefresh }) {
 		});
 	};
 
+	const getCallCountVoiceEnergyDeviation = () => {
+		indexService.getCallCountForVoiceEnergyDeviation().then((resp) => {
+			if (resp.isSuccess) {
+				dispatch({
+					type: GET_CALL_COUNT_FOR_VOICE_ENERGY_DEVIATION,
+					payload: resp?.data,
+				});
+			}
+		});
+	};
+
 	return (
 		<div>
 			<div className='chartCardContainer'>
@@ -230,7 +209,7 @@ function ChartComponents({ triggerRefresh }) {
 			</div>
 			<div className='detctionChart'>
 				<SilenceDetectionCountChartCard data={callcountbyholdviolation} />
-				<VoiceEnergyDeviationCountCard />
+				<VoiceEnergyDeviationCountCard data={callcountvoiceenergydeviation} />
 			</div>
 			<div>
 				<AgentRankingCard />

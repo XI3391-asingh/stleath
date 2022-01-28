@@ -4,22 +4,22 @@ import { useHistory } from 'react-router-dom';
 import { Card, CardHeader, Divider } from '@mui/material';
 import { Bar } from 'react-chartjs-2';
 
-function VoiceEnergyDeviationCountCard() {
+function VoiceEnergyDeviationCountCard(props) {
 	let history = useHistory();
-	const dataLabels = [50, 20, 44, 21, 10, 10, 17];
-	const dataValues = [1, 2, 3, 4, 5, 6, 7];
+
 	const data = {
-		labels: dataValues,
+		labels: props.data.length && props.data.map((item) => item.agent_name),
 		datasets: [
 			{
-				label: 'Silence Detection',
-				data: dataLabels,
+				label: 'Voice Energy Deviation',
+				data: props.data.length && props.data.map((item) => item.totalCall),
 				backgroundColor: '#C1AC95',
 				barPercentage: 0.5,
 				categoryPercentage: 0.5,
 			},
 		],
 	};
+
 	return (
 		<div className='chart-detectionCardLayout'>
 			<Card>
@@ -35,7 +35,6 @@ function VoiceEnergyDeviationCountCard() {
 							onClick: (e) => {
 								history.push('/calls');
 							},
-							indexAxis: 'y',
 
 							scales: {
 								xAxes: [
