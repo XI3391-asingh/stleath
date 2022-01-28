@@ -40,3 +40,14 @@
     box-sizing: border-box;
 	border: 1px solid #d3d3d3;
 }
+
+.sidebar-clear-btn {
+	width: 37%!important;
+}
+.sidebar-filter-btn {
+	width: 45%!important;
+}
+
+.margin-top-05 {
+	margin-top: 0.5rem !important;
+}

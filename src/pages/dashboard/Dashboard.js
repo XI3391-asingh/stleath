@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Card } from '@mui/material';
 
@@ -11,12 +11,18 @@ import SidebarFilters from '../../components/filters/sidebar-filters/SidebarFilt
 import DashboardScrollbar from '../../components/dashboard/dashboard-scrollbar/DashboardScrollbar';
 
 function Dashboard() {
+	let [triggerRefresh, setTriggerRefresh] = useState(1);
+
+	const refreshDashboard = () => {
+		setTriggerRefresh(++triggerRefresh);
+	}
+
 	return (
 		<div className='dashboard-page-layout'>
 			<Card className='dashboard-page-card'>
 				<div className='dashboard-page-card-list'>
 					<div>
-						<SidebarFilters />
+						<SidebarFilters setTriggerRefresh={refreshDashboard} />
 					</div>
 					<div className='dashboard-right-content'>
 						<DashboardDetails />
@@ -25,8 +31,8 @@ function Dashboard() {
 							<DashboardScrollbar />
 						</div>
 						<div className='dashboard-page-components'>
-							<CardComponents />
-							<ChartComponents />
+							<CardComponents triggerRefresh={triggerRefresh} />
+							<ChartComponents triggerRefresh={triggerRefresh} />
 						</div>
 					</div>
 				</div>

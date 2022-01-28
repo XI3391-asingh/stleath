@@ -4,14 +4,18 @@ import Select from "react-select";
 
 const issues = {
   id: "2",
-  label: "Service Issues",
+  label: "Total Compliance",
   options: [
-    { value: true, label: "Yes" },
-    { value: false, label: "No" },
+    { value: true, label: "Compliant" },
+    { value: false, label: "Non-Compliant" },
   ],
 };
 
-function SidebarSIDropdown({ label, isServiceIssue, setIsServiceIssue }) {
+function SidebarTotalComplianceDropdown({
+  label,
+  isTotalCompliance,
+  setIsTotalCompliance,
+}) {
   return (
     <div>
       <div>
@@ -19,11 +23,11 @@ function SidebarSIDropdown({ label, isServiceIssue, setIsServiceIssue }) {
         <Select
           className="sidebar-filter"
           options={issues.options}
-          onChange={(option) => setIsServiceIssue(option.value)}
+          onChange={(option) => setIsTotalCompliance(option.value)}
         />
       </div>
     </div>
   );
 }
 
-export default SidebarSIDropdown;
+export default SidebarTotalComplianceDropdown;

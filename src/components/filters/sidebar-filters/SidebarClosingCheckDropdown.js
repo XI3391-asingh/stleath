@@ -4,17 +4,17 @@ import Select from "react-select";
 
 const issues = {
   id: "2",
-  label: "Opening Check",
+  label: "Closing Check",
   options: [
     { value: true, label: "Compliant" },
     { value: false, label: "Non-Compliant" },
   ],
 };
 
-function SidebarOpeningCheckDropdown({
+function SidebarClosingCheckDropdown({
   label,
-  isCallOpenedWithCompliance,
-  setIsCallOpenedWithCompliance,
+  isCallClosedWithCompliance,
+  setIsCallClosedWithCompliance,
 }) {
   return (
     <div>
@@ -23,11 +23,11 @@ function SidebarOpeningCheckDropdown({
         <Select
           className="sidebar-filter"
           options={issues.options}
-          onChange={(option) => setIsCallOpenedWithCompliance(option.value)}
+          onChange={(option) => setIsCallClosedWithCompliance(option.value)}
         />
       </div>
     </div>
   );
 }
 
-export default SidebarOpeningCheckDropdown;
+export default SidebarClosingCheckDropdown;
