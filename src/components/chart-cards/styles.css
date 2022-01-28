@@ -7,9 +7,9 @@
 	margin: 0 1rem;
 	/* width: 21rem !important; */
 	width: 26rem !important;
-	box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
-	-webkit-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
-	-moz-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
+	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
 }
 
 /* .sentiment-chart-cardLayout {
@@ -38,9 +38,9 @@
 
 .chart-compositionCardLayout {
 	margin: 0.5rem 1rem;
-	box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
-	-webkit-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
-	-moz-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
+	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
 }
 
 .chart-compositionCardHeader {
@@ -58,16 +58,16 @@
 .chart-detectionCardLayout {
 	width: 50%;
 	margin: 1rem;
-	box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
-	-webkit-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
-	-moz-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
+	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
 }
 
 .chart-ruleComplianceCardLayout {
 	margin: 0 1rem;
-	box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
-	-webkit-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
-	-moz-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45);
+	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
 }
 
 .chart-ruleComplianceCard {
@@ -86,3 +86,17 @@
 .chart-call-categories-body {
 	padding: 1rem 0 0 0.5rem;
 }
+
+/* Media Queries */
+
+/* @media (min-width: 1025px) and (max-width: 1440px) {
+	.sentiment-graph {
+		width: 270px !important;
+	}
+}
+
+@media (min-width: 1441px) {
+	.sentiment-graph {
+		width: 270px !important;
+	}
+} */

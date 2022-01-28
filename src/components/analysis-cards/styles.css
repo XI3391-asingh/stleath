@@ -1,34 +1,29 @@
-.card-container-layout {
-	width: 10rem;
-}
-
 .card {
 	width: 82rem;
 	display: flex;
 }
 
 .card-display {
-	width: 10rem;
+	width: 25%;
 	margin: 1rem;
-	box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45) !important;
-	-webkit-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45) !important;
-	-moz-box-shadow: 1px 2px 8px 1px rgba(166,165,165,0.45) !important;
-
+	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
 }
 
 .card-metaicons {
 	text-align: right;
 	box-sizing: border-box;
-    padding: 6px 5px;
+	padding: 6px 5px;
 }
 
-.card-value{ 
+.card-value {
 	background-color: #6a1d5d;
-    padding: 12px 5px !important;
-    color: #fff;
-    margin-top: 10px;
+	padding: 12px 5px !important;
+	color: #fff;
+	margin-top: 10px;
 }
-.card-title{
+.card-title {
 	margin-bottom: 40px;
 	color: #3d3d3d;
 	font-size: 1.2rem;
@@ -41,3 +36,38 @@
 :visited {
 	color: inherit;
 } */
+
+/* Media Queries */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.card {
+		width: 45rem;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.card-display {
+		width: 10rem;
+	}
+}
+
+/* Media Queries */
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+	.card {
+		width: 55rem;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.card-display {
+		width: 12rem;
+	}
+}
+
+@media (min-width: 1441px) {
+	.card {
+		width: 70rem;
+		display: flex;
+	}
+}

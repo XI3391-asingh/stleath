@@ -85,3 +85,34 @@
 	font-size: 14px;
 	padding-top: 22px;
 } */
+
+/* Media Queries */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.dashboard-details-call-details-layout {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.5rem;
+		margin: 0.6rem;
+		width: 70rem;
+	}
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+	.dashboard-details-call-details-layout {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.5rem;
+		margin: 0.6rem;
+		width: auto;
+	}
+}
+
+@media (min-width: 1441px) {
+	.dashboard-details-call-details-layout {
+		width: auto;
+		/* display: flex; */
+	}
+}

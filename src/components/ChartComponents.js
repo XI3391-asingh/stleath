@@ -20,6 +20,7 @@ import {
 	GET_CALL_COMPOSITION,
 	GET_CALL_COUNT_FOR_VOICE_ENERGY_DEVIATION,
 } from '../store/type';
+import { Grid } from '@mui/material';
 
 function ChartComponents() {
 	const dispatch = useDispatch();
@@ -163,30 +164,36 @@ function ChartComponents() {
 
 	return (
 		<div>
-			<div className='chartCardContainer'>
-				<SentimentCard data={sentiment} />
-				<DispositionCodeMixCard data={emotions} />
-				<CallCategoriesCard data={callcountbyduration} />
-			</div>
-			<div style={{ display: 'flex' }}>
-				<DashboardTable
-				// data={(totalCall, agent_name)}
-				/>
-				<CallCompositionCard callcompositiondata={callcomposition} />
-			</div>
-			<div>
-				<AgentDispositionCompositionCard />
-			</div>
-			<div className='detctionChart'>
-				<SilenceDetectionCountChartCard data={callcountbyholdviolation} />
-				<VoiceEnergyDeviationCountCard data={callcountvoiceenergydeviation} />
-			</div>
-			<div>
-				<AgentRankingCard />
-			</div>
-			<div className='ruleCompliance'>
-				<AgentRuleComplianceCard />
-			</div>
+			<Grid container spacing={2}>
+				<Grid item xs={9}>
+					<div className='chartCardContainer'>
+						<SentimentCard data={sentiment} />
+						<DispositionCodeMixCard data={emotions} />
+						<CallCategoriesCard data={callcountbyduration} />
+					</div>
+					<div style={{ display: 'flex' }}>
+						<DashboardTable
+						// data={(totalCall, agent_name)}
+						/>
+						<CallCompositionCard callcompositiondata={callcomposition} />
+					</div>
+					<div>
+						<AgentDispositionCompositionCard />
+					</div>
+					<div className='detctionChart'>
+						<SilenceDetectionCountChartCard data={callcountbyholdviolation} />
+						<VoiceEnergyDeviationCountCard
+							data={callcountvoiceenergydeviation}
+						/>
+					</div>
+					<div>
+						<AgentRankingCard />
+					</div>
+					<div className='ruleCompliance'>
+						<AgentRuleComplianceCard />
+					</div>
+				</Grid>
+			</Grid>
 		</div>
 	);
 }

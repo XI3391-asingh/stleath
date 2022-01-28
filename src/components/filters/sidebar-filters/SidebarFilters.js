@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material';
 import React from 'react';
 // import SidebarDatePicker from '../../date-picker/SidebarDatePicker';
 import SidebarAgentDispositionDropdown from './SidebarAgentDispositionDropdown';
@@ -11,6 +12,8 @@ import './styles.css';
 
 function SidebarFilters() {
 	return (
+		// <Grid container spacing={2}>
+		// 	<Grid item xs={2}>
 		<div className='sidebar-filters-layout'>
 			<h4>Filters</h4>
 			{/* <SidebarDatePicker /> */}
@@ -21,6 +24,8 @@ function SidebarFilters() {
 			<SidebarOpeningCheckDropdown label='Opening Check' />
 			<SidebarAgentDispositionDropdown label='Agent Disposition' />
 		</div>
+		// 	</Grid>
+		// </Grid>
 	);
 }
 

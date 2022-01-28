@@ -40,6 +40,7 @@ function SentimentCard(props) {
 				<Divider />
 				<div className='sentiment-space'>
 					<Doughnut
+						className='sentiment-graph'
 						data={state}
 						options={{
 							// onClick: (e) => {
@@ -56,7 +57,6 @@ function SentimentCard(props) {
 							rotation: 270,
 							radius: '100%',
 							maintainAspectRatio: false,
-
 							title: { display: true, text: 'Review', fontSize: 20 },
 							legend: { display: true, position: 'right' },
 							plugins: {

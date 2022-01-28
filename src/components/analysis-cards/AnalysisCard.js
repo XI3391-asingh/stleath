@@ -2,20 +2,13 @@ import React from 'react';
 
 import { Card, CardContent } from '@mui/material';
 
-import CardMetaicons from '../icons/card-metaicons/CardMetaicons';
-
-import AnalysisCardsData from '../../data/analysis-cards/analysisCards.json';
-
 import './styles.css';
 import { Link } from 'react-router-dom';
 
 function CompetitorAnalysisCard(props) {
 	const AnalysisCards = ({ title, vlaue }) => {
 		return (
-			<Card className='card-display' style={{ width: '25%' }}>
-				<div className='card-metaicons'>
-					<CardMetaicons />
-				</div>
+			<Card className='card-display'>
 				<Link to='/calls'>
 					<div className='analysis-card-link'>
 						<div className='card-title'>
@@ -29,7 +22,7 @@ function CompetitorAnalysisCard(props) {
 	};
 
 	return (
-		<div className='card-container-layout'>
+		<div>
 			<div className='card'>
 				<AnalysisCards
 					title='Competitor Analysis'

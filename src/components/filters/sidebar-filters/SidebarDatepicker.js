@@ -13,7 +13,7 @@ function SidebarDatepicker() {
 				className='sidebar-datepickers'
 				selected={startDate}
 				onChange={(date) => setStartDate(date)}
-				isClearable
+				// isClearable
 				selectsStart
 				startDate={startDate}
 				endDate={endDate}
@@ -23,7 +23,7 @@ function SidebarDatepicker() {
 				className='sidebar-datepickers'
 				selected={endDate}
 				onChange={(date) => setEndDate(date)}
-				isClearable
+				// isClearable
 				selectsEnd
 				startDate={startDate}
 				endDate={endDate}
