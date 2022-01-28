@@ -13,9 +13,6 @@ function CompetitorAnalysisCard(props) {
 	const AnalysisCards = ({ title, vlaue }) => {
 		return (
 			<Card className='card-display' style={{ width: '25%' }}>
-				<div className='card-metaicons'>
-					<CardMetaicons />
-				</div>
 				<Link to='/calls'>
 					<div className='analysis-card-link'>
 						<div className='card-title'>
