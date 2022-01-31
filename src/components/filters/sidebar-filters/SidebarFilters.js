@@ -25,20 +25,28 @@ import {
 	SET_TO_DATE,
 } from '../../../store/type';
 
-function SidebarFilters({ setTriggerRefresh }) {
+function SidebarFilters({
+	setTriggerRefresh,
+	start_date,
+	to_date,
+	agent_name,
+	product_issue,
+	service_issue,
+	call_opened,
+	call_closed,
+	total_compliance,
+}) {
 	const dispatch = useDispatch();
-	// const filterStore = useSelector((store) => store.filters);
-
-	const [fromDate, setFromDate] = useState(new Date(1970));
-	const [toDate, setToDate] = useState(new Date());
-	const [agentName, setAgentName] = useState('All');
-	const [isProductIssue, setIsProductIssue] = useState('');
-	const [isServiceIssue, setIsServiceIssue] = useState('');
+	const [fromDate, setFromDate] = useState(start_date);
+	const [toDate, setToDate] = useState(to_date);
+	const [agentName, setAgentName] = useState(agent_name);
+	const [isProductIssue, setIsProductIssue] = useState(product_issue);
+	const [isServiceIssue, setIsServiceIssue] = useState(service_issue);
 	const [isCallOpenedWithCompliance, setIsCallOpenedWithCompliance] =
-		useState('');
+		useState(call_opened);
 	const [isCallClosedWithCompliance, setIsCallClosedWithCompliance] =
-		useState('');
-	const [isTotalCompliance, setIsTotalCompliance] = useState('');
+		useState(call_closed);
+	const [isTotalCompliance, setIsTotalCompliance] = useState(total_compliance);
 
 	useEffect(() => {
 		setFromDateOnStore();
@@ -49,7 +57,7 @@ function SidebarFilters({ setTriggerRefresh }) {
 		setIsCallOpenedWithComplianceOnStore();
 		setIsCallClosedWithComplianceOnStore();
 		setIsTotalComplianceOnStore();
-	});
+	}, []);
 
 	const setFromDateOnStore = () => {
 		dispatch({
@@ -74,7 +82,6 @@ function SidebarFilters({ setTriggerRefresh }) {
 			type: SET_IS_PRODUCT_ISSUE,
 			payload: isProductIssue ? isProductIssue : false,
 		});
-		// console.log(isProductIssue);
 	};
 	const setIsServiceIssueOnStore = () => {
 		dispatch({
@@ -101,7 +108,7 @@ function SidebarFilters({ setTriggerRefresh }) {
 		});
 	};
 	const clearAllFilters = () => {
-		setFromDate(new Date(1970));
+		setFromDate(new Date(2010));
 		setToDate(new Date());
 		setAgentName('All');
 		setIsServiceIssue('');
@@ -121,6 +128,14 @@ function SidebarFilters({ setTriggerRefresh }) {
 	};
 
 	const refreshDashboard = () => {
+		setFromDateOnStore();
+		setToDateOnStore();
+		setAgentNameOnStore();
+		setIsProductIssueOnStore();
+		setIsServiceIssueOnStore();
+		setIsCallOpenedWithComplianceOnStore();
+		setIsCallClosedWithComplianceOnStore();
+		setIsTotalComplianceOnStore();
 		setTriggerRefresh();
 		// alert('refreshed');
 	};

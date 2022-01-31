@@ -19,9 +19,18 @@ function Calls() {
 	const path = useLocation();
 	const dispatch = useDispatch();
 	const { calls } = useSelector((store) => store.call);
-	// const { fromDate } = useSelector((store) => store.filter);
-	let [triggerRefresh, setTriggerRefresh] = useState(1);
+	const {
+		fromDate,
+		toDate,
+		agentName,
+		isProductIssue,
+		isServiceIssue,
+		isCallOpenedWithCompliance,
+		isCallClosedWithCompliance,
+		isTotalCompliance,
+	} = useSelector((store) => store.filter);
 
+	let [triggerRefresh, setTriggerRefresh] = useState(1);
 	const refreshDashboard = () => {
 		setTriggerRefresh(++triggerRefresh);
 	};
@@ -41,7 +50,17 @@ function Calls() {
 			<Card className='calls-page-card-body-layout'>
 				<div className='calls-page-card-body-design'>
 					<div>
-						<SidebarFilters setTriggerRefresh={refreshDashboard} />
+						<SidebarFilters
+							setTriggerRefresh={refreshDashboard}
+							start_date={fromDate}
+							to_date={toDate}
+							agent_name={agentName}
+							product_issue={isProductIssue}
+							service_issue={isServiceIssue}
+							call_opened={isCallOpenedWithCompliance}
+							call_closed={isCallClosedWithCompliance}
+							total_compliance={isTotalCompliance}
+						/>
 					</div>
 					<div className='calls-page-card-main-body'>
 						<div className='calls-page-call-details'>
@@ -84,6 +103,14 @@ function Calls() {
 								data={calls?.data}
 								triggerRefresh={triggerRefresh}
 								feedbackquery={feedbackquery}
+								start_date={fromDate}
+								to_date={toDate}
+								agent_name={agentName}
+								product_issue={isProductIssue}
+								service_issue={isServiceIssue}
+								call_opened={isCallOpenedWithCompliance}
+								call_closed={isCallClosedWithCompliance}
+								total_compliance={isTotalCompliance}
 							/>
 						</div>
 					</div>
