@@ -55,7 +55,6 @@ function CallVisualizer() {
 	};
 
 	const getCall = () => {
-		// TODO: recheck Jayanth
 		indexService.getReport().then((resp) => {
 			if (resp.isSuccess) {
 				let feeddata = resp?.data;
