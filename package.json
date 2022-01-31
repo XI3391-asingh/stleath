@@ -21,8 +21,10 @@
 		"chart.js": "^3.5.1",
 		"chartjs-plugin-datalabels": "^2.0.0",
 		"moment": "^2.29.1",
+		"node-sass": "^6.0.1",
 		"react": "^17.0.2",
 		"react-audio-player": "^0.17.0",
+		"react-bootstrap": "^2.1.1",
 		"react-chartjs-2": "^3.0.5",
 		"react-datepicker": "^4.5.0",
 		"react-dom": "^17.0.2",
@@ -31,6 +33,7 @@
 		"react-scripts": "4.0.3",
 		"react-select": "^5.2.1",
 		"redux": "^4.1.2",
+		"sass": "^1.49.0",
 		"wavesurfer-react": "^2.0.11",
 		"wavesurfer.js": "^5.2.0",
 		"web-vitals": "^1.1.2"
