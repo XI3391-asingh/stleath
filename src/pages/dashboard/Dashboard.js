@@ -5,7 +5,7 @@ import { Card } from '@mui/material';
 import CardComponents from '../../components/CardComponents';
 import ChartComponents from '../../components/ChartComponents';
 
-import './styles.css';
+import './styles.scss';
 import DashboardDetails from '../../components/dashboard/details/DashboardDetails';
 import SidebarFilters from '../../components/filters/sidebar-filters/SidebarFilters';
 import DashboardScrollbar from '../../components/dashboard/dashboard-scrollbar/DashboardScrollbar';
