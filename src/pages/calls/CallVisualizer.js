@@ -46,8 +46,6 @@ function CallVisualizer() {
 	const getCallDetails = () => {
 		indexService.getCallDetails(callidquery).then((resp) => {
 			if (resp.isSuccess) {
-				console.log(resp);
-
 				dispatch({
 					type: GET_ALL_COMMENTS,
 					payload: resp?.data,
@@ -64,6 +62,7 @@ function CallVisualizer() {
 					let calldata = feeddata.filter(
 						(resp) => resp.id === parseInt(callidquery)
 					);
+					console.log(calldata);
 					if (calldata?.length) {
 						dispatch({
 							type: GET_CALL_VISUALIZER,

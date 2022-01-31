@@ -10,7 +10,7 @@ import './styles.css';
 import { Link } from 'react-router-dom';
 
 function CompetitorAnalysisCard(props) {
-	const AnalysisCards = ({ title, vlaue }) => {
+	const AnalysisCards = ({ title, value }) => {
 		return (
 			<Card className='card-display' style={{ width: '25%' }}>
 				<Link to='/calls'>
@@ -18,7 +18,13 @@ function CompetitorAnalysisCard(props) {
 						<div className='card-title'>
 							<h5>{title}</h5>
 						</div>
-						{vlaue && <CardContent className='card-value'>{vlaue}</CardContent>}
+						{/* {value &&  */}
+						{value ? (
+							<CardContent className='card-value'>{value}</CardContent>
+						) : (
+							<CardContent className='card-value'></CardContent>
+						)}
+						{/*  } */}
 					</div>
 				</Link>
 			</Card>
@@ -30,23 +36,23 @@ function CompetitorAnalysisCard(props) {
 			<div className='card'>
 				<AnalysisCards
 					title='Competitor Analysis'
-					vlaue={props?.data?.totalComparison}
+					value={props?.data?.totalComparison}
 				/>
 				<AnalysisCards
 					title='Service Issue'
-					vlaue={props?.data?.totalServiceIssue}
+					value={props?.data?.totalServiceIssue}
 				/>
 				<AnalysisCards
 					title='Product Issue'
-					vlaue={props?.data?.totalProductIssue}
+					value={props?.data?.totalProductIssue}
 				/>
 				<AnalysisCards
 					title='Warranty and Others'
-					vlaue={props?.data?.totalWarrantyAndOther}
+					value={props?.data?.totalWarrantyAndOther}
 				/>
 				<AnalysisCards
 					title='Repeat Calls Volume'
-					vlaue={props?.data?.totalRepeatCallVolume}
+					value={props?.data?.totalRepeatCallVolume}
 				/>
 			</div>
 		</div>

@@ -21,7 +21,17 @@ import {
 	GET_CALL_COUNT_FOR_VOICE_ENERGY_DEVIATION,
 } from '../store/type';
 
-function ChartComponents({ triggerRefresh }) {
+function ChartComponents({
+	triggerRefresh,
+	start_date,
+	to_date,
+	agent_name,
+	product_issue,
+	service_issue,
+	call_opened,
+	call_closed,
+	total_compliance,
+}) {
 	const dispatch = useDispatch();
 
 	const {
@@ -34,16 +44,16 @@ function ChartComponents({ triggerRefresh }) {
 	} = useSelector((store) => store.dashboard);
 
 	// Fetching filter store
-	const {
-		fromDate,
-		toDate,
-		agentName,
-		isProductIssue,
-		isServiceIssue,
-		isCallOpenedWithCompliance,
-		isCallClosedWithCompliance,
-		isTotalCompliance,
-	} = useSelector((store) => store.filter);
+	// const {
+	// 	fromDate,
+	// 	toDate,
+	// 	agentName,
+	// 	isProductIssue,
+	// 	isServiceIssue,
+	// 	isCallOpenedWithCompliance,
+	// 	isCallClosedWithCompliance,
+	// 	isTotalCompliance,
+	// } = useSelector((store) => store.filter);
 
 	useEffect(() => {
 		getReport();
@@ -65,17 +75,17 @@ function ChartComponents({ triggerRefresh }) {
 
 	const generatePayload = () => {
 		const payload = {
-			from_date: new Date(fromDate).toISOString().slice(0, 10), //"2021-02-23",
-			to_date: new Date(toDate).toISOString().slice(0, 10), //"2021-03-23",
+			from_date: new Date(start_date).toISOString().slice(0, 10), //"2021-02-23",
+			to_date: new Date(to_date).toISOString().slice(0, 10), //"2021-03-23",
 			// "agent_name": agentName,
-			is_call_opened_with_compliance: isCallOpenedWithCompliance ? 1 : 0,
-			is_call_closed_with_compliance: isCallClosedWithCompliance ? 1 : 0,
-			is_compliance_call: isTotalCompliance ? 1 : 0,
-			service_issue: isServiceIssue ? 1 : 0,
-			product_issue: isProductIssue ? 1 : 0,
+			is_call_opened_with_compliance: call_opened ? 1 : 0,
+			is_call_closed_with_compliance: call_closed ? 1 : 0,
+			is_compliance_call: total_compliance ? 1 : 0,
+			service_issue: service_issue ? 1 : 0,
+			product_issue: product_issue ? 1 : 0,
 		};
-		if (agentName !== 'All') {
-			payload['agent_name'] = agentName;
+		if (agent_name !== 'All') {
+			payload['agent_name'] = agent_name;
 		}
 		return payload;
 	};
@@ -92,9 +102,10 @@ function ChartComponents({ triggerRefresh }) {
 	};
 
 	const getReport = () => {
-		indexService.getReport().then(async (resp) => {
+		indexService.getReport(generatePayload()).then(async (resp) => {
 			if (resp.isSuccess) {
 				let feeddata = resp?.data;
+				let sentimentdata = {};
 				if (feeddata?.length) {
 					let feedbackdata = [];
 					feeddata.map((data) => {
@@ -102,12 +113,12 @@ function ChartComponents({ triggerRefresh }) {
 							feedbackdata.push(data['feedback']);
 						}
 					});
-					let sentimentdata = await getUniqueDataCount(feedbackdata);
-					dispatch({
-						type: GET_CALL_REPORT,
-						payload: sentimentdata,
-					});
+					sentimentdata = await getUniqueDataCount(feedbackdata);
 				}
+				dispatch({
+					type: GET_CALL_REPORT,
+					payload: sentimentdata,
+				});
 			}
 		});
 	};
