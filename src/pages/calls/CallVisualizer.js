@@ -46,8 +46,6 @@ function CallVisualizer() {
 	const getCallDetails = () => {
 		indexService.getCallDetails(callidquery).then((resp) => {
 			if (resp.isSuccess) {
-				console.log(resp);
-
 				dispatch({
 					type: GET_ALL_COMMENTS,
 					payload: resp?.data,
@@ -58,22 +56,23 @@ function CallVisualizer() {
 
 	const getCall = () => {
 		// TODO: recheck Jayanth
-		// indexService.getReport().then((resp) => {
-		// 	if (resp.isSuccess) {
-		// 		let feeddata = resp?.data;
-		// 		if (feeddata?.length) {
-		// 			let calldata = feeddata.filter(
-		// 				(resp) => resp.id === parseInt(callidquery)
-		// 			);
-		// 			if (calldata?.length) {
-		// 				dispatch({
-		// 					type: GET_CALL_VISUALIZER,
-		// 					payload: calldata[0],
-		// 				});
-		// 			}
-		// 		}
-		// 	}
-		// });
+		indexService.getReport().then((resp) => {
+			if (resp.isSuccess) {
+				let feeddata = resp?.data;
+				if (feeddata?.length) {
+					let calldata = feeddata.filter(
+						(resp) => resp.id === parseInt(callidquery)
+					);
+					console.log(calldata);
+					if (calldata?.length) {
+						dispatch({
+							type: GET_CALL_VISUALIZER,
+							payload: calldata[0],
+						});
+					}
+				}
+			}
+		});
 	};
 
 	return (
