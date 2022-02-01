@@ -1,7 +1,7 @@
 import * as actionTypes from '../type';
 
 const initialState = {
-	fromDate: new Date(2010),
+	fromDate: new Date('01-01-2010'),
 	toDate: new Date(),
 	agentName: 'All',
 	isCallOpenedWithCompliance: '',
@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
 		case actionTypes.CLEAR_FILTERS:
 			return {
 				...state,
-				fromDate: new Date(2010),
+				fromDate: new Date('01-01-2010'),
 				toDate: new Date(),
 				agentName: 'All',
 				isCallOpenedWithCompliance: '',

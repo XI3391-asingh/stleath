@@ -47,7 +47,6 @@ function SidebarFilters({
 	const [isCallClosedWithCompliance, setIsCallClosedWithCompliance] =
 		useState(call_closed);
 	const [isTotalCompliance, setIsTotalCompliance] = useState(total_compliance);
-
 	useEffect(() => {
 		setFromDateOnStore();
 		setToDateOnStore();
@@ -80,35 +79,35 @@ function SidebarFilters({
 	const setIsProductIssueOnStore = () => {
 		dispatch({
 			type: SET_IS_PRODUCT_ISSUE,
-			payload: isProductIssue ? isProductIssue : false,
+			payload: isProductIssue,
 		});
 	};
 	const setIsServiceIssueOnStore = () => {
 		dispatch({
 			type: SET_IS_SERVICE_ISSUE,
-			payload: isServiceIssue ? isServiceIssue : false,
+			payload: isServiceIssue,
 		});
 	};
 	const setIsCallOpenedWithComplianceOnStore = () => {
 		dispatch({
 			type: SET_IS_CALL_OPENED_WITH_COMPLIANCE,
-			payload: isCallOpenedWithCompliance ? isCallOpenedWithCompliance : false,
+			payload: isCallOpenedWithCompliance,
 		});
 	};
 	const setIsCallClosedWithComplianceOnStore = () => {
 		dispatch({
 			type: SET_IS_CALL_CLOSED_WITH_COMPLIANCE,
-			payload: isCallClosedWithCompliance ? isCallClosedWithCompliance : false,
+			payload: isCallClosedWithCompliance,
 		});
 	};
 	const setIsTotalComplianceOnStore = () => {
 		dispatch({
 			type: SET_IS_TOTAL_COMPLIANCE,
-			payload: isTotalCompliance ? isTotalCompliance : false,
+			payload: isTotalCompliance,
 		});
 	};
 	const clearAllFilters = () => {
-		setFromDate(new Date(2010));
+		setFromDate(new Date('01-01-2010'));
 		setToDate(new Date());
 		setAgentName('All');
 		setIsServiceIssue('');

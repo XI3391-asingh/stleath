@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { GET_ALL_CALLS } from '../../../../store/type';
 import indexService from '../../../../service/index';
+import moment from 'moment';
 
 const columns = [
 	{
@@ -124,13 +125,6 @@ const columns = [
 						<Button variant='text' endIcon={<SendIcon />} className='view-btn'>
 							View
 						</Button>
-						{/* <button
-							className='details-button'
-							disableElevation
-							variant='contained'
-						>
-							View Details
-						</button> */}
 					</Link>
 				</div>
 			);
@@ -165,16 +159,29 @@ function CallsTable({
 	// } = useSelector((store) => store.filter);
 
 	const generatePayload = () => {
-		const payload = {
-			from_date: new Date(start_date).toISOString().slice(0, 10), //"2021-02-23",
-			to_date: new Date(to_date).toISOString().slice(0, 10), //"2021-03-23",
-			// "agent_name": agentName,
-			is_call_opened_with_compliance: call_opened ? 1 : 0,
-			is_call_closed_with_compliance: call_closed ? 1 : 0,
-			is_compliance_call: total_compliance ? 1 : 0,
-			service_issue: service_issue ? 1 : 0,
-			product_issue: product_issue ? 1 : 0,
-		};
+		const payload = {};
+		if (start_date && start_date.length !== 0) {
+			payload['from_date'] = moment(start_date).format('YYYY-MM-DD'); //"2021-02-23",
+			//   payload["from_date"] = new Date(start_date).toISOString().slice(0, 10); //"2021-02-23",
+		}
+		if (to_date && to_date.length !== 0) {
+			payload['to_date'] = moment(to_date).format('YYYY-MM-DD'); //"2021-02-23",
+		}
+		if (call_opened.length !== 0) {
+			payload['is_call_opened_with_compliance'] = call_opened;
+		}
+		if (call_closed.length !== 0) {
+			payload['is_call_closed_with_compliance'] = call_closed;
+		}
+		if (total_compliance.length !== 0) {
+			payload['is_compliance_call'] = total_compliance;
+		}
+		if (service_issue.length !== 0) {
+			payload['service_issue'] = service_issue;
+		}
+		if (product_issue.length !== 0) {
+			payload['product_issue'] = product_issue;
+		}
 		if (agent_name !== 'All') {
 			payload['agent_name'] = agent_name;
 		}
