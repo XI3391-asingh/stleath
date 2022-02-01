@@ -1,12 +1,11 @@
 .employee-management-suggestions-layout {
 	width: 17.5rem;
 	height: 100% !important;
-	margin: 1rem 0 1rem 1rem;
 	background-color: #f5f5f5 !important;
 	border-radius: 0.2rem;
 	border: 1px solid #ebebeb;
 }
 
-.employee-management-header {
-	margin: 1rem !important;
+.employee-management-suggestions-heading {
+	/* margin-bottom: 2rem; */
 }

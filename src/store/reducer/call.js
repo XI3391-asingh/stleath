@@ -8,6 +8,7 @@ const initialState = {
 		data: [],
 	},
 	visualizer: {},
+	agentachievement: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +26,9 @@ const reducer = (state = initialState, action) => {
 			return { ...state, visualizer: action.payload };
 		case actionTypes.CLEAR_CALL_VISUALIZER:
 			return { ...state, visualizer: {} };
+		case actionTypes.GET_AGENT_ACHIEVEMENT:
+			return { ...state, agentachievement: action.payload };
+
 		default:
 			return state;
 	}

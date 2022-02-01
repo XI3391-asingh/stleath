@@ -137,7 +137,6 @@ function SidebarFilters({
 		setIsCallClosedWithComplianceOnStore();
 		setIsTotalComplianceOnStore();
 		setTriggerRefresh();
-		// alert('refreshed');
 	};
 
 	return (
@@ -181,32 +180,13 @@ function SidebarFilters({
 			/>
 			<SidebarAgentDispositionDropdown label='Agent Disposition' />
 			<br />
-			{/* <Button
-        variant="outlined"
-        className="sidebar-clear-filters"
-        startIcon={<HighlightOffIcon />}
-        onClick={clearAllFilters}
-      >
-        Clear All
-      </Button>
-      <Button
-        variant="outlined"
-        className=""
-        startIcon={<HighlightOffIcon />}
-        onClick={refreshDashboard}
-      >
-        Filter
-      </Button> */}
-			<div>
-				<button
-					className='dashboard-details-upload-button sidebar-clear-btn'
-					onClick={clearAllFilters}
-				>
+			<div className='sidebar-filters-buttons'>
+				<button className='sidebar-clear-btn' onClick={clearAllFilters}>
 					Clear All
 				</button>
 				<button
 					variant='contained'
-					className='dashboard-details-upload-button sidebar-filter-btn'
+					className='sidebar-filter-btn'
 					onClick={refreshDashboard}
 				>
 					Filter

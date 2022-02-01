@@ -53,9 +53,13 @@ class indexService {
 	};
 
 	getCallCountByDuration = async (payload) => {
-		const perRequest = await Axios.post('/get-call-count-by-duration', payload, {
-			headers: headers,
-		});
+		const perRequest = await Axios.post(
+			'/get-call-count-by-duration',
+			payload,
+			{
+				headers: headers,
+			}
+		);
 		return perRequest;
 	};
 
@@ -112,6 +116,13 @@ class indexService {
 	getNegativeCallCount = async () => {
 		const perRequest = await Axios.post('/get-negative-call-count', {
 			agent_name: localStorage.getItem('username'),
+		});
+		return perRequest;
+	};
+
+	getAgentAchievement = async (userName) => {
+		const perRequest = await Axios.post('/agent-achievement', {
+			agent_name: userName,
 		});
 		return perRequest;
 	};
