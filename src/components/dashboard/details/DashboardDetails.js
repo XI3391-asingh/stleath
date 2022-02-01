@@ -16,11 +16,25 @@ import React, { useState } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CloseOutlined from '@mui/icons-material/CloseOutlined';
 
+// import Select from 'react-select';
+
 import './styles.css';
 import DashboardSnackbar from '../dashboard-snackbar/DashboardSnackbar';
 import indexService from '../../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_GENERATE_SPEECH_REPORT } from '../../../store/type';
+
+// const options = {
+// 	id: '1',
+// 	label: 'Agent Name',
+// 	options: [
+// 		{ value: '', label: 'Select an Agent' },
+// 		{ value: 'Jayant Raja', label: 'Jayanth' },
+// 		{ value: 'Wasi Muka', label: 'Wasi' },
+// 		{ value: 'Rajat Bansal', label: 'Rajat' },
+// 		{ value: 'Servashree L', label: 'Servashree L' },
+// 	],
+// };
 
 function DashboardDetails() {
 	const dispatch = useDispatch();
@@ -194,7 +208,7 @@ function DashboardDetails() {
 												style={{
 													display: 'flex',
 													alignItems: 'center',
-													justifyContent: 'space-between',
+													justifyContent: 'center',
 												}}
 											>
 												<div className='dashboard-details-upload-button-container'>
@@ -207,27 +221,27 @@ function DashboardDetails() {
 														onChange={(e) => changeHandler(e, index)}
 														className='dashboard-details-upload-file-button'
 													/>
-													{/* <span htmlFor="fileLabel">
-                            {item?.input?.name
-                              ? item?.input?.name
-                              : "Choose file"}
-                          </span> */}
 												</div>
 												<div
 													key={index}
 													className='dashboard-details-dropdown-container'
 												>
 													<FormControl className='dashboard-details-modal-dropdown'>
-														<InputLabel id='demo-simple-select-standard-label'>
+														{/* <InputLabel id='demo-simple-select-standard-label'>
 															agent
-														</InputLabel>
+														</InputLabel> */}
+														{/* <span>Agent</span> */}
+														<label className='dashboard-details-modal-dropdown-label'>
+															Agent:
+														</label>
 														<Select
 															labelId='demo-simple-select-standard-label'
 															id='demo-simple-select-standard'
 															value={item.review}
 															onChange={(e) => handleChangeAgent(e, index)}
 															label='Agent'
-															style={{ height: '3rem' }}
+															className='dashboard-details-modal-dropdown-layout'
+															// options={options.options}
 														>
 															<MenuItem value=''>
 																<em>Select Agent</em>
@@ -235,6 +249,9 @@ function DashboardDetails() {
 															<MenuItem value={'Jayant Raja'}>Jayanth</MenuItem>
 															<MenuItem value={'Wasi Muka'}>Wasi</MenuItem>
 															<MenuItem value={'Rajat Bansal'}>Rajat</MenuItem>
+															<MenuItem value={'Servashree L'}>
+																Servashree L
+															</MenuItem>
 														</Select>
 													</FormControl>
 													<IconButton>
