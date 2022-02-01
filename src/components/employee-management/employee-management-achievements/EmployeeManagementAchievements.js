@@ -49,9 +49,7 @@ function EmployeeManagementAchievements({ agentachievementdata }) {
 										className='employee-achievements-caption'
 									>
 										{achievements.created_at &&
-											moment(achievements.created_at)
-												?.subtract(1, 'months')
-												?.format('lll')}
+											moment(achievements.created_at)?.format('lll')}
 									</Typography>
 								</div>
 							</div>
