@@ -46,7 +46,22 @@
 
 .dashboard-details-modal-dropdown {
 	width: 15rem;
-	/* margin-bottom: 1rem !important; */
+	display: contents !important;
+}
+
+.dashboard-details-modal-dropdown-label {
+	align-self: center;
+	margin-right: 0.5rem;
+}
+
+.dashboard-details-modal-dropdown-layout {
+	align-self: center;
+	width: 10rem;
+}
+
+#demo-simple-select-standard {
+	padding: 0;
+	height: 2rem;
 }
 
 .dashboard-details-single-dropdown {
@@ -57,6 +72,7 @@
 
 .dashboard-details-upload-button-container {
 	text-align: left;
+	margin-right: 2rem;
 }
 
 .dashboard-details-upload-file-button {

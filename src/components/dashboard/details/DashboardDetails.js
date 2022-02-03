@@ -2,13 +2,8 @@ import {
 	Alert,
 	FormControl,
 	IconButton,
-	InputLabel,
-	MenuItem,
 	Modal,
-	Select,
 	Snackbar,
-	Stack,
-	TextField,
 	Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
@@ -16,11 +11,25 @@ import React, { useState } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CloseOutlined from '@mui/icons-material/CloseOutlined';
 
-import './styles.css';
-import DashboardSnackbar from '../dashboard-snackbar/DashboardSnackbar';
+import Select from 'react-select';
+
 import indexService from '../../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_GENERATE_SPEECH_REPORT } from '../../../store/type';
+
+import './styles.css';
+
+const options = {
+	id: '1',
+	label: 'Agent Name',
+	options: [
+		{ value: '', label: 'Select an Agent' },
+		{ value: 'Jayant Raja', label: 'Jayanth' },
+		{ value: 'Wasi Muka', label: 'Wasi' },
+		{ value: 'Rajat Bansal', label: 'Rajat' },
+		{ value: 'Servashree L', label: 'Servashree L' },
+	],
+};
 
 function DashboardDetails() {
 	const dispatch = useDispatch();
@@ -61,30 +70,6 @@ function DashboardDetails() {
 					setCount(resp?.data?.length);
 				}
 			});
-
-			// var myHeaders = new Headers();
-			// // myHeaders.append('Content-Type', 'application/json');
-			// myHeaders.append(
-			// 	'Authorization',
-			// 	'Bearer ' + localStorage.getItem('access_token')
-			// );
-
-			// var requestOptions = {
-			// 	method: 'POST',
-			// 	body: formdata,
-			// 	headers: myHeaders,
-			// };
-			// fetch('http://13.127.135.117:8080/api/s3gallery-upload', requestOptions)
-			// 	.then((response) => response.json())
-			// 	.then((result) => {
-			// 		if (result?.code === 200) {
-			// 			setReview([{ input: '', agent: '' }]);
-			// 			handleClose();
-			// 			setSnackbar({ openSnackbar: true });
-			// 			setCount(result?.data?.length);
-			// 		}
-			// 	})
-			// 	.catch((error) => console.log('error', error));
 		}
 	};
 
@@ -101,7 +86,7 @@ function DashboardDetails() {
 
 	const handleChangeAgent = (event, index) => {
 		const values = [...review];
-		values[index].agent = event.target.value;
+		values[index].agent = event.value;
 		setReview(values);
 	};
 
@@ -194,7 +179,7 @@ function DashboardDetails() {
 												style={{
 													display: 'flex',
 													alignItems: 'center',
-													justifyContent: 'space-between',
+													justifyContent: 'center',
 												}}
 											>
 												<div className='dashboard-details-upload-button-container'>
@@ -207,35 +192,22 @@ function DashboardDetails() {
 														onChange={(e) => changeHandler(e, index)}
 														className='dashboard-details-upload-file-button'
 													/>
-													{/* <span htmlFor="fileLabel">
-                            {item?.input?.name
-                              ? item?.input?.name
-                              : "Choose file"}
-                          </span> */}
 												</div>
 												<div
 													key={index}
 													className='dashboard-details-dropdown-container'
 												>
 													<FormControl className='dashboard-details-modal-dropdown'>
-														<InputLabel id='demo-simple-select-standard-label'>
-															agent
-														</InputLabel>
+														<label className='dashboard-details-modal-dropdown-label'>
+															Agent:
+														</label>
 														<Select
-															labelId='demo-simple-select-standard-label'
-															id='demo-simple-select-standard'
 															value={item.review}
 															onChange={(e) => handleChangeAgent(e, index)}
 															label='Agent'
-															style={{ height: '3rem' }}
-														>
-															<MenuItem value=''>
-																<em>Select Agent</em>
-															</MenuItem>
-															<MenuItem value={'Jayant Raja'}>Jayanth</MenuItem>
-															<MenuItem value={'Wasi Muka'}>Wasi</MenuItem>
-															<MenuItem value={'Rajat Bansal'}>Rajat</MenuItem>
-														</Select>
+															className='dashboard-details-modal-dropdown-layout'
+															options={options.options}
+														/>
 													</FormControl>
 													<IconButton>
 														<HighlightOffIcon
@@ -248,7 +220,9 @@ function DashboardDetails() {
 										))}
 									</div>
 								</div>
-								{/* <button variant='contained' onClick={() => handleAddFields()}>
+								{/* 
+								TODO: NEED THIS IN THE FUTURE WHEN WE WANT TO ADD MORE FIELDS FOR THE MULTIPLE AGENTS
+								<button variant='contained' onClick={() => handleAddFields()}>
 									+ Add More
 								</button> */}
 							</div>
