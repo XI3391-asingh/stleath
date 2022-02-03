@@ -9,11 +9,12 @@ import EmployeeContinuousFeedbackCard from '../../components/employee-management
 import EmployeeManagementAchievementsCard from '../../components/employee-management/employee-management-achievements-card/EmployeeManagementAchievementsCard';
 import Axios from '../../http/Axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { SET_PERFORMANCE } from '../../store/type';
+import { GET_AGENT_ACHIEVEMENT, SET_PERFORMANCE } from '../../store/type';
 
 import TeamData from '../../data/team.json';
 import PerformanceCardProvideFeedback from '../../components/employee-management/performance-card-provide-feedback-button/PerformanceCardProvideFeedback';
 import PerformanceCardFilters from '../../components/filters/performance-card-filters/PerformanceCardFilters';
+import indexService from '../../service/index';
 
 const options = {
 	id: '1',
@@ -29,6 +30,8 @@ const options = {
 function EmployeeManagement() {
 	const dispatch = useDispatch();
 	const { selectedUser } = useSelector((store) => store.user);
+	const { agentachievement } = useSelector((store) => store.call);
+
 	useEffect(() => {
 		let userName = selectedUser
 			? selectedUser?.name
@@ -53,13 +56,28 @@ function EmployeeManagement() {
 				if (perRes.isSuccess) {
 					dispatch({ type: SET_PERFORMANCE, payload: perRes.data });
 				}
+				getAgentAchievement(userName);
 			})();
 		}
 	}, [selectedUser]);
+
+	const getAgentAchievement = (userName) => {
+		indexService.getAgentAchievement(userName).then((resp) => {
+			if (resp.isSuccess) {
+				dispatch({
+					type: GET_AGENT_ACHIEVEMENT,
+					payload: resp?.data,
+				});
+			}
+		});
+	};
+
 	return (
 		<div className='employee-management-body-layout'>
 			<Card className='employee-management-card-layout'>
-				<EmployeeManagementAchievementsCard />
+				<EmployeeManagementAchievementsCard
+					agentachievementdata={agentachievement}
+				/>
 				<div className='employee-management-main-card-layout'>
 					<div className='employee-management-button-elements'>
 						{localStorage.getItem('userable_type').toLowerCase() ===
