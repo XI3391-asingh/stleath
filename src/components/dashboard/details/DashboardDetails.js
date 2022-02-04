@@ -30,6 +30,7 @@ function DashboardDetails() {
 	const [count, setCount] = useState(0);
 	const { vertical, horizontal, openSnackbar } = snackbar;
 	const { isAnalysisDone } = useSelector((store) => store.dashboard);
+	const [disable, setDisable] = React.useState(true);
 
 	const changeHandler = (event, i) => {
 		const values = [...review];
@@ -59,36 +60,14 @@ function DashboardDetails() {
 					handleClose();
 					setSnackbar({ openSnackbar: true });
 					setCount(resp?.data?.length);
+					setDisable(false);
 				}
 			});
-
-			// var myHeaders = new Headers();
-			// // myHeaders.append('Content-Type', 'application/json');
-			// myHeaders.append(
-			// 	'Authorization',
-			// 	'Bearer ' + localStorage.getItem('access_token')
-			// );
-
-			// var requestOptions = {
-			// 	method: 'POST',
-			// 	body: formdata,
-			// 	headers: myHeaders,
-			// };
-			// fetch('http://13.127.135.117:8080/api/s3gallery-upload', requestOptions)
-			// 	.then((response) => response.json())
-			// 	.then((result) => {
-			// 		if (result?.code === 200) {
-			// 			setReview([{ input: '', agent: '' }]);
-			// 			handleClose();
-			// 			setSnackbar({ openSnackbar: true });
-			// 			setCount(result?.data?.length);
-			// 		}
-			// 	})
-			// 	.catch((error) => console.log('error', error));
 		}
 	};
 
 	const generateAnalysis = () => {
+		setDisable(true);
 		indexService.generateAnalysis().then((resp) => {
 			if (resp.isSuccess) {
 				dispatch({
@@ -158,7 +137,14 @@ function DashboardDetails() {
 
 	return (
 		<div className='dashboard-details-call-details-layout'>
-			<div className='dashboard-details-call-details'></div>
+			{/* <div className='dashboard-details-call-analysis-message'>
+				<div> </div>
+				<div> */}
+			<Typography variant='body1' className='dashboard-details-call-details'>
+				4 files are pending for the Transcription
+			</Typography>
+			{/* </div>
+			</div> */}
 			<div>
 				<button
 					// variant='contained'
@@ -168,6 +154,8 @@ function DashboardDetails() {
 					Upload
 				</button>
 				<button
+					// disabled={disable}
+					disabled={!openSnackbar}
 					variant='contained'
 					className='dashboard-details-upload-button'
 					onClick={generateAnalysis}

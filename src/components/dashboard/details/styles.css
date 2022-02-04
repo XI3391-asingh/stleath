@@ -1,9 +1,13 @@
 .dashboard-details-call-details-layout {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-end;
 	padding: 0.5rem;
 	margin: 0.6rem;
+}
+
+.dashboard-details-call-analysis-message {
+	display: contents;
 }
 
 .dashboard-details-upload-button {
@@ -17,8 +21,21 @@
 	cursor: pointer;
 }
 
-/* .dashboard-details-call-details {
-} */
+.dashboard-details-upload-button:disabled {
+	margin-right: 1rem;
+	background-color: #cccccc;
+	color: #666666;
+	border: none;
+	font-size: 0.9rem;
+	border-radius: 0.2rem;
+	padding: 0.5rem 1rem;
+	cursor: default;
+}
+
+.dashboard-details-call-details {
+	padding: 0 1rem;
+	margin: 0 3rem !important;
+}
 
 .dashboard-details-call-details-modal {
 	position: absolute;
