@@ -153,6 +153,7 @@ function CallsTable({
 }) {
 	const dispatch = useDispatch();
 	let [callFeedData, setCallFeedData] = React.useState([]);
+	const { filter } = useSelector(store => store);
 	// const {
 	//   fromDate,
 	//   toDate,
@@ -169,12 +170,15 @@ function CallsTable({
 			from_date: new Date(start_date).toISOString().slice(0, 10), //"2021-02-23",
 			to_date: new Date(to_date).toISOString().slice(0, 10), //"2021-03-23",
 			// "agent_name": agentName,
+			
 			is_call_opened_with_compliance: call_opened ? 1 : 0,
 			is_call_closed_with_compliance: call_closed ? 1 : 0,
 			is_compliance_call: total_compliance ? 1 : 0,
 			service_issue: service_issue ? 1 : 0,
 			product_issue: product_issue ? 1 : 0,
 		};
+		if(filter.is_call_opened_with_compliance){
+			payload.is_call_opened_with_compliance = filter.is_call_opened_with_compliance
 		if (agent_name !== 'All') {
 			payload['agent_name'] = agent_name;
 		}

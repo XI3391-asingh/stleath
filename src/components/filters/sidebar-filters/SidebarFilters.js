@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
 	CLEAR_FILTERS,
 	SET_AGENT_NAME,
+	SET_FILTER,
 	SET_FROM_DATE,
 	SET_IS_CALL_CLOSED_WITH_COMPLIANCE,
 	SET_IS_CALL_OPENED_WITH_COMPLIANCE,
@@ -67,14 +68,14 @@ function SidebarFilters({
 	};
 	const setToDateOnStore = () => {
 		dispatch({
-			type: SET_TO_DATE,
-			payload: toDate,
+			type: SET_FILTER,
+			payload: { toDate: toDate },
 		});
 	};
 	const setAgentNameOnStore = () => {
 		dispatch({
-			type: SET_AGENT_NAME,
-			payload: agentName,
+			type: SET_FILTER,
+			payload: { agentName: agentName },
 		});
 	};
 	const setIsProductIssueOnStore = () => {
