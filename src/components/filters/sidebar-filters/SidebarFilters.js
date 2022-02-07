@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
 	CLEAR_FILTERS,
 	SET_AGENT_NAME,
+	SET_FILTER,
 	SET_FROM_DATE,
 	SET_IS_CALL_CLOSED_WITH_COMPLIANCE,
 	SET_IS_CALL_OPENED_WITH_COMPLIANCE,
@@ -59,6 +60,60 @@ function SidebarFilters({
 		setIsTotalComplianceOnStore();
 	}, []);
 
+	/*	const setFromDateOnStore = () => {
+		dispatch({
+			type: SET_FILTER,
+			payload: { fromDate: fromDate },
+		});
+	};
+	const setToDateOnStore = () => {
+		dispatch({
+			type: SET_FILTER,
+			payload: { toDate: toDate },
+		});
+	};
+	const setAgentNameOnStore = () => {
+		dispatch({
+			type: SET_FILTER,
+			payload: { agentName: agentName },
+		});
+	};
+	const setIsProductIssueOnStore = () => {
+		dispatch({
+			type: SET_FILTER,
+			payload: { isProductIssue },
+			//  ? isProductIssue : false,
+		});
+	};
+	const setIsServiceIssueOnStore = () => {
+		dispatch({
+			type: SET_FILTER,
+			payload: { isServiceIssue },
+			//  ? isServiceIssue : false,
+		});
+	};
+	const setIsCallOpenedWithComplianceOnStore = () => {
+		dispatch({
+			type: SET_FILTER,
+			payload: { isCallOpenedWithCompliance },
+			//  ? isCallOpenedWithCompliance : false,
+		});
+	};
+	const setIsCallClosedWithComplianceOnStore = () => {
+		dispatch({
+			type: SET_FILTER,
+			payload: { isCallClosedWithCompliance },
+			//  ? isCallClosedWithCompliance : false,
+		});
+	};
+	const setIsTotalComplianceOnStore = () => {
+		dispatch({
+			type: SET_FILTER,
+			payload: { isTotalCompliance },
+			//  ? isTotalCompliance : false,
+		});
+	};	*/
+
 	const setFromDateOnStore = () => {
 		dispatch({
 			type: SET_FROM_DATE,
@@ -80,33 +135,34 @@ function SidebarFilters({
 	const setIsProductIssueOnStore = () => {
 		dispatch({
 			type: SET_IS_PRODUCT_ISSUE,
-			payload: isProductIssue ? isProductIssue : false,
+			payload: isProductIssue,
 		});
 	};
 	const setIsServiceIssueOnStore = () => {
 		dispatch({
 			type: SET_IS_SERVICE_ISSUE,
-			payload: isServiceIssue ? isServiceIssue : false,
+			payload: isServiceIssue,
 		});
 	};
 	const setIsCallOpenedWithComplianceOnStore = () => {
 		dispatch({
 			type: SET_IS_CALL_OPENED_WITH_COMPLIANCE,
-			payload: isCallOpenedWithCompliance ? isCallOpenedWithCompliance : false,
+			payload: isCallOpenedWithCompliance,
 		});
 	};
 	const setIsCallClosedWithComplianceOnStore = () => {
 		dispatch({
 			type: SET_IS_CALL_CLOSED_WITH_COMPLIANCE,
-			payload: isCallClosedWithCompliance ? isCallClosedWithCompliance : false,
+			payload: isCallClosedWithCompliance,
 		});
 	};
 	const setIsTotalComplianceOnStore = () => {
 		dispatch({
 			type: SET_IS_TOTAL_COMPLIANCE,
-			payload: isTotalCompliance ? isTotalCompliance : false,
+			payload: isTotalCompliance,
 		});
 	};
+
 	const clearAllFilters = () => {
 		setFromDate(new Date(2010));
 		setToDate(new Date());
