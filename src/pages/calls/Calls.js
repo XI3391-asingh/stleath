@@ -19,16 +19,7 @@ function Calls() {
 	const path = useLocation();
 	const dispatch = useDispatch();
 	const { calls } = useSelector((store) => store.call);
-	const {
-		fromDate,
-		toDate,
-		agentName,
-		isProductIssue,
-		isServiceIssue,
-		isCallOpenedWithCompliance,
-		isCallClosedWithCompliance,
-		isTotalCompliance,
-	} = useSelector((store) => store.filter);
+	const sidebar_filter = useSelector((store) => store.filter);
 
 	let [triggerRefresh, setTriggerRefresh] = useState(1);
 	const refreshDashboard = () => {
@@ -52,14 +43,14 @@ function Calls() {
 					<div>
 						<SidebarFilters
 							setTriggerRefresh={refreshDashboard}
-							start_date={fromDate}
-							to_date={toDate}
-							agent_name={agentName}
-							product_issue={isProductIssue}
-							service_issue={isServiceIssue}
-							call_opened={isCallOpenedWithCompliance}
-							call_closed={isCallClosedWithCompliance}
-							total_compliance={isTotalCompliance}
+							start_date={sidebar_filter?.fromDate}
+							to_date={sidebar_filter?.toDate}
+							agent_name={sidebar_filter?.agentName}
+							product_issue={sidebar_filter?.isProductIssue}
+							service_issue={sidebar_filter?.isServiceIssue}
+							call_opened={sidebar_filter?.isCallOpenedWithCompliance}
+							call_closed={sidebar_filter?.isCallClosedWithCompliance}
+							total_compliance={sidebar_filter?.isTotalCompliance}
 						/>
 					</div>
 					<div className='calls-page-card-main-body'>
@@ -103,14 +94,8 @@ function Calls() {
 								data={calls?.data}
 								triggerRefresh={triggerRefresh}
 								feedbackquery={feedbackquery}
-								start_date={fromDate}
-								to_date={toDate}
-								agent_name={agentName}
-								product_issue={isProductIssue}
-								service_issue={isServiceIssue}
-								call_opened={isCallOpenedWithCompliance}
-								call_closed={isCallClosedWithCompliance}
-								total_compliance={isTotalCompliance}
+								call_emotion={query.get('call_emotion')}
+								call_duration={query.get('call_duration')}
 							/>
 						</div>
 					</div>
