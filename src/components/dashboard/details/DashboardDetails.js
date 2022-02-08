@@ -7,7 +7,7 @@ import {
 	Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CloseOutlined from '@mui/icons-material/CloseOutlined';
 
@@ -15,7 +15,7 @@ import Select from 'react-select';
 
 import indexService from '../../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_GENERATE_SPEECH_REPORT } from '../../../store/type';
+import { GET_GENERATE_SPEECH_REPORT, CALL_FOR_STT } from '../../../store/type';
 
 import './styles.css';
 
@@ -36,9 +36,32 @@ function DashboardDetails() {
 	const [open, setOpen] = useState(false);
 	const [review, setReview] = useState([{ input: '', agent: '' }]);
 	const [snackbar, setSnackbar] = useState(false);
+	const [isGenerateAnalysis, setIsGenerateAnalysis] = useState(true);
+	const [isInProgress, setIsInProgress] = useState(false);
 	const [count, setCount] = useState(0);
 	const { vertical, horizontal, openSnackbar } = snackbar;
-	const { isAnalysisDone } = useSelector((store) => store.dashboard);
+	const { isAnalysisDone, callforstt } = useSelector(
+		(store) => store.dashboard
+	);
+	console.log(callforstt);
+	//   callPendingForStt
+	useEffect(() => {
+		callforsttchech();
+	}, []);
+
+	const callforsttchech = () => {
+		indexService.getcallforstt().then((resp) => {
+			if (resp.isSuccess) {
+				setIsGenerateAnalysis(
+					resp?.data?.callPendingForStt <= 0 ? true : false
+				);
+				dispatch({
+					type: CALL_FOR_STT,
+					payload: resp?.data,
+				});
+			}
+		});
+	};
 
 	const changeHandler = (event, i) => {
 		const values = [...review];
@@ -68,6 +91,7 @@ function DashboardDetails() {
 					handleClose();
 					setSnackbar({ openSnackbar: true });
 					setCount(resp?.data?.length);
+					callforsttchech();
 				}
 			});
 		}
@@ -76,6 +100,8 @@ function DashboardDetails() {
 	const generateAnalysis = () => {
 		indexService.generateAnalysis().then((resp) => {
 			if (resp.isSuccess) {
+				setIsGenerateAnalysis(true);
+				setIsInProgress(true);
 				dispatch({
 					type: GET_GENERATE_SPEECH_REPORT,
 					payload: true,
@@ -145,16 +171,31 @@ function DashboardDetails() {
 		<div className='dashboard-details-call-details-layout'>
 			<div className='dashboard-details-call-details'></div>
 			<div>
+				{isInProgress ? (
+					<div className='generateanalysis-text'>
+						Transcription is in progrees.
+					</div>
+				) : (
+					<div className='generateanalysis-text'>
+						{callforstt && callforstt.callPendingForStt} No. of calls pending
+						for transcription.
+					</div>
+				)}
 				<button
 					// variant='contained'
 					onClick={handleOpen}
+					// className={`dashboard-details-upload-button ${
+					// 	!isGenerateAnalysis ? 'btn-disabled' : ''
+					// }`}
 					className='dashboard-details-upload-button'
 				>
 					Upload
 				</button>
 				<button
 					variant='contained'
-					className='dashboard-details-upload-button'
+					className={`dashboard-details-upload-button ${
+						isGenerateAnalysis ? 'btn-disabled' : ''
+					}`}
 					onClick={generateAnalysis}
 				>
 					Generate Analysis
