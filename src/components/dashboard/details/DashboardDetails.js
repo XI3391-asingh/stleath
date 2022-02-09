@@ -173,7 +173,7 @@ function DashboardDetails() {
 			<div>
 				{isInProgress ? (
 					<div className='generateanalysis-text'>
-						Transcription is in progrees.
+						Transcription is in progress.
 					</div>
 				) : (
 					<div className='generateanalysis-text'>
