@@ -13,21 +13,10 @@ import { useSelector } from 'react-redux';
 
 function Dashboard() {
 	let [triggerRefresh, setTriggerRefresh] = useState(1);
-	const {
-		fromDate,
-		toDate,
-		agentName,
-		isProductIssue,
-		isServiceIssue,
-		isCallOpenedWithCompliance,
-		isCallClosedWithCompliance,
-		isTotalCompliance,
-	} = useSelector((store) => store.filter);
-
+	const sidebar_filter = useSelector((store) => store.filter);
 	const refreshDashboard = () => {
 		setTriggerRefresh(++triggerRefresh);
 	};
-
 	return (
 		<div className='dashboard-page-layout'>
 			<Card className='dashboard-page-card'>
@@ -35,14 +24,14 @@ function Dashboard() {
 					<div>
 						<SidebarFilters
 							setTriggerRefresh={refreshDashboard}
-							start_date={fromDate}
-							to_date={toDate}
-							agent_name={agentName}
-							product_issue={isProductIssue}
-							service_issue={isServiceIssue}
-							call_opened={isCallOpenedWithCompliance}
-							call_closed={isCallClosedWithCompliance}
-							total_compliance={isTotalCompliance}
+							start_date={sidebar_filter?.fromDate}
+							to_date={sidebar_filter?.toDate}
+							agent_name={sidebar_filter?.agentName}
+							product_issue={sidebar_filter?.isProductIssue}
+							service_issue={sidebar_filter?.isServiceIssue}
+							call_opened={sidebar_filter?.isCallOpenedWithCompliance}
+							call_closed={sidebar_filter?.isCallClosedWithCompliance}
+							total_compliance={sidebar_filter?.isTotalCompliance}
 						/>
 					</div>
 					<div className='dashboard-right-content'>
@@ -52,28 +41,8 @@ function Dashboard() {
 							<DashboardScrollbar />
 						</div>
 						<div className='dashboard-page-components'>
-							<CardComponents
-								triggerRefresh={triggerRefresh}
-								start_date={fromDate}
-								to_date={toDate}
-								agent_name={agentName}
-								product_issue={isProductIssue}
-								service_issue={isServiceIssue}
-								call_opened={isCallOpenedWithCompliance}
-								call_closed={isCallClosedWithCompliance}
-								total_compliance={isTotalCompliance}
-							/>
-							<ChartComponents
-								triggerRefresh={triggerRefresh}
-								start_date={fromDate}
-								to_date={toDate}
-								agent_name={agentName}
-								product_issue={isProductIssue}
-								service_issue={isServiceIssue}
-								call_opened={isCallOpenedWithCompliance}
-								call_closed={isCallClosedWithCompliance}
-								total_compliance={isTotalCompliance}
-							/>
+							<CardComponents triggerRefresh={triggerRefresh} />
+							<ChartComponents triggerRefresh={triggerRefresh} />
 						</div>
 					</div>
 				</div>

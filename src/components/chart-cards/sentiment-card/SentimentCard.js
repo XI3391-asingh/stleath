@@ -24,9 +24,9 @@ function SentimentCard(props) {
 					'rgba(255, 0, 0, 1)',
 				],
 				data: [
-					props.data['Positive Feedback'],
-					props.data['Neutral Feedback'],
-					props.data['Negative Feedback'],
+					props.data['Positive'],
+					props.data['Neutral'],
+					props.data['Negative'],
 				],
 			},
 		],
