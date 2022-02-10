@@ -13,18 +13,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 import './styles.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	CLEAR_FILTERS,
-	SET_AGENT_NAME,
-	SET_FILTER,
-	SET_FROM_DATE,
-	SET_IS_CALL_CLOSED_WITH_COMPLIANCE,
-	SET_IS_CALL_OPENED_WITH_COMPLIANCE,
-	SET_IS_PRODUCT_ISSUE,
-	SET_IS_SERVICE_ISSUE,
-	SET_IS_TOTAL_COMPLIANCE,
-	SET_TO_DATE,
-} from '../../../store/type';
+import { CLEAR_FILTERS, SET_FILTER } from '../../../store/type';
 
 function SidebarFilters({
 	setTriggerRefresh,
@@ -60,111 +49,57 @@ function SidebarFilters({
 		setIsTotalComplianceOnStore();
 	}, []);
 
-	/*	const setFromDateOnStore = () => {
+	const setFromDateOnStore = () => {
 		dispatch({
 			type: SET_FILTER,
-			payload: { fromDate: fromDate },
+			payload: { fromDate },
 		});
 	};
 	const setToDateOnStore = () => {
 		dispatch({
 			type: SET_FILTER,
-			payload: { toDate: toDate },
+			payload: { toDate },
 		});
 	};
 	const setAgentNameOnStore = () => {
 		dispatch({
 			type: SET_FILTER,
-			payload: { agentName: agentName },
+			payload: { agentName },
 		});
 	};
 	const setIsProductIssueOnStore = () => {
 		dispatch({
 			type: SET_FILTER,
 			payload: { isProductIssue },
-			//  ? isProductIssue : false,
 		});
 	};
 	const setIsServiceIssueOnStore = () => {
 		dispatch({
 			type: SET_FILTER,
 			payload: { isServiceIssue },
-			//  ? isServiceIssue : false,
 		});
 	};
 	const setIsCallOpenedWithComplianceOnStore = () => {
 		dispatch({
 			type: SET_FILTER,
 			payload: { isCallOpenedWithCompliance },
-			//  ? isCallOpenedWithCompliance : false,
 		});
 	};
 	const setIsCallClosedWithComplianceOnStore = () => {
 		dispatch({
 			type: SET_FILTER,
 			payload: { isCallClosedWithCompliance },
-			//  ? isCallClosedWithCompliance : false,
 		});
 	};
 	const setIsTotalComplianceOnStore = () => {
 		dispatch({
 			type: SET_FILTER,
 			payload: { isTotalCompliance },
-			//  ? isTotalCompliance : false,
-		});
-	};	*/
-
-	const setFromDateOnStore = () => {
-		dispatch({
-			type: SET_FROM_DATE,
-			payload: fromDate,
-		});
-	};
-	const setToDateOnStore = () => {
-		dispatch({
-			type: SET_TO_DATE,
-			payload: toDate,
-		});
-	};
-	const setAgentNameOnStore = () => {
-		dispatch({
-			type: SET_AGENT_NAME,
-			payload: agentName,
-		});
-	};
-	const setIsProductIssueOnStore = () => {
-		dispatch({
-			type: SET_IS_PRODUCT_ISSUE,
-			payload: isProductIssue,
-		});
-	};
-	const setIsServiceIssueOnStore = () => {
-		dispatch({
-			type: SET_IS_SERVICE_ISSUE,
-			payload: isServiceIssue,
-		});
-	};
-	const setIsCallOpenedWithComplianceOnStore = () => {
-		dispatch({
-			type: SET_IS_CALL_OPENED_WITH_COMPLIANCE,
-			payload: isCallOpenedWithCompliance,
-		});
-	};
-	const setIsCallClosedWithComplianceOnStore = () => {
-		dispatch({
-			type: SET_IS_CALL_CLOSED_WITH_COMPLIANCE,
-			payload: isCallClosedWithCompliance,
-		});
-	};
-	const setIsTotalComplianceOnStore = () => {
-		dispatch({
-			type: SET_IS_TOTAL_COMPLIANCE,
-			payload: isTotalCompliance,
 		});
 	};
 
 	const clearAllFilters = () => {
-		setFromDate(new Date(2010));
+		setFromDate(new Date('01-01-2010'));
 		setToDate(new Date());
 		setAgentName('All');
 		setIsServiceIssue('');

@@ -29,8 +29,12 @@ function CallCategoriesCard(props) {
 						data={data}
 						options={{
 							// layout: { padding: { left: '1rem' } },
-							onClick: (e) => {
-								history.push('/calls');
+							onClick: (e, element) => {
+								if (element.length > 0) {
+									history.push(
+										`/calls?call_duration=${data?.labels[element[0]?.index]}`
+									);
+								}
 							},
 							indexAxis: 'y',
 						}}
