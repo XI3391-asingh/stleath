@@ -1,17 +1,29 @@
 import React from 'react';
 
-import { Chip, IconButton, Typography } from '@material-ui/core';
-import Button from '@mui/material/Button';
+import { Chip, Typography } from '@material-ui/core';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import AddCommentIcon from '@mui/icons-material/AddComment';
-import CallTranscriptionSpeech from './CallTranscriptionSpeech';
+
 import moment from 'moment';
 
-function CallTranscription({ calltime, speaker, id }) {
+function CallTranscription({ calltime, speaker, id, feedback }) {
 	const handleTime = (time) => {
 		var formatted = moment.utc(time * 1000).format('mm:ss');
 		return formatted;
 	};
+
+	const feedbackType = (data) => {
+		switch (data) {
+			case 'Positive':
+				return 'green';
+			case 'Negative':
+				return 'red';
+			case 'Neutral':
+				return 'yellow';
+			default:
+				return `lightgrey`;
+		}
+	};
+
 	return (
 		<div>
 			<div className='call-transcription-layout'>
@@ -28,29 +40,28 @@ function CallTranscription({ calltime, speaker, id }) {
 					>
 						{speaker}
 					</Typography>
-					{id === 0 && (
+					{(feedback === 'Positive' ||
+						feedback === 'Negative' ||
+						feedback === 'Neutral') && (
 						<Chip
-							label='Display Patience and Courtesy'
+							label={feedback}
 							variant='outlined'
 							className='call-transcription-chip'
-						/>
+							style={{
+								color: feedbackType(feedback),
+							}}
+						>
+							{feedback}
+						</Chip>
 					)}
 				</div>
 				<div>
-					{/* <IconButton className='call-transcription-comment'>
-						<Button className='call-transcription-comment-button'>
-							<AddCommentIcon className='call-transcription-add-comment' />
-						</Button>
-					</IconButton> */}
 					<button className='call-transcription-play-button'>
 						<PlayArrowIcon className='call-transcription-play-icon' />
 						Play
 					</button>
 				</div>
 			</div>
-			{/* <div className='call-transcription-dialogue'>
-				<CallTranscriptionSpeech />
-			</div> */}
 		</div>
 	);
 }
