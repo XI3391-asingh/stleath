@@ -16,6 +16,7 @@ import indexService from '../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_CALL_VISUALIZER, GET_ALL_COMMENTS } from '../../store/type';
 import AudioVisualizer from '../../components/calls/wavesurfer-visualizer/AudioVisualizer';
+import EvaluationForm from '../../components/calls/evaluation-form/EvaluationForm';
 
 function CallVisualizer() {
 	let dateTime = moment().format('LLL');
@@ -91,6 +92,7 @@ function CallVisualizer() {
 					>
 						Call Id: {visualizer?.id}
 					</Typography>
+					<EvaluationForm />
 				</Card>
 			</div>
 			<div>
