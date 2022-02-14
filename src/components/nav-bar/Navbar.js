@@ -43,9 +43,9 @@ function Navbar() {
 
 	useEffect(() => {
 		getNotification();
-		setInterval(() => {
-			getNotification();
-		}, 10000);
+		// setInterval(() => {
+		// 	getNotification();
+		// }, 10000);
 	}, []);
 
 	const getNotification = () => {

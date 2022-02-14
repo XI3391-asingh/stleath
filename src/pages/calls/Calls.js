@@ -56,12 +56,12 @@ function Calls() {
 					<div className='calls-page-card-main-body'>
 						<div className='calls-page-call-details'>
 							<Grid container spacing={2}>
-								<Grid item xs={7}>
+								<Grid item xs={5}>
 									{/* <Item> */}
 									{calls?.filter} of {calls?.total} Calls
 									{/* </Item> */}
 								</Grid>
-								<Grid item xs={5} className='calls-page-legends'>
+								<Grid item xs={7} className='calls-page-legends'>
 									{/* <Item> */}
 									{/* {calls?.filter} of {calls?.total} Calls */}
 									{/* </Item> */}

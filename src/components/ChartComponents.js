@@ -228,12 +228,13 @@ function ChartComponents({ triggerRefresh }) {
 				/>
 				<CallCompositionCard callcompositiondata={callcomposition} />
 			</div>
-			<div>
-				<AgentDispositionCompositionCard />
-			</div>
+			
 			<div className='detctionChart'>
 				<SilenceDetectionCountChartCard data={callcountbyholdviolation} />
 				<VoiceEnergyDeviationCountCard data={callcountvoiceenergydeviation} />
+			</div>
+			<div>
+				<AgentDispositionCompositionCard />
 			</div>
 			<div>
 				<AgentRankingCard />
