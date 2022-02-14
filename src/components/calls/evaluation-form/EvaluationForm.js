@@ -16,18 +16,17 @@ import {
 } from '@material-ui/core';
 import EvaluationFormOptions from './EvaluationFormOptions';
 
-function EvaluationForm({controlWidth}) {
+function EvaluationForm({ controlWidth }) {
 	const [open, setOpen] = useState(false);
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
-		controlWidth('75%')
+		controlWidth('75%');
 	};
 
 	const handleDrawerClose = () => {
 		setOpen(false);
-		
-		controlWidth('100%')
+		controlWidth('100%');
 	};
 
 	return (
@@ -40,17 +39,14 @@ function EvaluationForm({controlWidth}) {
 				sx={{ ...(open && { display: 'none' }) }}
 			>
 				<ContentPasteIcon className='calls-page-evaluationform-button-icon' />{' '}
-			
 				Evaluation Form
 			</button>
 			<Drawer variant='persistent' anchor='right' open={open}>
-				<div containerClassName='calls-page-evaluationform-header'>
+				<div container className='calls-page-evaluationform-header'>
 					<Typography
 						variant='h6'
-						style={{marginTop:'12px'}}
 						className='calls-page-evaluationform-heading'
 					>
-				
 						Evaluation Form
 					</Typography>
 					<IconButton onClick={handleDrawerClose}>
@@ -60,7 +56,6 @@ function EvaluationForm({controlWidth}) {
 				<Divider />
 				<EvaluationFormOptions />
 			</Drawer>
-			
 		</div>
 	);
 }
