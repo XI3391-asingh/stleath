@@ -55,6 +55,101 @@
 }
 
 /* Questions */
-.evaluation-form-questions {
+.evaluation-form-options {
 	padding: 0 1rem 1rem 1rem;
+}
+
+.evaluation-form-options-heading {
+	font-weight: bold !important;
+}
+
+.evaluation-form-options-paper-layout {
+	height: 3rem;
+	margin: 0 1rem 1rem 1rem;
+	padding: 0.5rem;
+	width: 29.5rem;
+	background-color: transparent;
+	border: 1px solid lightgrey;
+}
+
+.evaluation-form-option {
+	display: flex;
+	justify-content: space-between;
+}
+
+.evaluation-form-option-type {
+	font-size: 1rem !important;
+}
+
+/* Form Questions */
+.evaluation-form-buttons {
+	padding: 1rem;
+	text-align: end;
+}
+
+.evaluation-form-discard-button {
+	color: red;
+	border: 1px solid red;
+	background-color: transparent;
+	font-size: 0.9rem;
+	border-radius: 0.2rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	margin: 0 1rem;
+}
+
+.evaluation-form-submit-button {
+	margin-right: 1rem;
+	background-color: #6b1d5e;
+	color: white;
+	border: none;
+	font-size: 0.9rem;
+	border-radius: 0.2rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+
+/* Questions Card */
+
+.evaluation-form-card {
+	margin: 1rem;
+	/* padding: 1rem; */
+}
+
+.evaluation-form-card-header {
+	background-color: lightgrey;
+}
+
+.evaluation-form-card-content {
+	padding: 1rem;
+}
+
+.evaluation-form-question-answer-block {
+	display: flex;
+}
+
+.evaluation-form-astreisk {
+	color: red;
+	font-size: 1rem;
+}
+
+.evaluation-form-question {
+	width: 50%;
+	display: flex;
+}
+
+.evaluation-form-answer {
+	width: 50%;
+	text-align: end;
+}
+
+.evaluation-form-radio-group {
+	align-content: flex-end;
+}
+
+.evaluation-form-add-comments-button {
+	color: blue;
+	border: none;
+	background: none;
+	font-size: 0.9rem;
 }

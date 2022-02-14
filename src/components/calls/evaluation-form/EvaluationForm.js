@@ -14,7 +14,7 @@ import {
 	ListItemText,
 	Typography,
 } from '@material-ui/core';
-import EvaluationFormQuestion from './EvaluationFormQuestion';
+import EvaluationFormOptions from './EvaluationFormOptions';
 
 function EvaluationForm() {
 	const [open, setOpen] = useState(false);
@@ -52,7 +52,7 @@ function EvaluationForm() {
 					</IconButton>
 				</div>
 				<Divider />
-				<EvaluationFormQuestion />
+				<EvaluationFormOptions />
 			</Drawer>
 		</div>
 	);
