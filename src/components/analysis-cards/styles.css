@@ -1,9 +1,10 @@
 .card-container-layout {
-	width: 10rem;
+	/* width: 10rem; */
 }
 
 .card {
-	width: 82rem;
+	/* width: 82rem; */
+	/* justify-content: space-between; */
 	display: flex;
 }
 
@@ -29,12 +30,16 @@
 	height: 1.5rem;
 }
 .card-title {
-	margin-bottom: 40px;
+	/* margin-bottom: 40px; */
 	color: #3d3d3d;
 	font-size: 1.2rem;
 }
 .analysis-card-link {
 	color: black;
+	height: 100%;
+	flex-direction: column;
+	justify-content: space-between;
+	display: flex;
 }
 
 /* .analysis-card-link :focus,

@@ -12,7 +12,7 @@
 }
 
 .calls-page-card-main-body {
-	width: 100%;
+	width: 90%;
 	padding: 0 5px;
 }
 
@@ -85,6 +85,9 @@
 	font-size: 0.8rem;
 	text-align: right;
 }
+/* .calls-page-legends typography{
+	padding: 10px;
+} */
 .calls-page-legends .legend-1 {
 	color: green;
 }
