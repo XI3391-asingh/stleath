@@ -21,7 +21,7 @@ function Dashboard() {
 		<div className='dashboard-page-layout'>
 			<Card className='dashboard-page-card'>
 				<div className='dashboard-page-card-list'>
-					<div>
+					<div className='dashboard-left-content'>
 						<SidebarFilters
 							setTriggerRefresh={refreshDashboard}
 							start_date={sidebar_filter?.fromDate}

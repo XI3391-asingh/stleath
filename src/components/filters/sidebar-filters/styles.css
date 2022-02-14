@@ -3,7 +3,7 @@
 	border-radius: 0.2rem;
 	border: 1px solid #ebebeb;
 	height: 100%;
-	width: 280px;
+	/* width: 280px; */
 }
 
 .sidebar-filter-dropdowns {
@@ -38,15 +38,17 @@
 }
 
 .sidebar-clear-btn {
-	width: 37% !important;
+	width: 45% !important;
+	/* width: 6.2vw !important; */
 	background-color: #6b1d5e;
 	color: white;
 	border: none;
 	font-size: 0.9rem;
 	border-radius: 0.2rem;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem .5rem;
 	cursor: pointer;
 }
+
 .sidebar-filter-btn {
 	width: 45% !important;
 	background-color: #6b1d5e;
@@ -54,7 +56,7 @@
 	border: none;
 	font-size: 0.9rem;
 	border-radius: 0.2rem;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem .5rem;
 	cursor: pointer;
 }
 
