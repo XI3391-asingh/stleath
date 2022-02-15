@@ -1,15 +1,13 @@
 import React from 'react';
 
 import {
-	Card,
-	CardContent,
-	CardHeader,
 	Divider,
 	Typography,
 } from '@material-ui/core';
 
-import './styles.css';
 import EvaluationFormQuestionAnswer from './EvaluationFormQuestionAnswer';
+
+import './styles.css';
 
 function EvaluationFormQuestions() {
 	return (
@@ -20,14 +18,15 @@ function EvaluationFormQuestions() {
 			</div>
 			<Divider />
 			<div>
-				<Card className='evaluation-form-card'>
-					<CardHeader className='evaluation-form-card-header'>Items</CardHeader>
+				<div className='evaluation-form-layout'>
+					<div className='evaluation-form-header'>
+						<Typography variant='body1'>Items</Typography>
+					</div>
 					<Divider />
-					<CardContent className='evaluation-form-card-content'>
-						{/* <Typography>bfjrbgkb</Typography> */}
+					<div className='evaluation-form-content'>
 						<EvaluationFormQuestionAnswer />
-					</CardContent>
-				</Card>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

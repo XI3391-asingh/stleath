@@ -8,10 +8,6 @@ import {
 	Divider,
 	Drawer,
 	IconButton,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
 	Typography,
 } from '@material-ui/core';
 import EvaluationFormOptions from './EvaluationFormOptions';
@@ -21,7 +17,7 @@ function EvaluationForm({ controlWidth }) {
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
-		controlWidth('75%');
+		controlWidth('73%');
 	};
 
 	const handleDrawerClose = () => {
@@ -38,7 +34,7 @@ function EvaluationForm({ controlWidth }) {
 				className='calls-page-evaluationform-button'
 				sx={{ ...(open && { display: 'none' }) }}
 			>
-				<ContentPasteIcon className='calls-page-evaluationform-button-icon' />{' '}
+				<ContentPasteIcon className='calls-page-evaluationform-button-icon' />
 				Evaluation Form
 			</button>
 			<Drawer variant='persistent' anchor='right' open={open}>

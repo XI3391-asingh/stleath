@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
 
-import {
-	Box,
-	Divider,
-	Drawer,
-	IconButton,
-	Paper,
-	Typography,
-} from '@material-ui/core';
+import { Divider, Drawer, IconButton, Typography } from '@material-ui/core';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import EvaluationFormSearchBox from './EvaluationFormSearchBox';
 import CloseIcon from '@mui/icons-material/Close';
 
 import EvaluationFormQuestions from './EvaluationFormQuestions';
@@ -27,11 +19,15 @@ function EvaluationFormQuestionsLayout() {
 	};
 
 	const formOpenManager = () => {
-		setOpen(true);
+		setOpenManager(true);
 	};
 
 	const formClose = () => {
 		setOpen(false);
+	};
+
+	const formCloseManager = () => {
+		setOpenManager(false);
 	};
 
 	return (
@@ -63,13 +59,25 @@ function EvaluationFormQuestionsLayout() {
 					<IconButton onClick={formClose}>
 						<ArrowBackIcon />
 					</IconButton>
-					<Typography
-						variant='h6'
-						className='calls-page-evaluationform-heading'
-					>
+					<Typography variant='h6' className='evaluation-form-qa-type-heading'>
 						QA Evaluation Form
 					</Typography>
 					<IconButton onClick={formClose}>
+						<CloseIcon />
+					</IconButton>
+				</div>
+				<Divider />
+				<EvaluationFormQuestions />
+			</Drawer>
+			<Drawer variant='persistent' anchor='right' open={openManager}>
+				<div className='calls-page-evaluationform-header'>
+					<IconButton onClick={formCloseManager}>
+						<ArrowBackIcon />
+					</IconButton>
+					<Typography variant='h6' className='evaluation-form-qa-type-heading'>
+						QA Evaluation Form - Manager
+					</Typography>
+					<IconButton onClick={formCloseManager}>
 						<CloseIcon />
 					</IconButton>
 				</div>

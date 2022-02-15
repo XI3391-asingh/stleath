@@ -15,7 +15,11 @@
 }
 
 .MuiDrawer-paper {
-	width: 25% !important;
+	width: 27% !important;
+}
+
+.MuiFormControl-fullWidth {
+	border: 1px solid black;
 }
 
 .calls-page-evaluationform-header {
@@ -33,29 +37,31 @@
 }
 
 /* Search box */
-.messages-page-search-paper {
+
+.evaluation-form-search-paper {
 	padding: 0.1rem 0.4rem;
 	display: flex;
 	align-items: center;
 	margin: 1rem;
 }
 
-.messages-page-search-box {
+.evaluation-form-search-box {
 	margin-left: 1rem;
 	flex-grow: 1;
 	width: 100%;
 }
 
-.messages-page-search-box-divider {
+.evaluation-form-search-box-divider {
 	height: 1.8rem !important;
 	margin: 0.5rem !important;
 }
 
-.messages-page-search-box-icon {
+.evaluation-form-search-box-icon {
 	padding: 0.75rem;
 }
 
 /* Questions */
+
 .evaluation-form-options {
 	padding: 0 1rem 1rem 1rem;
 }
@@ -83,6 +89,13 @@
 }
 
 /* Form Questions */
+
+.evaluation-form-qa-type-heading {
+	font-weight: bold !important;
+	height: 4rem !important;
+	padding-top: 2rem;
+}
+
 .evaluation-form-buttons {
 	padding: 1rem;
 	text-align: end;
@@ -112,17 +125,22 @@
 
 /* Questions Card */
 
-.evaluation-form-card {
+.evaluation-form-layout {
 	margin: 1rem;
-	/* padding: 1rem; */
+	border: 1px solid #d3d3d3;
 }
 
-.evaluation-form-card-header {
+.evaluation-form-header {
 	background-color: lightgrey;
+	padding: 1rem;
 }
 
-.evaluation-form-card-content {
+.evaluation-form-content {
 	padding: 1rem;
+}
+
+.evaluation-form-divider {
+	margin: 1rem 0 !important;
 }
 
 .evaluation-form-question-answer-block {
@@ -131,16 +149,21 @@
 
 .evaluation-form-astreisk {
 	color: red;
-	font-size: 1rem;
+	font-size: 1rem !important;
 }
 
 .evaluation-form-question {
-	width: 50%;
+	font-weight: bold !important;
+}
+
+.evaluation-form-question-layout {
+	width: 70%;
+	padding-top: 0.5rem;
 	display: flex;
 }
 
 .evaluation-form-answer {
-	width: 50%;
+	width: 30%;
 	text-align: end;
 }
 
@@ -148,9 +171,33 @@
 	align-content: flex-end;
 }
 
+.evaluation-form-comments-section {
+	/* margin-bottom: 1rem; */
+}
+
+.evaluation-form-buttons {
+	text-align: end;
+}
+
 .evaluation-form-add-comments-button {
-	color: blue;
+	color: purple;
 	border: none;
 	background: none;
 	font-size: 0.9rem;
+	cursor: pointer;
+}
+
+.evaluation-form-inputbase {
+	height: 5rem;
+	padding: 1rem !important;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.evaluation-form-comments-textfield {
+	width: -webkit-fill-available;
+}
+
+.evaluation-form-radio-button {
+	color: #6b1d5e !important;
 }
