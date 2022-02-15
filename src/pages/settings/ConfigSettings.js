@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Card, collapseClasses, Snackbar, Typography } from '@mui/material';
-
+import { Chip } from '@material-ui/core';
 import './styles.css';
 import CompetitorAnalysis from '../../components/config-settings/competitor-analysis/CompetitorAnalysis';
 import ServiceIssue from '../../components/config-settings/service-issue/ServiceIssue';
@@ -13,12 +13,14 @@ import {
 	ADD_SETTING_CONFIGURATION,
 	GET_SETTING_CONFIGURATION,
 } from '../../store/type';
+import Swal from 'sweetalert2'
 
 function ConfigSettings() {
 	const dispatch = useDispatch();
 	const [open, setOpen] = React.useState(false);
 	const [serviceIssueRule, setServiceIssueRule] = useState([]);
 	const [productIssueRule, setProductIssueRule] = useState([]);
+	const [lastQuestionValue, setLastQuestionValue] = useState('')
 	const [repeatCallVolumeRule, setRepeatCallVolumeRule] = useState([]);
 	const [callOpeningRule, setCallOpeningRule] = useState([]);
 	const [callClosingRule, setCallClosingRule] = useState([]);
@@ -150,14 +152,34 @@ function ConfigSettings() {
 			}
 		});
 	};
+	const evaluationQuestions = [{ question: 'This is my first question and everything asked is correct' },
+	{ question: 'This is my second question and everything asked is correct' },
+	{ question: 'This is my third question and everything asked is correct' },
+	{ question: 'This is my fourth question and everything asked is correct' }]
 
 	const handleClose = (event, reason) => {
 		if (reason === 'clickaway') {
 			return;
 		}
-
 		setOpen(false);
 	};
+
+	const addNewQuetion = () => {
+		Swal.fire({
+			title: 'Add New Question For Evaluation',
+			input: 'text',
+			confirmButtonColor: '#6b1d5e',
+			cancelButtonColor: '#6b1d5e75',
+			showCancelButton: true,
+			confirmButtonText: 'Add Question',
+			showLoaderOnConfirm: true,
+		}).then((result) => {
+			if (result.isConfirmed) {
+				console.log(result.value, 'swalResult');
+				setLastQuestionValue(result.value)
+			}
+		})
+	}
 
 	return (
 		<>
@@ -266,6 +288,33 @@ function ConfigSettings() {
 						</button>
 					</div>
 				</Card>
+
+				<div>
+					<Typography variant='h5'>Evaluation Form</Typography>
+					<Card className='config-page-evaluation-card'>
+						<div style={{ margin: '30px', justifyContent: '' }}>
+							<div className='config-page-evaluation-card-left'>
+								{evaluationQuestions.map((data, index) => {
+									return (
+										<div style={{ margin: '10px' }}>
+											<Chip label={index + 1} className='config-page-evaluation-question-chip' />
+											<span>{data.question}</span>
+										</div>
+									)
+								})}
+
+							</div>
+							<div className='config-page-evaluation-card-right'>
+								<div style={{ padding: '33px' }}>
+
+									<button onClick={addNewQuetion} className='config-page-settings-save-button'>
+										Add New Question
+									</button>
+								</div>
+							</div>
+						</div>
+					</Card>
+				</div>
 			</div>
 
 			<Snackbar
