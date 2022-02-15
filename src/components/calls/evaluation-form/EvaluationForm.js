@@ -8,26 +8,21 @@ import {
 	Divider,
 	Drawer,
 	IconButton,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
 	Typography,
 } from '@material-ui/core';
-import EvaluationFormQuestion from './EvaluationFormQuestion';
+import EvaluationFormOptions from './EvaluationFormOptions';
 
-function EvaluationForm({controlWidth}) {
+function EvaluationForm({ controlWidth }) {
 	const [open, setOpen] = useState(false);
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
-		controlWidth('75%')
+		controlWidth('73%');
 	};
 
 	const handleDrawerClose = () => {
 		setOpen(false);
-		
-		controlWidth('100%')
+		controlWidth('100%');
 	};
 
 	return (
@@ -39,18 +34,15 @@ function EvaluationForm({controlWidth}) {
 				className='calls-page-evaluationform-button'
 				sx={{ ...(open && { display: 'none' }) }}
 			>
-				<ContentPasteIcon className='calls-page-evaluationform-button-icon' />{' '}
-			
+				<ContentPasteIcon className='calls-page-evaluationform-button-icon' />
 				Evaluation Form
 			</button>
 			<Drawer variant='persistent' anchor='right' open={open}>
-				<div containerClassName='calls-page-evaluationform-header'>
+				<div container className='calls-page-evaluationform-header'>
 					<Typography
 						variant='h6'
-						style={{marginTop:'12px'}}
 						className='calls-page-evaluationform-heading'
 					>
-				
 						Evaluation Form
 					</Typography>
 					<IconButton onClick={handleDrawerClose}>
@@ -58,9 +50,8 @@ function EvaluationForm({controlWidth}) {
 					</IconButton>
 				</div>
 				<Divider />
-				<EvaluationFormQuestion />
+				<EvaluationFormOptions />
 			</Drawer>
-			
 		</div>
 	);
 }
