@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Card, collapseClasses, Snackbar, Typography } from '@mui/material';
+import { Card, collapseClasses, Snackbar, Typography, FormLabel, RadioGroup, Radio, Button, FormHelperText, FormControlLabel, FormControl } from '@mui/material';
 import { Chip } from '@material-ui/core';
 import './styles.css';
 import CompetitorAnalysis from '../../components/config-settings/competitor-analysis/CompetitorAnalysis';
@@ -20,11 +20,12 @@ function ConfigSettings() {
 	const [open, setOpen] = React.useState(false);
 	const [serviceIssueRule, setServiceIssueRule] = useState([]);
 	const [productIssueRule, setProductIssueRule] = useState([]);
-	const [lastQuestionValue, setLastQuestionValue] = useState('')
+	const [questionText, setquestionText] = useState('')
 	const [repeatCallVolumeRule, setRepeatCallVolumeRule] = useState([]);
 	const [callOpeningRule, setCallOpeningRule] = useState([]);
 	const [callClosingRule, setCallClosingRule] = useState([]);
 	const [warrantIssueRule, setWarrantIssueRule] = useState([]);
+	const [radioForRole, setradioForRole] = useState('Both')
 	const [agentIdentificationRule, setAgentIdentificationRule] = useState([]);
 	const [priceRule, setPriceRule] = useState([]);
 	const [holdTimeViolationRule, setHoldTimeViolationRule] = useState([]);
@@ -163,22 +164,13 @@ function ConfigSettings() {
 		}
 		setOpen(false);
 	};
-
-	const addNewQuetion = () => {
-		Swal.fire({
-			title: 'Add New Question For Evaluation',
-			input: 'text',
-			confirmButtonColor: '#6b1d5e',
-			cancelButtonColor: '#6b1d5e75',
-			showCancelButton: true,
-			confirmButtonText: 'Add Question',
-			showLoaderOnConfirm: true,
-		}).then((result) => {
-			if (result.isConfirmed) {
-				console.log(result.value, 'swalResult');
-				setLastQuestionValue(result.value)
-			}
-		})
+	const handleRadioChange = (e) => {
+		console.log(e.target.value, 'colorChange', questionText);
+		setradioForRole(e.target.value)
+	}
+	const handleAddQuestion = () => {
+		console.log(radioForRole, 'colorChange', questionText);
+		setquestionText('')
 	}
 
 	return (
@@ -293,28 +285,149 @@ function ConfigSettings() {
 					<Typography variant='h5'>Evaluation Form</Typography>
 					<Card className='config-page-evaluation-card'>
 						<div style={{ margin: '30px', justifyContent: '' }}>
-							<div className='config-page-evaluation-card-left'>
-								{evaluationQuestions.map((data, index) => {
-									return (
-										<div style={{ margin: '10px' }}>
-											<Chip label={index + 1} className='config-page-evaluation-question-chip' />
-											<span>{data.question}</span>
-										</div>
-									)
-								})}
 
+							{/* <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+								<h4>QA's Questions</h4>
+								<h4>Manager's Questions</h4>
 							</div>
+							<div className='config-page-evaluation-card-question-container'>
+								<div className='config-page-evaluation-card-question-left'>
+									{evaluationQuestions.map((data, index) => {
+										return (
+											<div style={{ margin: '10px' }}>
+												<Chip label={index + 1} className='config-page-evaluation-question-chip' />
+												<span>{data.question}</span>
+											</div>
+										)
+									})}
+
+								</div>
+								<div className='config-page-evaluation-card-question-right'>
+									{evaluationQuestions.map((data, index) => {
+										return (
+											<div style={{ margin: '10px' }}>
+												<Chip label={index + 1} className='config-page-evaluation-question-chip' />
+												<span>{data.question}</span>
+											</div>
+										)
+									})}
+
+								</div>
+							</div> */}
+
+							<div className='config-page-evaluation-card-question-container'>
+
+								<Card className='competitor-card-layout'>
+									<Typography variant='h6' className='competitor-card-heading'>
+										Manager's Questions
+									</Typography>
+
+									<div className='config-page-evaluation-card-questions'>
+										{evaluationQuestions.map((data, index) => {
+											return (
+												<div style={{ margin: '10px' }}>
+													<Chip label={index + 1} className='config-page-evaluation-question-chip' />
+													<span>{data.question}</span>
+												</div>
+											)
+										})}
+
+									</div>
+								</Card>
+
+								<Card className='competitor-card-layout'>
+									<Typography variant='h6' className='competitor-card-heading'>
+										QA's Questions
+									</Typography>
+									<div className='config-page-evaluation-card-questions'>
+										{evaluationQuestions.map((data, index) => {
+											return (
+												<div style={{ margin: '10px' }}>
+													<Chip label={index + 1} className='config-page-evaluation-question-chip' />
+													<span>{data.question}</span>
+												</div>
+											)
+										})}
+									</div>
+								</Card>
+							</div>
+
 							<div className='config-page-evaluation-card-right'>
 								<div style={{ padding: '33px' }}>
+									<button type="button" className='config-page-settings-save-button' data-toggle="modal" data-target="#newQuestion">Add New Question</button>
 
-									<button onClick={addNewQuetion} className='config-page-settings-save-button'>
-										Add New Question
-									</button>
+									{/* Add new question Modal */}
+									<>
+										<div class="modal fade" id="newQuestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Add New Question</h5>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<form>
+															<div class="form-group">
+																<label for="message-text" class="col-form-label"><h4>Question:</h4></label>
+																<textarea onChange={(e) => setquestionText(e.target.value)} class="form-control" value={questionText} id="message-text" />
+															</div>
+
+															<FormControl>
+
+																<FormLabel id="demo-radio-buttons-group-label" style={{ color: 'black' }}><h4>Role:</h4></FormLabel>
+
+																<RadioGroup
+																	aria-labelledby="demo-radio-buttons-group-label"
+																	name="radio-buttons-group"
+																	defaultValue='Both'
+																	onChange={handleRadioChange}
+																>
+																	<FormControlLabel value="QA" control={<Radio
+																		sx={{
+																			color: "#6b1d5e",
+																			"&.Mui-checked": {
+																				color: "#6b1d5e"
+																			}
+																		}}
+																	/>} label="QA" />
+																	<FormControlLabel value="Manager" control={<Radio sx={{
+																		color: "#6b1d5e",
+																		"&.Mui-checked": {
+																			color: "#6b1d5e"
+																		}
+																	}} />} label="Manager" />
+																	<FormControlLabel value="Both" control={<Radio sx={{
+																		color: "#6b1d5e",
+																		"&.Mui-checked": {
+																			color: "#6b1d5e"
+																		}
+																	}} />} label="Both" />
+
+																</RadioGroup>
+															</FormControl>
+														</form>
+													</div>
+													<div class="modal-footer">
+														<button onClick={() => setquestionText('')} type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+														{
+															questionText && radioForRole ?
+																<button onClick={() => handleAddQuestion()} type="button" class="config-page-settings-save-button" data-dismiss="modal">Add Question</button>
+																: <button class="config-page-settings-save-button-disabled" type="button">Add Question</button>
+														}
+													</div>
+												</div>
+											</div>
+										</div>
+									</>
+
 								</div>
 							</div>
 						</div>
 					</Card>
 				</div>
+
 			</div>
 
 			<Snackbar
