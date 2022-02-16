@@ -1,16 +1,23 @@
 /* Analysis-Cards */
 .container {
-	display: flex;
+	/* display: flex; */
 }
 
 /* Chart-cards */
 .chartCardContainer {
 	display: flex;
+	justify-content: space-between;
 	margin: 0.5rem 0;
 }
 
+/* .detctionChart {
+	display: flex;
+	justify-content: space-between;
+	margin: 1.5rem 1rem;
+} */
 .detctionChart {
 	display: flex;
+	justify-content: space-between;
 	margin: 0.5rem 0;
 }
 

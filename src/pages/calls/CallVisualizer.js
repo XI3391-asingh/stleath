@@ -16,6 +16,7 @@ import indexService from '../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_CALL_VISUALIZER, GET_ALL_COMMENTS } from '../../store/type';
 import AudioVisualizer from '../../components/calls/wavesurfer-visualizer/AudioVisualizer';
+import EvaluationForm from '../../components/calls/evaluation-form/EvaluationForm';
 
 function CallVisualizer() {
 	let dateTime = moment().format('LLL');
@@ -25,6 +26,7 @@ function CallVisualizer() {
 	const dispatch = useDispatch();
 	const [nowTime, setNowTime] = useState(0);
 	const [isplaying, setIsplaying] = useState(false);
+	const [visualizerWidth, setvisualizerWidth] = useState('100%')
 	const { visualizer } = useSelector((store) => store.call);
 	const { comments } = useSelector((store) => store.call);
 	const { data } = useDemoData({
@@ -41,7 +43,7 @@ function CallVisualizer() {
 			// getCall();
 		}, 30000);
 		return () => clearInterval(interval);
-	}, [callidquery]);
+	}, [callidquery,visualizerWidth]);
 
 	const getCallDetails = () => {
 		indexService.getCallDetails(callidquery).then((resp) => {
@@ -75,7 +77,7 @@ function CallVisualizer() {
 	};
 
 	return (
-		<div className='calls-page-layout'>
+		<div className='calls-page-layout' style={{width:visualizerWidth}}>
 			<div>
 				<Card className='calls-visualizer-details-card'>
 					<Typography
@@ -91,6 +93,7 @@ function CallVisualizer() {
 					>
 						Call Id: {visualizer?.id}
 					</Typography>
+					<EvaluationForm controlWidth={setvisualizerWidth}/>
 				</Card>
 			</div>
 			<div>

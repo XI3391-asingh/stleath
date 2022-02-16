@@ -14,11 +14,40 @@
 
 .config-page-settings-save-button {
 	margin-right: 1rem;
-	background-color: blue;
+	background-color: #6b1d5e;
 	color: white;
 	border: none;
 	font-size: 0.9rem;
-	border-radius: 10px;
+	border-radius: 3px;
 	padding: 0.5rem 1rem;
 	cursor: pointer;
+}
+.config-page-settings-save-button:hover{
+	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) ;
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) ;
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) ;
+}
+
+.config-page-evaluation-card {
+	margin: 1rem !important;
+	padding: 1rem 0;
+	/* box-shadow: ; */
+	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+}
+.config-page-evaluation-card-left{
+display: flex;
+flex-wrap: wrap;
+justify-content:flex-start;
+/* width: 50%; */
+}
+.config-page-evaluation-card-right{
+	
+}
+
+.config-page-evaluation-question-chip{
+	color: white !important;
+	background-color: #6b1d5e !important;
+	margin-right: 5px !important;
 }
