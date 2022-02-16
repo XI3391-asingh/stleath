@@ -1,63 +1,95 @@
 .config-settings-page-layout {
-	display: flow-root;
-	flex-grow: 1;
+  display: flow-root;
+  flex-grow: 1;
 }
 
 .config-page-card-layout {
-	margin: 1rem !important;
-	padding: 1rem 0;
+  margin: 1rem !important;
+  padding: 1rem 0;
 }
 
 .config-page-settings-cards {
-	display: flex;
+  display: flex;
 }
 
 .config-page-settings-save-button {
-	margin-right: 1rem;
-	background-color: #6b1d5e;
-	color: white;
-	border: none;
-	font-size: 0.9rem;
-	border-radius: 3px;
-	padding: 0.5rem 1rem;
-	cursor: pointer;
+  margin-right: 1rem;
+  background-color: #6b1d5e;
+  color: white;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
-.config-page-settings-save-button:hover{
-	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) ;
-	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) ;
-	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) ;
+.config-page-settings-save-button:hover {
+  box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+  -webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
+  -moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45);
 }
 
 .config-page-evaluation-card {
-	margin: 1rem !important;
-	padding: 1rem 0;
-	/* box-shadow: ; */
-	box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
-	-webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
-	-moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+  margin: 1rem !important;
+  padding: 1rem 0;
+  /* box-shadow: ; */
+  box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+  -webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
+  -moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
 }
-.config-page-evaluation-card-questions{
-display: flex;
-flex-wrap: wrap;
-justify-content:flex-start;
+.config-page-evaluation-card-questions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
+.config-page-evaluation-question-chip {
+  color: white !important;
+  background-color: #6b1d5e !important;
+  margin-right: 5px !important;
+}
+.config-page-settings-save-button-disabled {
+  margin-right: 1rem;
+  background-color: #72596d;
+  color: white;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  /* cursor: pointer; */
+}
+.config-page-evaluation-card-question-container {
+  display: flex;
+}
+.config-page-settings-addQuestion-buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+.config-page-settings-cancel-button {
+  margin-right: 1rem;
+  background-color: grey;
+  color: white;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
 
-.config-page-evaluation-question-chip{
-	color: white !important;
-	background-color: #6b1d5e !important;
-	margin-right: 5px !important;
+.config-page-evaluation-card-question {
+  margin: 1rem;
 }
-.config-page-settings-save-button-disabled{
-	margin-right: 1rem;
-	background-color: #72596d;
-	color: white;
-	border: none;
-	font-size: 0.9rem;
-	border-radius: 3px;
-	padding: 0.5rem 1rem;
-	/* cursor: pointer; */
+.config-page-addQuestion-fields {
+  margin: 2rem;
 }
-.config-page-evaluation-card-question-container{
-	display: flex;
+
+.config-page-addQuestion-fields-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  background-color: white !important;
+  border: 2px solid black !important;
+  box-shadow: 24;
+  padding: 2rem;
 }
