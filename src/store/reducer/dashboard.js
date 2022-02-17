@@ -20,6 +20,7 @@ const initialState = {
 	callcountforcards: {},
 	callcountvoiceenergydeviation: [],
 	negativecallcount: [],
+	callforstt: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -44,6 +45,9 @@ const reducer = (state = initialState, action) => {
 			return { ...state, callcountvoiceenergydeviation: action.payload };
 		case actionTypes.GET_NEGATIVE_CALL_COUNT:
 			return { ...state, negativecallcount: action.payload };
+		case actionTypes.CALL_FOR_STT:
+			return { ...state, callforstt: action.payload };
+
 		default:
 			return state;
 	}
