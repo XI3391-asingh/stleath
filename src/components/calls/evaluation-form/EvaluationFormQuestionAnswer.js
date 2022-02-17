@@ -15,6 +15,7 @@ import { ADD_ANSWERS } from '../../../store/type';
 
 function EvaluationFormQuestionAnswer({ questionsanswersdata }) {
 	const dispatch = useDispatch();
+	const [showComment, setShowComment] = useState(false);
 	const [question, setQuestion] = useState([]);
 	const [snackbar, setSnackbar] = useState(false);
 
@@ -145,30 +146,44 @@ function EvaluationFormQuestionAnswer({ questionsanswersdata }) {
 												</div>
 												<div className='evaluation-form-comments-section'>
 													<div className='evaluation-form-buttons'>
-														<button className='evaluation-form-add-comments-button'>
-															Add Comment
-														</button>
-														<button className='evaluation-form-add-comments-button'>
-															Hide Comment
-														</button>
+														{!showComment ? (
+															<button
+																className='evaluation-form-add-comments-button'
+																onClick={() => setShowComment(true)}
+															>
+																Add Comment
+															</button>
+														) : (
+															<button
+																className='evaluation-form-add-comments-button'
+																onClick={() => setShowComment(false)}
+															>
+																Hide Comment
+															</button>
+														)}
 													</div>
-													<Box component='form' noValidate autoComplete='off'>
-														<div>
-															<InputBase
-																id='outlined-textarea'
-																placeholder='Add Comment'
-																multiline
-																variant='outlined'
-																fullWidth
-																className='evaluation-form-inputbase'
-																defaultValue={data?.comment}
-																// value={data?.comment}
-																onChange={(e) =>
-																	updateTextFieldChanged(index, e.target.value)
-																}
-															/>
-														</div>
-													</Box>
+													{showComment ? (
+														<Box component='form' noValidate autoComplete='off'>
+															<div>
+																<InputBase
+																	id='outlined-textarea'
+																	placeholder='Add Comment'
+																	multiline
+																	variant='outlined'
+																	fullWidth
+																	className='evaluation-form-inputbase'
+																	defaultValue={data?.comment}
+																	// value={data?.comment}
+																	onChange={(e) =>
+																		updateTextFieldChanged(
+																			index,
+																			e.target.value
+																		)
+																	}
+																/>
+															</div>
+														</Box>
+													) : null}
 												</div>
 											</div>
 											<Divider className='evaluation-form-divider' />
@@ -176,6 +191,26 @@ function EvaluationFormQuestionAnswer({ questionsanswersdata }) {
 									);
 								})}
 						</div>
+					</div>
+					<div>
+						<label>
+							<Typography
+								variant='body1'
+								className='evaluation-form-overall-feedback-label'
+							>
+								Overall Feedback:
+							</Typography>
+						</label>
+						<InputBase
+							id='outlined-textarea'
+							placeholder='Overall Feedback'
+							multiline
+							variant='outlined'
+							className='evaluation-form-inputbase evaluation-form-overall-feedback'
+							// defaultValue={data?.comment}
+							// value={data?.comment}
+							// onChange={(e) => updateTextFieldChanged(index, e.target.value)}
+						/>
 					</div>
 				</div>
 			</div>

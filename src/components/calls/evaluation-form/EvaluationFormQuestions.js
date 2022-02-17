@@ -23,11 +23,11 @@ function EvaluationFormQuestions({ questionsanswersdata }) {
     //       </div>
     //       <Divider />
     //       <div className="evaluation-form-content"> */}
-			{questionsanswersdata?.length > 0 && (
+			{/* {questionsanswersdata?.length > 0 && (
 				<EvaluationFormQuestionAnswer
 					questionsanswersdata={questionsanswersdata}
 				/>
-			)}
+			)} */}
 			{/* //       </div>
     //     </div>
     //   </div> */}

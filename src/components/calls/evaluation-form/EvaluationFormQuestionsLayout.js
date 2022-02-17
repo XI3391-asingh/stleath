@@ -9,6 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import EvaluationFormQuestions from './EvaluationFormQuestions';
 
 import './styles.css';
+import EvaluationFormQuestionAnswer from './EvaluationFormQuestionAnswer';
 
 function EvaluationFormQuestionsLayout({ questionsanswersdata }) {
 	const [open, setOpen] = useState(false);
@@ -67,7 +68,12 @@ function EvaluationFormQuestionsLayout({ questionsanswersdata }) {
 					</IconButton>
 				</div>
 				<Divider />
-				<EvaluationFormQuestions questionsanswersdata={questionsanswersdata} />
+				{questionsanswersdata?.length > 0 && (
+					<EvaluationFormQuestionAnswer
+						questionsanswersdata={questionsanswersdata}
+					/>
+				)}
+				{/* <EvaluationFormQuestions questionsanswersdata={questionsanswersdata} /> */}
 			</Drawer>
 			<Drawer variant='persistent' anchor='right' open={openManager}>
 				<div className='calls-page-evaluationform-header'>
@@ -82,7 +88,12 @@ function EvaluationFormQuestionsLayout({ questionsanswersdata }) {
 					</IconButton>
 				</div>
 				<Divider />
-				<EvaluationFormQuestions questionsanswersdata={questionsanswersdata} />
+				{questionsanswersdata?.length > 0 && (
+					<EvaluationFormQuestionAnswer
+						questionsanswersdata={questionsanswersdata}
+					/>
+				)}
+				{/* <EvaluationFormQuestions questionsanswersdata={questionsanswersdata} /> */}
 			</Drawer>
 		</div>
 	);

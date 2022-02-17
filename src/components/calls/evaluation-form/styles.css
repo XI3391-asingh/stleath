@@ -176,9 +176,9 @@
 	align-content: flex-end;
 }
 
-.evaluation-form-comments-section {
-	/* margin-bottom: 1rem; */
-}
+/* .evaluation-form-comments-section {
+	margin-bottom: 1rem;
+} */
 
 .evaluation-form-buttons {
 	text-align: end;
@@ -205,6 +205,10 @@
 
 .evaluation-form-radio-button {
 	color: #6b1d5e !important;
+}
+
+.evaluation-form-overall-feedback-label {
+	font-weight: bold;
 }
 
 .evaluation-form-overall-feedback {
