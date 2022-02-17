@@ -126,13 +126,13 @@ class indexService {
 		});
 		return perRequest;
 	};
-
-	getcallforstt = async () => {
+  	getcallforstt = async () => {
 		const perRequest = await Axios.get('/call-for-stt', {
 			headers: headers,
 		});
 		return perRequest;
 	};
+
 }
 
 export default new indexService();

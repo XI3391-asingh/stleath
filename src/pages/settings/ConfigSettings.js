@@ -13,6 +13,7 @@ import {
   Typography,
   FormLabel,
   RadioGroup,
+  IconButton,
   Radio,
   Button,
   FormHelperText,
@@ -20,16 +21,23 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { Chip } from "@material-ui/core";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "./styles.css";
 import CompetitorAnalysis from "../../components/config-settings/competitor-analysis/CompetitorAnalysis";
 import ServiceIssue from "../../components/config-settings/service-issue/ServiceIssue";
 import VoiceEnergyCard from "../../components/config-settings/voice-energy/VoiceEnergyCard";
 import SilenceDetection from "../../components/config-settings/silence-detection/SilenceDetection";
 import { useDispatch, useSelector } from "react-redux";
-import indexService from "../../service/index";
+// import indexService from "../../service/index";
+import {toast} from 'react-toastify';
+import settingServices from "../../service/settingServices";
 import {
   ADD_SETTING_CONFIGURATION,
   GET_SETTING_CONFIGURATION,
+  ADD_NEW_EVALUATION_QUESTION,
+  GET_EVALUATION_QUESTIONS_OF_QA,
+  GET_EVALUATION_QUESTIONS_OF_MANAGER,
+  DELETE_EVALUATION_QUESTION_BY_ID,
 } from "../../store/type";
 import Swal from "sweetalert2";
 
@@ -39,18 +47,31 @@ function ConfigSettings() {
   const [openQuestionModal, setopenQuestionModal] = useState(false);
   const [serviceIssueRule, setServiceIssueRule] = useState([]);
   const [productIssueRule, setProductIssueRule] = useState([]);
+  const [manageStateCount, setmanageStateCount] = useState(0)
   const [questionText, setquestionText] = useState("");
   const [repeatCallVolumeRule, setRepeatCallVolumeRule] = useState([]);
   const [callOpeningRule, setCallOpeningRule] = useState([]);
   const [callClosingRule, setCallClosingRule] = useState([]);
   const [warrantIssueRule, setWarrantIssueRule] = useState([]);
-  const [radioForRole, setradioForRole] = useState("Both");
+  const [radioForRole, setradioForRole] = useState("MANAGER");
   const [agentIdentificationRule, setAgentIdentificationRule] = useState([]);
   const [priceRule, setPriceRule] = useState([]);
   const [holdTimeViolationRule, setHoldTimeViolationRule] = useState([]);
   const [holdTimeViolationThreshold, setHoldTimeViolationThreshold] =
     useState();
   const [voiceEnergyThreshold, setVoiceEnergyThreshold] = useState();
+  const {
+    newEvaluationQuestion,
+    evaluationQuestionsOfManager,
+    evaluationQuestionsOfQA,
+    deleteEvaluationQuestion
+  } = useSelector((store) => store.setting);
+
+  console.log(
+    evaluationQuestionsOfManager,
+    "newEvaluationQuestion",
+    evaluationQuestionsOfQA
+  );
   const [domainAccuracy, setDomainAccuracy] = useState([]);
   const [competitorAnalysis, setCompetitorAnalysis] = useState([
     { label: "", score: "" },
@@ -63,8 +84,15 @@ function ConfigSettings() {
     getSettingConfiguration();
   }, []);
 
+  useEffect(() => {
+    getEvaluationQuestionsByType({ type: "QA" });
+    getEvaluationQuestionsByType({ type: "MANAGER" });
+  }, [manageStateCount]);
+
+// console.log(deleteEvaluationQuestion,'deleteEvaluationQuestion')
+
   const getSettingConfiguration = () => {
-    indexService.getSettingConfiguration().then((resp) => {
+    settingServices.getSettingConfiguration().then((resp) => {
       if (resp.isSuccess) {
         dispatch({
           type: GET_SETTING_CONFIGURATION,
@@ -121,6 +149,22 @@ function ConfigSettings() {
     });
   };
 
+  const getEvaluationQuestionsByType = (input) => {
+    settingServices.getEvaluationQuestions(input).then((resp) => {
+      if (resp.isSuccess && input.type == "QA") {
+        dispatch({
+          type: GET_EVALUATION_QUESTIONS_OF_QA,
+          payload: resp.data,
+        });
+      } else if (resp.isSuccess && input.type == "MANAGER") {
+        dispatch({
+          type: GET_EVALUATION_QUESTIONS_OF_MANAGER,
+          payload: resp.data,
+        });
+      }
+    });
+  };
+
   const onSubmit = () => {
     let comparisonrule = {
       label: [],
@@ -162,7 +206,7 @@ function ConfigSettings() {
       hold_time_violation_threshold: holdTimeViolationThreshold,
       hold_time_violation_rule: holdTimeViolationRule,
     };
-    indexService.addSettingConfiguration(payload).then((resp) => {
+    settingServices.addSettingConfiguration(payload).then((resp) => {
       if (resp.isSuccess) {
         setOpen(true);
         dispatch({
@@ -172,12 +216,6 @@ function ConfigSettings() {
       }
     });
   };
-  const evaluationQuestions = [
-    { question: "This is my first question and everything asked is correct" },
-    { question: "This is my second question and everything asked is correct" },
-    { question: "This is my third question and everything asked is correct" },
-    { question: "This is my fourth question and everything asked is correct" },
-  ];
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -186,14 +224,56 @@ function ConfigSettings() {
     setOpen(false);
   };
   const handleRadioChange = (e) => {
-    console.log(e.target.value, "colorChange", questionText);
     setradioForRole(e.target.value);
   };
+
   const handleAddQuestion = () => {
-    console.log(radioForRole, "colorChange", questionText);
+
+    // const res=dispatch()
+    let input = {
+      title: questionText,
+      type: radioForRole,
+      options:["Yes", "No", "N/A"]
+    };
+
+    settingServices.addNewQuestion(input).then((resp) => {
+      if (resp.isSuccess) {
+        dispatch({
+          type: ADD_NEW_EVALUATION_QUESTION,
+          payload: resp?.data,
+        });
+        setmanageStateCount(manageStateCount===0?1:0);
+
+        toast.success("Question Added Successfully");
+        
+      } else {
+        toast.error("Error while uploading question");
+      }
+    });
+    setradioForRole('MANAGER');
     setquestionText("");
     closeAddQuestionModal();
   };
+
+  function handleQuestionDelete(input){
+
+    settingServices.deleteEvaluationQuestion(input).then((resp)=>{
+
+      if(resp.isSuccess){
+        dispatch({
+          type:DELETE_EVALUATION_QUESTION_BY_ID,
+          payload:resp?.data
+        });
+        toast.success("Question Deleted Successfully");
+        
+        setmanageStateCount(manageStateCount===0?1:0);
+
+      } else {
+        toast.error("Error while deleting question");
+      }
+      
+    })
+  }
   const openAddQuestionModal = () => {
     setopenQuestionModal(true);
   };
@@ -312,7 +392,7 @@ function ConfigSettings() {
         <div>
           <Typography variant="h5">Evaluation Form</Typography>
           <Card className="config-page-evaluation-card">
-            <div style={{ margin: "30px", justifyContent: "" }}>
+            <div>
               <div className="config-page-evaluation-card-question-container">
                 <Card className="competitor-card-layout">
                   <Typography variant="h6" className="competitor-card-heading">
@@ -320,14 +400,26 @@ function ConfigSettings() {
                   </Typography>
 
                   <div className="config-page-evaluation-card-questions">
-                    {evaluationQuestions.map((data, index) => {
+                    {evaluationQuestionsOfManager?.map((data, index) => {
                       return (
                         <div className="config-page-evaluation-card-question">
-                          <Chip
-                            label={index + 1}
-                            className="config-page-evaluation-question-chip"
-                          />
-                          <span>{data.question}</span>
+                          <div>
+                            <Chip
+                              label={index + 1}
+                              className="config-page-evaluation-question-chip"
+                            />
+                            <span>{data.title}</span>
+                          </div>
+                          <div  onClick={()=>handleQuestionDelete(data.id)}>
+
+                          <IconButton
+                            aria-label="delete"
+                            color="primary"
+                           
+                          >
+                            <DeleteIcon sx={{color:"gray"}}/>
+                          </IconButton>
+                          </div>
                         </div>
                       );
                     })}
@@ -339,14 +431,26 @@ function ConfigSettings() {
                     QA's Questions
                   </Typography>
                   <div className="config-page-evaluation-card-questions">
-                    {evaluationQuestions.map((data, index) => {
+                    {evaluationQuestionsOfQA?.map((data, index) => {
                       return (
                         <div className="config-page-evaluation-card-question">
-                          <Chip
-                            label={index + 1}
-                            className="config-page-evaluation-question-chip"
-                          />
-                          <span>{data.question}</span>
+                          <div>
+                            <Chip
+                              label={index + 1}
+                              className="config-page-evaluation-question-chip"
+                            />
+                            <span>{data.title}</span>
+                          </div>
+                          <div  onClick={()=>handleQuestionDelete(data.id)}>
+
+                          <IconButton
+                            aria-label="delete"
+                            color="primary"
+                            
+                          >
+                            <DeleteIcon sx={{color:"gray"}}/>
+                          </IconButton>
+                          </div>
                         </div>
                       );
                     })}
@@ -355,119 +459,112 @@ function ConfigSettings() {
               </div>
 
               <div className="config-page-evaluation-card-right">
-               
-                  <button
-                    className="config-page-settings-save-button"
-                    onClick={openAddQuestionModal}
-                  >
-                    Add New Question
-                  </button>
+                <button
+                  className="config-page-settings-save-button"
+                  onClick={openAddQuestionModal}
+                >
+                  Add New Question
+                </button>
 
-                  {/* Add new question Modal */}
+                {/* Add new question Modal */}
 
-                  <Modal
-                    open={openQuestionModal}
-                    onClose={closeAddQuestionModal}
-                  >
-                    <Box className="config-page-addQuestion-fields-container">
-                      <div className="config-page-addQuestion-fields">
-                        <FormControl>
-                          <FormLabel
-                            id="demo-radio-buttons-group-label"
-                            style={{ color: "black" }}
-                          >
-                            <h4>Role:</h4>
-                          </FormLabel>
-
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            name="radio-buttons-group"
-                            defaultValue="Both"
-                            onChange={handleRadioChange}
-                          >
-                            <FormControlLabel
-                              value="QA"
-                              control={
-                                <Radio
-                                  sx={{
-                                    color: "#6b1d5e",
-                                    "&.Mui-checked": {
-                                      color: "#6b1d5e",
-                                    },
-                                  }}
-                                />
-                              }
-                              label="QA"
-                            />
-                            <FormControlLabel
-                              value="Manager"
-                              control={
-                                <Radio
-                                  sx={{
-                                    color: "#6b1d5e",
-                                    "&.Mui-checked": {
-                                      color: "#6b1d5e",
-                                    },
-                                  }}
-                                />
-                              }
-                              label="Manager"
-                            />
-                            <FormControlLabel
-                              value="Both"
-                              control={
-                                <Radio
-                                  sx={{
-                                    color: "#6b1d5e",
-                                    "&.Mui-checked": {
-                                      color: "#6b1d5e",
-                                    },
-                                  }}
-                                />
-                              }
-                              label="Both"
-                            />
-                          </RadioGroup>
-                        </FormControl>
-                      </div>
-                      <div className="config-page-addQuestion-fields">
-                        <Typography variant="h6">Question</Typography>
-                        <Box component="form" noValidate autoComplete="off">
-                          <div>
-                            <textarea
-                              onChange={(e) => setquestionText(e.target.value)}
-                              class="form-control"
-                              value={questionText}
-                              id="message-text"
-                            />
-                          </div>
-                        </Box>
-                      </div>
-                      <div className="config-page-settings-addQuestion-buttons-container">
-                        <button
-                          className="config-page-settings-cancel-button"
-                          onClick={closeAddQuestionModal}
+                <Modal open={openQuestionModal} onClose={closeAddQuestionModal}>
+                  <Box className="config-page-addQuestion-fields-container">
+                    <div className="config-page-addQuestion-fields">
+                      <FormControl>
+                        <FormLabel
+                          id="demo-radio-buttons-group-label"
+                          style={{ color: "black" }}
                         >
-                          Cancel
+                          <Typography variant="h6">Role:</Typography>
+                        </FormLabel>
+
+                        <RadioGroup
+                          aria-labelledby="demo-radio-buttons-group-label"
+                          name="radio-buttons-group"
+                          defaultValue="MANAGER"
+                          onChange={handleRadioChange}
+                        >
+                          <FormControlLabel
+                            value="QA"
+                            control={
+                              <Radio
+                                sx={{
+                                  color: "#6b1d5e",
+                                  "&.Mui-checked": {
+                                    color: "#6b1d5e",
+                                  },
+                                }}
+                              />
+                            }
+                            label="QA"
+                          />
+                          <FormControlLabel
+                            value="MANAGER"
+                            control={
+                              <Radio
+                                sx={{
+                                  color: "#6b1d5e",
+                                  "&.Mui-checked": {
+                                    color: "#6b1d5e",
+                                  },
+                                }}
+                              />
+                            }
+                            label="Manager"
+                          />
+                          {/* <FormControlLabel
+                            value="Both"
+                            control={
+                              <Radio
+                                sx={{
+                                  color: "#6b1d5e",
+                                  "&.Mui-checked": {
+                                    color: "#6b1d5e",
+                                  },
+                                }}
+                              />
+                            }
+                            label="Both"
+                          /> */}
+                        </RadioGroup>
+                      </FormControl>
+                    </div>
+                    <div className="config-page-addQuestion-fields">
+                      <Typography variant="h6">Question:</Typography>
+                      <Box component="form" noValidate autoComplete="off">
+                        <div>
+                          <textarea
+                            onChange={(e) => setquestionText(e.target.value)}
+                            class="form-control"
+                            value={questionText}
+                            id="message-text"
+                          />
+                        </div>
+                      </Box>
+                    </div>
+                    <div className="config-page-settings-addQuestion-buttons-container">
+                      <button
+                        className="config-page-settings-cancel-button"
+                        onClick={closeAddQuestionModal}
+                      >
+                        Cancel
+                      </button>
+                      {questionText && radioForRole ? (
+                        <button
+                          className="config-page-settings-save-button"
+                          onClick={handleAddQuestion}
+                        >
+                          Submit
                         </button>
-                        {questionText && radioForRole ? (
-                          <button
-                            className="config-page-settings-save-button"
-                            onClick={handleAddQuestion}
-                          >
-                            Submit
-                          </button>
-                        ) : (
-                          <button
-                            className="config-page-settings-save-button-disabled"
-                          >
-                            Submit
-                          </button>
-                        )}
-                      </div>
-                    </Box>
-                  </Modal>
-                
+                      ) : (
+                        <button  className="config-page-settings-save-button-disabled">
+                          Submit
+                        </button>
+                      )}
+                    </div>
+                  </Box>
+                </Modal>
               </div>
             </div>
           </Card>

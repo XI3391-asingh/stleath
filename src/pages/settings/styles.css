@@ -37,9 +37,9 @@
   -moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
 }
 .config-page-evaluation-card-questions {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between; */
 }
 
 .config-page-evaluation-question-chip {
@@ -77,6 +77,8 @@
 
 .config-page-evaluation-card-question {
   margin: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 .config-page-addQuestion-fields {
   margin: 2rem;
@@ -92,4 +94,10 @@
   border: 2px solid black !important;
   box-shadow: 24;
   padding: 2rem;
+}
+#message-text {
+  width: 100%;
+  border: 0.5px solid #6b1d5e;
+  border-radius: 4px;
+  margin-top: 10px;
 }
