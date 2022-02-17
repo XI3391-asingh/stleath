@@ -126,6 +126,7 @@ class indexService {
 		});
 		return perRequest;
 	};
+	
 }
 
 export default new indexService();
