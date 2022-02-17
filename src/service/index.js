@@ -126,6 +126,25 @@ class indexService {
 		});
 		return perRequest;
 	};
+
+	getQuestions = async () => {
+		const perRequest = await Axios.post('/get-questions', {
+			type: 'QA',
+		});
+		return perRequest;
+	};
+
+	getAnswers = async (id) => {
+		const perRequest = await Axios.post('/get-answers', {
+			call_id: id,
+		});
+		return perRequest;
+	};
+
+	saveAnswers = async (payload) => {
+		const perRequest = await Axios.post('/save-answers', payload);
+		return perRequest;
+	};
 }
 
 export default new indexService();

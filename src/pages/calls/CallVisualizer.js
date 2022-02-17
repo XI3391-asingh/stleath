@@ -14,7 +14,13 @@ import { useLocation } from 'react-router-dom';
 
 import indexService from '../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_CALL_VISUALIZER, GET_ALL_COMMENTS } from '../../store/type';
+import {
+	GET_CALL_VISUALIZER,
+	GET_ALL_COMMENTS,
+	GET_QUESTIONS,
+	GET_ANSWERS,
+	GET_QUESTIONS_ANSWERS,
+} from '../../store/type';
 import AudioVisualizer from '../../components/calls/wavesurfer-visualizer/AudioVisualizer';
 import EvaluationForm from '../../components/calls/evaluation-form/EvaluationForm';
 
@@ -26,9 +32,11 @@ function CallVisualizer() {
 	const dispatch = useDispatch();
 	const [nowTime, setNowTime] = useState(0);
 	const [isplaying, setIsplaying] = useState(false);
-	const [visualizerWidth, setvisualizerWidth] = useState('100%')
+	const [questionsanswersdata, setquestionsanswersdata] = useState([]);
+	const [visualizerWidth, setvisualizerWidth] = useState('100%');
 	const { visualizer } = useSelector((store) => store.call);
-	const { comments } = useSelector((store) => store.call);
+	const { comments, questionsanswers } = useSelector((store) => store.call);
+
 	const { data } = useDemoData({
 		dataSet: 'Commodity',
 		rowLength: 100,
@@ -38,12 +46,13 @@ function CallVisualizer() {
 	useEffect(() => {
 		getCall();
 		getCallDetails();
+		getQuestionsAnswers();
 		const interval = setInterval(() => {
 			getCallDetails();
 			// getCall();
 		}, 30000);
 		return () => clearInterval(interval);
-	}, [callidquery,visualizerWidth]);
+	}, [callidquery, visualizerWidth]);
 
 	const getCallDetails = () => {
 		indexService.getCallDetails(callidquery).then((resp) => {
@@ -64,7 +73,6 @@ function CallVisualizer() {
 					let calldata = feeddata.filter(
 						(resp) => resp.id === parseInt(callidquery)
 					);
-					console.log(calldata);
 					if (calldata?.length) {
 						dispatch({
 							type: GET_CALL_VISUALIZER,
@@ -76,8 +84,80 @@ function CallVisualizer() {
 		});
 	};
 
+	const getQuestionsAnswers = () => {
+		Promise.all([
+			indexService.getQuestions(),
+			indexService.getAnswers(callidquery),
+		])
+			.then((values) => {
+				let questions = [];
+				let answers = [];
+				if (
+					values.length &&
+					values[0] &&
+					values[0].data &&
+					values[0].data.length
+				) {
+					questions = values[0].data;
+				}
+				if (
+					values.length &&
+					values[0] &&
+					values[0].data &&
+					values[0].data.length
+				) {
+					answers = values[1].data;
+				}
+				const questionsanswers = questions.map((question) => {
+					let answer = {};
+					let answerdata = answers
+						// .reverse()
+						.find((answer) => question.id == answer.question_id);
+					if (answerdata) {
+						answer = answerdata;
+					} else {
+						answer = {
+							call_id: callidquery,
+							comment: '',
+							option_selected: '',
+							question_id: question.id,
+						};
+					}
+					return {
+						...question,
+						...answer,
+					};
+				});
+				setquestionsanswersdata(questionsanswers);
+				dispatch({
+					type: GET_QUESTIONS_ANSWERS,
+					payload: questionsanswers,
+				});
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+		// indexService.getQuestions().then((resp) => {
+		//   if (resp.isSuccess) {
+		//     dispatch({
+		//       type: GET_QUESTIONS,
+		//       payload: resp?.data,
+		//     });
+
+		//     indexService.getAnswers(callidquery).then((resp) => {
+		//       if (resp.isSuccess) {
+		//         dispatch({
+		//           type: GET_ANSWERS,
+		//           payload: resp?.data,
+		//         });
+		//       }
+		//     });
+		//   }
+		// });
+	};
+
 	return (
-		<div className='calls-page-layout' style={{width:visualizerWidth}}>
+		<div className='calls-page-layout' style={{ width: visualizerWidth }}>
 			<div>
 				<Card className='calls-visualizer-details-card'>
 					<Typography
@@ -93,7 +173,10 @@ function CallVisualizer() {
 					>
 						Call Id: {visualizer?.id}
 					</Typography>
-					<EvaluationForm controlWidth={setvisualizerWidth}/>
+					<EvaluationForm
+						controlWidth={setvisualizerWidth}
+						questionsanswersdata={questionsanswersdata}
+					/>
 				</Card>
 			</div>
 			<div>

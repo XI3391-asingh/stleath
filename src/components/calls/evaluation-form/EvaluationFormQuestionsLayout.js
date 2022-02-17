@@ -10,7 +10,7 @@ import EvaluationFormQuestions from './EvaluationFormQuestions';
 
 import './styles.css';
 
-function EvaluationFormQuestionsLayout() {
+function EvaluationFormQuestionsLayout({ questionsanswersdata }) {
 	const [open, setOpen] = useState(false);
 	const [openManager, setOpenManager] = useState(false);
 
@@ -67,7 +67,7 @@ function EvaluationFormQuestionsLayout() {
 					</IconButton>
 				</div>
 				<Divider />
-				<EvaluationFormQuestions />
+				<EvaluationFormQuestions questionsanswersdata={questionsanswersdata} />
 			</Drawer>
 			<Drawer variant='persistent' anchor='right' open={openManager}>
 				<div className='calls-page-evaluationform-header'>
@@ -82,7 +82,7 @@ function EvaluationFormQuestionsLayout() {
 					</IconButton>
 				</div>
 				<Divider />
-				<EvaluationFormQuestions />
+				<EvaluationFormQuestions questionsanswersdata={questionsanswersdata} />
 			</Drawer>
 		</div>
 	);

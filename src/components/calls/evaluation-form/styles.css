@@ -123,6 +123,11 @@
 	cursor: pointer;
 }
 
+.evaluation-form-overall-feedback-label {
+	padding: 0 1rem 0.5rem;
+	font-weight: bold !important;
+}
+
 /* Questions Card */
 
 .evaluation-form-layout {
@@ -136,7 +141,7 @@
 }
 
 .evaluation-form-content {
-	padding: 1rem;
+	padding: 1rem 1rem 0;
 }
 
 .evaluation-form-divider {
@@ -200,4 +205,9 @@
 
 .evaluation-form-radio-button {
 	color: #6b1d5e !important;
+}
+
+.evaluation-form-overall-feedback {
+	margin: 0 1rem 1rem;
+	width: -webkit-fill-available;
 }
