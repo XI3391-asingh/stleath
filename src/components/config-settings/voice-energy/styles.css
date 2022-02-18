@@ -1,6 +1,11 @@
 .voice-energy-card-layout {
-	margin: 1rem;
-	padding: 1rem;
-	width: 50%;
-	overflow: visible !important;
+  margin: 1rem;
+  padding: 1rem;
+  width: 50%;
+  overflow: visible !important;
+
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-evenly;
 }
