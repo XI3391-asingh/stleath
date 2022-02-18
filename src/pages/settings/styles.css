@@ -36,10 +36,23 @@
   -webkit-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
   -moz-box-shadow: 1px 2px 8px 1px rgba(166, 165, 165, 0.45) !important;
 }
+
 .config-page-evaluation-card-questions {
   /* display: flex;
   flex-wrap: wrap;
+  
   justify-content: space-between; */
+}
+
+.user-settings-card-discription {
+  font-size: 0.9vw;
+  color: black;
+}
+.user-settings-card-title {
+  padding: 0.5rem;
+  font-size: 1.5vw !important;
+  color: #6b1d5e;
+  font-weight: 600 !important ;
 }
 
 .config-page-evaluation-question-chip {
@@ -59,6 +72,8 @@
 }
 .config-page-evaluation-card-question-container {
   display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 .config-page-settings-addQuestion-buttons-container {
   display: flex;
@@ -100,4 +115,22 @@
   border: 0.5px solid #6b1d5e;
   border-radius: 4px;
   margin-top: 10px;
+}
+.user-settings-card-image {
+  width: 35%;
+}
+.user-settings-card-layout {
+  margin: 1rem;
+  width: 25%;
+  height: 20% !important;
+  cursor: pointer;
+  padding: 1rem;
+  overflow: visible !important;
+}
+.user-settings-card-layout:hover {
+  box-shadow: 0px 0px 12px 2px #6b1d5e41;
+}
+.user-settings-page-heading {
+  margin: 12px;
+  font-size: 1.5vw !important;
 }
