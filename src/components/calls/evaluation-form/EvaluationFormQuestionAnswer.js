@@ -112,7 +112,7 @@ function EvaluationFormQuestionAnswer({
 				<Modal open={openModal} onClose={handleClose}>
 					<Box className='evaluation-form-discard-modal'>
 						<div>
-							<Typography variant='h5'>
+							<Typography variant='body1'>
 								Are you sure, you want to discard your recent changes?
 							</Typography>
 						</div>
@@ -137,7 +137,12 @@ function EvaluationFormQuestionAnswer({
 			<div>
 				<div className='evaluation-form-layout'>
 					<div className='evaluation-form-header'>
-						<Typography variant='body1'>Items</Typography>
+						<Typography
+							variant='body2'
+							className='evaluation-form-items-heading'
+						>
+							Items
+						</Typography>
 					</div>
 					<Divider />
 					<div className='evaluation-form-content'>
@@ -156,7 +161,7 @@ function EvaluationFormQuestionAnswer({
 															*
 														</Typography>
 														<Typography
-															variant='body1'
+															variant='body2'
 															className='evaluation-form-question'
 														>
 															{index + 1}. {data.title}
@@ -177,7 +182,10 @@ function EvaluationFormQuestionAnswer({
 																	<FormControlLabel
 																		value={item}
 																		control={
-																			<Radio className='evaluation-form-radio-button' />
+																			<Radio
+																				className='evaluation-form-radio-button'
+																				size='small'
+																			/>
 																		}
 																		label={item}
 																	/>
@@ -187,7 +195,7 @@ function EvaluationFormQuestionAnswer({
 													</div>
 												</div>
 												<div className='evaluation-form-comments-section'>
-													<div className='evaluation-form-buttons'>
+													<div className='evaluation-form-comment-buttons'>
 														<button
 															className='evaluation-form-add-comments-button'
 															onClick={() => addCommentShow(index)}

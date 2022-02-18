@@ -26,12 +26,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	height: 4rem;
+	height: 4rem !important;
+	padding: 0 0 0 0.5rem;
 	background-color: lightgrey;
 }
 
 .calls-page-evaluationform-heading {
-	padding: 0 0.5rem;
 	margin-top: 0.75rem !important;
 	font-weight: bold !important;
 }
@@ -62,8 +62,8 @@
 
 /* Questions */
 
-.evaluation-form-options {
-	padding: 0 1rem 1rem 1rem;
+.evaluation-form-options-layout {
+	margin: 1rem 1rem;
 }
 
 .evaluation-form-options-heading {
@@ -72,9 +72,9 @@
 
 .evaluation-form-options-paper-layout {
 	height: 3rem;
-	margin: 0 1rem 1rem 1rem;
+	margin: 0.5rem 0;
 	padding: 0.5rem;
-	width: 24.3rem;
+	width: -webkit-fill-available;
 	background-color: transparent;
 	border: 1px solid lightgrey;
 }
@@ -86,15 +86,23 @@
 }
 
 .evaluation-form-option-type {
-	font-size: 1rem !important;
+	font-size: 0.8rem !important;
+	align-self: center;
 }
 
 /* Form Questions */
 
+.evaluation-form-type-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 4rem !important;
+	padding: 0.5rem 0 0.5rem;
+	background-color: lightgrey;
+}
 .evaluation-form-qa-type-heading {
 	font-weight: bold !important;
-	height: 4rem !important;
-	padding-top: 2rem;
+	align-self: center;
 }
 
 .evaluation-form-buttons {
@@ -106,7 +114,7 @@
 	color: red;
 	border: 1px solid red;
 	background-color: transparent;
-	font-size: 0.9rem;
+	font-size: 0.75rem;
 	border-radius: 0.2rem;
 	padding: 0.5rem 1rem;
 	cursor: pointer;
@@ -118,7 +126,7 @@
 	background-color: #6b1d5e;
 	color: white;
 	border: none;
-	font-size: 0.9rem;
+	font-size: 0.75rem;
 	border-radius: 0.2rem;
 	padding: 0.5rem 1rem;
 	cursor: pointer;
@@ -141,6 +149,10 @@
 	padding: 1rem;
 }
 
+.evaluation-form-items-heading {
+	font-weight: bold !important;
+}
+
 .evaluation-form-content {
 	padding: 1rem 1rem 0;
 }
@@ -155,11 +167,11 @@
 
 .evaluation-form-astreisk {
 	color: red;
-	font-size: 1rem !important;
 }
 
 .evaluation-form-question {
 	font-weight: bold !important;
+	font-size: 0.8rem !important;
 }
 
 .evaluation-form-question-layout {
@@ -177,19 +189,26 @@
 	align-content: flex-end;
 }
 
-/* .evaluation-form-comments-section {
-	margin-bottom: 1rem;
-} */
+.evaluation-form-comments-section {
+	padding: 0.5rem;
+}
+
+.evaluation-form-comment-buttons {
+	display: flex;
+	align-content: center;
+	justify-content: flex-end;
+}
 
 .evaluation-form-buttons {
 	text-align: end;
+	padding: 0.75rem;
 }
 
 .evaluation-form-add-comments-button {
 	color: purple;
 	border: none;
 	background: none;
-	font-size: 0.9rem;
+	font-size: 0.75rem;
 	cursor: pointer;
 }
 
@@ -237,4 +256,8 @@
 
 .evaluation-form-discard-modal-buttons {
 	align-items: center;
+}
+
+.MuiFormControlLabel-label {
+	font-size: 0.8rem !important;
 }
