@@ -127,6 +127,13 @@ class indexService {
 		return perRequest;
 	};
 
+	getcallforstt = async () => {
+		const perRequest = await Axios.get('/call-for-stt', {
+			headers: headers,
+		});
+		return perRequest;
+	};
+
 	getQuestions = async (type) => {
 		const perRequest = await Axios.post('/get-questions', {
 			type: type,

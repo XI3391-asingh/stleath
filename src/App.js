@@ -12,6 +12,9 @@ import Login from './pages/login/Login';
 import Messages from './pages/messages/Messages';
 import Notifications from './pages/notifications/Notifications';
 import ConfigSettings from './pages/settings/ConfigSettings';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure()
 
 function App() {
 	return (

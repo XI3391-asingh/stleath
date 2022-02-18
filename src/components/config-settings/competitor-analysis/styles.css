@@ -13,8 +13,9 @@
 .competitor-card-button {
 	margin: 1rem 0;
 	background-color: white !important;
-	color: blue !important;
+	color: #6b1d5e !important;
 	border: none;
+	font-weight: bold;
 	cursor: pointer;
 }
 
