@@ -7,7 +7,11 @@ import EvaluationFormQuestionsLayout from './EvaluationFormQuestionsLayout';
 
 import './styles.css';
 
-function EvaluationFormOptions() {
+function EvaluationFormOptions({
+	questionsanswersdata,
+	managerqueans,
+	evaluationFormCallback,
+}) {
 	return (
 		<div>
 			<div>
@@ -19,7 +23,11 @@ function EvaluationFormOptions() {
 				</div>
 				<div>
 					<Box>
-						<EvaluationFormQuestionsLayout />
+						<EvaluationFormQuestionsLayout
+							questionsanswersdata={questionsanswersdata}
+							managerqueans={managerqueans}
+							evaluationFormCallback={evaluationFormCallback}
+						/>
 					</Box>
 				</div>
 			</div>

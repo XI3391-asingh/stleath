@@ -82,6 +82,7 @@
 .evaluation-form-option {
 	display: flex;
 	justify-content: space-between;
+	cursor: pointer;
 }
 
 .evaluation-form-option-type {
@@ -123,6 +124,11 @@
 	cursor: pointer;
 }
 
+.evaluation-form-overall-feedback-label {
+	padding: 0 1rem 0.5rem;
+	font-weight: bold !important;
+}
+
 /* Questions Card */
 
 .evaluation-form-layout {
@@ -136,7 +142,7 @@
 }
 
 .evaluation-form-content {
-	padding: 1rem;
+	padding: 1rem 1rem 0;
 }
 
 .evaluation-form-divider {
@@ -171,9 +177,9 @@
 	align-content: flex-end;
 }
 
-.evaluation-form-comments-section {
-	/* margin-bottom: 1rem; */
-}
+/* .evaluation-form-comments-section {
+	margin-bottom: 1rem;
+} */
 
 .evaluation-form-buttons {
 	text-align: end;
@@ -200,4 +206,35 @@
 
 .evaluation-form-radio-button {
 	color: #6b1d5e !important;
+}
+
+.evaluation-form-overall-feedback-label {
+	font-weight: bold;
+}
+
+.evaluation-form-overall-feedback {
+	margin: 0 1rem 1rem;
+	width: -webkit-fill-available;
+}
+
+.evaluation-form-discard-modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 30%;
+	height: 30%;
+	background-color: white !important;
+	border: 2px solid black !important;
+	box-shadow: 24;
+	padding: 2rem 1rem;
+	text-align: center;
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.evaluation-form-discard-modal-buttons {
+	align-items: center;
 }

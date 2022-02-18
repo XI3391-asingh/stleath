@@ -4,15 +4,15 @@ import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import CloseIcon from '@mui/icons-material/Close';
 
 import './styles.css';
-import {
-	Divider,
-	Drawer,
-	IconButton,
-	Typography,
-} from '@material-ui/core';
+import { Divider, Drawer, IconButton, Typography } from '@material-ui/core';
 import EvaluationFormOptions from './EvaluationFormOptions';
 
-function EvaluationForm({ controlWidth }) {
+function EvaluationForm({
+	controlWidth,
+	questionsanswersdata,
+	managerqueans,
+	evaluationFormCallback,
+}) {
 	const [open, setOpen] = useState(false);
 
 	const handleDrawerOpen = () => {
@@ -50,7 +50,11 @@ function EvaluationForm({ controlWidth }) {
 					</IconButton>
 				</div>
 				<Divider />
-				<EvaluationFormOptions />
+				<EvaluationFormOptions
+					questionsanswersdata={questionsanswersdata}
+					evaluationFormCallback={evaluationFormCallback}
+					managerqueans={managerqueans}
+				/>
 			</Drawer>
 		</div>
 	);

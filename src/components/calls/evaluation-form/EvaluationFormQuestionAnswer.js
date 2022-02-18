@@ -6,413 +6,226 @@ import {
 	RadioGroup,
 	Typography,
 	InputBase,
+	Modal,
 } from '@material-ui/core';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import indexService from '../../../service/index';
+import { ADD_ANSWERS } from '../../../store/type';
+import { toast } from 'react-toastify';
 
-function EvaluationFormQuestionAnswer() {
-	const [questionOne, setQuestionOne] = useState('');
-	const [questionTwo, setQuestionTwo] = useState('');
-	const [questionThree, setQuestionThree] = useState('');
-	const [questionFour, setQuestionFour] = useState('');
-	const [questionFive, setQuestionFive] = useState('');
-	const [questionSix, setQuestionSix] = useState('');
+function EvaluationFormQuestionAnswer({
+	questionsanswersdata,
+	evaluationFormCallback,
+	setOpen,
+}) {
+	const dispatch = useDispatch();
+	const [question, setQuestion] = useState([]);
+	const [openModal, setOpenModal] = useState(false);
+	const [isaddcomment, setisaddcomment] = useState(false);
+
+	useEffect(() => {
+		setQuestion(questionsanswersdata);
+	}, []);
+
+	const updateFieldChanged = (index, value) => {
+		question[index]['option_selected'] = value;
+		setQuestion(question);
+	};
+
+	const updateTextFieldChanged = (index, value) => {
+		question[index]['comment'] = value;
+		setQuestion(question);
+	};
+
+	const discardAnswer = () => {
+		handleOpen();
+		setQuestion(questionsanswersdata);
+	};
+
+	const handleOpen = () => {
+		setOpenModal(true);
+	};
+
+	const handleClose = () => {
+		setOpenModal(false);
+	};
+
+	const modalContinue = () => {
+		evaluationFormCallback();
+		setOpenModal(false);
+		setOpen(false);
+	};
+
+	const saveAnswer = () => {
+		let newquestionanswer = [...question];
+		const questionsanswers = newquestionanswer.map((question) => {
+			return {
+				call_id: question.call_id,
+				option_selected: question.option_selected,
+				question_id: question.question_id,
+				comment: question.comment,
+			};
+		});
+		indexService
+			.saveAnswers({
+				answers: questionsanswers,
+			})
+			.then((resp) => {
+				if (resp.isSuccess) {
+					dispatch({
+						type: ADD_ANSWERS,
+						payload: resp?.data,
+					});
+					toast.success('Your responses were saved successfully');
+					setOpen(false);
+				} else {
+					toast.error('Error! Please try again later');
+				}
+			});
+	};
+
+	const addCommentShow = (index) => {
+		question[index]['iscomment'] = question[index]['iscomment'] ? false : true;
+		setQuestion(question);
+		setisaddcomment(isaddcomment ? false : true);
+	};
 
 	return (
 		<div>
-			<div>
-				<div className='evaluation-form-question-answer-block'>
-					<div className='evaluation-form-question-layout'>
-						<Typography variant='caption' className='evaluation-form-astreisk'>
-							*
-						</Typography>
-						<Typography variant='body1' className='evaluation-form-question'>
-							1. Did the agent verify the customer?
-						</Typography>
-					</div>
-					<div className='evaluation-form-answer'>
-						<RadioGroup
-							value={questionOne}
-							onChange={(e) => setQuestionOne(e.target.value)}
-							aria-labelledby='demo-radio-buttons-group-label'
-							defaultValue=''
-							name='radio-buttons-group'
-							className='evaluation-form-radio-group'
-						>
-							<FormControlLabel
-								value='Yes'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='Yes'
-							/>
-							<FormControlLabel
-								value='No'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='No '
-							/>
-							<FormControlLabel
-								value='N/A'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='N/A'
-							/>
-						</RadioGroup>
-					</div>
-				</div>
-				<div className='evaluation-form-comments-section'>
-					<div className='evaluation-form-buttons'>
-						{/* {!comment ? ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Add Comment
-						</button>
-						{/* ) : ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Hide Comment
-						</button>
-						{/* )} */}
-					</div>
-					<Box component='form' noValidate autoComplete='off'>
+			<div className='evaluation-form-buttons'>
+				<button
+					className='evaluation-form-discard-button'
+					type='button'
+					onClick={() => discardAnswer()}
+				>
+					Discard
+				</button>
+				<button
+					className='evaluation-form-submit-button'
+					type='button'
+					onClick={() => saveAnswer()}
+				>
+					Submit
+				</button>
+				<Modal open={openModal} onClose={handleClose}>
+					<Box className='evaluation-form-discard-modal'>
 						<div>
-							<InputBase
-								id='outlined-textarea'
-								placeholder='Add Comment'
-								multiline
-								variant='outlined'
-								fullWidth
-								className='evaluation-form-inputbase'
-								// value={value}
-								// onChange={(e) => setValue(e.target.value)}
-							/>
+							<Typography variant='h5'>
+								Are you sure, you want to discard your recent changes?
+							</Typography>
+						</div>
+						<div className='evaluation-form-discard-modal-buttons'>
+							<button
+								onClick={handleClose}
+								className='evaluation-form-discard-button'
+							>
+								Cancel
+							</button>
+							<button
+								onClick={modalContinue}
+								className='evaluation-form-submit-button'
+							>
+								Continue
+							</button>
 						</div>
 					</Box>
-				</div>
+				</Modal>
 			</div>
-			<Divider className='evaluation-form-divider' />
+			<Divider />
 			<div>
-				<div className='evaluation-form-question-answer-block'>
-					<div className='evaluation-form-question-layout'>
-						<Typography variant='caption' className='evaluation-form-astreisk'>
-							*
-						</Typography>
-						<Typography variant='body1' className='evaluation-form-question'>
-							2. Was there a Hold Time Violation on this call?
-						</Typography>
+				<div className='evaluation-form-layout'>
+					<div className='evaluation-form-header'>
+						<Typography variant='body1'>Items</Typography>
 					</div>
-					<div className='evaluation-form-answer'>
-						<RadioGroup
-							value={questionTwo}
-							onChange={(e) => setQuestionTwo(e.target.value)}
-							aria-labelledby='demo-radio-buttons-group-label'
-							defaultValue=''
-							name='radio-buttons-group'
-							className='evaluation-form-radio-group'
-						>
-							<FormControlLabel
-								value='Yes'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='Yes'
-							/>
-							<FormControlLabel
-								value='No'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='No '
-							/>
-							<FormControlLabel
-								value='N/A'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='N/A'
-							/>
-						</RadioGroup>
-					</div>
-				</div>
-				<div className='evaluation-form-comments-section'>
-					<div className='evaluation-form-buttons'>
-						{/* {!comment ? ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Add Comment
-						</button>
-						{/* ) : ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Hide Comment
-						</button>
-						{/* )} */}
-					</div>
-					<Box component='form' noValidate autoComplete='off'>
+					<Divider />
+					<div className='evaluation-form-content'>
 						<div>
-							<InputBase
-								id='outlined-textarea'
-								placeholder='Add Comment'
-								multiline
-								variant='outlined'
-								fullWidth
-								className='evaluation-form-inputbase'
-								// value={value}
-								// onChange={(e) => setValue(e.target.value)}
-							/>
+							{question?.length > 0 &&
+								question?.map((data, index) => {
+									return (
+										<>
+											<div>
+												<div className='evaluation-form-question-answer-block'>
+													<div className='evaluation-form-question-layout'>
+														<Typography
+															variant='caption'
+															className='evaluation-form-astreisk'
+														>
+															*
+														</Typography>
+														<Typography
+															variant='body1'
+															className='evaluation-form-question'
+														>
+															{index + 1}. {data.title}
+														</Typography>
+													</div>
+													<div className='evaluation-form-answer'>
+														<RadioGroup
+															onChange={(e) =>
+																updateFieldChanged(index, e.target.value)
+															}
+															defaultValue={data?.option_selected}
+															aria-labelledby='demo-radio-buttons-group-label'
+															name='radio-buttons-group'
+															className='evaluation-form-radio-group'
+														>
+															{data?.options?.map((item, index) => {
+																return (
+																	<FormControlLabel
+																		value={item}
+																		control={
+																			<Radio className='evaluation-form-radio-button' />
+																		}
+																		label={item}
+																	/>
+																);
+															})}
+														</RadioGroup>
+													</div>
+												</div>
+												<div className='evaluation-form-comments-section'>
+													<div className='evaluation-form-buttons'>
+														<button
+															className='evaluation-form-add-comments-button'
+															onClick={() => addCommentShow(index)}
+														>
+															{!data?.iscomment
+																? 'Add Comment'
+																: 'Hide Comment'}
+														</button>
+													</div>
+													<Box component='form' noValidate autoComplete='off'>
+														<div>
+															{data?.iscomment && (
+																<InputBase
+																	id='outlined-textarea'
+																	placeholder='Add Comment'
+																	multiline
+																	variant='outlined'
+																	fullWidth
+																	className='evaluation-form-inputbase'
+																	defaultValue={data?.comment}
+																	onChange={(e) =>
+																		updateTextFieldChanged(
+																			index,
+																			e.target.value
+																		)
+																	}
+																/>
+															)}
+														</div>
+													</Box>
+												</div>
+											</div>
+											<Divider className='evaluation-form-divider' />
+										</>
+									);
+								})}
 						</div>
-					</Box>
-				</div>
-			</div>
-			<Divider className='evaluation-form-divider' />
-			<div>
-				<div className='evaluation-form-question-answer-block'>
-					<div className='evaluation-form-question-layout'>
-						<Typography variant='caption' className='evaluation-form-astreisk'>
-							*
-						</Typography>
-						<Typography variant='body1' className='evaluation-form-question'>
-							3. Did the agent express patience and courtesy anywhere on the
-							call?
-						</Typography>
 					</div>
-					<div className='evaluation-form-answer'>
-						<RadioGroup
-							value={questionThree}
-							onChange={(e) => setQuestionThree(e.target.value)}
-							aria-labelledby='demo-radio-buttons-group-label'
-							defaultValue=''
-							name='radio-buttons-group'
-							className='evaluation-form-radio-group'
-						>
-							<FormControlLabel
-								value='Yes'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='Yes'
-							/>
-							<FormControlLabel
-								value='No'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='No '
-							/>
-							<FormControlLabel
-								value='N/A'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='N/A'
-							/>
-						</RadioGroup>
-					</div>
-				</div>
-				<div className='evaluation-form-comments-section'>
-					<div className='evaluation-form-buttons'>
-						{/* {!comment ? ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Add Comment
-						</button>
-						{/* ) : ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Hide Comment
-						</button>
-						{/* )} */}
-					</div>
-					<Box component='form' noValidate autoComplete='off'>
-						<div>
-							<InputBase
-								id='outlined-textarea'
-								placeholder='Add Comment'
-								multiline
-								variant='outlined'
-								fullWidth
-								className='evaluation-form-inputbase'
-								// value={value}
-								// onChange={(e) => setValue(e.target.value)}
-							/>
-						</div>
-					</Box>
-				</div>
-			</div>
-			<Divider className='evaluation-form-divider' />
-			<div>
-				<div className='evaluation-form-question-answer-block'>
-					<div className='evaluation-form-question-layout'>
-						<Typography variant='caption' className='evaluation-form-astreisk'>
-							*
-						</Typography>
-						<Typography variant='body1' className='evaluation-form-question'>
-							4. Was the customer upset at any point?
-						</Typography>
-					</div>
-					<div className='evaluation-form-answer'>
-						<RadioGroup
-							value={questionFour}
-							onChange={(e) => setQuestionFour(e.target.value)}
-							aria-labelledby='demo-radio-buttons-group-label'
-							defaultValue=''
-							name='radio-buttons-group'
-							className='evaluation-form-radio-group'
-						>
-							<FormControlLabel
-								value='Yes'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='Yes'
-							/>
-							<FormControlLabel
-								value='No'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='No '
-							/>
-							<FormControlLabel
-								value='N/A'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='N/A'
-							/>
-						</RadioGroup>
-					</div>
-				</div>
-				<div className='evaluation-form-comments-section'>
-					<div className='evaluation-form-buttons'>
-						{/* {!comment ? ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Add Comment
-						</button>
-						{/* ) : ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Hide Comment
-						</button>
-						{/* )} */}
-					</div>
-					<Box component='form' noValidate autoComplete='off'>
-						<div>
-							<InputBase
-								id='outlined-textarea'
-								placeholder='Add Comment'
-								multiline
-								variant='outlined'
-								fullWidth
-								className='evaluation-form-inputbase'
-								// value={value}
-								// onChange={(e) => setValue(e.target.value)}
-							/>
-						</div>
-					</Box>
-				</div>
-			</div>
-			<Divider className='evaluation-form-divider' />
-			<div>
-				<div className='evaluation-form-question-answer-block'>
-					<div className='evaluation-form-question-layout'>
-						<Typography variant='caption' className='evaluation-form-astreisk'>
-							*
-						</Typography>
-						<Typography variant='body1' className='evaluation-form-question'>
-							5. Was there any dead air on this call?
-						</Typography>
-					</div>
-					<div className='evaluation-form-answer'>
-						<RadioGroup
-							value={questionFive}
-							onChange={(e) => setQuestionFive(e.target.value)}
-							aria-labelledby='demo-radio-buttons-group-label'
-							defaultValue=''
-							name='radio-buttons-group'
-							className='evaluation-form-radio-group'
-						>
-							<FormControlLabel
-								value='Yes'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='Yes'
-							/>
-							<FormControlLabel
-								value='No'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='No '
-							/>
-							<FormControlLabel
-								value='N/A'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='N/A'
-							/>
-						</RadioGroup>
-					</div>
-				</div>
-				<div className='evaluation-form-comments-section'>
-					<div className='evaluation-form-buttons'>
-						{/* {!comment ? ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Add Comment
-						</button>
-						{/* ) : ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Hide Comment
-						</button>
-						{/* )} */}
-					</div>
-					<Box component='form' noValidate autoComplete='off'>
-						<div>
-							<InputBase
-								id='outlined-textarea'
-								placeholder='Add Comment'
-								multiline
-								variant='outlined'
-								fullWidth
-								className='evaluation-form-inputbase'
-								// value={value}
-								// onChange={(e) => setValue(e.target.value)}
-							/>
-						</div>
-					</Box>
-				</div>
-			</div>
-			<Divider className='evaluation-form-divider' />
-			<div>
-				<div className='evaluation-form-question-answer-block'>
-					<div className='evaluation-form-question-layout'>
-						<Typography variant='caption' className='evaluation-form-astreisk'>
-							*
-						</Typography>
-						<Typography variant='body1' className='evaluation-form-question'>
-							6. Was empathy displayed on this call?
-						</Typography>
-					</div>
-					<div className='evaluation-form-answer'>
-						<RadioGroup
-							value={questionSix}
-							onChange={(e) => setQuestionSix(e.target.value)}
-							aria-labelledby='demo-radio-buttons-group-label'
-							defaultValue=''
-							name='radio-buttons-group'
-							className='evaluation-form-radio-group'
-						>
-							<FormControlLabel
-								value='Yes'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='Yes'
-							/>
-							<FormControlLabel
-								value='No'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='No '
-							/>
-							<FormControlLabel
-								value='N/A'
-								control={<Radio className='evaluation-form-radio-button' />}
-								label='N/A'
-							/>
-						</RadioGroup>
-					</div>
-				</div>
-				<div className='evaluation-form-comments-section'>
-					<div className='evaluation-form-buttons'>
-						{/* {!comment ? ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Add Comment
-						</button>
-						{/* ) : ( */}
-						<button className='evaluation-form-add-comments-button'>
-							Hide Comment
-						</button>
-						{/* )} */}
-					</div>
-					<Box component='form' noValidate autoComplete='off'>
-						<div>
-							<InputBase
-								id='outlined-textarea'
-								placeholder='Add Comment'
-								multiline
-								variant='outlined'
-								fullWidth
-								className='evaluation-form-inputbase'
-								// value={value}
-								// onChange={(e) => setValue(e.target.value)}
-							/>
-						</div>
-					</Box>
 				</div>
 			</div>
 		</div>

@@ -126,13 +126,32 @@ class indexService {
 		});
 		return perRequest;
 	};
-  	getcallforstt = async () => {
+
+	getcallforstt = async () => {
 		const perRequest = await Axios.get('/call-for-stt', {
 			headers: headers,
 		});
 		return perRequest;
 	};
 
+	getQuestions = async (type) => {
+		const perRequest = await Axios.post('/get-questions', {
+			type: type,
+		});
+		return perRequest;
+	};
+
+	getAnswers = async (id) => {
+		const perRequest = await Axios.post('/get-answers', {
+			call_id: id,
+		});
+		return perRequest;
+	};
+
+	saveAnswers = async (payload) => {
+		const perRequest = await Axios.post('/save-answers', payload);
+		return perRequest;
+	};
 }
 
 export default new indexService();
