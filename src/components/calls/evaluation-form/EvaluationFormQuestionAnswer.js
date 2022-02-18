@@ -13,11 +13,14 @@ import { useDispatch } from 'react-redux';
 import indexService from '../../../service/index';
 import { ADD_ANSWERS } from '../../../store/type';
 
-function EvaluationFormQuestionAnswer({ questionsanswersdata }) {
+function EvaluationFormQuestionAnswer({
+	questionsanswersdata,
+	evaluationFormCallback,
+}) {
 	const dispatch = useDispatch();
-	const [showComment, setShowComment] = useState(false);
 	const [question, setQuestion] = useState([]);
 	const [snackbar, setSnackbar] = useState(false);
+	const [isaddcomment, setisaddcomment] = useState(false);
 
 	useEffect(() => {
 		setQuestion(questionsanswersdata);
@@ -33,7 +36,9 @@ function EvaluationFormQuestionAnswer({ questionsanswersdata }) {
 		setQuestion(question);
 	};
 
-	const discardAnswer = () => {};
+	const discardAnswer = () => {
+		evaluationFormCallback();
+	};
 
 	const saveAnswer = () => {
 		let newquestionanswer = [...question];
@@ -65,6 +70,12 @@ function EvaluationFormQuestionAnswer({ questionsanswersdata }) {
 
 	const handleSnackbarClose = () => {
 		setSnackbar(false);
+	};
+
+	const addCommentShow = (index) => {
+		question[index]['iscomment'] = question[index]['iscomment'] ? false : true;
+		setQuestion(question);
+		setisaddcomment(isaddcomment ? false : true);
 	};
 
 	return (
@@ -146,25 +157,24 @@ function EvaluationFormQuestionAnswer({ questionsanswersdata }) {
 												</div>
 												<div className='evaluation-form-comments-section'>
 													<div className='evaluation-form-buttons'>
-														{!showComment ? (
-															<button
-																className='evaluation-form-add-comments-button'
-																onClick={() => setShowComment(true)}
-															>
-																Add Comment
-															</button>
-														) : (
-															<button
-																className='evaluation-form-add-comments-button'
-																onClick={() => setShowComment(false)}
-															>
-																Hide Comment
-															</button>
-														)}
+														<button
+															className='evaluation-form-add-comments-button'
+															onClick={() => addCommentShow(index)}
+														>
+															{!data?.iscomment
+																? 'Add Comment'
+																: 'Hide Comment'}
+														</button>
+														{/* // <button
+                              //   className="evaluation-form-add-comments-button"
+                              //   onClick={() => addCommentShow(index, false)}
+                              // >
+                              //  Hide Comment 
+                              // </button> */}
 													</div>
-													{showComment ? (
-														<Box component='form' noValidate autoComplete='off'>
-															<div>
+													<Box component='form' noValidate autoComplete='off'>
+														<div>
+															{data?.iscomment && (
 																<InputBase
 																	id='outlined-textarea'
 																	placeholder='Add Comment'
@@ -181,9 +191,9 @@ function EvaluationFormQuestionAnswer({ questionsanswersdata }) {
 																		)
 																	}
 																/>
-															</div>
-														</Box>
-													) : null}
+															)}
+														</div>
+													</Box>
 												</div>
 											</div>
 											<Divider className='evaluation-form-divider' />
@@ -191,26 +201,6 @@ function EvaluationFormQuestionAnswer({ questionsanswersdata }) {
 									);
 								})}
 						</div>
-					</div>
-					<div>
-						<label>
-							<Typography
-								variant='body1'
-								className='evaluation-form-overall-feedback-label'
-							>
-								Overall Feedback:
-							</Typography>
-						</label>
-						<InputBase
-							id='outlined-textarea'
-							placeholder='Overall Feedback'
-							multiline
-							variant='outlined'
-							className='evaluation-form-inputbase evaluation-form-overall-feedback'
-							// defaultValue={data?.comment}
-							// value={data?.comment}
-							// onChange={(e) => updateTextFieldChanged(index, e.target.value)}
-						/>
 					</div>
 				</div>
 			</div>

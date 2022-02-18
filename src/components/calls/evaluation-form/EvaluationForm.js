@@ -7,7 +7,12 @@ import './styles.css';
 import { Divider, Drawer, IconButton, Typography } from '@material-ui/core';
 import EvaluationFormOptions from './EvaluationFormOptions';
 
-function EvaluationForm({ controlWidth, questionsanswersdata }) {
+function EvaluationForm({
+	controlWidth,
+	questionsanswersdata,
+	managerqueans,
+	evaluationFormCallback,
+}) {
 	const [open, setOpen] = useState(false);
 
 	const handleDrawerOpen = () => {
@@ -45,7 +50,11 @@ function EvaluationForm({ controlWidth, questionsanswersdata }) {
 					</IconButton>
 				</div>
 				<Divider />
-				<EvaluationFormOptions questionsanswersdata={questionsanswersdata} />
+				<EvaluationFormOptions
+					questionsanswersdata={questionsanswersdata}
+					evaluationFormCallback={evaluationFormCallback}
+					managerqueans={managerqueans}
+				/>
 			</Drawer>
 		</div>
 	);

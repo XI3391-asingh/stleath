@@ -9,9 +9,12 @@ import CloseIcon from '@mui/icons-material/Close';
 import EvaluationFormQuestions from './EvaluationFormQuestions';
 
 import './styles.css';
-import EvaluationFormQuestionAnswer from './EvaluationFormQuestionAnswer';
 
-function EvaluationFormQuestionsLayout({ questionsanswersdata }) {
+function EvaluationFormQuestionsLayout({
+	questionsanswersdata,
+	managerqueans,
+	evaluationFormCallback,
+}) {
 	const [open, setOpen] = useState(false);
 	const [openManager, setOpenManager] = useState(false);
 
@@ -68,12 +71,10 @@ function EvaluationFormQuestionsLayout({ questionsanswersdata }) {
 					</IconButton>
 				</div>
 				<Divider />
-				{questionsanswersdata?.length > 0 && (
-					<EvaluationFormQuestionAnswer
-						questionsanswersdata={questionsanswersdata}
-					/>
-				)}
-				{/* <EvaluationFormQuestions questionsanswersdata={questionsanswersdata} /> */}
+				<EvaluationFormQuestions
+					questionsanswersdata={questionsanswersdata}
+					evaluationFormCallback={evaluationFormCallback}
+				/>
 			</Drawer>
 			<Drawer variant='persistent' anchor='right' open={openManager}>
 				<div className='calls-page-evaluationform-header'>
@@ -88,12 +89,10 @@ function EvaluationFormQuestionsLayout({ questionsanswersdata }) {
 					</IconButton>
 				</div>
 				<Divider />
-				{questionsanswersdata?.length > 0 && (
-					<EvaluationFormQuestionAnswer
-						questionsanswersdata={questionsanswersdata}
-					/>
-				)}
-				{/* <EvaluationFormQuestions questionsanswersdata={questionsanswersdata} /> */}
+				<EvaluationFormQuestions
+					questionsanswersdata={managerqueans}
+					evaluationFormCallback={evaluationFormCallback}
+				/>
 			</Drawer>
 		</div>
 	);

@@ -6,7 +6,10 @@ import EvaluationFormQuestionAnswer from './EvaluationFormQuestionAnswer';
 
 import './styles.css';
 
-function EvaluationFormQuestions({ questionsanswersdata }) {
+function EvaluationFormQuestions({
+	questionsanswersdata,
+	evaluationFormCallback,
+}) {
 	return (
 		<div>
 			{/* //   <div className="evaluation-form-buttons">
@@ -23,11 +26,12 @@ function EvaluationFormQuestions({ questionsanswersdata }) {
     //       </div>
     //       <Divider />
     //       <div className="evaluation-form-content"> */}
-			{/* {questionsanswersdata?.length > 0 && (
+			{questionsanswersdata?.length > 0 && (
 				<EvaluationFormQuestionAnswer
 					questionsanswersdata={questionsanswersdata}
+					evaluationFormCallback={evaluationFormCallback}
 				/>
-			)} */}
+			)}
 			{/* //       </div>
     //     </div>
     //   </div> */}

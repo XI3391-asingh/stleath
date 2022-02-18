@@ -20,6 +20,7 @@ import {
 	GET_QUESTIONS,
 	GET_ANSWERS,
 	GET_QUESTIONS_ANSWERS,
+	GET_MANAGER_QUESTIONS_ANSWERS,
 } from '../../store/type';
 import AudioVisualizer from '../../components/calls/wavesurfer-visualizer/AudioVisualizer';
 import EvaluationForm from '../../components/calls/evaluation-form/EvaluationForm';
@@ -33,6 +34,7 @@ function CallVisualizer() {
 	const [nowTime, setNowTime] = useState(0);
 	const [isplaying, setIsplaying] = useState(false);
 	const [questionsanswersdata, setquestionsanswersdata] = useState([]);
+	const [managerqueans, setmanagerqueans] = useState([]);
 	const [visualizerWidth, setvisualizerWidth] = useState('100%');
 	const { visualizer } = useSelector((store) => store.call);
 	const { comments, questionsanswers } = useSelector((store) => store.call);
@@ -46,7 +48,8 @@ function CallVisualizer() {
 	useEffect(() => {
 		getCall();
 		getCallDetails();
-		getQuestionsAnswers();
+		getQAQuestionsAnswers();
+		getManagerQuestionsAnswers();
 		const interval = setInterval(() => {
 			getCallDetails();
 			// getCall();
@@ -84,9 +87,29 @@ function CallVisualizer() {
 		});
 	};
 
-	const getQuestionsAnswers = () => {
-		Promise.all([
-			indexService.getQuestions(),
+	const getQAQuestionsAnswers = () => {
+		getQuestionsAnswers('QA').then((data) => {
+			setquestionsanswersdata(data);
+			dispatch({
+				type: GET_QUESTIONS_ANSWERS,
+				payload: data,
+			});
+		});
+	};
+
+	const getManagerQuestionsAnswers = () => {
+		getQuestionsAnswers('manager').then((data) => {
+			setmanagerqueans(data);
+			dispatch({
+				type: GET_MANAGER_QUESTIONS_ANSWERS,
+				payload: data,
+			});
+		});
+	};
+
+	const getQuestionsAnswers = (type) => {
+		return Promise.all([
+			indexService.getQuestions(type),
 			indexService.getAnswers(callidquery),
 		])
 			.then((values) => {
@@ -110,17 +133,20 @@ function CallVisualizer() {
 				}
 				const questionsanswers = questions.map((question) => {
 					let answer = {};
-					let answerdata = answers
-						// .reverse()
-						.find((answer) => question.id == answer.question_id);
+					let answerdata = answers.find(
+						(answer) => question.id == answer.question_id
+					);
 					if (answerdata) {
 						answer = answerdata;
+						// answer.iscomment = answerdata.comment ? true : false;
+						answer.iscomment = false;
 					} else {
 						answer = {
 							call_id: callidquery,
 							comment: '',
 							option_selected: '',
 							question_id: question.id,
+							iscomment: false,
 						};
 					}
 					return {
@@ -128,11 +154,7 @@ function CallVisualizer() {
 						...answer,
 					};
 				});
-				setquestionsanswersdata(questionsanswers);
-				dispatch({
-					type: GET_QUESTIONS_ANSWERS,
-					payload: questionsanswers,
-				});
+				return questionsanswers;
 			})
 			.catch((err) => {
 				console.log(err);
@@ -156,6 +178,13 @@ function CallVisualizer() {
 		// });
 	};
 
+	const handleEvaluationFormCallback = () => {
+		setquestionsanswersdata([]);
+		setmanagerqueans([]);
+		getQAQuestionsAnswers();
+		getManagerQuestionsAnswers();
+	};
+
 	return (
 		<div className='calls-page-layout' style={{ width: visualizerWidth }}>
 			<div>
@@ -176,6 +205,8 @@ function CallVisualizer() {
 					<EvaluationForm
 						controlWidth={setvisualizerWidth}
 						questionsanswersdata={questionsanswersdata}
+						managerqueans={managerqueans}
+						evaluationFormCallback={() => handleEvaluationFormCallback()}
 					/>
 				</Card>
 			</div>

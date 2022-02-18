@@ -127,9 +127,9 @@ class indexService {
 		return perRequest;
 	};
 
-	getQuestions = async (payload) => {
+	getQuestions = async (type) => {
 		const perRequest = await Axios.post('/get-questions', {
-			type: 'QA',
+			type: type,
 		});
 		return perRequest;
 	};

@@ -12,6 +12,7 @@ const initialState = {
 	// questions: [],
 	// answers: [],
 	questionsanswers: [],
+	managerqueans: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -37,6 +38,9 @@ const reducer = (state = initialState, action) => {
 		//   return { ...state, answers: action.payload };
 		case actionTypes.GET_QUESTIONS_ANSWERS:
 			return { ...state, questionsanswers: action.payload };
+		case actionTypes.GET_MANAGER_QUESTIONS_ANSWERS:
+			return { ...state, managerqueans: action.payload };
+
 		default:
 			return state;
 	}
