@@ -6,7 +6,12 @@ import {
 	RadioGroup,
 	Typography,
 	InputBase,
+	Modal,
+	Snackbar,
+	IconButton,
 } from '@material-ui/core';
+import CloseOutlined from '@mui/icons-material/CloseOutlined';
+import { Alert } from '@mui/material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -16,10 +21,13 @@ import { ADD_ANSWERS } from '../../../store/type';
 function EvaluationFormQuestionAnswer({
 	questionsanswersdata,
 	evaluationFormCallback,
+	setOpen,
 }) {
 	const dispatch = useDispatch();
 	const [question, setQuestion] = useState([]);
+	const [openModal, setOpenModal] = useState(false);
 	const [snackbar, setSnackbar] = useState(false);
+	const { vertical, horizontal, openSnackbar } = snackbar;
 	const [isaddcomment, setisaddcomment] = useState(false);
 
 	useEffect(() => {
@@ -37,7 +45,22 @@ function EvaluationFormQuestionAnswer({
 	};
 
 	const discardAnswer = () => {
+		handleOpen();
+		setQuestion(questionsanswersdata);
+	};
+
+	const handleOpen = () => {
+		setOpenModal(true);
+	};
+
+	const handleClose = () => {
+		setOpenModal(false);
+	};
+
+	const modalContinue = () => {
 		evaluationFormCallback();
+		setOpenModal(false);
+		setOpen(false);
 	};
 
 	const saveAnswer = () => {
@@ -63,6 +86,7 @@ function EvaluationFormQuestionAnswer({
 					setSnackbar(true);
 					setTimeout(() => {
 						handleSnackbarClose();
+						setOpen(false);
 					}, 2000);
 				}
 			});
@@ -77,6 +101,19 @@ function EvaluationFormQuestionAnswer({
 		setQuestion(question);
 		setisaddcomment(isaddcomment ? false : true);
 	};
+
+	const action = (
+		<React.Fragment>
+			<IconButton
+				size='small'
+				aria-label='close'
+				color='inherit'
+				onClick={handleSnackbarClose}
+			>
+				<CloseOutlined fontSize='small' />
+			</IconButton>
+		</React.Fragment>
+	);
 
 	return (
 		<div>
@@ -95,13 +132,50 @@ function EvaluationFormQuestionAnswer({
 				>
 					Submit
 				</button>
+				<Modal open={openModal} onClose={handleClose}>
+					<Box className='evaluation-form-discard-modal'>
+						<div>
+							<Typography variant='h5'>
+								Dou wish to discard your changes?
+							</Typography>
+						</div>
+						<div className='evaluation-form-discard-modal-buttons'>
+							<button
+								onClick={handleClose}
+								className='evaluation-form-discard-button'
+							>
+								Cancel
+							</button>
+							<button
+								onClick={modalContinue}
+								className='evaluation-form-submit-button'
+							>
+								Continue
+							</button>
+						</div>
+					</Box>
+				</Modal>
+				{snackbar && (
+					<Snackbar
+						anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+						key={vertical + horizontal}
+						open={snackbar}
+						autoHideDuration={4000}
+						onClose={handleSnackbarClose}
+						action={action}
+						className='dashboard-details-upload-snackbar'
+					>
+						<Alert
+							onClose={handleSnackbarClose}
+							severity='success'
+							sx={{ width: '100%' }}
+						>
+							{`Your answers were saved successfully`}
+						</Alert>
+					</Snackbar>
+				)}
 			</div>
 			<Divider />
-			{snackbar && (
-				<div className='evaluation-form-layout'>
-					<Typography variant='body1'>answer save successfully</Typography>
-				</div>
-			)}
 			<div>
 				<div className='evaluation-form-layout'>
 					<div className='evaluation-form-header'>

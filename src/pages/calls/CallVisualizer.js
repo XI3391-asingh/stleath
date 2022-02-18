@@ -52,6 +52,8 @@ function CallVisualizer() {
 		getManagerQuestionsAnswers();
 		const interval = setInterval(() => {
 			getCallDetails();
+			getQAQuestionsAnswers();
+			getManagerQuestionsAnswers();
 			// getCall();
 		}, 30000);
 		return () => clearInterval(interval);

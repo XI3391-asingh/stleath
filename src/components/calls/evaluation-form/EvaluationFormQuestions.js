@@ -9,6 +9,7 @@ import './styles.css';
 function EvaluationFormQuestions({
 	questionsanswersdata,
 	evaluationFormCallback,
+	setOpen,
 }) {
 	return (
 		<div>
@@ -30,6 +31,7 @@ function EvaluationFormQuestions({
 				<EvaluationFormQuestionAnswer
 					questionsanswersdata={questionsanswersdata}
 					evaluationFormCallback={evaluationFormCallback}
+					setOpen={setOpen}
 				/>
 			)}
 			{/* //       </div>

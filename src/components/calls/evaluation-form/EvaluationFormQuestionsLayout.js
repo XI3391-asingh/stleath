@@ -74,6 +74,7 @@ function EvaluationFormQuestionsLayout({
 				<EvaluationFormQuestions
 					questionsanswersdata={questionsanswersdata}
 					evaluationFormCallback={evaluationFormCallback}
+					setOpen={setOpen}
 				/>
 			</Drawer>
 			<Drawer variant='persistent' anchor='right' open={openManager}>
@@ -92,6 +93,7 @@ function EvaluationFormQuestionsLayout({
 				<EvaluationFormQuestions
 					questionsanswersdata={managerqueans}
 					evaluationFormCallback={evaluationFormCallback}
+					setOpen={setOpenManager}
 				/>
 			</Drawer>
 		</div>
