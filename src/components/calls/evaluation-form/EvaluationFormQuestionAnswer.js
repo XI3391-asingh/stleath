@@ -7,16 +7,13 @@ import {
 	Typography,
 	InputBase,
 	Modal,
-	Snackbar,
-	IconButton,
 } from '@material-ui/core';
-import CloseOutlined from '@mui/icons-material/CloseOutlined';
-import { Alert } from '@mui/material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import indexService from '../../../service/index';
 import { ADD_ANSWERS } from '../../../store/type';
+import { toast } from 'react-toastify';
 
 function EvaluationFormQuestionAnswer({
 	questionsanswersdata,
@@ -26,8 +23,6 @@ function EvaluationFormQuestionAnswer({
 	const dispatch = useDispatch();
 	const [question, setQuestion] = useState([]);
 	const [openModal, setOpenModal] = useState(false);
-	const [snackbar, setSnackbar] = useState(false);
-	const { vertical, horizontal, openSnackbar } = snackbar;
 	const [isaddcomment, setisaddcomment] = useState(false);
 
 	useEffect(() => {
@@ -83,17 +78,12 @@ function EvaluationFormQuestionAnswer({
 						type: ADD_ANSWERS,
 						payload: resp?.data,
 					});
-					setSnackbar(true);
-					setTimeout(() => {
-						handleSnackbarClose();
-						setOpen(false);
-					}, 2000);
+					toast.success('Your responses were saved successfully');
+					setOpen(false);
+				} else {
+					toast.error('Error! Please try again later');
 				}
 			});
-	};
-
-	const handleSnackbarClose = () => {
-		setSnackbar(false);
 	};
 
 	const addCommentShow = (index) => {
@@ -101,19 +91,6 @@ function EvaluationFormQuestionAnswer({
 		setQuestion(question);
 		setisaddcomment(isaddcomment ? false : true);
 	};
-
-	const action = (
-		<React.Fragment>
-			<IconButton
-				size='small'
-				aria-label='close'
-				color='inherit'
-				onClick={handleSnackbarClose}
-			>
-				<CloseOutlined fontSize='small' />
-			</IconButton>
-		</React.Fragment>
-	);
 
 	return (
 		<div>
@@ -136,7 +113,7 @@ function EvaluationFormQuestionAnswer({
 					<Box className='evaluation-form-discard-modal'>
 						<div>
 							<Typography variant='h5'>
-								Dou wish to discard your changes?
+								Are you sure, you want to discard your recent changes?
 							</Typography>
 						</div>
 						<div className='evaluation-form-discard-modal-buttons'>
@@ -155,25 +132,6 @@ function EvaluationFormQuestionAnswer({
 						</div>
 					</Box>
 				</Modal>
-				{snackbar && (
-					<Snackbar
-						anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-						key={vertical + horizontal}
-						open={snackbar}
-						autoHideDuration={4000}
-						onClose={handleSnackbarClose}
-						action={action}
-						className='dashboard-details-upload-snackbar'
-					>
-						<Alert
-							onClose={handleSnackbarClose}
-							severity='success'
-							sx={{ width: '100%' }}
-						>
-							{`Your answers were saved successfully`}
-						</Alert>
-					</Snackbar>
-				)}
 			</div>
 			<Divider />
 			<div>
@@ -206,7 +164,6 @@ function EvaluationFormQuestionAnswer({
 													</div>
 													<div className='evaluation-form-answer'>
 														<RadioGroup
-															// value={data?.option_selected}
 															onChange={(e) =>
 																updateFieldChanged(index, e.target.value)
 															}
@@ -239,12 +196,6 @@ function EvaluationFormQuestionAnswer({
 																? 'Add Comment'
 																: 'Hide Comment'}
 														</button>
-														{/* // <button
-                              //   className="evaluation-form-add-comments-button"
-                              //   onClick={() => addCommentShow(index, false)}
-                              // >
-                              //  Hide Comment 
-                              // </button> */}
 													</div>
 													<Box component='form' noValidate autoComplete='off'>
 														<div>
@@ -257,7 +208,6 @@ function EvaluationFormQuestionAnswer({
 																	fullWidth
 																	className='evaluation-form-inputbase'
 																	defaultValue={data?.comment}
-																	// value={data?.comment}
 																	onChange={(e) =>
 																		updateTextFieldChanged(
 																			index,

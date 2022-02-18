@@ -6,7 +6,6 @@ import { useDemoData } from '@mui/x-data-grid-generator';
 import Comments from '../../components/calls/comments/Comments';
 import Moments from '../../components/calls/moments/Moments';
 import Transcription from '../../components/calls/transcription/Transcription';
-import WavesurferAudioVisualizer from '../../components/calls/wavesurfer-visualizer/WavesurferAudioVisualizer';
 
 import './styles.css';
 import moment from 'moment';
@@ -17,8 +16,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
 	GET_CALL_VISUALIZER,
 	GET_ALL_COMMENTS,
-	GET_QUESTIONS,
-	GET_ANSWERS,
 	GET_QUESTIONS_ANSWERS,
 	GET_MANAGER_QUESTIONS_ANSWERS,
 } from '../../store/type';
@@ -26,7 +23,6 @@ import AudioVisualizer from '../../components/calls/wavesurfer-visualizer/AudioV
 import EvaluationForm from '../../components/calls/evaluation-form/EvaluationForm';
 
 function CallVisualizer() {
-	let dateTime = moment().format('LLL');
 	const path = useLocation();
 	let query = new URLSearchParams(path?.search);
 	let callidquery = query.get('id');
@@ -54,7 +50,6 @@ function CallVisualizer() {
 			getCallDetails();
 			getQAQuestionsAnswers();
 			getManagerQuestionsAnswers();
-			// getCall();
 		}, 30000);
 		return () => clearInterval(interval);
 	}, [callidquery, visualizerWidth]);
@@ -161,23 +156,6 @@ function CallVisualizer() {
 			.catch((err) => {
 				console.log(err);
 			});
-		// indexService.getQuestions().then((resp) => {
-		//   if (resp.isSuccess) {
-		//     dispatch({
-		//       type: GET_QUESTIONS,
-		//       payload: resp?.data,
-		//     });
-
-		//     indexService.getAnswers(callidquery).then((resp) => {
-		//       if (resp.isSuccess) {
-		//         dispatch({
-		//           type: GET_ANSWERS,
-		//           payload: resp?.data,
-		//         });
-		//       }
-		//     });
-		//   }
-		// });
 	};
 
 	const handleEvaluationFormCallback = () => {
@@ -196,7 +174,6 @@ function CallVisualizer() {
 						className='calls-visualizer-details-text'
 					>
 						{visualizer?.agent_name} on {visualizer?.createdAt}
-						{/* for 30:37 minutes */}
 					</Typography>
 					<Typography
 						variant='button'
@@ -214,7 +191,6 @@ function CallVisualizer() {
 			</div>
 			<div>
 				{Object?.keys(visualizer)?.length && (
-					// <WavesurferAudioVisualizer path={visualizer?.path} />
 					<AudioVisualizer
 						path={visualizer?.path}
 						currentTime={(data) => setNowTime(data)}
