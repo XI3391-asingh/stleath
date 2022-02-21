@@ -29,7 +29,7 @@ import VoiceEnergyCard from "../../components/config-settings/voice-energy/Voice
 import SilenceDetection from "../../components/config-settings/silence-detection/SilenceDetection";
 import { useDispatch, useSelector } from "react-redux";
 // import indexService from "../../service/index";
-import {toast} from 'react-toastify';
+import { toast } from "react-toastify";
 import settingServices from "../../service/settingServices";
 import {
   ADD_SETTING_CONFIGURATION,
@@ -47,7 +47,7 @@ function ConfigSettings() {
   const [openQuestionModal, setopenQuestionModal] = useState(false);
   const [serviceIssueRule, setServiceIssueRule] = useState([]);
   const [productIssueRule, setProductIssueRule] = useState([]);
-  const [manageStateCount, setmanageStateCount] = useState(0)
+  const [manageStateCount, setmanageStateCount] = useState(0);
   const [questionText, setquestionText] = useState("");
   const [repeatCallVolumeRule, setRepeatCallVolumeRule] = useState([]);
   const [callOpeningRule, setCallOpeningRule] = useState([]);
@@ -64,7 +64,7 @@ function ConfigSettings() {
     newEvaluationQuestion,
     evaluationQuestionsOfManager,
     evaluationQuestionsOfQA,
-    deleteEvaluationQuestion
+    deleteEvaluationQuestion,
   } = useSelector((store) => store.setting);
 
   console.log(
@@ -89,7 +89,7 @@ function ConfigSettings() {
     getEvaluationQuestionsByType({ type: "MANAGER" });
   }, [manageStateCount]);
 
-// console.log(deleteEvaluationQuestion,'deleteEvaluationQuestion')
+  // console.log(deleteEvaluationQuestion,'deleteEvaluationQuestion')
 
   const getSettingConfiguration = () => {
     settingServices.getSettingConfiguration().then((resp) => {
@@ -228,12 +228,11 @@ function ConfigSettings() {
   };
 
   const handleAddQuestion = () => {
-
     // const res=dispatch()
     let input = {
       title: questionText,
       type: radioForRole,
-      options:["Yes", "No", "N/A"]
+      options: ["Yes", "No", "N/A"],
     };
 
     settingServices.addNewQuestion(input).then((resp) => {
@@ -242,37 +241,32 @@ function ConfigSettings() {
           type: ADD_NEW_EVALUATION_QUESTION,
           payload: resp?.data,
         });
-        setmanageStateCount(manageStateCount===0?1:0);
+        setmanageStateCount(manageStateCount === 0 ? 1 : 0);
 
         toast.success("Question Added Successfully");
-        
       } else {
         toast.error("Error while uploading question");
       }
     });
-    setradioForRole('MANAGER');
+    setradioForRole("MANAGER");
     setquestionText("");
     closeAddQuestionModal();
   };
 
-  function handleQuestionDelete(input){
-
-    settingServices.deleteEvaluationQuestion(input).then((resp)=>{
-
-      if(resp.isSuccess){
+  function handleQuestionDelete(input) {
+    settingServices.deleteEvaluationQuestion(input).then((resp) => {
+      if (resp.isSuccess) {
         dispatch({
-          type:DELETE_EVALUATION_QUESTION_BY_ID,
-          payload:resp?.data
+          type: DELETE_EVALUATION_QUESTION_BY_ID,
+          payload: resp?.data,
         });
         toast.success("Question Deleted Successfully");
-        
-        setmanageStateCount(manageStateCount===0?1:0);
 
+        setmanageStateCount(manageStateCount === 0 ? 1 : 0);
       } else {
         toast.error("Error while deleting question");
       }
-      
-    })
+    });
   }
   const openAddQuestionModal = () => {
     setopenQuestionModal(true);
@@ -284,8 +278,10 @@ function ConfigSettings() {
   return (
     <>
       <div className="config-settings-page-layout">
+        <Typography variant="h4" className="page-main-heading">
+          Configuration Settings
+        </Typography>
         <Card className="config-page-card-layout">
-          <Typography variant="h5">Configuration Settings</Typography>
           <div className="config-page-settings-cards">
             <ServiceIssue
               title="Service Issue"
@@ -390,12 +386,15 @@ function ConfigSettings() {
         </Card>
 
         <div>
-          <Typography variant="h5">Evaluation Form</Typography>
           <Card className="config-page-evaluation-card">
+            <Typography variant="h5">Evaluation Form</Typography>
             <div>
               <div className="config-page-evaluation-card-question-container">
-                <Card className="competitor-card-layout">
-                  <Typography variant="h6" className="competitor-card-heading">
+                <Card className="config-page-evaluation-card-questions-layout">
+                  <Typography
+                    variant="h6"
+                    className="config-page-evaluation-card-questions-heading"
+                  >
                     Manager's Questions
                   </Typography>
 
@@ -410,15 +409,10 @@ function ConfigSettings() {
                             />
                             <span>{data.title}</span>
                           </div>
-                          <div  onClick={()=>handleQuestionDelete(data.id)}>
-
-                          <IconButton
-                            aria-label="delete"
-                            color="primary"
-                           
-                          >
-                            <DeleteIcon sx={{color:"gray"}}/>
-                          </IconButton>
+                          <div onClick={() => handleQuestionDelete(data.id)}>
+                            <IconButton aria-label="delete" color="primary">
+                              <DeleteIcon sx={{ color: "gray" }} />
+                            </IconButton>
                           </div>
                         </div>
                       );
@@ -426,8 +420,11 @@ function ConfigSettings() {
                   </div>
                 </Card>
 
-                <Card className="competitor-card-layout">
-                  <Typography variant="h6" className="competitor-card-heading">
+                <Card className="config-page-evaluation-card-questions-layout">
+                  <Typography
+                    variant="h6"
+                    className="config-page-evaluation-card-questions-heading"
+                  >
                     QA's Questions
                   </Typography>
                   <div className="config-page-evaluation-card-questions">
@@ -441,15 +438,10 @@ function ConfigSettings() {
                             />
                             <span>{data.title}</span>
                           </div>
-                          <div  onClick={()=>handleQuestionDelete(data.id)}>
-
-                          <IconButton
-                            aria-label="delete"
-                            color="primary"
-                            
-                          >
-                            <DeleteIcon sx={{color:"gray"}}/>
-                          </IconButton>
+                          <div onClick={() => handleQuestionDelete(data.id)}>
+                            <IconButton aria-label="delete" color="primary">
+                              <DeleteIcon sx={{ color: "gray" }} />
+                            </IconButton>
                           </div>
                         </div>
                       );
@@ -558,7 +550,7 @@ function ConfigSettings() {
                           Submit
                         </button>
                       ) : (
-                        <button  className="config-page-settings-save-button-disabled">
+                        <button className="config-page-settings-save-button-disabled">
                           Submit
                         </button>
                       )}

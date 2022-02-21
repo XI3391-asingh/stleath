@@ -1,263 +1,263 @@
 .calls-page-evaluationform-button {
-	margin-right: 1rem;
-	background-color: #6b1d5e;
-	color: white;
-	border: none;
-	font-size: 0.9rem;
-	border-radius: 0.2rem;
-	padding: 0.5rem 1rem;
-	cursor: pointer;
+  margin-right: 1rem;
+  background-color: #6b1d5e;
+  color: white;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 0.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .calls-page-evaluationform-button-icon {
-	font-size: medium !important;
-	vertical-align: text-bottom;
+  font-size: medium !important;
+  vertical-align: text-bottom;
 }
 
 .MuiDrawer-paper {
-	width: 27% !important;
+  width: 27% !important;
 }
 
 .MuiFormControl-fullWidth {
-	border: 1px solid black;
+  border: 1px solid black;
 }
 
 .calls-page-evaluationform-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 4rem !important;
-	padding: 0 0 0 0.5rem;
-	background-color: lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem !important;
+  padding: 0 0 0 0.5rem;
+  background-color: lightgrey;
 }
 
 .calls-page-evaluationform-heading {
-	margin-top: 0.75rem !important;
-	font-weight: bold !important;
+  margin-top: 0.75rem !important;
+  font-weight: bold !important;
 }
 
 /* Search box */
 
 .evaluation-form-search-paper {
-	padding: 0.1rem 0.4rem;
-	display: flex;
-	align-items: center;
-	margin: 1rem;
+  padding: 0.1rem 0.4rem;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
 }
 
 .evaluation-form-search-box {
-	margin-left: 1rem;
-	flex-grow: 1;
-	width: 100%;
+  margin-left: 1rem;
+  flex-grow: 1;
+  width: 100%;
 }
 
 .evaluation-form-search-box-divider {
-	height: 1.8rem !important;
-	margin: 0.5rem !important;
+  height: 1.8rem !important;
+  margin: 0.5rem !important;
 }
 
 .evaluation-form-search-box-icon {
-	padding: 0.75rem;
+  padding: 0.75rem;
 }
 
 /* Questions */
 
 .evaluation-form-options-layout {
-	margin: 1rem 1rem;
+  margin: 1rem 1rem;
 }
 
 .evaluation-form-options-heading {
-	font-weight: bold !important;
+  font-weight: bold !important;
 }
 
 .evaluation-form-options-paper-layout {
-	height: 3rem;
-	margin: 0.5rem 0;
-	padding: 0.5rem;
-	width: -webkit-fill-available;
-	background-color: transparent;
-	border: 1px solid lightgrey;
+  height: 3rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  width: -webkit-fill-available;
+  background-color: transparent;
+  border: 1px solid lightgrey;
 }
 
 .evaluation-form-option {
-	display: flex;
-	justify-content: space-between;
-	cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .evaluation-form-option-type {
-	font-size: 0.8rem !important;
-	align-self: center;
+  font-size: 0.8rem !important;
+  align-self: center;
 }
 
 /* Form Questions */
 
 .evaluation-form-type-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 4rem !important;
-	padding: 0.5rem 0 0.5rem;
-	background-color: lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem !important;
+  padding: 0.5rem 0 0.5rem;
+  background-color: lightgrey;
 }
 .evaluation-form-qa-type-heading {
-	font-weight: bold !important;
-	align-self: center;
+  font-weight: bold !important;
+  align-self: center;
 }
 
 .evaluation-form-buttons {
-	padding: 1rem;
-	text-align: end;
+  padding: 1rem;
+  text-align: end;
 }
 
 .evaluation-form-discard-button {
-	color: red;
-	border: 1px solid red;
-	background-color: transparent;
-	font-size: 0.75rem;
-	border-radius: 0.2rem;
-	padding: 0.5rem 1rem;
-	cursor: pointer;
-	margin: 0 1rem;
+  color: red;
+  border: 1px solid red;
+  background-color: transparent;
+  font-size: 0.75rem;
+  border-radius: 0.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin: 0 1rem;
 }
 
 .evaluation-form-submit-button {
-	margin-right: 1rem;
-	background-color: #6b1d5e;
-	color: white;
-	border: none;
-	font-size: 0.75rem;
-	border-radius: 0.2rem;
-	padding: 0.5rem 1rem;
-	cursor: pointer;
+  margin-right: 1rem;
+  background-color: #6b1d5e;
+  color: white;
+  border: none;
+  font-size: 0.75rem;
+  border-radius: 0.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .evaluation-form-overall-feedback-label {
-	padding: 0 1rem 0.5rem;
-	font-weight: bold !important;
+  padding: 0 1rem 0.5rem;
+  font-weight: bold !important;
 }
 
 /* Questions Card */
 
 .evaluation-form-layout {
-	margin: 1rem;
-	border: 1px solid #d3d3d3;
+  margin: 1rem;
+  border: 1px solid #d3d3d3;
 }
 
 .evaluation-form-header {
-	background-color: lightgrey;
-	padding: 1rem;
+  background-color: lightgrey;
+  padding: 1rem;
 }
 
 .evaluation-form-items-heading {
-	font-weight: bold !important;
+  font-weight: bold !important;
 }
 
 .evaluation-form-content {
-	padding: 1rem 1rem 0;
+  padding: 1rem 1rem 0;
 }
 
 .evaluation-form-divider {
-	margin: 1rem 0 !important;
+  margin: 1rem 0 !important;
 }
 
 .evaluation-form-question-answer-block {
-	display: flex;
+  display: flex;
 }
 
 .evaluation-form-astreisk {
-	color: red;
+  color: red;
 }
 
 .evaluation-form-question {
-	font-weight: bold !important;
-	font-size: 0.8rem !important;
+  font-weight: bold !important;
+  font-size: 0.8rem !important;
 }
 
 .evaluation-form-question-layout {
-	width: 70%;
-	padding-top: 0.5rem;
-	display: flex;
+  width: 70%;
+  padding-top: 0.5rem;
+  display: flex;
 }
 
 .evaluation-form-answer {
-	width: 30%;
-	text-align: end;
+  width: 30%;
+  text-align: end;
 }
 
 .evaluation-form-radio-group {
-	align-content: flex-end;
+  align-content: flex-end;
 }
 
 .evaluation-form-comments-section {
-	padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .evaluation-form-comment-buttons {
-	display: flex;
-	align-content: center;
-	justify-content: flex-end;
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
 }
 
 .evaluation-form-buttons {
-	text-align: end;
-	padding: 0.75rem;
+  text-align: end;
+  padding: 0.75rem;
 }
 
 .evaluation-form-add-comments-button {
-	color: purple;
-	border: none;
-	background: none;
-	font-size: 0.75rem;
-	cursor: pointer;
+  color: purple;
+  border: none;
+  background: none;
+  font-size: 0.75rem;
+  cursor: pointer;
 }
 
 .evaluation-form-inputbase {
-	height: 5rem;
-	padding: 1rem !important;
-	border: 1px solid black;
-	border-radius: 5px;
+  height: 5rem;
+  padding: 1rem !important;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .evaluation-form-comments-textfield {
-	width: -webkit-fill-available;
+  width: -webkit-fill-available;
 }
 
 .evaluation-form-radio-button {
-	color: #6b1d5e !important;
+  color: #6b1d5e !important;
 }
 
 .evaluation-form-overall-feedback-label {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .evaluation-form-overall-feedback {
-	margin: 0 1rem 1rem;
-	width: -webkit-fill-available;
+  margin: 0 1rem 1rem;
+  width: -webkit-fill-available;
 }
 
 .evaluation-form-discard-modal {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 30%;
-	height: 30%;
-	background-color: white !important;
-	border: 2px solid black !important;
-	box-shadow: 24;
-	padding: 2rem 1rem;
-	text-align: center;
-	flex-direction: column;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+  background-color: white !important;
+  border: 2px solid black !important;
+  box-shadow: 24;
+  padding: 2rem 1rem;
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .evaluation-form-discard-modal-buttons {
-	align-items: center;
+  align-items: center;
 }
 
 .MuiFormControlLabel-label {
-	font-size: 0.8rem !important;
+  font-size: 0.8rem !important;
 }

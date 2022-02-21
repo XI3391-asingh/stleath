@@ -75,6 +75,16 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+.config-page-evaluation-card-questions-layout {
+  margin: 1rem;
+  width: 40%;
+  height: 20% !important;
+  padding: 1rem;
+  overflow: visible !important;
+}
+.config-page-evaluation-card-questions-heading {
+  padding: 1rem 1rem 0 1rem;
+}
 .config-page-settings-addQuestion-buttons-container {
   display: flex;
   justify-content: space-between;
@@ -133,4 +143,77 @@
 .user-settings-page-heading {
   margin: 12px;
   font-size: 1.5vw !important;
+}
+
+/* User Management Settings Page */
+.user-management-settings-heading {
+  margin: 1rem !important;
+}
+.user-management-settings-card-layout {
+  margin: 1rem !important;
+  padding: 1rem 0;
+}
+.user-management-settings-container {
+  padding: 1rem;
+}
+.user-management-settings-box1 {
+  text-align: left;
+}
+.user-management-settings-box2 {
+  display: flex;
+  justify-content: space-between;
+}
+.user-management-settings-box2-buttons-container {
+  display: flex;
+  align-items: center;
+}
+
+.settings-modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  background-color: white !important;
+  border: 2px solid black !important;
+  box-shadow: 24;
+  padding: 2rem;
+}
+.settings-modal-container-heading {
+  margin-bottom: 1rem !important;
+}
+.user-management-settings-input-fields {
+  display: flex;
+  justify-content: space-between;
+}
+.settings-text-field {
+  width: 50% !important;
+  border: 0.5px solid #6b1d5e !important;
+  border-radius: 4px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+.user-management-settings-input-fields-heading {
+  margin: auto 0 !important;
+  font-weight: 500;
+}
+.user-management-settings-input-fields-role-radio-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.user-management-settings-input-field {
+  margin: 0.5rem 0;
+}
+
+.add-user-button,
+.add-bulk-users-button {
+  margin-right: 1rem;
+  background-color: #6b1d5e;
+  color: white;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 0.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }
