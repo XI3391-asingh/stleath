@@ -23,6 +23,7 @@
 }
 
 .calls-page-evaluationform-header {
+<<<<<<< HEAD
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,6 +35,19 @@
   padding: 0 0.5rem;
   margin-top: 0.75rem !important;
   font-weight: bold !important;
+=======
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 4rem !important;
+	padding: 0 0 0 0.5rem;
+	background-color: lightgrey;
+}
+
+.calls-page-evaluationform-heading {
+	margin-top: 0.75rem !important;
+	font-weight: bold !important;
+>>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
 }
 
 /* Search box */
@@ -62,8 +76,13 @@
 
 /* Questions */
 
+<<<<<<< HEAD
 .evaluation-form-options {
   padding: 0 1rem 1rem 1rem;
+=======
+.evaluation-form-options-layout {
+	margin: 1rem 1rem;
+>>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
 }
 
 .evaluation-form-options-heading {
@@ -71,6 +90,7 @@
 }
 
 .evaluation-form-options-paper-layout {
+<<<<<<< HEAD
   height: 3rem;
   margin: 0 1rem 1rem 1rem;
   padding: 0.5rem;
@@ -86,14 +106,46 @@
 
 .evaluation-form-option-type {
   font-size: 1rem !important;
+=======
+	height: 3rem;
+	margin: 0.5rem 0;
+	padding: 0.5rem;
+	width: -webkit-fill-available;
+	background-color: transparent;
+	border: 1px solid lightgrey;
+}
+
+.evaluation-form-option {
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+.evaluation-form-option-type {
+	font-size: 0.8rem !important;
+	align-self: center;
+>>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
 }
 
 /* Form Questions */
 
+.evaluation-form-type-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 4rem !important;
+	padding: 0.5rem 0 0.5rem;
+	background-color: lightgrey;
+}
 .evaluation-form-qa-type-heading {
+<<<<<<< HEAD
   font-weight: bold !important;
   height: 4rem !important;
   padding-top: 2rem;
+=======
+	font-weight: bold !important;
+	align-self: center;
+>>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
 }
 
 .evaluation-form-buttons {
@@ -102,6 +154,7 @@
 }
 
 .evaluation-form-discard-button {
+<<<<<<< HEAD
   color: red;
   border: 1px solid red;
   background-color: transparent;
@@ -121,6 +174,32 @@
   border-radius: 0.2rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
+=======
+	color: red;
+	border: 1px solid red;
+	background-color: transparent;
+	font-size: 0.75rem;
+	border-radius: 0.2rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	margin: 0 1rem;
+}
+
+.evaluation-form-submit-button {
+	margin-right: 1rem;
+	background-color: #6b1d5e;
+	color: white;
+	border: none;
+	font-size: 0.75rem;
+	border-radius: 0.2rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+>>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
+}
+
+.evaluation-form-overall-feedback-label {
+	padding: 0 1rem 0.5rem;
+	font-weight: bold !important;
 }
 
 /* Questions Card */
@@ -135,8 +214,16 @@
   padding: 1rem;
 }
 
+.evaluation-form-items-heading {
+	font-weight: bold !important;
+}
+
 .evaluation-form-content {
+<<<<<<< HEAD
   padding: 1rem;
+=======
+	padding: 1rem 1rem 0;
+>>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
 }
 
 .evaluation-form-divider {
@@ -148,12 +235,21 @@
 }
 
 .evaluation-form-astreisk {
+<<<<<<< HEAD
   color: red;
   font-size: 1rem !important;
 }
 
 .evaluation-form-question {
   font-weight: bold !important;
+=======
+	color: red;
+}
+
+.evaluation-form-question {
+	font-weight: bold !important;
+	font-size: 0.8rem !important;
+>>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
 }
 
 .evaluation-form-question-layout {
@@ -172,6 +268,7 @@
 }
 
 .evaluation-form-comments-section {
+<<<<<<< HEAD
   /* margin-bottom: 1rem; */
 }
 
@@ -185,6 +282,28 @@
   background: none;
   font-size: 0.9rem;
   cursor: pointer;
+=======
+	padding: 0.5rem;
+}
+
+.evaluation-form-comment-buttons {
+	display: flex;
+	align-content: center;
+	justify-content: flex-end;
+}
+
+.evaluation-form-buttons {
+	text-align: end;
+	padding: 0.75rem;
+}
+
+.evaluation-form-add-comments-button {
+	color: purple;
+	border: none;
+	background: none;
+	font-size: 0.75rem;
+	cursor: pointer;
+>>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
 }
 
 .evaluation-form-inputbase {
@@ -200,4 +319,39 @@
 
 .evaluation-form-radio-button {
   color: #6b1d5e !important;
+}
+
+.evaluation-form-overall-feedback-label {
+	font-weight: bold;
+}
+
+.evaluation-form-overall-feedback {
+	margin: 0 1rem 1rem;
+	width: -webkit-fill-available;
+}
+
+.evaluation-form-discard-modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 30%;
+	height: 30%;
+	background-color: white !important;
+	border: 2px solid black !important;
+	box-shadow: 24;
+	padding: 2rem 1rem;
+	text-align: center;
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.evaluation-form-discard-modal-buttons {
+	align-items: center;
+}
+
+.MuiFormControlLabel-label {
+	font-size: 0.8rem !important;
 }

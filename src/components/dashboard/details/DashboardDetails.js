@@ -12,6 +12,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CloseOutlined from '@mui/icons-material/CloseOutlined';
 
 import Select from 'react-select';
+import { toast } from 'react-toastify';
 
 import indexService from '../../../service/index';
 import { useDispatch, useSelector } from 'react-redux';
@@ -92,6 +93,9 @@ function DashboardDetails() {
 					setSnackbar({ openSnackbar: true });
 					setCount(resp?.data?.length);
 					callforsttchech();
+					toast.success(
+						`${resp?.data?.length} calls got uploaded successfully`
+					);
 				}
 			});
 		}
@@ -106,6 +110,7 @@ function DashboardDetails() {
 					type: GET_GENERATE_SPEECH_REPORT,
 					payload: true,
 				});
+				toast.success(`The analysis will be generated`);
 			}
 		});
 	};
@@ -134,9 +139,6 @@ function DashboardDetails() {
 			payload: false,
 		});
 	};
-	// const handleSnackbarClose = () => {
-	// 	setOpen(false);
-	// };
 
 	const handleAddFields = () => {
 		const values = [...review];
@@ -182,11 +184,7 @@ function DashboardDetails() {
 					</div>
 				)}
 				<button
-					// variant='contained'
 					onClick={handleOpen}
-					// className={`dashboard-details-upload-button ${
-					// 	!isGenerateAnalysis ? 'btn-disabled' : ''
-					// }`}
 					className='dashboard-details-upload-button'
 				>
 					Upload
@@ -275,7 +273,6 @@ function DashboardDetails() {
 								>
 									Cancel
 								</button>
-								{/* <Stack spacing={2} sx={{ width: '100%' }}> */}
 								<button
 									className='dashboard-details-upload-button'
 									onClick={submitHandler}
@@ -286,43 +283,6 @@ function DashboardDetails() {
 						</div>
 					</Box>
 				</Modal>
-				{/* <DashboardSnackbar /> */}
-
-				<Snackbar
-					anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-					key={vertical + horizontal}
-					open={snackbar}
-					autoHideDuration={4000}
-					onClose={handleSnackbarClose}
-					action={action}
-					className='dashboard-details-upload-snackbar'
-				>
-					<Alert
-						onClose={handleSnackbarClose}
-						severity='success'
-						sx={{ width: '100%' }}
-					>
-						{`${count} calls got uploaded successfully`}
-					</Alert>
-				</Snackbar>
-
-				<Snackbar
-					anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-					key={vertical + horizontal}
-					open={isAnalysisDone}
-					autoHideDuration={4000}
-					onClose={handleGenerateAnalysisClose}
-					action={action}
-					className='dashboard-details-upload-snackbar'
-				>
-					<Alert
-						onClose={handleGenerateAnalysisClose}
-						severity='success'
-						sx={{ width: '100%' }}
-					>
-						The analysis will be generated
-					</Alert>
-				</Snackbar>
 			</div>
 		</div>
 	);

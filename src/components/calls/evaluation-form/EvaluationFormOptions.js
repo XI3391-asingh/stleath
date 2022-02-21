@@ -7,19 +7,30 @@ import EvaluationFormQuestionsLayout from './EvaluationFormQuestionsLayout';
 
 import './styles.css';
 
-function EvaluationFormOptions() {
+function EvaluationFormOptions({
+	questionsanswersdata,
+	managerqueans,
+	evaluationFormCallback,
+}) {
 	return (
 		<div>
-			<div>
-				<EvaluationFormSearchBox />
+			<div className='evaluation-form-options-layout'>
+				{/* <EvaluationFormSearchBox /> */}
 				<div className='evaluation-form-options'>
-					<Typography variant='h6' className='evaluation-form-options-heading'>
+					<Typography
+						variant='subtitle2'
+						className='evaluation-form-options-heading'
+					>
 						New Evaluation
 					</Typography>
 				</div>
 				<div>
 					<Box>
-						<EvaluationFormQuestionsLayout />
+						<EvaluationFormQuestionsLayout
+							questionsanswersdata={questionsanswersdata}
+							managerqueans={managerqueans}
+							evaluationFormCallback={evaluationFormCallback}
+						/>
 					</Box>
 				</div>
 			</div>
