@@ -14,10 +14,13 @@ function EvaluationFormOptions({
 }) {
 	return (
 		<div>
-			<div>
-				<EvaluationFormSearchBox />
+			<div className='evaluation-form-options-layout'>
+				{/* <EvaluationFormSearchBox /> */}
 				<div className='evaluation-form-options'>
-					<Typography variant='h6' className='evaluation-form-options-heading'>
+					<Typography
+						variant='subtitle2'
+						className='evaluation-form-options-heading'
+					>
 						New Evaluation
 					</Typography>
 				</div>

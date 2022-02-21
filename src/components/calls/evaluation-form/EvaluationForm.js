@@ -40,7 +40,7 @@ function EvaluationForm({
 			<Drawer variant='persistent' anchor='right' open={open}>
 				<div container className='calls-page-evaluationform-header'>
 					<Typography
-						variant='h6'
+						variant='subtitle1'
 						className='calls-page-evaluationform-heading'
 					>
 						Evaluation Form

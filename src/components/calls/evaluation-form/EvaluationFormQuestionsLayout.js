@@ -59,11 +59,14 @@ function EvaluationFormQuestionsLayout({
 				</div>
 			</button>
 			<Drawer variant='persistent' anchor='right' open={open}>
-				<div className='calls-page-evaluationform-header'>
+				<div className='evaluation-form-type-header'>
 					<IconButton onClick={formClose}>
 						<ArrowBackIcon />
 					</IconButton>
-					<Typography variant='h6' className='evaluation-form-qa-type-heading'>
+					<Typography
+						variant='subtitle2'
+						className='evaluation-form-qa-type-heading'
+					>
 						QA Evaluation Form
 					</Typography>
 					<IconButton onClick={formClose}>
@@ -78,11 +81,14 @@ function EvaluationFormQuestionsLayout({
 				/>
 			</Drawer>
 			<Drawer variant='persistent' anchor='right' open={openManager}>
-				<div className='calls-page-evaluationform-header'>
+				<div className='evaluation-form-type-header'>
 					<IconButton onClick={formCloseManager}>
 						<ArrowBackIcon />
 					</IconButton>
-					<Typography variant='h6' className='evaluation-form-qa-type-heading'>
+					<Typography
+						variant='subtitle2'
+						className='evaluation-form-qa-type-heading'
+					>
 						QA Evaluation Form - Manager
 					</Typography>
 					<IconButton onClick={formCloseManager}>
