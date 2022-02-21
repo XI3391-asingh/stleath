@@ -1,1 +1,29 @@
-$primary-color: #e0e0e0
+$primary-color: #e0e0e0;
+.validationErrorText {
+  color: rgb(218, 17, 17);
+  font-size: small;
+}
+.required-text {
+  color: rgb(218, 17, 17);
+  font-size: small;
+}
+.page-main-heading {
+  margin: 1rem !important;
+}
+.search-box-icon:hover {
+  background-color: #6b1d5e !important;
+  color: white;
+  box-shadow: 2px 2px 5px -10px black !important;
+}
+.clear-box-icon:hover {
+  background-color: #6b1d5e !important;
+  color: white;
+  box-shadow: 2px 2px 5px -10px black !important;
+}
+.clear-box-icon {
+  margin: auto !important;
+  // color: rgb(0, 0, 0) !important;
+  font-size: 1rem !important;
+  border-radius: 0.2rem !important;
+  padding: 0.5rem 1rem;
+}
