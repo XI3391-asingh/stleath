@@ -10,19 +10,13 @@ import EvaluationFormQuestions from "./EvaluationFormQuestions";
 
 import "./styles.css";
 
-<<<<<<< HEAD
-function EvaluationFormQuestionsLayout() {
+function EvaluationFormQuestionsLayout({
+  questionsanswersdata,
+  managerqueans,
+  evaluationFormCallback,
+}) {
   const [open, setOpen] = useState(false);
   const [openManager, setOpenManager] = useState(false);
-=======
-function EvaluationFormQuestionsLayout({
-	questionsanswersdata,
-	managerqueans,
-	evaluationFormCallback,
-}) {
-	const [open, setOpen] = useState(false);
-	const [openManager, setOpenManager] = useState(false);
->>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
 
   const formOpen = () => {
     setOpen(true);
@@ -40,7 +34,6 @@ function EvaluationFormQuestionsLayout({
     setOpenManager(false);
   };
 
-<<<<<<< HEAD
   return (
     <div>
       <button
@@ -66,11 +59,14 @@ function EvaluationFormQuestionsLayout({
         </div>
       </button>
       <Drawer variant="persistent" anchor="right" open={open}>
-        <div className="calls-page-evaluationform-header">
+        <div className="evaluation-form-type-header">
           <IconButton onClick={formClose}>
             <ArrowBackIcon />
           </IconButton>
-          <Typography variant="h6" className="evaluation-form-qa-type-heading">
+          <Typography
+            variant="subtitle2"
+            className="evaluation-form-qa-type-heading"
+          >
             QA Evaluation Form
           </Typography>
           <IconButton onClick={formClose}>
@@ -78,14 +74,21 @@ function EvaluationFormQuestionsLayout({
           </IconButton>
         </div>
         <Divider />
-        <EvaluationFormQuestions />
+        <EvaluationFormQuestions
+          questionsanswersdata={questionsanswersdata}
+          evaluationFormCallback={evaluationFormCallback}
+          setOpen={setOpen}
+        />
       </Drawer>
       <Drawer variant="persistent" anchor="right" open={openManager}>
-        <div className="calls-page-evaluationform-header">
+        <div className="evaluation-form-type-header">
           <IconButton onClick={formCloseManager}>
             <ArrowBackIcon />
           </IconButton>
-          <Typography variant="h6" className="evaluation-form-qa-type-heading">
+          <Typography
+            variant="subtitle2"
+            className="evaluation-form-qa-type-heading"
+          >
             QA Evaluation Form - Manager
           </Typography>
           <IconButton onClick={formCloseManager}>
@@ -93,82 +96,14 @@ function EvaluationFormQuestionsLayout({
           </IconButton>
         </div>
         <Divider />
-        <EvaluationFormQuestions />
+        <EvaluationFormQuestions
+          questionsanswersdata={managerqueans}
+          evaluationFormCallback={evaluationFormCallback}
+          setOpen={setOpenManager}
+        />
       </Drawer>
     </div>
   );
-=======
-	return (
-		<div>
-			<button
-				className='evaluation-form-options-paper-layout'
-				variant='outlined'
-			>
-				<div className='evaluation-form-option' onClick={formOpen}>
-					<Typography variant='body2' className='evaluation-form-option-type'>
-						QA Evaluation Form
-					</Typography>
-					<ChevronRightIcon />
-				</div>
-			</button>
-			<button
-				className='evaluation-form-options-paper-layout'
-				variant='outlined'
-			>
-				<div className='evaluation-form-option' onClick={formOpenManager}>
-					<Typography variant='body2' className='evaluation-form-option-type'>
-						QA Evaluation Form - Manager
-					</Typography>
-					<ChevronRightIcon />
-				</div>
-			</button>
-			<Drawer variant='persistent' anchor='right' open={open}>
-				<div className='evaluation-form-type-header'>
-					<IconButton onClick={formClose}>
-						<ArrowBackIcon />
-					</IconButton>
-					<Typography
-						variant='subtitle2'
-						className='evaluation-form-qa-type-heading'
-					>
-						QA Evaluation Form
-					</Typography>
-					<IconButton onClick={formClose}>
-						<CloseIcon />
-					</IconButton>
-				</div>
-				<Divider />
-				<EvaluationFormQuestions
-					questionsanswersdata={questionsanswersdata}
-					evaluationFormCallback={evaluationFormCallback}
-					setOpen={setOpen}
-				/>
-			</Drawer>
-			<Drawer variant='persistent' anchor='right' open={openManager}>
-				<div className='evaluation-form-type-header'>
-					<IconButton onClick={formCloseManager}>
-						<ArrowBackIcon />
-					</IconButton>
-					<Typography
-						variant='subtitle2'
-						className='evaluation-form-qa-type-heading'
-					>
-						QA Evaluation Form - Manager
-					</Typography>
-					<IconButton onClick={formCloseManager}>
-						<CloseIcon />
-					</IconButton>
-				</div>
-				<Divider />
-				<EvaluationFormQuestions
-					questionsanswersdata={managerqueans}
-					evaluationFormCallback={evaluationFormCallback}
-					setOpen={setOpenManager}
-				/>
-			</Drawer>
-		</div>
-	);
->>>>>>> e58aefe5fdc32d2fa74b906c737da5a3bd256064
 }
 
 export default EvaluationFormQuestionsLayout;
